@@ -1,14 +1,14 @@
 describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true,
                                     match_requests_on: [:body, :uri, :method] } do
   subject do
-    response = Response.new(answers: { 'EL02' => 1 }, old_estimate: 1.0, old_variance: 0.5)
+    response = Response.new(answers: { 'EL02' => 1 })
     JSON.parse(ResponseSerializer.new(response).to_json)['response']
   end
 
   it 'includes id and next_question' do
     expect(subject).to eq({
-      estimate: 0.7,
-      variance: 0.6,
+      initial_estimate: 1.0,
+      initial_variance: 0.5,
       questions: [
         {
           key: 'EL02',
@@ -23,7 +23,11 @@ describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback
               text: 'Eens'
             }
           ],
-          answer: 1
+          answer: {
+            value: 1,
+            new_estimate: 0.7,
+            new_variance: 0.6
+          }
         },
         {
           key: 'EL03',

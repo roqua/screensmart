@@ -11,39 +11,12 @@ describe Response, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
     end
   end
 
-  describe 'validations' do
-    describe 'old_estimate' do
-      it 'is optional' do
-        expect(r).to have(0).errors_on :old_estimate
-      end
+  describe '#without_answers_after' do
+    it 'returns a new response without answers after the given key' do
+      initial_answers  = { 'EL02' => 1, 'EL40' => 1, 'EL03' => 0 }
+      expected_answers = { 'EL02' => 1, 'EL40' => 1 }
 
-      it 'must be a float' do
-        expect(r(old_estimate: 'a')).to have(1).errors_on :old_estimate
-      end
-
-      it 'must be between -20.0 and 20.0' do
-        expect(r(old_estimate: -20.1)).to have(1).errors_on :old_estimate
-      end
-    end
-
-    describe 'old_variance' do
-      it 'is optional' do
-        expect(r).to have(0).errors_on :old_variance
-      end
-
-      it 'must be a float' do
-        expect(r(old_variance: 'a')).to have(1).errors_on :old_variance
-      end
-
-      it 'must be between 0 and 1.0' do
-        expect(r(old_variance: 1.1)).to have(1).errors_on :old_variance
-      end
-    end
-
-    describe 'answers' do
-      it 'must have all integer values' do
-        expect(r(answers: { 'EL02' => '1.0' })).to have(1).errors_on :answers
-      end
+      expect(r(answers: initial_answers).without_answers_after('EL40').answers).to eq expected_answers
     end
   end
 end

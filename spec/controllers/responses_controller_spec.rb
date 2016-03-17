@@ -10,7 +10,7 @@ describe ResponsesController, vcr: { cassette_name: 'screensmart', allow_playbac
 
     context 'with answers' do
       it 'includes the next question' do
-        post 'create', answers: { 'EL02' => 1 }, old_estimate: 1.0, old_variance: 0.5
+        post 'create', answers: { 'EL02' => 1 }
         expect(assigns(:response).next_question.key).to eq 'EL03'
       end
     end

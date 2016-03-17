@@ -4,30 +4,35 @@ module RPackage
     call('get_itembank_rdata')
   end
 
-  def self.data_for(raw_answers, estimate = nil, variance = nil)
-    params = {
-      responses: answers_for_r(raw_answers),
-      estimate: estimate.try(:to_f),
-      variance: variance.try(:to_f)
-    }.compact
+  def self.data_for(raw_answers)
+    answers = integerize_values(raw_answers)
 
-    raw_data = call('call_shadowcat', params)
+    raw_data = call('call_shadowcat', responses: [])
+    memo = { next_question_key: raw_data['key_new_item'],
+             estimate: raw_data['estimate'][0].to_f,
+             variance: raw_data['variance'][0].to_f }
 
-    {
-      next_question_key: raw_data['key_new_item'],
-      estimate: raw_data['estimate'][0].to_f,
-      variance: raw_data['variance'][0].to_f
-    }
-  end
+    answers.each_with_index do |_, index|
+      params = { responses: [answers.take(index + 1).to_h],
+                 estimate: memo[:estimate].try(:to_f),
+                 variance: memo[:variance].try(:to_f) }.compact
 
-  def self.answers_for_r(raw_answers)
-    answers = {}
-    raw_answers.each do |key, value|
-      answers[key] = value.to_i
+      raw_data = call('call_shadowcat', params)
+
+      memo = {
+        next_question_key: raw_data['key_new_item'],
+        estimate: raw_data['estimate'][0].to_f,
+        variance: raw_data['variance'][0].to_f
+      }
     end
 
-    # TODO: find a way to call OpenCPU with responses: [{}]
-    answers.present? ? [answers] : []
+    memo
+  end
+
+  def self.integerize_values(raw_answers)
+    raw_answers.each_with_object({}) do |(key, value), answers|
+      answers[key] = value.to_i
+    end
   end
 
   def self.call(function, parameters = {})

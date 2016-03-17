@@ -1,12 +1,25 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :estimate, :variance, :questions
+  attributes :initial_estimate, :initial_variance, :questions
+
+  def initial_estimate
+    Response.new.estimate
+  end
+
+  def initial_variance
+    Response.new.variance
+  end
 
   def questions
-    questions = object.answers.map do |key, value|
+    object.answers.map do |key, value|
+      response_so_far = object.without_answers_after(key)
+
       Question.find_by_key(key).as_json.merge(
-        answer: value
+        answer: {
+          value: value,
+          new_estimate: response_so_far.estimate,
+          new_variance: response_so_far.variance
+        }
       )
-    end
-    questions << Question.find_by_key(object.next_question_key)
+    end.push object.next_question
   end
 end
