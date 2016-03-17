@@ -9,8 +9,7 @@ describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback
     expect(subject).to eq({
       initial_estimate: 1.0,
       initial_variance: 0.5,
-      questions: [
-        {
+      questions: [{
           key: 'EL02',
           text: 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.',
           answer_option_set: [

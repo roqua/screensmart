@@ -1,5 +1,6 @@
 {div, h1, p} = React.DOM
 
+
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
@@ -7,25 +8,51 @@
     response: @props.initialResponse
 
   questionByKey: (key) ->
-    @state.response.questions.find((question) ->
+    @questions().find((question) ->
       question.key == key
     )
+
+  indexOf: (key) ->
+    @questions().indexOf(@questionByKey(key))
 
   addAnswerToQuestion: (key, value) ->
     response = @state.response
     questions = response.questions
-    question_index = questions.indexOf(@questionByKey(key))
-    response.questions[question_index].answer = value
+    response.questions[@indexOf(key)].answer = { value: value }
+    @setState(response: response)
+
+  removeQuestionsStartingAt: (key) ->
+    startIndex = @indexOf(key) + 1
+    elementsToRemove = @questions().length - startIndex
+    response = @state.response
+    response.questions.splice(startIndex, elementsToRemove)
     @setState(response: response)
 
   questionsWithAnswer: ->
-    @state.response.questions.filter (question) ->
+    @questions().filter (question) ->
       question.answer?
+
+  questions: ->
+    @state.response.questions
+
+  estimate: ->
+    lastQuestionWithAnswer = @questions()[@questions().length - 2]
+    if lastQuestionWithAnswer?
+      lastQuestionWithAnswer.answer.new_estimate
+    else
+      @state.response.initial_estimate
+
+  variance: ->
+    lastQuestionWithAnswer = @questions()[@questions().length - 2]
+    if lastQuestionWithAnswer?
+      lastQuestionWithAnswer.answer.new_variance
+    else
+      @state.response.initial_variance
 
   answerHash: ->
     answers = {}
     @questionsWithAnswer().forEach (question) ->
-      answers[question.key] = question.answer
+      answers[question.key] = question.answer.value
     answers
 
   refreshResponse: ->
@@ -34,16 +61,15 @@
       dataType: 'json'
       data:
         answers:  @answerHash()
-        old_estimate: @state.response.estimate.toFixed(4)
-        old_variance: @state.response.variance.toFixed(4)
       headers:
         'X-CSRF-Token': @props.csrfToken
-    .fail (xhr, status, errorThrown) ->
-      console.log("Failure: #{status}, #{errorThrown}")
+    .fail (xhr, status, error) ->
+      console.log("Failure: #{status}, #{error}")
     .done (data) =>
       @setState(response: data.response)
 
   onAnswerChange: (key, value) ->
+    @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
     @refreshResponse()
 
@@ -55,8 +81,8 @@
         'screensmart'
       p
         className: 'estimate'
-        "estimate: #{@state.response.estimate}"
+        "estimate: #{@estimate()}"
       p
         className: 'variance'
-        "variance: #{@state.response.variance}"
-      React.createElement QuestionList, onAnswerChange: @onAnswerChange, questions: @state.response.questions
+        "variance: #{@variance()}"
+      React.createElement QuestionList, onAnswerChange: @onAnswerChange, questions: @questions()
