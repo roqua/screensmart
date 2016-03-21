@@ -1,6 +1,4 @@
-class AnswerOptionSet
-  include ActiveModel::Model
-  include ActiveModel::Serialization
+class AnswerOptionSet < BaseModel
   attr_accessor :id, :answer_options
 
   include Enumerable

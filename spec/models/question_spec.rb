@@ -1,35 +1,19 @@
 describe Question, vcr: { cassette_name: 'screensmart', allow_playback_repeats: true } do
-  let(:questions) { described_class.all }
-  let(:question) { questions.first }
+  subject { described_class.new }
 
-  describe '.all' do
-    it 'returns parsed questions for all domains' do
-      expect(question).to be_a Question
-      expect(question.key).to eq 'EL02'
-      expect(question.text).to eq 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.'
+  describe '#text' do
+    it 'returns the question text when an existant key is given' do
+      subject.key = 'EL02'
+      expect(subject.text).to eq 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.'
     end
 
-    it 'parses the answer\'s option set' do
-      answer_option_set = question.answer_option_set
-      expect(answer_option_set).to be_a AnswerOptionSet
-      expect(answer_option_set.id).to eq 2
+    it 'raises an exception when a nonexistant key is given' do
+      subject.key = 'invalid_key'
+      expect { subject.text }.to raise_error Exception
     end
 
-    it 'parses the options in the answer option set' do
-      answer_option = question.answer_option_set.first
-      expect(answer_option).to be_a AnswerOption
-      expect(answer_option.value).to eq 0
-      expect(answer_option.text).to eq 'Oneens'
-    end
-  end
-
-  describe '.find_by_key' do
-    it 'finds a question by key' do
-      expect(described_class.find_by_key('EL02')).to be_a Question
-    end
-
-    it 'raises an exception when the key is not found' do
-      expect { described_class.find_by_key('bananentaart') }.to raise_exception 'question `bananentaart` not found'
+    it 'raises an exception when no key is given' do
+      expect { subject.text }.to raise_error Exception
     end
   end
 end

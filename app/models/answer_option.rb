@@ -1,5 +1,3 @@
-class AnswerOption
-  include ActiveModel::Model
-  include ActiveModel::Serialization
+class AnswerOption < BaseModel
   attr_accessor :value, :text
 end

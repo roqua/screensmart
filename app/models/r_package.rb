@@ -1,9 +1,18 @@
 # Only module that should communicate with screensmart-r.
 module RPackage
+  def self.question_by_key(key)
+    questions.detect { |question| question['key'] == key }
+  end
+
+  def self.question_keys
+    questions.map { |question| question['key'] }
+  end
+
   def self.questions
     call('get_itembank_rdata')
   end
 
+  # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
   def self.data_for(raw_answers)
     answers = integerize_values(raw_answers)
 
@@ -28,6 +37,7 @@ module RPackage
 
     memo
   end
+  # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
   def self.integerize_values(raw_answers)
     raw_answers.each_with_object({}) do |(key, value), answers|

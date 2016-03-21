@@ -2,6 +2,12 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
                           match_requests_on: [:body, :uri, :method] } do
   let(:described_module) { RPackage }
 
+  describe '.question_keys' do
+    it 'returns the question_keys' do
+      expect(described_module.question_keys).to eq %w( EL02 EL03 )
+    end
+  end
+
   describe '.questions' do
     before do
       enable_caching

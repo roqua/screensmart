@@ -1,34 +1,35 @@
 class ResponseValidator < ActiveModel::Validator
   def validate(response)
-    @response = response # to prevent parameter duplication
+    @response = response # avoid parameter duplication
 
-    validate_answers_integers
+    return if @response.answer_values.nil?
+    validate_answer_values_integers
+    validate_answer_keys_exist
   end
 
   private
 
-  def invalid_float_message(given_value, valid_range)
-    "must be a float between #{valid_range}, #{given_value} given"
-  end
-
-  def in_float_range?(value, valid_range)
-    valid_float_string?(value) && valid_range.include?(value.to_f)
-  end
-
-  # based on http://stackoverflow.com/a/1034499/2552895
-  def valid_float_string?(value)
-    Float(value)
-  rescue
-    false
-  end
-
-  def validate_answers_integers
-    non_integer_answers = @response.answers.values.select do |value|
-      value.to_f.to_s == value
+  def validate_answer_values_integers
+    answers_with_non_integer_values = @response.answer_values.reject do |_key, value|
+      # rubocop:disable Style/RescueModifier
+      Integer(value) rescue false
+      # rubocop:enable Style/RescueModifier
     end
 
-    if non_integer_answers.present?
-      @response.errors.add :answers, "Answers values must all be integers, non-integers: #{non_integer_answers}"
+    if answers_with_non_integer_values.present?
+      @response.errors.add :answer_values,
+                           "must all be integers, non-integers: #{answers_with_non_integer_values}"
+    end
+  end
+
+  def validate_answer_keys_exist
+    answers_with_nonexistant_keys = @response.answer_values.reject do |key, _value|
+      RPackage.question_keys.include?(key)
+    end
+
+    if answers_with_nonexistant_keys.present?
+      @response.errors.add :answer_values,
+                           "must all have keys defined by R package, non-found keys: #{answers_with_nonexistant_keys}"
     end
   end
 end

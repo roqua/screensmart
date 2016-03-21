@@ -1,25 +1,28 @@
-class Question
-  include ActiveModel::Model
-  include ActiveModel::Serialization
-  attr_accessor :key, :text, :answer_option_set
+class Question < BaseModel
+  attr_accessor :key, :answer_value
 
-  def self.find_by_key(key)
-    all.detect { |question| question.key == key } || raise("question `#{key}` not found")
+  validates_inclusion_of :key, in: RPackage.question_keys
+
+  def text
+    ensure_valid do
+      RPackage.question_by_key(key)['text']
+    end
   end
 
-  def self.parse(raw_question)
-    new \
-      key:  raw_question['key'],
-      text: raw_question['text'],
-      answer_option_set: AnswerOptionSet.new(
-        id: raw_question['answer_option_set_id'],
-        answer_options: raw_question['answer_options'].map do |raw_answer_option|
-          AnswerOption.new(value: raw_answer_option['value'], text: raw_answer_option['text'])
-        end
-      )
+  def answer_option_set
+    AnswerOptionSet.new(
+      id: data_from_r['answer_option_set_id'],
+      answer_options: data_from_r['answer_options'].map do |attributes|
+        AnswerOption.new(attributes)
+      end
+    )
   end
 
-  def self.all
-    RPackage.questions.map { |raw_question| parse(raw_question) }
+  def answer
+    Answer.new key: key, value: answer_value
+  end
+
+  def data_from_r
+    RPackage.question_by_key(key)
   end
 end
