@@ -1,6 +1,5 @@
 {div, h1, p} = React.DOM
 
-
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
