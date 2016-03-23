@@ -35,7 +35,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
     context 'with answers' do
       it 'returns a new next_question estimate and variance' do
-        expect(described_module.data_for('EL02' => '1')).to eq \
+        expect(described_module.data_for('EL02' => 1)).to eq \
           next_question_key: 'EL03',
           estimate: 0.7,
           variance: 0.6
@@ -74,18 +74,6 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
           second_call
         end
       end
-    end
-  end
-
-  describe '.integerize_values' do
-    it 'converts answer keys to integers' do
-      raw_answers = {
-        'EL02' => '1',
-        'EL03' => '0'
-      }
-      expect(described_module.integerize_values(raw_answers)).to eq \
-        'EL02' => 1,
-        'EL03' => 0
     end
   end
 end

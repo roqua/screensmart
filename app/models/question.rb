@@ -1,7 +1,8 @@
 class Question < BaseModel
   attr_accessor :key, :answer_value
 
-  validates_inclusion_of :key, in: RPackage.question_keys
+  validates_inclusion_of :key, in: RPackage.question_keys,
+                               message: '`%{value}` not found'
 
   def text
     ensure_valid do

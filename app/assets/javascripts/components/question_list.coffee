@@ -19,7 +19,7 @@
             question.text
           ul
             className: 'options'
-            question.answer_option_set.map (answer_option) =>
+            question.answer_option_set.answer_options.map (answer_option) =>
               li
                 className: 'option'
                 key: "question_#{question.key}_answer_#{answer_option.value}"

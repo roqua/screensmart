@@ -13,9 +13,7 @@ module RPackage
   end
 
   # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-  def self.data_for(raw_answers)
-    answers = integerize_values(raw_answers)
-
+  def self.data_for(answers)
     raw_data = call('call_shadowcat', responses: [])
     memo = { next_question_key: raw_data['key_new_item'],
              estimate: raw_data['estimate'][0].to_f,
@@ -39,12 +37,6 @@ module RPackage
   end
   # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
-  def self.integerize_values(raw_answers)
-    raw_answers.each_with_object({}) do |(key, value), answers|
-      answers[key] = value.to_i
-    end
-  end
-
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
@@ -54,6 +46,6 @@ module RPackage
   end
 
   def self.cache_key_for(function, parameters)
-    "#{Rails.env}/R/#{function}/#{parameters}"
+    "#{ENV['RAILS_ENV']}/R/#{function}/#{parameters}"
   end
 end

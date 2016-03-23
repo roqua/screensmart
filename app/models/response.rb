@@ -4,7 +4,7 @@
 #
 # After this, all attributes can be read in an OOP way, for example:
 #   r.questions # All questions, including the next (unanswered) one
-#   # => [#<Question:0x007faadb3459a8 @key="EL02">,
+#   # => [#<Question:0x007faadb3459a8 @key="EL02", @answer_value: 1>,
 #         #<Question:0x007faadb2d49d8 @key="EL03">]
 class Response < BaseModel
   attr_accessor :answer_values

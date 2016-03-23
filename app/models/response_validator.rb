@@ -11,9 +11,7 @@ class ResponseValidator < ActiveModel::Validator
 
   def validate_answer_values_integers
     answers_with_non_integer_values = @response.answer_values.reject do |_key, value|
-      # rubocop:disable Style/RescueModifier
-      Integer(value) rescue false
-      # rubocop:enable Style/RescueModifier
+      value.is_a? Integer
     end
 
     if answers_with_non_integer_values.present?

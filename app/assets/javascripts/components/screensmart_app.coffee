@@ -18,7 +18,7 @@
   addAnswerToQuestion: (key, value) ->
     response = @state.response
     questions = response.questions
-    response.questions[@indexOf(key)].answer = { value: value }
+    response.questions[@indexOf(key)].answer_value = value
     @setState(response: response)
 
   removeQuestionsStartingAt: (key) ->
@@ -30,37 +30,30 @@
 
   questionsWithAnswer: ->
     @questions().filter (question) ->
-      question.answer?
+      question.answer_value?
 
   questions: ->
     @state.response.questions
 
   estimate: ->
-    lastQuestionWithAnswer = @questions()[@questions().length - 2]
-    if lastQuestionWithAnswer?
-      lastQuestionWithAnswer.answer.new_estimate
-    else
-      @state.response.initial_estimate
+    @state.response.estimate
 
   variance: ->
-    lastQuestionWithAnswer = @questions()[@questions().length - 2]
-    if lastQuestionWithAnswer?
-      lastQuestionWithAnswer.answer.new_variance
-    else
-      @state.response.initial_variance
+    @state.response.variance
 
-  answerHash: ->
-    answers = {}
+  answerValues: ->
+    answerValues = {}
     @questionsWithAnswer().forEach (question) ->
-      answers[question.key] = question.answer.value
-    answers
+      answerValues[question.key] = parseInt(question.answer_value)
+    answerValues
 
   refreshResponse: ->
     $.ajax '/responses',
       method: 'POST'
       dataType: 'json'
-      data:
-        answers:  @answerHash()
+      contentType: 'application/json'
+      data: JSON.stringify
+        answer_values: @answerValues()
       headers:
         'X-CSRF-Token': @props.csrfToken
     .fail (xhr, status, error) ->

@@ -7,7 +7,7 @@ class BaseModel
     if valid?
       yield
     else
-      raise "#{self.class} must be valid when accessing `#{caller_locations(1, 1)[0].label}`.\n" \
+      raise "#{self.class} must be valid when accessing R attributes.\n" \
             "Errors: #{errors.full_messages}"
     end
   end
