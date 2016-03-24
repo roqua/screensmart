@@ -13,5 +13,7 @@
 //= require jquery
 //= require react
 //= require react_ujs
+//= require_tree ./models
 //= require components
 //= require_tree .
+//
