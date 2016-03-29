@@ -4,7 +4,7 @@
   displayName: 'ScreensmartApp'
 
   componentWillMount: ->
-    @model = new Response(@)
+    @model = new Response(this)
 
   getInitialState: ->
     response:
