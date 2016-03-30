@@ -11,18 +11,22 @@
       questions: []
       estimate: 0.0
       variance: 0.0
+      done: false
 
   render: ->
+    {estimate, variance, questions, done} = @state.response
     div
       className: 'app'
       div
         className: 'debug'
         p
           className: 'estimate'
-          "estimate: #{@state.response.estimate}"
+          "estimate: #{estimate}"
         p
           className: 'variance'
-          "variance: #{@state.response.variance}"
+          "variance: #{variance}"
       React.createElement QuestionList,
         onAnswerChange: (key, value) => @model.onAnswerChange(key, value)
-        questions: @state.response.questions
+        questions: questions
+      if done
+        "Done. estimate: #{estimate}, variance: #{variance}"

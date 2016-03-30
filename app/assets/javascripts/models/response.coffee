@@ -5,6 +5,7 @@ class @Response
       questions: []
       estimate: 0.0
       variance: 0.0
+      done: false
     @refresh()
 
   questions: ->
