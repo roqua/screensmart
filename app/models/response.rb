@@ -12,7 +12,7 @@ class Response < BaseModel
   validates_with ResponseValidator
 
   # accessors for attributes defined by R package
-  %i( next_question_key estimate variance ).each do |r_attribute|
+  %i( next_question_key estimate variance done ).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
         RPackage.data_for(answer_values)[r_attribute]
@@ -26,7 +26,7 @@ class Response < BaseModel
   end
 
   def questions
-    completed_questions.push(next_question)
+    next_question.present? ? completed_questions.push(next_question) : completed_questions
   end
 
   def completed_questions
@@ -40,7 +40,7 @@ class Response < BaseModel
   end
 
   def next_question
-    Question.new key: next_question_key
+    Question.new key: next_question_key unless done
   end
 
   def without_answers_after(answer_key)

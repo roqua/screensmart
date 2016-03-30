@@ -4,7 +4,7 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
 
   describe '.question_keys' do
     it 'returns the question_keys' do
-      expect(described_module.question_keys).to eq %w( EL02 EL03 )
+      expect(described_module.question_keys).to include 'EL02', 'EL03'
     end
   end
 
@@ -29,16 +29,25 @@ describe RPackage, vcr: { cassette_name: 'screensmart', allow_playback_repeats: 
         expect(described_module.data_for({})).to eq \
           next_question_key: 'EL02',
           estimate: 1.0,
-          variance: 0.5
+          variance: 0.5,
+          done: false
       end
     end
 
     context 'with answers' do
-      it 'returns a new next_question estimate and variance' do
+      it 'returns a new next_question, estimate and variance' do
         expect(described_module.data_for('EL02' => 1)).to eq \
           next_question_key: 'EL03',
           estimate: 0.7,
-          variance: 0.6
+          variance: 0.6,
+          done: false
+      end
+    end
+
+    context 'when done testing according to the algorithm' do
+      it 'includes done: true' do
+        expect(described_module.data_for('enough_answers_to_be_done' => 1)).to include \
+          done: true
       end
     end
 

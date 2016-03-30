@@ -32,7 +32,8 @@ module RPackage
   def self.rewrite_response_hash(raw_data)
     { next_question_key: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
-      variance: raw_data['variance'][0].to_f }
+      variance: raw_data['variance'][0].to_f,
+      done: !raw_data['continue_test'] }
   end
 
   def self.call(function, parameters = {})

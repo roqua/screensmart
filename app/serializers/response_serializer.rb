@@ -1,5 +1,5 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :estimate, :variance
+  attributes :estimate, :variance, :done
 
   has_many :questions
 end
