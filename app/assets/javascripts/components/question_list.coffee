@@ -7,14 +7,16 @@
     {questions, processing, onAnswerChange} = @props
 
     div
-      className: 'questions'
-      questions.map (question) ->
-        React.createElement Question,
-          question: question
-          key: question.key
-          onChange: onAnswerChange
-      if processing
-        div
-          className: 'question loading'
-          i
-            className: 'fa fa-4x fa-cog fa-spin'
+      className: 'questions-wrapper'
+      div
+        className: 'questions'
+        questions.map (question) ->
+          React.createElement Question,
+            question: question
+            key: question.key
+            onChange: onAnswerChange
+        if processing
+          div
+            className: 'question loading'
+            i
+              className: 'fa fa-4x fa-cog fa-spin'
