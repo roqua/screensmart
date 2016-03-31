@@ -44,4 +44,3 @@ RSpec.configure do |config|
 
   Capybara.default_driver = :poltergeist
 end
-
