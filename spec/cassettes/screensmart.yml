@@ -73,7 +73,7 @@ http_interactions:
           },
           {
             "key": "EL03",
-            "text": "Vraag 3",
+            "text": "Vraag 2",
             "answer_option_set_id": 2,
             "answer_options": [
               {

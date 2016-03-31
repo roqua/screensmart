@@ -1,4 +1,4 @@
-{div, h1, p, ul, li, input, label} = React.DOM
+{div, h1, p, ul, li, input, label, i} = React.DOM
 
 @QuestionList = React.createClass
   displayName: 'QuestionList'
@@ -20,14 +20,22 @@
           ul
             className: 'options'
             question.answer_option_set.answer_options.map (answer_option) =>
+              key = "question_#{question.key}_answer_#{answer_option.value}"
               li
                 className: 'option'
-                key: "question_#{question.key}_answer_#{answer_option.value}"
+                key: key
+                input
+                  type: 'radio'
+                  name: question.key
+                  id: key
+                  value: answer_option.value
+                  onClick: @onAnswerOptionClick
                 label
                   className: 'text'
-                  input
-                    type: 'radio'
-                    name: question.key
-                    value: answer_option.value
-                    onClick: @onAnswerOptionClick
+                  htmlFor: key
                   answer_option.text
+      if @props.processing
+        div
+          className: 'question loading'
+          i
+            className: 'fa fa-4x fa-cog fa-spin'

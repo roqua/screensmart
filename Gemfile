@@ -19,6 +19,7 @@ gem 'coffee-script-source', '~> 1.10.0'
 gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
+gem 'font-awesome-rails'
 gem 'react-rails', '~> 1.6.0'
 
 gem 'opencpu'
@@ -55,7 +56,6 @@ group :test do
 
   gem 'capybara',            '~> 2.6.2'
   gem 'capybara-screenshot', '~> 1.0.11'
-  gem 'selenium-webdriver',  '~> 2.52.0'
   gem 'poltergeist',         '~> 1.9.0'
 end
 

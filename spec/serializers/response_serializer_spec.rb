@@ -33,7 +33,7 @@ describe ResponseSerializer, vcr: { cassette_name: 'screensmart', allow_playback
         }
       }, {
         key: 'EL03',
-        text: 'Vraag 3',
+        text: 'Vraag 2',
         answer_value: nil,
         answer_option_set: {
           id: 2,

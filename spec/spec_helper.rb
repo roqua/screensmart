@@ -1,6 +1,8 @@
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'rspec/collection_matchers'
+require 'capybara-screenshot/rspec'
+require 'capybara/poltergeist'
 require 'vcr'
 require 'opencpu'
 
@@ -31,6 +33,7 @@ RSpec.configure do |config|
     vcr.cassette_library_dir = 'spec/cassettes'
     vcr.hook_into :webmock
     vcr.configure_rspec_metadata!
+    vcr.ignore_localhost = true
   end
 
   OpenCPU.configure do |opencpu|
@@ -38,4 +41,6 @@ RSpec.configure do |config|
     opencpu.username     = 'deploy'
     opencpu.password     = 'needed_for_opencpu_integration'
   end
+
+  Capybara.default_driver = :poltergeist
 end

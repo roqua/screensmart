@@ -29,6 +29,7 @@ class @Response
 
   refresh: ->
     oldState = @state
+    @view.setState(processing: true)
 
     $.ajax '/responses',
       method: 'POST'
@@ -48,7 +49,7 @@ class @Response
         @updateView()
 
   updateView: ->
-    @view.setState(response: @state)
+    @view.setState(response: @state, processing: false)
 
   questionByKey: (key) ->
     result = null
