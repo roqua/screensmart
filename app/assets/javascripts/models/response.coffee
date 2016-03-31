@@ -73,7 +73,7 @@ class @Response
     elementsToRemove = @questions().length - startIndex
     @state.questions.splice(startIndex, elementsToRemove)
 
-  onAnswerChange: (key, value) ->
+  setAnswer: (key, value) ->
     @removeQuestionsStartingAt(key)
     @addAnswerToQuestion(key, value)
     @refresh()

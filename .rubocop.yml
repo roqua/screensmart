@@ -1,8 +1,7 @@
 AllCops:
   Exclude:
-    # Exclude generated code
+    # Exclude generated or external code
     - bin/**/*
-    - spec/teaspoon_env.rb
     - vendor/**/*
 
 Metrics/LineLength:

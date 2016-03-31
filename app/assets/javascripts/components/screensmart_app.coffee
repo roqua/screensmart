@@ -27,7 +27,7 @@
           className: 'variance'
           "variance: #{variance}"
       React.createElement QuestionList,
-        onAnswerChange: (key, value) => @model.onAnswerChange(key, value)
+        onAnswerChange: (key, value) => @model.setAnswer(key, value)
         questions: questions
         processing: @state.processing
       if done
