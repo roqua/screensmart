@@ -3,6 +3,7 @@ AllCops:
     # Exclude generated code
     - bin/**/*
     - spec/teaspoon_env.rb
+    - vendor/**/*
 
 Metrics/LineLength:
   Max: 120
