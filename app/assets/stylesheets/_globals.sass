@@ -17,7 +17,11 @@ header
   @include shift(2)
   position: relative
   height: 75%
-  min-height: $breakpoint-mobile
+  min-height: $breakpoint-mobile-v
+  .questions
+    overflow: hidden
+    position: absolute
+    bottom: 0
 
 .question
   background-color: $question-background-color
@@ -79,6 +83,9 @@ header
   .option + .option label
     border-left: none
 
+@media(max-height: $breakpoint-mobile-v)
+  .questions-wrapper
+    min-height: 100vh
 @media only screen and (max-width: $breakpoint-mobile)
   .main
     @include outer-container(78%)
