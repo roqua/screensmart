@@ -17,8 +17,8 @@ header
   @include shift(2)
   position: relative
   height: 75%
-  min-height: $mobile
-  @media(max-height: $mobile)
+  min-height: $breakpoint-mobile
+  @media(max-height: $breakpoint-mobile)
     min-height: 100vh
   .questions
     overflow: hidden
@@ -85,7 +85,7 @@ header
   .option + .option label
     border-left: none
 
-@media only screen and (max-width: $mobile)
+@media only screen and (max-width: $breakpoint-mobile)
   .main
     @include outer-container(78%)
   .question
