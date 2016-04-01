@@ -36,6 +36,10 @@ header
   &:nth-last-child(2), &:last-child
     opacity: 1.0
 
+  // Show first question immediately
+  &:first-child
+    transition: opacity $easing, margin-bottom 0s
+
   &.loading
     text-align: center
 
@@ -43,7 +47,6 @@ header
     margin-bottom: -$question-height
   &.question-enter.question-enter-active
     margin-bottom: $question-margin
-
 
 .options
   padding: 0
