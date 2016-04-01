@@ -1,8 +1,12 @@
 body
   background-color: $application-background-color
 
+html, body, body > div, .app
+  height: 100%
+
 header
   position: fixed
+  z-index: 5
   .brand-logo
     min-height: $logo-height
     img
@@ -16,7 +20,7 @@ header
   @include span-columns(8)
   @include shift(2)
   position: relative
-  height: 75%
+  height: 50%
   min-height: $breakpoint-mobile-v
   .questions
     overflow: hidden
