@@ -1,7 +1,7 @@
 body
   background-color: $application-background-color
 
-html, body, body > div, .app
+html, body, .container, .app
   height: 100%
 
 header
@@ -35,7 +35,7 @@ header
   padding: 15px 35px
   margin: $question-margin
 
-  transition: all $easing
+  transition: opacity $easing, margin-bottom $easing
   opacity: 0
   &:nth-last-child(2), &:last-child
     opacity: 1.0
@@ -44,9 +44,7 @@ header
   &:first-child
     transition: opacity $easing, margin-bottom 0s
 
-  &.loading
-    text-align: center
-
+  // Make questions slide in from the bottom
   &.question-enter
     margin-bottom: -$question-height
   &.question-enter.question-enter-active
