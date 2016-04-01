@@ -22,7 +22,6 @@
               onChange: @props.onAnswerChange
           if done
             div
-              key:
               className: 'question'
               i
                 className: 'fa fa-5x fa-check'
