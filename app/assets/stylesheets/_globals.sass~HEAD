@@ -1,8 +1,12 @@
 body
   background-color: $application-background-color
 
+html, body, .container, .app
+  height: 100%
+
 header
   position: fixed
+  z-index: 5
   .brand-logo
     min-height: $logo-height
     img
@@ -12,40 +16,25 @@ header
 .app
   @include outer-container
 
-.questions-wrapper
-  @include span-columns(8)
-  @include shift(2)
-  position: relative
-  height: 75%
-  min-height: $mobile
-  @media(max-height: $mobile)
-    min-height: 100vh
-  .questions
+  .feed
+    margin-top: $logo-height
+    @include span-columns(8)
+    @include shift(2)
     overflow: hidden
-    position: absolute
-    bottom: 0
-
-.question
-  background-color: $question-background-color
-  border: 3px solid $question-border-color
-  border-radius: 4px
-  min-height: $question-height
-  padding: 15px 35px
-  margin: $question-margin
-
-  transition: all $easing
-  opacity: 0
-  &:nth-last-child(2), &:last-child
-    opacity: 1.0
-
-  &.loading
-    text-align: center
-
-  &.question-enter
-    margin-bottom: -$question-height
-  &.question-enter.question-enter-active
-    margin-bottom: $question-margin
-
+    .item
+      background-color: $feed-item-background-color
+      border: 3px solid $feed-item-border-color
+      border-radius: 4px
+      min-height: $feed-item-height
+      padding: 15px 35px
+      margin: $feed-item-margin
+      opacity: 0.2
+      &:nth-last-child(2)
+        opacity: 0.6
+      &:last-child
+        opacity: 1.0
+      &.loading
+        text-align: center
 
 .options
   padding: 0
@@ -85,7 +74,10 @@ header
   .option + .option label
     border-left: none
 
-@media only screen and (max-width: $mobile)
+@media (max-height: $breakpoint-mobile-v)
+  .questions-wrapper
+    min-height: 100vh
+@media only screen and (max-width: $breakpoint-mobile)
   .main
     @include outer-container(78%)
   .question
