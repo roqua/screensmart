@@ -40,6 +40,13 @@ class @Response
     @questions.filter (question) ->
       question.answer_value?
 
+  addPlaceholderQuestion: ->
+    @state.questions.push
+      text: 'Laden ...'
+      answer_option_set:
+        answer_options: []
+    @updateView()
+
   updateView: ->
     @view.setState response: this
 
