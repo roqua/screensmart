@@ -16,39 +16,40 @@ header
 .app
   @include outer-container
 
-.questions-wrapper
+.feed-wrapper
   @include span-columns(8)
   @include shift(2)
   position: relative
   height: 50%
   min-height: $breakpoint-mobile-v
-  .questions
+  .feed
     overflow: hidden
     position: absolute
     bottom: 0
+    width: 100%
 
-.question
-  background-color: $question-background-color
-  border: 3px solid $question-border-color
-  border-radius: 4px
-  min-height: $question-height
-  padding: 15px 35px
-  margin: $question-margin
+    .item
+      background-color: $feed-item-background-color
+      border: 3px solid $feed-item-border-color
+      border-radius: 4px
+      min-height: $feed-item-height
+      padding: 15px 35px
+      margin: $feed-item-margin
 
-  transition: opacity $easing, margin-bottom $easing
-  opacity: 0
-  &:nth-last-child(2), &:last-child
-    opacity: 1.0
+      transition: opacity $easing, margin-bottom $easing
+      opacity: 0
+      &:nth-last-child(2), &:last-child
+        opacity: 1.0
 
-  // Show first question immediately
-  &:first-child
-    transition: opacity $easing, margin-bottom 0s
+      // Show first question immediately
+      &:first-child
+        transition: opacity $easing, margin-bottom 0s
 
-  // Make questions slide in from the bottom
-  &.question-enter
-    margin-bottom: -$question-height
-  &.question-enter.question-enter-active
-    margin-bottom: $question-margin
+      // Make new items slide in from the bottom
+      &.item-enter
+        margin-bottom: -$feed-item-height
+      &.item-enter.item-enter-active
+        margin-bottom: $feed-item-margin
 
 .options
   padding: 0
