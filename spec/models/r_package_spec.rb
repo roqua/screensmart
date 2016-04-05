@@ -7,21 +7,6 @@ describe RPackage do
     end
   end
 
-  describe '.questions' do
-    before do
-      enable_caching
-    end
-
-    after do
-      disable_caching
-    end
-
-    it 'caches the call to OpenCPU' do
-      expect(OpenCPU).to receive(:client).and_call_original.once
-      2.times { RPackage.questions }
-    end
-  end
-
   describe '.data_for' do
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
@@ -49,14 +34,19 @@ describe RPackage do
           done: true
       end
     end
+  end
 
+  describe '.call' do
     describe 'caching' do
       def first_call
-        described_module.data_for([])
+        described_module.call('call_shadowcat', responses: [])
       end
 
       def second_call
-        described_module.data_for('EL02' => 1)
+        described_module.call('call_shadowcat',
+                              responses: [{ 'EL02' => 1 }],
+                              estimate: 1.0,
+                              variance: 0.5)
       end
 
       before(:each) do
@@ -67,15 +57,28 @@ describe RPackage do
         disable_caching
       end
 
-      context 'when answers, estimate and variance remain unchanged' do
-        it 'calls OpenCPU once' do
-          expect(OpenCPU).to receive(:client).and_call_original.once
-          first_call
-          first_call
+      context 'when the same parameters are privided twice' do
+        context 'when no error is raised during the first call' do
+          it 'calls OpenCPU once' do
+            expect(OpenCPU).to receive(:client).and_call_original.once
+
+            2.times { first_call }
+          end
+        end
+
+        context 'when an error is raised during the first call' do
+          it 'calls OpenCPU twice' do
+            allow(OpenCPU).to receive(:client) do
+              raise RuntimeError
+            end
+            expect(OpenCPU).to receive(:client).twice
+
+            2.times { expect { first_call }.to raise_error RuntimeError }
+          end
         end
       end
 
-      context 'when answers, estimate and variance change between calls' do
+      context 'when the parameters are different in the next call' do
         it 'calls the R package again' do
           expect(OpenCPU).to receive(:client).and_call_original.twice
           first_call

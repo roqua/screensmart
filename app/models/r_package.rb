@@ -38,9 +38,13 @@ module RPackage
 
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
-      Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
+      begin
+        Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
-      OpenCPU.client.execute('screensmart', function, user: :system, data: parameters, convert_na_to_nil: true)
+        OpenCPU.client.execute('screensmart', function, user: :system, data: parameters, convert_na_to_nil: true)
+      rescue RuntimeError => e
+        raise "Call to R failed with message: #{e.message}"
+      end
     end
   end
 
