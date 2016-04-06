@@ -17,13 +17,11 @@ header
   @include outer-container
 
 .feed-wrapper
-  margin-top: $logo-height
-  @include span-columns(8)
-  @include shift(2)
+  margin-top: $logo-height * 2
   .feed
     overflow: hidden
-    width: 100%
-
+    @include span-columns(8)
+    @include shift(2)
     .item
       background-color: $feed-item-background-color
       border: 3px solid $feed-item-border-color
@@ -74,10 +72,14 @@ header
   .questions-wrapper
     min-height: 100vh
 @media only screen and (max-width: $breakpoint-mobile)
-  .main
-    @include outer-container(78%)
-  .question
-    padding: 0.2rem 0.9rem
+  .app
+    @include outer-container(98%)
+  .feed-wrapper
+    .feed
+      @include span-columns(12)
+      @include shift(0)
+      .item
+        padding: 0.2rem 0.8rem
   .options
     input[type="radio"] + span
       font-size: 1rem
