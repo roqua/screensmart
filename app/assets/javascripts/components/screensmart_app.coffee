@@ -15,10 +15,10 @@
       className: 'container'
       div
         className: 'debug'
-        p
+        div
           className: 'estimate'
           "estimate: #{estimate}"
-        p
+        div
           className: 'variance'
           "variance: #{variance}"
       React.createElement FeedView,
