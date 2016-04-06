@@ -1,11 +1,15 @@
 // development style
 .debug
   position: fixed
-  top: 15px
+  top: 5px
   right: 10px
-  width: 3.8rem
   padding: 5px
   border: 1px solid $debug-border-color
   font-size: 0.8rem
   color: $debug-color
   background-color: $debug-background-color
+  z-index: 6
+
+@media only screen and (max-width: $breakpoint-mobile)
+  .debug
+    display: none
