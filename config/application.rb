@@ -18,5 +18,7 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
+    config.browserify_rails.commandline_options = '-t coffeeify --extension=".coffee"'
+    config.browserify_rails.source_map_environments << 'development'
   end
 end

@@ -20,13 +20,15 @@ gem 'haml-rails', '~> 0.9'
 gem 'neat', '~> 1.7.3'
 gem 'bourbon'
 gem 'font-awesome-rails'
-gem 'react-rails', '~> 1.6.0'
+gem 'browserify-rails', '~> 3.0.1'
 
 gem 'opencpu'
 
 gem 'dotenv-rails'
 
-gem 'rails_12factor', group: :production
+group :production do
+  gem 'rails_12factor'
+end
 
 group :development, :test do
   gem 'byebug'
@@ -40,9 +42,9 @@ group :development do
   gem 'guard',               '~> 2.13.0'
   gem 'guard-rspec',         '~> 4.6.4'
   gem 'guard-rubocop',       '~> 1.1'
-  gem 'guard-livereload',    '~> 2.4.0'
   gem 'guard-coffeelint'
   gem 'guard-bundler'
+  gem 'guard-npm'
 end
 
 group :test do

@@ -20,3 +20,5 @@
 .env.local
 .env.development
 .byebug_history
+
+/node_modules

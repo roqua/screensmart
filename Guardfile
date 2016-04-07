@@ -1,13 +1,3 @@
-guard 'livereload' do
-  watch(%r{app/views/.+\.(erb|haml|slim)$})
-  watch(%r{app/helpers/.+\.rb})
-  watch(%r{public/.+\.(css|js|html)})
-  watch(%r{config/locales/.+\.yml})
-  # Rails Assets Pipeline
-  watch(%r{(app|vendor)(/assets/\w+/(.+\.(css|js|html|png|jpg|js|coffee))).*}) { |m| "/assets/#{m[3]}" }
-  watch(%r{spec/javascripts/.*})
-end
-
 guard :rspec, cmd: 'bundle exec rspec' do
   require 'guard/rspec/dsl'
   dsl = Guard::RSpec::Dsl.new(self)
@@ -70,4 +60,10 @@ guard :bundler do
 
   # Assume files are symlinked from somewhere
   files.each { |file| watch(helper.real_path(file)) }
+end
+
+guard :npm do
+  watch('package.json')
+  # Uncomment next line if your Gemfile contains the `gemspec' command.
+  # watch(/^.+\.gemspec/)
 end
