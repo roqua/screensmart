@@ -2,7 +2,6 @@ class ResponseValidator < ActiveModel::Validator
   def validate(response)
     @response = response # avoid parameter duplication
 
-    return if @response.answer_values.nil?
     validate_answer_values_integers
     validate_answer_keys_exist
   end
