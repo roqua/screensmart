@@ -1,0 +1,304 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/Cellar/node/5.1.0/bin/node',
+1 verbose cli   '/usr/local/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@3.3.12
+3 info using node@v5.1.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly install normalizeTree
+8 silly loadCurrentTree Finishing
+9 silly loadIdealTree Starting
+10 silly install loadIdealTree
+11 silly cloneCurrentTree Starting
+12 silly install cloneCurrentTreeToIdealTree
+13 silly cloneCurrentTree Finishing
+14 silly loadShrinkwrap Starting
+15 silly install loadShrinkwrap
+16 silly loadShrinkwrap Finishing
+17 silly loadAllDepsIntoIdealTree Starting
+18 silly install loadAllDepsIntoIdealTree
+19 silly loadAllDepsIntoIdealTree Finishing
+20 silly idealTree:prePrune Users
+20 silly idealTree:prePrune ├── amdefine@1.0.0
+20 silly idealTree:prePrune ├── ansi-regex@2.0.0
+20 silly idealTree:prePrune ├── ansi-styles@2.1.0
+20 silly idealTree:prePrune ├── asap@2.0.3
+20 silly idealTree:prePrune ├── babel-code-frame@6.1.18
+20 silly idealTree:prePrune ├── babel-core@6.2.1
+20 silly idealTree:prePrune ├── babel-generator@6.2.0
+20 silly idealTree:prePrune ├── babel-helper-builder-react-jsx@6.2.0
+20 silly idealTree:prePrune ├── babel-helpers@6.1.20
+20 silly idealTree:prePrune ├── babel-messages@6.2.1
+20 silly idealTree:prePrune ├── babel-plugin-syntax-flow@6.1.18
+20 silly idealTree:prePrune ├── babel-plugin-syntax-jsx@6.1.18
+20 silly idealTree:prePrune ├── babel-plugin-transform-flow-strip-types@6.1.18
+20 silly idealTree:prePrune ├── babel-plugin-transform-react-display-name@6.1.18
+20 silly idealTree:prePrune ├── babel-plugin-transform-react-jsx-source@6.1.18
+20 silly idealTree:prePrune ├── babel-plugin-transform-react-jsx@6.2.0
+20 silly idealTree:prePrune ├── babel-preset-react@6.1.18
+20 silly idealTree:prePrune ├── babel-register@6.2.0
+20 silly idealTree:prePrune ├── babel-runtime@5.8.34
+20 silly idealTree:prePrune ├── babel-template@6.2.0
+20 silly idealTree:prePrune ├── babel-traverse@6.2.0
+20 silly idealTree:prePrune ├── babel-types@6.2.0
+20 silly idealTree:prePrune ├── babelify@7.2.0
+20 silly idealTree:prePrune ├── babylon@6.2.0
+20 silly idealTree:prePrune ├── balanced-match@0.2.1
+20 silly idealTree:prePrune ├── base62@0.1.1
+20 silly idealTree:prePrune ├── brace-expansion@1.1.1
+20 silly idealTree:prePrune ├── chalk@1.1.1
+20 silly idealTree:prePrune ├── concat-map@0.0.1
+20 silly idealTree:prePrune ├── convert-source-map@1.1.2
+20 silly idealTree:prePrune ├── core-js@1.2.6
+20 silly idealTree:prePrune ├── debug@2.2.0
+20 silly idealTree:prePrune ├── detect-indent@3.0.1
+20 silly idealTree:prePrune ├── envify@3.4.0
+20 silly idealTree:prePrune ├── escape-string-regexp@1.0.3
+20 silly idealTree:prePrune ├── esprima-fb@13001.1001.0-dev-harmony-fb
+20 silly idealTree:prePrune ├── esutils@2.0.2
+20 silly idealTree:prePrune ├── fbjs@0.3.2
+20 silly idealTree:prePrune ├── get-stdin@4.0.1
+20 silly idealTree:prePrune ├── globals@8.12.1
+20 silly idealTree:prePrune ├── has-ansi@2.0.0
+20 silly idealTree:prePrune ├── home-or-tmp@1.0.0
+20 silly idealTree:prePrune ├── invariant@2.2.0
+20 silly idealTree:prePrune ├── is-finite@1.0.1
+20 silly idealTree:prePrune ├── is-integer@1.0.6
+20 silly idealTree:prePrune ├── js-tokens@1.0.2
+20 silly idealTree:prePrune ├── json5@0.4.0
+20 silly idealTree:prePrune ├─┬ jstransform@10.1.0
+20 silly idealTree:prePrune │ └── source-map@0.1.31
+20 silly idealTree:prePrune ├── left-pad@0.0.3
+20 silly idealTree:prePrune ├── line-numbers@0.2.0
+20 silly idealTree:prePrune ├── lodash@3.10.1
+20 silly idealTree:prePrune ├── loose-envify@1.1.0
+20 silly idealTree:prePrune ├── minimatch@2.0.10
+20 silly idealTree:prePrune ├── minimist@1.2.0
+20 silly idealTree:prePrune ├── ms@0.7.1
+20 silly idealTree:prePrune ├── number-is-nan@1.0.0
+20 silly idealTree:prePrune ├── object-assign@4.0.1
+20 silly idealTree:prePrune ├── os-tmpdir@1.0.1
+20 silly idealTree:prePrune ├── path-exists@1.0.0
+20 silly idealTree:prePrune ├── path-is-absolute@1.0.0
+20 silly idealTree:prePrune ├── private@0.1.6
+20 silly idealTree:prePrune ├── promise@7.0.4
+20 silly idealTree:prePrune ├── react-dom@0.14.3
+20 silly idealTree:prePrune ├── react@0.14.3
+20 silly idealTree:prePrune ├── repeating@1.1.3
+20 silly idealTree:prePrune ├── shebang-regex@1.0.0
+20 silly idealTree:prePrune ├── slash@1.0.0
+20 silly idealTree:prePrune ├─┬ source-map-support@0.2.10
+20 silly idealTree:prePrune │ └── source-map@0.1.32
+20 silly idealTree:prePrune ├── source-map@0.5.3
+20 silly idealTree:prePrune ├── strip-ansi@3.0.0
+20 silly idealTree:prePrune ├── supports-color@2.0.0
+20 silly idealTree:prePrune ├── through@2.3.8
+20 silly idealTree:prePrune ├── to-fast-properties@1.0.1
+20 silly idealTree:prePrune ├── trim-right@1.0.1
+20 silly idealTree:prePrune ├── ua-parser-js@0.7.9
+20 silly idealTree:prePrune ├── user-home@1.1.1
+20 silly idealTree:prePrune └── whatwg-fetch@0.9.0
+21 silly loadIdealTree Finishing
+22 silly currentTree Users
+22 silly currentTree ├── amdefine@1.0.0
+22 silly currentTree ├── ansi-regex@2.0.0
+22 silly currentTree ├── ansi-styles@2.1.0
+22 silly currentTree ├── asap@2.0.3
+22 silly currentTree ├── babel-code-frame@6.1.18
+22 silly currentTree ├── babel-core@6.2.1
+22 silly currentTree ├── babel-generator@6.2.0
+22 silly currentTree ├── babel-helper-builder-react-jsx@6.2.0
+22 silly currentTree ├── babel-helpers@6.1.20
+22 silly currentTree ├── babel-messages@6.2.1
+22 silly currentTree ├── babel-plugin-syntax-flow@6.1.18
+22 silly currentTree ├── babel-plugin-syntax-jsx@6.1.18
+22 silly currentTree ├── babel-plugin-transform-flow-strip-types@6.1.18
+22 silly currentTree ├── babel-plugin-transform-react-display-name@6.1.18
+22 silly currentTree ├── babel-plugin-transform-react-jsx-source@6.1.18
+22 silly currentTree ├── babel-plugin-transform-react-jsx@6.2.0
+22 silly currentTree ├── babel-preset-react@6.1.18
+22 silly currentTree ├── babel-register@6.2.0
+22 silly currentTree ├── babel-runtime@5.8.34
+22 silly currentTree ├── babel-template@6.2.0
+22 silly currentTree ├── babel-traverse@6.2.0
+22 silly currentTree ├── babel-types@6.2.0
+22 silly currentTree ├── babelify@7.2.0
+22 silly currentTree ├── babylon@6.2.0
+22 silly currentTree ├── balanced-match@0.2.1
+22 silly currentTree ├── base62@0.1.1
+22 silly currentTree ├── brace-expansion@1.1.1
+22 silly currentTree ├── chalk@1.1.1
+22 silly currentTree ├── concat-map@0.0.1
+22 silly currentTree ├── convert-source-map@1.1.2
+22 silly currentTree ├── core-js@1.2.6
+22 silly currentTree ├── debug@2.2.0
+22 silly currentTree ├── detect-indent@3.0.1
+22 silly currentTree ├── envify@3.4.0
+22 silly currentTree ├── escape-string-regexp@1.0.3
+22 silly currentTree ├── esprima-fb@13001.1001.0-dev-harmony-fb
+22 silly currentTree ├── esutils@2.0.2
+22 silly currentTree ├── fbjs@0.3.2
+22 silly currentTree ├── get-stdin@4.0.1
+22 silly currentTree ├── globals@8.12.1
+22 silly currentTree ├── has-ansi@2.0.0
+22 silly currentTree ├── home-or-tmp@1.0.0
+22 silly currentTree ├── invariant@2.2.0
+22 silly currentTree ├── is-finite@1.0.1
+22 silly currentTree ├── is-integer@1.0.6
+22 silly currentTree ├── js-tokens@1.0.2
+22 silly currentTree ├── json5@0.4.0
+22 silly currentTree ├─┬ jstransform@10.1.0
+22 silly currentTree │ └── source-map@0.1.31
+22 silly currentTree ├── left-pad@0.0.3
+22 silly currentTree ├── line-numbers@0.2.0
+22 silly currentTree ├── lodash@3.10.1
+22 silly currentTree ├── loose-envify@1.1.0
+22 silly currentTree ├── minimatch@2.0.10
+22 silly currentTree ├── minimist@1.2.0
+22 silly currentTree ├── ms@0.7.1
+22 silly currentTree ├── number-is-nan@1.0.0
+22 silly currentTree ├── object-assign@4.0.1
+22 silly currentTree ├── os-tmpdir@1.0.1
+22 silly currentTree ├── path-exists@1.0.0
+22 silly currentTree ├── path-is-absolute@1.0.0
+22 silly currentTree ├── private@0.1.6
+22 silly currentTree ├── promise@7.0.4
+22 silly currentTree ├── react-dom@0.14.3
+22 silly currentTree ├── react@0.14.3
+22 silly currentTree ├── repeating@1.1.3
+22 silly currentTree ├── shebang-regex@1.0.0
+22 silly currentTree ├── slash@1.0.0
+22 silly currentTree ├─┬ source-map-support@0.2.10
+22 silly currentTree │ └── source-map@0.1.32
+22 silly currentTree ├── source-map@0.5.3
+22 silly currentTree ├── strip-ansi@3.0.0
+22 silly currentTree ├── supports-color@2.0.0
+22 silly currentTree ├── through@2.3.8
+22 silly currentTree ├── to-fast-properties@1.0.1
+22 silly currentTree ├── trim-right@1.0.1
+22 silly currentTree ├── ua-parser-js@0.7.9
+22 silly currentTree ├── user-home@1.1.1
+22 silly currentTree └── whatwg-fetch@0.9.0
+23 silly idealTree Users
+23 silly idealTree ├── amdefine@1.0.0
+23 silly idealTree ├── ansi-regex@2.0.0
+23 silly idealTree ├── ansi-styles@2.1.0
+23 silly idealTree ├── asap@2.0.3
+23 silly idealTree ├── babel-code-frame@6.1.18
+23 silly idealTree ├── babel-core@6.2.1
+23 silly idealTree ├── babel-generator@6.2.0
+23 silly idealTree ├── babel-helper-builder-react-jsx@6.2.0
+23 silly idealTree ├── babel-helpers@6.1.20
+23 silly idealTree ├── babel-messages@6.2.1
+23 silly idealTree ├── babel-plugin-syntax-flow@6.1.18
+23 silly idealTree ├── babel-plugin-syntax-jsx@6.1.18
+23 silly idealTree ├── babel-plugin-transform-flow-strip-types@6.1.18
+23 silly idealTree ├── babel-plugin-transform-react-display-name@6.1.18
+23 silly idealTree ├── babel-plugin-transform-react-jsx-source@6.1.18
+23 silly idealTree ├── babel-plugin-transform-react-jsx@6.2.0
+23 silly idealTree ├── babel-preset-react@6.1.18
+23 silly idealTree ├── babel-register@6.2.0
+23 silly idealTree ├── babel-runtime@5.8.34
+23 silly idealTree ├── babel-template@6.2.0
+23 silly idealTree ├── babel-traverse@6.2.0
+23 silly idealTree ├── babel-types@6.2.0
+23 silly idealTree ├── babelify@7.2.0
+23 silly idealTree ├── babylon@6.2.0
+23 silly idealTree ├── balanced-match@0.2.1
+23 silly idealTree ├── base62@0.1.1
+23 silly idealTree ├── brace-expansion@1.1.1
+23 silly idealTree ├── chalk@1.1.1
+23 silly idealTree ├── concat-map@0.0.1
+23 silly idealTree ├── convert-source-map@1.1.2
+23 silly idealTree ├── core-js@1.2.6
+23 silly idealTree ├── debug@2.2.0
+23 silly idealTree ├── detect-indent@3.0.1
+23 silly idealTree ├── envify@3.4.0
+23 silly idealTree ├── escape-string-regexp@1.0.3
+23 silly idealTree ├── esprima-fb@13001.1001.0-dev-harmony-fb
+23 silly idealTree ├── esutils@2.0.2
+23 silly idealTree ├── fbjs@0.3.2
+23 silly idealTree ├── get-stdin@4.0.1
+23 silly idealTree ├── globals@8.12.1
+23 silly idealTree ├── has-ansi@2.0.0
+23 silly idealTree ├── home-or-tmp@1.0.0
+23 silly idealTree ├── invariant@2.2.0
+23 silly idealTree ├── is-finite@1.0.1
+23 silly idealTree ├── is-integer@1.0.6
+23 silly idealTree ├── js-tokens@1.0.2
+23 silly idealTree ├── json5@0.4.0
+23 silly idealTree ├─┬ jstransform@10.1.0
+23 silly idealTree │ └── source-map@0.1.31
+23 silly idealTree ├── left-pad@0.0.3
+23 silly idealTree ├── line-numbers@0.2.0
+23 silly idealTree ├── lodash@3.10.1
+23 silly idealTree ├── loose-envify@1.1.0
+23 silly idealTree ├── minimatch@2.0.10
+23 silly idealTree ├── minimist@1.2.0
+23 silly idealTree ├── ms@0.7.1
+23 silly idealTree ├── number-is-nan@1.0.0
+23 silly idealTree ├── object-assign@4.0.1
+23 silly idealTree ├── os-tmpdir@1.0.1
+23 silly idealTree ├── path-exists@1.0.0
+23 silly idealTree ├── path-is-absolute@1.0.0
+23 silly idealTree ├── private@0.1.6
+23 silly idealTree ├── promise@7.0.4
+23 silly idealTree ├── react-dom@0.14.3
+23 silly idealTree ├── react@0.14.3
+23 silly idealTree ├── repeating@1.1.3
+23 silly idealTree ├── shebang-regex@1.0.0
+23 silly idealTree ├── slash@1.0.0
+23 silly idealTree ├─┬ source-map-support@0.2.10
+23 silly idealTree │ └── source-map@0.1.32
+23 silly idealTree ├── source-map@0.5.3
+23 silly idealTree ├── strip-ansi@3.0.0
+23 silly idealTree ├── supports-color@2.0.0
+23 silly idealTree ├── through@2.3.8
+23 silly idealTree ├── to-fast-properties@1.0.1
+23 silly idealTree ├── trim-right@1.0.1
+23 silly idealTree ├── ua-parser-js@0.7.9
+23 silly idealTree ├── user-home@1.1.1
+23 silly idealTree └── whatwg-fetch@0.9.0
+24 silly generateActionsToTake Starting
+25 silly install generateActionsToTake
+26 silly generateActionsToTake Finishing
+27 silly diffTrees action count 0
+28 silly decomposeActions action count 0
+29 silly executeActions Starting
+30 silly install executeActions
+31 silly doSerial global-install 0
+32 silly doParallel fetch 0
+33 verbose lock using /Users/timraasveld/.npm/_locks/staging-f053009c2394b045.lock for /Users/node_modules/.staging
+34 verbose unlock done using /Users/timraasveld/.npm/_locks/staging-f053009c2394b045.lock for /Users/node_modules/.staging
+35 silly rollbackFailedOptional Starting
+36 silly rollbackFailedOptional Finishing
+37 silly runTopLevelLifecycles Starting
+38 silly runTopLevelLifecycles Finishing
+39 silly install printInstalled
+40 warn ENOENT ENOENT: no such file or directory, open '/Users/package.json'
+41 warn EPACKAGEJSON Users No description
+42 warn EPACKAGEJSON Users No repository field.
+43 warn EPACKAGEJSON Users No README data
+44 warn EPACKAGEJSON Users No license field.
+45 verbose stack Error: EACCES: permission denied, mkdir '/Users/node_modules/.staging'
+45 verbose stack     at Error (native)
+46 verbose cwd /Users/timraasveld/projects/screensmart
+47 error Darwin 15.4.0
+48 error argv "/usr/local/Cellar/node/5.1.0/bin/node" "/usr/local/bin/npm" "install"
+49 error node v5.1.0
+50 error npm  v3.3.12
+51 error path /Users/node_modules/.staging
+52 error code EACCES
+53 error errno -13
+54 error syscall mkdir
+55 error Error: EACCES: permission denied, mkdir '/Users/node_modules/.staging'
+55 error     at Error (native)
+55 error  { [Error: EACCES: permission denied, mkdir '/Users/node_modules/.staging']
+55 error   errno: -13,
+55 error   code: 'EACCES',
+55 error   syscall: 'mkdir',
+55 error   path: '/Users/node_modules/.staging' }
+56 error Please try running this command again as root/Administrator.
+57 verbose exit [ -13, true ]

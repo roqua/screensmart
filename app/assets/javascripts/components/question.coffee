@@ -3,6 +3,9 @@
 @Question = React.createClass
   displayName: 'Question'
 
+  propTypes:
+    question: React.PropTypes.object.isRequired
+
   onOptionClick: (event) ->
     question = event.target
     @props.onChange(question.name, question.value)

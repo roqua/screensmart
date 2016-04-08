@@ -3,6 +3,9 @@
 @FeedView = React.createClass
   displayName: 'FeedView'
 
+  propTypes:
+    children: React.PropTypes.array
+
   componentDidUpdate: ->
     window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
 

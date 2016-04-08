@@ -3,6 +3,9 @@
 @Outcome = React.createClass
   displayName: 'Outcome'
 
+  propTypes: ->
+    response: React.PropTypes.instanceOf(Response).isRequired
+
   render: ->
     {estimate, variance} = @props.response
 

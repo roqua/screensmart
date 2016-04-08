@@ -1,6 +1,9 @@
 @ScreensmartApp = React.createClass
   displayName: 'ScreensmartApp'
 
+  propTypes:
+    csrfToken: React.PropTypes.string.isRequired
+
   componentWillMount: ->
     @setState response: new Response(this)
 
