@@ -20,20 +20,18 @@ header
 
 .app
   @include outer-container
-
-.feed-wrapper
+.feed
+  overflow: hidden
   margin-top: $logo-height * 2
-  .feed
-    overflow: hidden
-    @include span-columns(8)
-    @include shift(2)
-    .item
-      background-color: $feed-item-background-color
-      border: 3px solid $feed-item-border-color
-      border-radius: 4px
-      min-height: $feed-item-height
-      padding: $feed-item-padding-vertical $feed-item-padding-horizontal
-      margin: $feed-item-margin
+  @include span-columns(8)
+  @include shift(2)
+  .item
+    background-color: $feed-item-background-color
+    border: 3px solid $feed-item-border-color
+    border-radius: 4px
+    min-height: $feed-item-height
+    padding: $feed-item-padding-vertical $feed-item-padding-horizontal
+    margin: $feed-item-margin
 
 .options
   padding: 0
