@@ -74,3 +74,9 @@ $loader-height: $feed-item-height - (2 * $feed-item-padding-vertical) - $half-in
   100%
     opacity: 0
     -webkit-transform: translateX(300px)
+
+@media only screen and (max-width: $breakpoint-mobile)
+  .feed
+    .item
+      .loading-indicator-inner
+        padding: 0
