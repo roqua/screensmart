@@ -20,9 +20,9 @@ header
 
 .app
   @include outer-container
-.feed
   overflow: hidden
   margin-top: $logo-height * 2
+.feed
   @include span-columns(8)
   @include shift(2)
   .item
@@ -82,7 +82,7 @@ header
       @include span-columns(12)
       @include shift(0)
       .item
-        padding: 0.2rem 0.8rem
+        padding: $feed-item-padding-vertical-mobile $feed-item-padding-horizontal-mobile
   .options
     input[type="radio"] + span
       font-size: 1rem

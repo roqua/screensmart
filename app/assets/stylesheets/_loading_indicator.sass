@@ -4,13 +4,13 @@ $loader-height: $feed-item-height - (2 * $feed-item-padding-vertical) - $half-in
 .feed-wrapper
   .feed
     .item
-.cs-loader
+.loading-indicator
   position: relative
   height: $loader-height
   width: 100%
   overflow: hidden
 
-.cs-loader-inner
+.loading-indicator-inner
   transform: translateY(-50%)
   top: 50%
   position: absolute
@@ -23,25 +23,25 @@ $loader-height: $feed-item-height - (2 * $feed-item-padding-vertical) - $half-in
     opacity: 0
     display: inline-block
     &:nth-child(6)
-      -webkit-animation: lol 3s infinite ease-in-out
-      animation: lol 3s infinite ease-in-out
+      -webkit-animation: loading-indicator 3s infinite ease-in-out
+      animation: loading-indicator 3s infinite ease-in-out
     &:nth-child(5)
-      -webkit-animation: lol 3s 100ms infinite ease-in-out
-      animation: lol 3s 100ms infinite ease-in-out
+      -webkit-animation: loading-indicator 3s 100ms infinite ease-in-out
+      animation: loading-indicator 3s 100ms infinite ease-in-out
     &:nth-child(4)
-      -webkit-animation: lol 3s 200ms infinite ease-in-out
-      animation: lol 3s 200ms infinite ease-in-out
+      -webkit-animation: loading-indicator 3s 200ms infinite ease-in-out
+      animation: loading-indicator 3s 200ms infinite ease-in-out
     &:nth-child(3)
-      -webkit-animation: lol 3s 300ms infinite ease-in-out
-      animation: lol 3s 300ms infinite ease-in-out
+      -webkit-animation: loading-indicator 3s 300ms infinite ease-in-out
+      animation: loading-indicator 3s 300ms infinite ease-in-out
     &:nth-child(2)
-      -webkit-animation: lol 3s 400ms infinite ease-in-out
-      animation: lol 3s 400ms infinite ease-in-out
+      -webkit-animation: loading-indicator 3s 400ms infinite ease-in-out
+      animation: loading-indicator 3s 400ms infinite ease-in-out
     &:nth-child(1)
-      -webkit-animation: lol 3s 500ms infinite ease-in-out
-      animation: lol 3s 500ms infinite ease-in-out
+      -webkit-animation: loading-indicator 3s 500ms infinite ease-in-out
+      animation: loading-indicator 3s 500ms infinite ease-in-out
 
-@keyframes lol
+@keyframes loading-indicator
   0%
     opacity: 0
     transform: translateX(-300px)
@@ -59,7 +59,7 @@ $loader-height: $feed-item-height - (2 * $feed-item-padding-vertical) - $half-in
     transform: translateX(300px)
 
 
-@-webkit-keyframes lol
+@-webkit-keyframes loading-indicator
   0%
     opacity: 0
     -webkit-transform: translateX(-300px)

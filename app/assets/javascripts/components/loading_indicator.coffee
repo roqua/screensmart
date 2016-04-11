@@ -4,9 +4,9 @@
 
   render: ->
     div
-      className: 'cs-loader'
+      className: 'loading-indicator'
       div
-        className: 'cs-loader-inner'
+        className: 'loading-indicator-inner'
         for [0..6]
           label
             className: 'dot'
