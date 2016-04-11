@@ -7,22 +7,8 @@
       className: 'cs-loader'
       div
         className: 'cs-loader-inner'
-        label
-          className: 'dot'
-          '●'
-        label
-          className: 'dot'
-          '●'
-        label
-          className: 'dot'
-          '●'
-        label
-          className: 'dot'
-          '●'
-        label
-          className: 'dot'
-          '●'
-        label
-          className: 'dot'
-          '●'
+        for [0..6]
+          label
+            className: 'dot'
+            '●'
 
