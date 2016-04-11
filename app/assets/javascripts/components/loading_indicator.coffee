@@ -7,8 +7,8 @@
       className: 'loading-indicator'
       div
         className: 'loading-indicator-inner'
-        for [0..6]
+        for i in [0..6]
           label
+            key: i
             className: 'dot'
             '●'
-
