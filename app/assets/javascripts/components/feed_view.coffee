@@ -7,7 +7,9 @@
     children: React.PropTypes.array
 
   componentDidUpdate: ->
-    window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
+    justStarted = @props.children.length == 1
+    unless justStarted
+      window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
 
   render: ->
     CSSTransitionGroup = React.createFactory(React.addons.CSSTransitionGroup)
