@@ -28,15 +28,10 @@ header
     @include shift(2)
     overflow: hidden
 
-    .item.disabled,
-    .item.disabled:hover
-    // je hover werkt nog niet, die is nog zichtbaar :/
-      min-height: 0
-      transition: opacity 1.5s linear
-      opacity: 0
-      overflow: hidden
-
     .item
+      animation: fadeIn ease-in 1
+      animation-fill-mode: forwards
+      animation-duration: 0.4s
       background-color: $feed-item-background-color
       border: 3px solid $past-feed-item-border-color
       border-radius: 4px
@@ -83,7 +78,7 @@ header
       &:hover
         animation: fadeIn ease-in 1
         animation-fill-mode: forwards
-        animation-duration: 0.3s
+        animation-duration: 0.4s
         border: 3px solid $feed-item-border-color
         color: $application-text-color
         .options
@@ -103,6 +98,23 @@ header
                 color: $option-color-checked
       &:last-of-type
         margin-bottom: 75%
+
+.item.question.disabled,
+.item.question.disabled:hover,
+.item-enter-active
+  // je hover werkt nog niet, die is nog zichtbaar :/
+  min-height: 0
+  transition: opacity 1.2s linear
+  opacity: 0
+  overflow: hidden
+
+.item-enter-active
+  min-height: 0
+  transition: opacity 1.2s linear
+  opacity: 0
+
+// .item-enter-active
+//   background-color: red
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
