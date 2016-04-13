@@ -12,7 +12,7 @@ class @FeedBuilder
         question: question
         key: elements.length
         onChange: setAnswer
-        editable: !done
+        disabled: done
 
     if loading
       elements.push React.createElement LoadingIndicator,

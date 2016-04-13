@@ -10,12 +10,17 @@
     question = event.target
     @props.onChange(question.name, question.value)
 
+  getClassName: ->
+    className= 'item question'
+    className += ' disabled' if @props.disabled
+    className
+
   render: ->
     {text, answer_option_set} = @props.question
     question_key = @props.question.key
 
     div
-      className: 'question'
+      className: @getClassName()
       p
         className: 'text'
         text
@@ -32,7 +37,7 @@
               id: key
               value: answer_option.value
               onClick: @onOptionClick
-              disabled: !@props.editable
+              # disabled: !@props.editable
             label
               className: 'text'
               htmlFor: key

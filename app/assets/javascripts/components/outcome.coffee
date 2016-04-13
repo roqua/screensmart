@@ -10,7 +10,7 @@
     {estimate, variance} = @props.response
 
     div
-      className: 'outcome'
+      className: 'item outcome'
       p
         className: ''
         'Bedankt voor het invullen.'
