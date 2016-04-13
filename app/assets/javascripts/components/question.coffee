@@ -11,7 +11,7 @@
     @props.onChange(question.name, question.value)
 
   getClassName: ->
-    className= 'item question'
+    className= 'question'
     className += ' disabled' if @props.disabled
     className
 
@@ -37,7 +37,6 @@
               id: key
               value: answer_option.value
               onClick: @onOptionClick
-              # disabled: !@props.editable
             label
               className: 'text'
               htmlFor: key

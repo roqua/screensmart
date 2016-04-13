@@ -4,13 +4,11 @@
 
   render: ->
     div
-      className: 'item'
+      className: 'loading-indicator'
       div
-        className: 'loading-indicator'
-        div
-          className: 'loading-indicator-inner'
-          for i in [0..6]
-            label
-              key: i
-              className: 'dot'
-              '●'
+        className: 'loading-indicator-inner'
+        for i in [0..6]
+          label
+            key: i
+            className: 'dot'
+            '●'

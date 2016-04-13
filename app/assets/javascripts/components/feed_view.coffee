@@ -20,4 +20,8 @@
         transitionName: 'item'
         transitionEnterTimeout: 0
         transitionLeaveTimeout: 0.001
-        @props.children
+        @props.children.map (child, index) ->
+          div
+            key: index
+            className: 'item'
+            child
