@@ -22,54 +22,85 @@ header
 .app
   @include outer-container
   margin-top: $logo-height * 2
-.feed
-  @include span-columns(8)
-  @include shift(2)
-  .item
-    background-color: $feed-item-background-color
-    border: 3px solid $feed-item-border-color
-    border-radius: 4px
-    min-height: $feed-item-height
-    padding: $feed-item-padding-vertical $feed-item-padding-horizontal
-    margin: $feed-item-margin
+  .feed
+    margin-top: $logo-height
+    @include span-columns(8)
+    @include shift(2)
+    overflow: hidden
 
-.options
-  padding: 0
+    .item.disabled,
+    .item.disabled:hover
+    // je hover werkt nog niet, die is nog zichtbaar :/
+      min-height: 0
+      transition: opacity 1.5s linear
+      opacity: 0
+      overflow: hidden
 
-  .option
-    list-style-type: none
-    display: inline
+    .item
+      background-color: $feed-item-background-color
+      border: 3px solid $past-feed-item-border-color
+      border-radius: 4px
+      min-height: $feed-item-height
+      padding: 15px 35px
+      margin: $feed-item-margin
+      color: $past-option-text-color
+      opacity: 1
+      .options
+        padding: 0
 
-    input[type="radio"]
-      display: none
+        .option
+          list-style-type: none
+          display: inline
 
-    label
-      background-color: $option-background-color
-      border: 1px solid $option-border-color
-      color: $option-color
-      padding: 5px 15px
-      width: 3rem
+          input[type="radio"]
+            display: none
+
+          label
+            background-color: $option-background-color
+            border: 1px solid $past-option-border-color
+            color: $past-option-color
+            padding: 5px 15px
+            width: 3rem
+
+          input[type="radio"]:checked + label
+            background-color: $option-background-color-checked
+            box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
+            color: $option-color-checked
+
+        .option:first-of-type label
+          border-left: 1px solid $option-border-color
+          border-bottom-left-radius: 4px
+          border-top-left-radius: 4px
+
+        .option:last-of-type label
+          border-bottom-right-radius: 4px
+          border-top-right-radius: 4px
+
+        .option + .option label
+          border-left: none
+
+      &:last-of-type,
       &:hover
-        background-color: $option-background-color-hover
-        color: $option-color-hover
-        cursor: pointer
+        animation: fadeIn ease-in 1
+        animation-fill-mode: forwards
+        animation-duration: 0.3s
+        border: 3px solid $feed-item-border-color
+        color: $application-text-color
+        .options
+          .option
+            label
+              border: 1px solid $option-border-color
+              color: $option-color
+              &:hover
+                background-color: $option-background-color-hover
+                color: $option-color-hover
+                cursor: pointer
 
-    input[type="radio"]:checked + label
-      background-color: $option-background-color-checked
-      box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
-      color: $option-color-checked
-
-  .option:first-of-type label
-    border-left: 1px solid $option-border-color
-    border-bottom-left-radius: 4px
-    border-top-left-radius: 4px
-
-  .option:last-of-type label
-    border-bottom-right-radius: 4px
-    border-top-right-radius: 4px
-
-  .option + .option label
-    border-left: none
+            input[type="radio"]:checked
+              & + label
+                background-color: $option-background-color-checked
+                box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
+                color: $option-color-checked
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
