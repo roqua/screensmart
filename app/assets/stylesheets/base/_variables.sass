@@ -18,6 +18,7 @@ $feed-item-height: 10rem
 $feed-item-margin: 20px
 $feed-item-padding-vertical: 0.8rem
 $feed-item-padding-horizontal: 1.9rem
+$past-feed-item-border-color: lighten(desaturate($feed-item-border-color, 15%), 35%)
 
 //feed-item-mobile
 $feed-item-padding-vertical-mobile: 0.2rem
@@ -32,6 +33,18 @@ $option-background-color-hover: lighten($option-color,7%)
 $option-color-checked: #fff
 $option-background-color-checked: $option-color
 $option-inset-shadow-color-checked: darken($option-color,11%)
+
+// past options
+$past-option-color: lighten(desaturate($option-color, 15%), 5%)
+$past-option-border-color: lighten(desaturate($option-border-color, 25%), 15%)
+$past-option-color-checked: $option-color-checked
+$past-option-background-color-checked: lighten(desaturate($option-color, 25%), 15%)
+$past-option-inset-shadow-color-checked: lighten(desaturate($option-inset-shadow-color-checked, 25%), 15%)
+$past-option-text-color: lighten(desaturate($application-text-color, 45%), 35%)
+
+// disabled options
+$disabled-option-background-color: darken($option-background-color, 10%)
+$disabled-option-background-color-checked: desaturate($past-option-background-color-checked, 50%)
 
 // debug
 $debug-color: lighten(desaturate($option-color,61%),18%)
