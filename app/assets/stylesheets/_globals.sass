@@ -102,9 +102,8 @@ header
           .option + .option label
             border-left: none
         &:hover
-          @extend .active-item
-          .disabled
-            @extend .disabled-item
+          &:not(.disabled)
+            @extend .active-item
 
       .question.disabled,
       .question.disabled:hover
@@ -114,11 +113,6 @@ header
         .question,
         .outcome
           @extend .active-item
-// .app
-//   .feed
-//     .item
-//       .question.disabled
-//         @extend .disabled-item
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
