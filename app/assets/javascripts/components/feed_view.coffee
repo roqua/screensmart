@@ -18,8 +18,8 @@
       className: 'feed'
       CSSTransitionGroup
         transitionName: 'item'
-        transitionEnterTimeout: 0
-        transitionLeaveTimeout: 0.001
+        transitionEnterTimeout: 500
+        transitionLeaveTimeout: 300
         @props.children.map (child, index) ->
           div
             key: index
