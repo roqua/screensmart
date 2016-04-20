@@ -57,12 +57,13 @@ header
 
     .item
       .question,
-      .outcome
+      .outcome,
+      .loading-indicator
         background-color: $feed-item-background-color
         border: 3px solid $past-feed-item-border-color
         border-radius: 4px
         min-height: $feed-item-height
-        padding: 15px 35px
+        padding: $feed-item-padding-vertical $feed-item-padding-horizontal
         margin: $feed-item-margin
         color: $past-option-text-color
         opacity: 1
@@ -109,7 +110,8 @@ header
 
       &:last-of-type
         .question,
-        .outcome
+        .outcome,
+        .loading-indicator
           @extend .active-item
 
 @media (max-height: $breakpoint-mobile-v)

@@ -16,8 +16,8 @@ $feed-item-background-color: #fff
 $feed-item-border-color: #48d0c6
 $feed-item-height: 10rem
 $feed-item-margin: 20px
-$feed-item-padding-vertical: 0.8rem
-$feed-item-padding-horizontal: 1.9rem
+$feed-item-padding-vertical: 15px
+$feed-item-padding-horizontal: 35px
 $past-feed-item-border-color: lighten(desaturate($feed-item-border-color, 15%), 35%)
 
 //feed-item-mobile
@@ -45,6 +45,11 @@ $past-option-text-color: lighten(desaturate($application-text-color, 45%), 35%)
 // disabled options
 $disabled-option-background-color: darken($option-background-color, 10%)
 $disabled-option-background-color-checked: desaturate($past-option-background-color-checked, 50%)
+
+// loading-indicator
+$difference-between-loading-indicator-inner-and-label-height: 4px
+$loader-height: calc(#{$feed-item-height} - (2 * #{$feed-item-padding-vertical}) - #{$difference-between-loading-indicator-inner-and-label-height})
+$loading-indicator-inner-width: calc(100% - (2 * #{$feed-item-padding-horizontal}))
 
 // debug
 $debug-color: lighten(desaturate($option-color,61%),18%)

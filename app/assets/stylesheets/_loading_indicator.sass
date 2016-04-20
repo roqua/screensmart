@@ -1,19 +1,15 @@
-$difference-between-loading-indicator-inner-and-label-height: 4px
-$loader-height: calc(#{$feed-item-height} - (2 * #{$feed-item-padding-vertical}) - #{$difference-between-loading-indicator-inner-and-label-height})
-
 .feed
   .item
     .loading-indicator
       position: relative
       height: $loader-height
-      width: 100%
       overflow: hidden
 
     .loading-indicator-inner
       transform: translateY(-50%)
       top: 50%
       position: absolute
-      width: 100%
+      width: $loading-indicator-inner-width
       color: $application-text-color
       padding: 0 100px
       text-align: center
