@@ -10,7 +10,7 @@
     question = event.target
     @props.onChange(question.name, question.value)
 
-  getClassName: ->
+  className: ->
     className= 'question'
     className += ' disabled' if @props.disabled
     className
@@ -20,7 +20,7 @@
     question_key = @props.question.key
 
     div
-      className: @getClassName()
+      className: @className()
       p
         className: 'text'
         text
