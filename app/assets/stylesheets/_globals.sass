@@ -121,7 +121,9 @@ header
       @include span-columns(12)
       @include shift(0)
       .item
-        padding: $feed-item-padding-vertical-mobile $feed-item-padding-horizontal-mobile
+        .question,
+        .outcome
+          padding: $feed-item-padding-vertical-mobile $feed-item-padding-horizontal-mobile
     .options
       input[type="radio"] + span
         font-size: 1rem
