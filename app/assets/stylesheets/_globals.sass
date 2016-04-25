@@ -45,8 +45,7 @@ header
     margin-top: $logo-height
     @include span-columns(8)
     @include shift(2)
-    overflow: hidden
-    margin-bottom: 45vh
+    margin-bottom: 35vh
 
     .item
       .question,
@@ -114,12 +113,16 @@ header
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
     min-height: 100vh
+  .app
+    .feed
+      margin-bottom: 10%
 @media only screen and (max-width: $breakpoint-mobile)
   .app
     @include outer-container(98%)
     .feed
       @include span-columns(12)
       @include shift(0)
+      margin-bottom: 10%
       .item
         .question,
         .outcome
