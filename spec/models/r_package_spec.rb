@@ -51,12 +51,12 @@ describe RPackage do
   describe '.call' do
     describe 'caching' do
       def first_call
-        described_module.call('call_shadowcat', responses: [])
+        described_module.call('call_shadowcat', answers: [])
       end
 
       def second_call
         described_module.call('call_shadowcat',
-                              responses: [{ 'EL02' => 1 }],
+                              answers: [{ 'EL02' => 1 }],
                               estimate: 1.0,
                               variance: 0.5)
       end
