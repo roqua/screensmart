@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/get_itembank_rdata/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/get_itembank_rdata/json
     body:
       encoding: UTF-8
       string: "{}"
@@ -21,7 +21,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x01e1bd108a/
+      - https://opencpu.roqua-staging.nl/ocpu/tmp/x01e1bd108a/
       X-Ocpu-Session:
       - x01e1bd108a
       Access-Control-Allow-Origin:
@@ -124,7 +124,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      - https://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
       X-Ocpu-Session:
       - x05ba1cbb51
       Access-Control-Allow-Origin:
@@ -188,7 +188,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      - https://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
       X-Ocpu-Session:
       - x05ba1cbb51
       Access-Control-Allow-Origin:
@@ -252,7 +252,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
+      - https://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
       X-Ocpu-Session:
       - x0331ac3cd7
       Access-Control-Allow-Origin:
