@@ -9,6 +9,14 @@ module RPackage
   end
 
   def self.questions
+    database['questions']
+  end
+
+  def self.domains
+    database['domains']
+  end
+
+  def self.database
     call('get_itembank_rdata')
   end
 
