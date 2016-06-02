@@ -1,5 +1,6 @@
 # In case of a new screensmart-r release that has not been deployed yet, take these steps:
-# 1. Run screensmart-r opencpu locally by running `docker build -t screensmart-r . && docker run -it -p 80:80 screensmart-r`
+# 1. Run screensmart-r opencpu locally by running
+#    `docker build -t screensmart-r . && docker run -it -p 80:80 screensmart-r`
 # 2. Delete the recordings that should be updated from spec/cassettes/screensmart.yml
 # 3. opencpu.endpoint_url = https://local-opencpu-server/ocpu
 # 4. vcr.default_cassette_options[:record] = :once
