@@ -21,7 +21,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - https://opencpu.roqua-staging.nl/ocpu/tmp/x01e1bd108a/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x01e1bd108a/
       X-Ocpu-Session:
       - x01e1bd108a
       Access-Control-Allow-Origin:
@@ -53,54 +53,61 @@ http_interactions:
       string: |
         {
           "questions": [
-            {
-              "key": "EL02",
-              "database_key": "POS01_UTC",
-              "calculation_model": "GPCM",
-              "text": "De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.",
-              "intro": "",
-              "answer_option_set_id": 2,
-              "answer_options": [
-                {
-                  "value": 0,
-                  "text": "Oneens"
-                },
-                {
-                  "value": 1,
-                  "text": "Eens"
-                }
-              ]
-            },
-            {
-              "key": "EL03",
-              "database_key": "POS02_CD",
-              "calculation_model": "GPCM",
-              "text": "Ik heb vaak moeite om mijn gedachten op een rijtje te zetten of de goede woorden te vinden.",
-              "intro": "",
-              "answer_option_set_id": 2,
-              "answer_options": [
-                {
-                  "value": 0,
-                  "text": "Oneens"
-                },
-                {
-                  "value": 1,
-                  "text": "Eens"
-                }
-              ]
-            }
-          ],
-          "domains": [
-            {
-              "key": "POS-PQ",
-              "description": "Positieve symptomen voor psychose"
-            },
-            {
-              "key": "NEG-PQ",
-              "description": "Negatieve symptomen voor psychose"
-            }
-          ]
-        }
+          {
+            "key": "EL02",
+            "database_key": "POS01_UTC",
+            "calculation_model": "GPCM",
+            "text": "De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "value": 0,
+                "text": "Oneens"
+              },
+              {
+                "value": 1,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "key": "EL03",
+            "database_key": "POS02_CD",
+            "calculation_model": "GPCM",
+            "text": "Vraag 2",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "value": 0,
+                "text": "Oneens"
+              },
+              {
+                "value": 1,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "key": "enough_answers_to_be_done",
+            "database_key": "POS03_CD",
+            "calculation_model": "GPCM",
+            "text": "mock question to test the situation where enough questions have been filled out",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "value": 0,
+                "text": "Oneens"
+              },
+              {
+                "value": 1,
+                "text": "Eens"
+              }
+            ]
+          }
+        ]}
     http_version: 
   recorded_at: Thu, 02 Jun 2016 08:48:01 GMT
 - request:
@@ -124,7 +131,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - https://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
       X-Ocpu-Session:
       - x05ba1cbb51
       Access-Control-Allow-Origin:
@@ -188,7 +195,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - https://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
       X-Ocpu-Session:
       - x05ba1cbb51
       Access-Control-Allow-Origin:
@@ -252,7 +259,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - https://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
       X-Ocpu-Session:
       - x0331ac3cd7
       Access-Control-Allow-Origin:
