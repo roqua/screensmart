@@ -107,7 +107,16 @@ http_interactions:
               }
             ]
           }
-        ]}
+        ],"domains": [
+            {
+              "key": "POS-PQ",
+              "description": "Positieve symptomen voor psychose"
+            },
+            {
+              "key": "NEG-PQ",
+              "description": "Negatieve symptomen voor psychose"
+            }
+          ]}
     http_version: 
   recorded_at: Thu, 02 Jun 2016 08:48:01 GMT
 - request:

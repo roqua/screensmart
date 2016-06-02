@@ -7,6 +7,18 @@ describe RPackage do
     end
   end
 
+  describe '.questions' do
+    subject { described_module.questions }
+
+    it { is_expected.to include { { 'key' => 'EL02' } } }
+  end
+
+  describe '.domains' do
+    subject { described_module.domains }
+
+    it { is_expected.to include { { 'key' => 'POS-PQ' } } }
+  end
+
   describe '.data_for' do
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
