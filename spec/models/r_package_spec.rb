@@ -57,7 +57,7 @@ describe RPackage do
         disable_caching
       end
 
-      context 'when the same parameters are privided twice' do
+      context 'when the same parameters are provided twice' do
         context 'when no error is raised during the first call' do
           it 'calls OpenCPU once' do
             expect(OpenCPU).to receive(:client).and_call_original.once
@@ -68,9 +68,7 @@ describe RPackage do
 
         context 'when an error is raised during the first call' do
           it 'calls OpenCPU twice' do
-            allow(OpenCPU).to receive(:client) do
-              raise RuntimeError
-            end
+            allow(OpenCPU).to receive(:client) { raise RuntimeError }
             expect(OpenCPU).to receive(:client).twice
 
             2.times { expect { first_call }.to raise_error RuntimeError }
