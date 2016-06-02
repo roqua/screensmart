@@ -1,3 +1,13 @@
+# In case of a new screensmart-r release that has not been deployed yet, take these steps:
+# 1. Run screensmart-r opencpu locally by running `docker build -t screensmart-r . && docker run -p 80:80 screensmart-r`
+# 2. Delete the recordings that should be updated from spec/cassettes/screensmart.yml
+# 3. opencpu.endpoint_url = https://local-opencpu-server/ocpu
+# 4. vcr.default_cassette_options[:record] = :once
+# 5. run the specs
+# After done running specs (which records the new API results):
+# 6. Change all `uri` lines in screensmart.yml from your local openCPU server to https://opencpu.roqua-staging.nl/ocpu
+# 7. Limit each array element to two or three items because there's no need to have a dataset of 100 items in tests.
+
 def mock_all_calls_to_r
   ensure_endpoint_matches_cassette
   configure_vcr
