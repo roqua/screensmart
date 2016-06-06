@@ -20,10 +20,13 @@ module RPackage
     call('get_itembank_rdata')
   end
 
-  def self.data_for(answers)
+  def self.data_for(answers, domains)
+    raise 'No domains given' unless domains.present?
+
     raw_data = call('call_shadowcat', answers: [])
     memo = rewrite_response_hash(raw_data)
 
+    hash = rewrite_response_hash raw_data
     answers.each_with_index do |_, index|
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: memo[:estimate].try(:to_f),
@@ -31,10 +34,9 @@ module RPackage
 
       raw_data = call('call_shadowcat', params)
 
-      memo = rewrite_response_hash(raw_data)
+      hash = rewrite_response_hash(raw_data)
     end
-
-    memo
+    hash
   end
 
   def self.rewrite_response_hash(raw_data)
@@ -47,13 +49,20 @@ module RPackage
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
-        Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
-
-        OpenCPU.client.execute('screensmart', function, user: :system, data: parameters, convert_na_to_nil: true)
+        logged_call function, parameters
       rescue RuntimeError => e
         raise "Call to R failed with message: #{e.message}"
       end
     end
+  end
+
+  def self.logged_call(function, parameters)
+    Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters.pretty_inspect})" # Only log non-cached calls
+
+    result = OpenCPU.client.execute 'screensmart', function,
+                                    user: :system, data: parameters, convert_na_to_nil: true
+    Rails.logger.debug "Result: #{result.pretty_inspect}"
+    result
   end
 
   def self.cache_key_for(function, parameters)

@@ -20,9 +20,17 @@ describe RPackage do
   end
 
   describe '.data_for' do
+    let(:domains) { ['POS-PQ'] }
+
+    context 'with no domains' do
+      it 'raises an error' do
+        expect { described_module.data_for({}, []) }.to raise_error RuntimeError
+      end
+    end
+
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
-        expect(described_module.data_for({})).to eq \
+        expect(described_module.data_for({}, domains)).to eq \
           next_question_key: 'EL02',
           estimate: 1.0,
           variance: 0.5,
@@ -30,9 +38,9 @@ describe RPackage do
       end
     end
 
-    context 'with answers' do
+    context 'with answers and domains' do
       it 'returns a new next_question, estimate and variance' do
-        expect(described_module.data_for('EL02' => 1)).to eq \
+        expect(described_module.data_for({ 'EL02' => 1 }, domains)).to eq \
           next_question_key: 'EL03',
           estimate: 0.7,
           variance: 0.6,
@@ -42,7 +50,7 @@ describe RPackage do
 
     context 'when done testing according to the algorithm' do
       it 'includes done: true' do
-        expect(described_module.data_for('enough_answers_to_be_done' => 1)).to include \
+        expect(described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains)).to include \
           done: true
       end
     end
@@ -51,14 +59,14 @@ describe RPackage do
   describe '.call' do
     describe 'caching' do
       def first_call
-        described_module.call('call_shadowcat', answers: [])
+        described_module.call 'call_shadowcat', answers: []
       end
 
       def second_call
-        described_module.call('call_shadowcat',
+        described_module.call 'call_shadowcat',
                               answers: [{ 'EL02' => 1 }],
                               estimate: 1.0,
-                              variance: 0.5)
+                              variance: 0.5
       end
 
       before(:each) do
