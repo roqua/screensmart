@@ -7,7 +7,7 @@
 #   # => [#<Question:0x007faadb3459a8 @key="EL02", @answer_value: 1>,
 #         #<Question:0x007faadb2d49d8 @key="EL03">]
 class Response < BaseModel
-  attr_accessor :answer_values
+  attr_accessor :answer_values, :domain_keys
 
   validates_with ResponseValidator
 
@@ -15,7 +15,7 @@ class Response < BaseModel
   %i( next_question_key estimate variance done ).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.data_for(answer_values)[r_attribute]
+        RPackage.data_for(answer_values, domain_keys)[r_attribute]
       end
     end
   end
@@ -23,6 +23,7 @@ class Response < BaseModel
   def initialize(attributes = {})
     super
     self.answer_values ||= {}
+    self.domain_keys ||= []
   end
 
   def questions
