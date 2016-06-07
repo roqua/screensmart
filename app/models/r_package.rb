@@ -12,6 +12,10 @@ module RPackage
     database['questions']
   end
 
+  def self.domain_keys
+    domains.map { |domain| domain['key'] }
+  end
+
   def self.domains
     database['domains']
   end
