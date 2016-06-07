@@ -8,7 +8,7 @@ describe RPackage do
   end
 
   describe '.questions' do
-    subject { described_module.questions }
+    subject { described_module.questions.first }
 
     it { is_expected.to include('key' => 'EL02') }
   end
