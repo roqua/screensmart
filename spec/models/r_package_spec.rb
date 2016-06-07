@@ -10,13 +10,13 @@ describe RPackage do
   describe '.questions' do
     subject { described_module.questions }
 
-    it { is_expected.to include { { 'key' => 'EL02' } } }
+    it { is_expected.to include('key' => 'EL02') }
   end
 
   describe '.domains' do
     subject { described_module.domains }
 
-    it { is_expected.to include { { 'key' => 'POS-PQ' } } }
+    it { is_expected.to include('key' => 'POS-PQ', 'description' => 'Positieve symptomen voor psychose') }
   end
 
   describe '.data_for' do

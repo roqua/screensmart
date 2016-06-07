@@ -47,7 +47,7 @@ class ResponseValidator < ActiveModel::Validator
   def only_one_domain_key
     unless @response.domain_keys.one?
       @response.errors.add :domain_keys,
-                           'can only contain one (to be fixed in a future version of R package)'
+                           'should contain exactly one (to be fixed in a future version of R package)'
     end
   end
 end

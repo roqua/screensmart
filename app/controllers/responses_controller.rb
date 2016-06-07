@@ -1,4 +1,6 @@
 class ResponsesController < ApplicationController
+  rescue_from BaseModel::RecordInvalid, with: :unprocessable_entity
+
   wrap_parameters Response, format: :json
 
   def create
@@ -19,11 +21,20 @@ class ResponsesController < ApplicationController
     }
   end
 
-  def response_params
-    params.require(:response).permit(questions: [:key, :answer_value]).tap do |whitelisted|
-      required_question_attributes = [:key, :answer_value]
+  def unprocessable_entity
+    render json: { errors: @response.errors.full_messages }, status: :unprocessable_entity
+  end
 
-      whitelisted[:questions] ||= []
+  def response_params
+    whitelist = %i( answer_values domain_keys )
+    required_question_attributes = %i( key value)
+
+    raise ActionController::ParameterMissing, 'domain_keys' unless params[:response] && params[:response].keys.include?('domain_keys')
+
+    params.require(:response).tap do |whitelisted|
+      whitelist.each do |attribute|
+        whitelisted[attribute] = params[:response][attribute]
+      end
       whitelisted[:questions].each do |question|
         required_question_attributes.each do |attribute|
           raise ActionController::ParameterMissing, questions: [attribute] unless question[attribute].present?
