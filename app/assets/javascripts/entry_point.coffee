@@ -1,7 +1,10 @@
 document.addEventListener 'DOMContentLoaded', ->
   store = Screensmart.store = Redux.createStore \
     Screensmart.reducer,
-    Redux.applyMiddleware(Redux.thunk)
+    Redux.compose(
+      Redux.applyMiddleware(Redux.thunk),
+      if window.devToolsExtension then window.devToolsExtension() else (f) -> f
+    )
 
   store.dispatch Screensmart.Actions.updateResponse()
 
