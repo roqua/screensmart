@@ -25,5 +25,5 @@ prettyStoreContents = ->
 $(document).ajaxError (event, xhr, settings, error ) ->
   { method, url } = settings
   { status } = xhr
-  throw new Error "#{method} #{url} failed: #{status} #{error}." +
+  throw new Error "#{method} #{url} failed: #{status} #{error}. " +
                   "settings: #{JSON.stringify(settings, null, '\t')}"
