@@ -39,6 +39,7 @@ Screensmart.reducer = Redux.combineReducers
 
       else
         questions: []
+        domain_keys: []
         loading: true
         done: false
 
