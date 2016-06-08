@@ -27,14 +27,15 @@ module RPackage
   def self.data_for(answers, domains)
     raise 'No domains given' unless domains.present?
 
-    raw_data = call('call_shadowcat', answers: [])
+    raw_data = call('call_shadowcat', answers: [], domain: domains)
     memo = rewrite_response_hash(raw_data)
 
     hash = rewrite_response_hash raw_data
     answers.each_with_index do |_, index|
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: memo[:estimate].try(:to_f),
-                 variance: memo[:variance].try(:to_f) }.compact
+                 variance: memo[:variance].try(:to_f),
+                 domain: domains }.compact
 
       raw_data = call('call_shadowcat', params)
 

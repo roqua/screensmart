@@ -59,14 +59,15 @@ describe RPackage do
   describe '.call' do
     describe 'caching' do
       def first_call
-        described_module.call 'call_shadowcat', answers: []
+        described_module.call 'call_shadowcat', answers: [], domain: ['POS-PQ']
       end
 
       def second_call
         described_module.call 'call_shadowcat',
                               answers: [{ 'EL02' => 1 }],
                               estimate: 1.0,
-                              variance: 0.5
+                              variance: 0.5,
+                              domain: ['POS-PQ']
       end
 
       before(:each) do
