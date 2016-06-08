@@ -39,7 +39,7 @@ Screensmart.reducer = Redux.combineReducers
 
       else
         questions: []
-        domain_keys: []
+        domain_keys: ['POS-PQ']
         loading: true
         done: false
 

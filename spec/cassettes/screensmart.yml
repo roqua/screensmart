@@ -124,7 +124,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"answers":[]}'
+      string: '{"answers":[],"domain":["POS-PQ"]}'
     headers:
       Content-Type:
       - application/json
@@ -188,7 +188,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"answers":[{"EL02":1}],"estimate":1.0,"variance":0.5}'
+      string: '{"answers":[{"EL02":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
     headers:
       Content-Type:
       - application/json
@@ -252,7 +252,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
-      string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":1.0,"variance":0.5}'
+      string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
     headers:
       Content-Type:
       - application/json
