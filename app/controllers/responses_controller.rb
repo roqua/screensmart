@@ -32,7 +32,9 @@ class ResponsesController < ApplicationController
   def response_params
     whitelist = %i( answer_values domain_keys )
 
-    raise ActionController::ParameterMissing, 'domain_keys' unless params[:response] && params[:response].keys.include?('domain_keys')
+    if params[:response] && params[:response].keys.exclude?('domain_keys')
+      raise ActionController::ParameterMissing, 'domain_keys'
+    end
 
     params.require(:response).tap do |whitelisted|
       whitelist.each do |attribute|
