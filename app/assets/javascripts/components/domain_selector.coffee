@@ -16,4 +16,5 @@
             { key, description } = domain
             React.createFactory(DomainOption)
               id: key
+              key: key
               description: description
