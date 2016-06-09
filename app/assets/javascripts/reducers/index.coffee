@@ -17,6 +17,9 @@ Screensmart.reducer = Redux.combineReducers
 
   response: (response, action) ->
     switch action.type
+      when 'SET_DOMAIN_KEYS'
+        merge response,
+              domain_keys: action.domain_keys
       when 'SET_ANSWER'
         updatedResponse = responseWithoutNonFilledOutQuestions(
           responseWithAnswer(
@@ -39,7 +42,6 @@ Screensmart.reducer = Redux.combineReducers
 
       else
         questions: []
-        domain_keys: ['POS-PQ']
         loading: true
         done: false
 
