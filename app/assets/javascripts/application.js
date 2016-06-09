@@ -13,4 +13,5 @@
 //= require redux-thunk
 //= require initializer
 //= require components
+//= require routes
 //= require entry_point

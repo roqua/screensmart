@@ -7,7 +7,7 @@ App = React.createClass
         React.createFactory(MessagesView)
           messages: @props.messages
         @props.router
-      ]
+      ]...
 
 mapStateToProps = (state) ->
   messages: state.app.messages

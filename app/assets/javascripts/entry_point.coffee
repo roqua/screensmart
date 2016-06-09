@@ -1,5 +1,5 @@
 { createStore, compose, applyMiddleware, thunk, combineReducers } = Redux
-{ Router, Route, browserHistory } = ReactRouter
+{ Router, browserHistory } = ReactRouter
 { syncHistoryWithStore, routerReducer } = ReactRouterRedux
 { createFactory } = React
 
@@ -16,29 +16,14 @@ document.addEventListener 'DOMContentLoaded', ->
 
   history = syncHistoryWithStore(browserHistory, store)
 
-  setDomains = (nextState) ->
-    domain_keys = nextState.location.query.domain_keys?.split?(',')
-    if domain_keys
-      Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_keys
-    else
-      throw new Error 'No domain_keys provided in query'
-
-  router = React.createFactory(Router)
+  router = createFactory(Router)
     history: history
-    [
-      createFactory(Route)
-        path: '/'
-        component: createFactory(DomainSelectorContainer)
-      createFactory(Route)
-        path: '/fill_out'
-        component: createFactory(FeedContainer)
-        onEnter: setDomains
-    ]
+    Screensmart.routes...
 
-  app = React.createFactory(AppContainer)
+  app = createFactory(AppContainer)
     router: router
 
-  provider = React.createFactory(ReactRedux.Provider)
+  provider = createFactory(ReactRedux.Provider)
     store: store,
     app
 
