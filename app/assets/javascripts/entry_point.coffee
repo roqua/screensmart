@@ -28,7 +28,7 @@ document.addEventListener 'DOMContentLoaded', ->
     [
       createFactory(Route)
         path: '/'
-        component: createFactory(DomainSelector)
+        component: createFactory(DomainSelectorContainer)
       createFactory(Route)
         path: '/fill_out'
         component: createFactory(FeedContainer)

@@ -5,7 +5,14 @@ deepCopy = (originalObject, into = {}) ->
   $.extend(true, into, originalObject)
 
 Screensmart.reducer = Redux.combineReducers
-  messages: (messages = [], action) ->
+  domains: (domains, action) ->
+    switch action.type
+      when 'RECEIVE_DOMAINS'
+        action.domains
+      else
+        []
+
+  messages: (messages, action) ->
     switch action.type
       when 'ADD_MESSAGE'
         [
@@ -13,7 +20,7 @@ Screensmart.reducer = Redux.combineReducers
           action.message
         ]
       else
-        messages
+        []
 
   response: (response, action) ->
     switch action.type
