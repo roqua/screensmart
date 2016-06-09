@@ -1,33 +1,41 @@
 # Only module that should communicate with screensmart-r.
 module RPackage
-  def self.question_by_key(key)
-    questions.detect { |question| question['key'] == key }
+  def self.question_by_id(id)
+    questions.detect { |question| question['id'] == id }
   end
 
-  def self.question_keys
-    questions.map { |question| question['key'] }
+  def self.question_ids
+    questions.map { |question| question['id'] }
   end
 
   def self.questions
-    database['questions']
+    # TODO: remove map after R Package is updated to call things "id" instead of "key"
+    database['questions'].map do |question|
+      question['id'] = question['key']
+      question
+    end
   end
 
-  def self.domain_keys
-    domains.map { |domain| domain['key'] }
+  def self.domain_ids
+    domains.map { |domain| domain['id'] }
   end
 
   def self.domains
-    database['domains']
+    # TODO: remove map after R Package is updated to call things "id" instead of "key"
+    database['domains'].map do |domain|
+      domain['id'] = domain['key']
+      domain
+    end
   end
 
   def self.database
     call('get_itembank_rdata')
   end
 
-  def self.data_for(answers, domains)
+  def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domains.present?
 
-    raw_data = call('call_shadowcat', answers: [], domain: domains)
+    raw_data = call('call_shadowcat', answers: [], domain: domain_ids)
     memo = rewrite_response_hash(raw_data)
 
     hash = rewrite_response_hash raw_data
@@ -45,7 +53,7 @@ module RPackage
   end
 
   def self.rewrite_response_hash(raw_data)
-    { next_question_key: raw_data['key_new_item'],
+    { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
       done: !raw_data['continue_test'] }

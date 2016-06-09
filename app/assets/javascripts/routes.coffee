@@ -2,11 +2,11 @@
 { Route } = ReactRouter
 
 setDomainsBasedOnQuery = (nextState) ->
-  domain_keys = nextState.location.query.domain_keys?.split?(',')
-  if domain_keys
-    Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_keys
+  domain_ids = nextState.location.query.domain_ids?.split?(',')
+  if domain_ids
+    Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_ids
   else
-    throw new Error 'No domain_keys provided in query'
+    throw new Error 'No domain_ids provided in query'
 
 Screensmart.routes =
   [

@@ -31,12 +31,12 @@ Screensmart.reducer = Redux.combineReducers
     switch action.type
       when 'SET_DOMAIN_KEYS'
         merge response,
-              domain_keys: action.domain_keys
+              domain_ids: action.domain_ids
       when 'SET_ANSWER'
         updatedResponse = responseWithoutNonFilledOutQuestions(
           responseWithAnswer(
             response,
-            action.key,
+            action.id,
             action.value
           )
         )
@@ -55,21 +55,21 @@ Screensmart.reducer = Redux.combineReducers
       else
         response
 
-responseWithAnswer = (response, key, value) ->
+responseWithAnswer = (response, id, value) ->
   questions = deepCopy response.questions, []
 
-  index = indexOfQuestion(questions, key)
+  index = indexOfQuestion(questions, id)
   questions[index].answer_value = value
 
   merge response,
         questions: questions
 
-indexOfQuestion = (questions, key) ->
-  questions.indexOf questionByKey(questions, key)
+indexOfQuestion = (questions, id) ->
+  questions.indexOf questionByKey(questions, id)
 
-questionByKey = (questions, key) ->
+questionByKey = (questions, id) ->
   questions.filter((question) ->
-    question.key == key
+    question.id == id
   )[0]
 
 responseWithoutNonFilledOutQuestions = (response) ->

@@ -3,5 +3,5 @@ class DomainsSerializer < ActiveModel::Serializer
 end
 
 class DomainSerializer < ActiveModel::Serializer
-  attributes :key, :name
+  attributes :id, :name
 end
