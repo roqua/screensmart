@@ -1,6 +1,13 @@
 { createFactory } = React
 { Route } = ReactRouter
 
+setDomains = (nextState) ->
+  domain_keys = nextState.location.query.domain_keys?.split?(',')
+  if domain_keys
+    Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_keys
+  else
+    throw new Error 'No domain_keys provided in query'
+
 Screensmart.routes =
   [
     createFactory(Route)
@@ -11,10 +18,3 @@ Screensmart.routes =
       component: createFactory(FeedContainer)
       onEnter: setDomains
   ]
-
-setDomains = (nextState) ->
-  domain_keys = nextState.location.query.domain_keys?.split?(',')
-  if domain_keys
-    Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_keys
-  else
-    throw new Error 'No domain_keys provided in query'
