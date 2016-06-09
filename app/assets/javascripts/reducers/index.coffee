@@ -4,15 +4,20 @@ merge = (objects...) ->
 deepCopy = (originalObject, into = {}) ->
   $.extend(true, into, originalObject)
 
+defaultResponse =
+  questions: []
+  loading: true
+  done: false
+
 Screensmart.reducer = Redux.combineReducers
-  domains: (domains, action) ->
+  domains: (domains = [], action) ->
     switch action.type
       when 'RECEIVE_DOMAINS'
         action.domains
       else
-        []
+        domains
 
-  messages: (messages, action) ->
+  messages: (messages = [], action) ->
     switch action.type
       when 'ADD_MESSAGE'
         [
@@ -20,9 +25,9 @@ Screensmart.reducer = Redux.combineReducers
           action.message
         ]
       else
-        []
+        messages
 
-  response: (response, action) ->
+  response: (response = defaultResponse, action) ->
     switch action.type
       when 'SET_DOMAIN_KEYS'
         merge response,
@@ -48,9 +53,7 @@ Screensmart.reducer = Redux.combineReducers
               loading: false
 
       else
-        questions: []
-        loading: true
-        done: false
+        response
 
 responseWithAnswer = (response, key, value) ->
   questions = deepCopy response.questions, []
