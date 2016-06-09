@@ -19,7 +19,7 @@
 
   render: ->
     {text, answer_option_set} = @props.question
-    question_key = @props.question.key
+    question_id = @props.question.id
 
     div
       className: @className()
@@ -29,14 +29,13 @@
       ul
         className: 'options'
         answer_option_set.answer_options.map (answer_option) =>
-          key = "question_#{question_key}_answer_#{answer_option.value}"
+          key = "question_#{question_id}_answer_#{answer_option.value}"
           li
             className: 'option'
             key: key
             input
               type: 'radio'
-              name: question_key
-              id: key
+              name: question_id
               value: answer_option.value
               onClick: @onOptionClick
             label

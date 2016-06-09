@@ -15,25 +15,25 @@ class ResponsesController < ApplicationController
   def convert_response_params
     {
       answer_values: response_params[:questions].each_with_object({}) do |question, memo|
-        memo[question[:key]] = question[:answer_value]
+        memo[question[:id]] = question[:answer_value]
       end,
-      domain_keys: response_params[:domain_keys]
+      domain_ids: response_params[:domain_ids]
     }
   end
 
   def parameter_missing(exception)
-    render json: { errors: [exception.message] }, status: :unprocessable_entity
+    render json: { message: exception.message }, status: :unprocessable_entity
   end
 
-  def unprocessable_entity
-    render json: { errors: @response.errors.full_messages }, status: :unprocessable_entity
+  def unprocessable_entity(exception)
+    render json: { message: exception.message }, status: :unprocessable_entity
   end
 
   def response_params
-    whitelist = %i( questions domain_keys )
+    whitelist = %i( questions domain_ids )
 
-    if params[:response] && params[:response].keys.exclude?('domain_keys')
-      raise ActionController::ParameterMissing, 'domain_keys'
+    if params[:response] && params[:response].keys.exclude?('domain_ids')
+      raise ActionController::ParameterMissing, 'domain_ids'
     end
 
     params.require(:response).tap do |whitelisted|

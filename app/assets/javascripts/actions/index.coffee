@@ -12,14 +12,14 @@ Screensmart.Actions =
     type: 'ADD_MESSAGE'
     message: message
 
-  setAnswer: (key, value) ->
+  setAnswer: (id, value) ->
     (dispatch) =>
-      dispatch @_setAnswer(key, value)
+      dispatch @_setAnswer(id, value)
       dispatch @updateResponse()
 
-  _setAnswer: (key, value) ->
+  _setAnswer: (id, value) ->
     type: 'SET_ANSWER'
-    key: key
+    id: id
     value: value
 
   updateResponse: ->
@@ -29,14 +29,14 @@ Screensmart.Actions =
       syncResponse(response).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
-  setDomainKeys: (domain_keys) ->
+  setDomainKeys: (domain_ids) ->
     (dispatch, getState) =>
-      dispatch @_setDomainKeys(domain_keys)
+      dispatch @_setDomainKeys(domain_ids)
       dispatch @updateResponse()
 
-  _setDomainKeys: (domain_keys) ->
+  _setDomainKeys: (domain_ids) ->
     type: 'SET_DOMAIN_KEYS'
-    domain_keys: domain_keys
+    domain_ids: domain_ids
 
   startResponseUpdate: ->
     type: 'START_RESPONSE_UPDATE'

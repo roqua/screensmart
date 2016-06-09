@@ -1,12 +1,12 @@
 class Question < BaseModel
-  attr_accessor :key, :answer_value
+  attr_accessor :id, :answer_value
 
-  validates_inclusion_of :key, in: -> (_) { RPackage.question_keys },
-                               message: '`%{value}` not found'
+  validates_inclusion_of :id, in: -> (_) { RPackage.question_ids },
+                              message: "`%{value}` not found"
 
   def text
     ensure_valid do
-      RPackage.question_by_key(key)['text']
+      RPackage.question_by_id(id)['text']
     end
   end
 
@@ -20,10 +20,10 @@ class Question < BaseModel
   end
 
   def answer
-    Answer.new key: key, value: answer_value
+    Answer.new id: id, value: answer_value
   end
 
   def data_from_r
-    RPackage.question_by_key(key)
+    RPackage.question_by_id(id)
   end
 end

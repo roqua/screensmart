@@ -4,18 +4,18 @@
 #
 # After this, all attributes can be read in an OOP way, for example:
 #   r.questions # All questions, including the next (unanswered) one
-#   # => [#<Question:0x007faadb3459a8 @key="EL02", @answer_value: 1>,
-#         #<Question:0x007faadb2d49d8 @key="EL03">]
+#   # => [#<Question:0x007faadb3459a8 @id="EL02", @answer_value: 1>,
+#         #<Question:0x007faadb2d49d8 @id="EL03">]
 class Response < BaseModel
-  attr_accessor :answer_values, :domain_keys
+  attr_accessor :answer_values, :domain_ids
 
   validates_with ResponseValidator
 
   # accessors for attributes defined by R package
-  %i( next_question_key estimate variance done ).each do |r_attribute|
+  %i( next_question_id estimate variance done ).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.data_for(answer_values, domain_keys)[r_attribute]
+        RPackage.data_for(answer_values, domain_ids)[r_attribute]
       end
     end
   end
@@ -23,7 +23,7 @@ class Response < BaseModel
   def initialize(attributes = {})
     super
     self.answer_values ||= {}
-    self.domain_keys ||= []
+    self.domain_ids ||= []
   end
 
   def questions
@@ -35,20 +35,20 @@ class Response < BaseModel
   end
 
   def answers
-    answer_values.map do |key, value|
-      Answer.new key: key, value: value
+    answer_values.map do |id, value|
+      Answer.new id: id, value: value
     end
   end
 
   def next_question
-    Question.new key: next_question_key unless done
+    Question.new id: next_question_id unless done
   end
 
-  def without_answers_after(answer_key)
-    remaining_answer_values = answer_values.each_with_object(result: [], found: false) do |(key, value), memo|
+  def without_answers_after(answer_id)
+    remaining_answer_values = answer_values.each_with_object(result: [], found: false) do |(id, value), memo|
       unless memo[:found]
-        memo[:result] << [key, value]
-        memo[:found] = key == answer_key
+        memo[:result] << [id, value]
+        memo[:found] = id == answer_id
       end
       memo
     end[:result].to_h

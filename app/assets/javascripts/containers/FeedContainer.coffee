@@ -1,5 +1,5 @@
-onAnswerChange = (key, value) ->
-  Screensmart.store.dispatch Screensmart.Actions.setAnswer(key, value)
+onAnswerChange = (id, value) ->
+  Screensmart.store.dispatch Screensmart.Actions.setAnswer(id, value)
 
 mapStateToProps = (state) ->
   children: new FeedBuilder(

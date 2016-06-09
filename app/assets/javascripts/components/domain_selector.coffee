@@ -13,8 +13,8 @@
         React.DOM.ul
           null
           @props.domains.map (domain) ->
-            { key, description } = domain
+            { id, description } = domain
             React.createFactory(DomainOption)
-              id: key
-              key: key
+              id: id
+              key: id
               description: description
