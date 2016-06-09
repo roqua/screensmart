@@ -1,13 +1,14 @@
 body
   background-color: $application-background-color
 
-html, body, .container, .app
+.container, .app
   height: 100%
 
 header
   position: fixed
   z-index: 5
   width: 100%
+  height: $header-height
   top: 0
   left: 0
   background-color: $application-background-color
@@ -38,83 +39,84 @@ header
           box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
           color: $option-color-checked
 
-.app
+#root
+  margin-top: $header-height
   @include outer-container
-  .feed
-    margin-top: $logo-height * 2
-    padding-top: $logo-height
+  .app
     @include span-columns(8)
     @include shift(2)
-    margin-bottom: 35vh
-
-    .item
-      .question,
-      .outcome,
-      .loading-indicator
-        background-color: $feed-item-background-color
-        transition: border-color 0.6s
-        border: 3px solid $past-feed-item-border-color
-        border-radius: $option-border-radius
-        min-height: $feed-item-height
-        max-height: 1000px
-        padding: $feed-item-padding-vertical $feed-item-padding-horizontal
-        margin: $feed-item-margin
-        color: $past-option-text-color
-        opacity: 1
-        .options
-          padding: 0
-
-          .option
-            list-style-type: none
-            display: inline
-
-            input[type="radio"]
-              display: none
-
-            label
-              background-color: $option-background-color
-              border: 1px solid $past-option-border-color
-              color: $past-option-color
-              padding: 5px 15px
-              width: 3rem
-
-            input[type="radio"]:checked + label
-              background-color: $option-background-color-checked
-              box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
-              color: $option-color-checked
-
-          .option:first-of-type label
-            border-left: 1px solid $option-border-color
-            border-bottom-left-radius: $option-border-radius
-            border-top-left-radius: $option-border-radius
-
-          .option:last-of-type label
-            border-bottom-right-radius: $option-border-radius
-            border-top-right-radius: $option-border-radius
-
-          .option + .option label
-            border-left: none
-        &:hover
-          &:not(.disabled)
-            @extend .active-item
-
-      .question.disabled,
-      .question.disabled:hover
-        min-height: 0
-        transition: opacity 0.5s linear 0s, max-height 0.6s linear 0s, visibility 0.5s linear 0s, padding 0.5s linear 0.5s, margin 0.5s linear 0.5s
-        opacity: 0
-        overflow: hidden
-        max-height: 0
-        visibility: hidden
-        padding: 0
-        margin: 0
-        box-sizing: border-box
-
-      &:last-of-type
+    padding-top: $logo-height
+    .feed
+      margin-bottom: 35vh
+      margin-top: $logo-height * 2
+      .item
         .question,
         .outcome,
         .loading-indicator
-          @extend .active-item
+          background-color: $feed-item-background-color
+          transition: border-color 0.6s
+          border: 3px solid $past-feed-item-border-color
+          border-radius: $option-border-radius
+          min-height: $feed-item-height
+          max-height: 1000px
+          padding: $feed-item-padding-vertical $feed-item-padding-horizontal
+          margin: $feed-item-margin
+          color: $past-option-text-color
+          opacity: 1
+          .options
+            padding: 0
+
+            .option
+              list-style-type: none
+              display: inline
+
+              input[type="radio"]
+                display: none
+
+              label
+                background-color: $option-background-color
+                border: 1px solid $past-option-border-color
+                color: $past-option-color
+                padding: 5px 15px
+                width: 3rem
+
+              input[type="radio"]:checked + label
+                background-color: $option-background-color-checked
+                box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
+                color: $option-color-checked
+
+            .option:first-of-type label
+              border-left: 1px solid $option-border-color
+              border-bottom-left-radius: $option-border-radius
+              border-top-left-radius: $option-border-radius
+
+            .option:last-of-type label
+              border-bottom-right-radius: $option-border-radius
+              border-top-right-radius: $option-border-radius
+
+            .option + .option label
+              border-left: none
+          &:hover
+            &:not(.disabled)
+              @extend .active-item
+
+        .question.disabled,
+        .question.disabled:hover
+          min-height: 0
+          transition: opacity 0.5s linear 0s, max-height 0.6s linear 0s, visibility 0.5s linear 0s, padding 0.5s linear 0.5s, margin 0.5s linear 0.5s
+          opacity: 0
+          overflow: hidden
+          max-height: 0
+          visibility: hidden
+          padding: 0
+          margin: 0
+          box-sizing: border-box
+
+        &:last-of-type
+          .question,
+          .outcome,
+          .loading-indicator
+            @extend .active-item
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
