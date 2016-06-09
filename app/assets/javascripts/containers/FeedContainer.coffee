@@ -3,7 +3,7 @@ onAnswerChange = (key, value) ->
 
 mapStateToProps = (state) ->
   children: new FeedBuilder(
-    response: state.response,
+    response: state.app.response,
     onAnswerChange: onAnswerChange
   ).getReactComponents()
 

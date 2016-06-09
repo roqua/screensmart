@@ -15,10 +15,19 @@ Screensmart.Actions =
 
   updateResponse: ->
     (dispatch, getState) =>
-      response = getState().response
+      response = getState().app.response
       dispatch @startResponseUpdate()
       syncResponse(response).then (data) =>
         dispatch @receiveResponseUpdate(data)
+
+  setDomainKeys: (domain_keys) ->
+    (dispatch, getState) =>
+      dispatch @_setDomainKeys(domain_keys)
+      dispatch @updateResponse()
+
+  _setDomainKeys: (domain_keys) ->
+    type: 'SET_DOMAIN_KEYS'
+    domain_keys: domain_keys
 
   startResponseUpdate: ->
     type: 'START_RESPONSE_UPDATE'
