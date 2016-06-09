@@ -1,4 +1,13 @@
 Screensmart.Actions =
+  fetchDomains: ->
+    (dispatch) =>
+      $.getJSON('/domains').then (data) =>
+        dispatch @receiveDomains(data)
+
+  receiveDomains: (data) ->
+    type: 'RECEIVE_DOMAINS'
+    domains: data.domains
+
   addMessage: (message) ->
     type: 'ADD_MESSAGE'
     message: message
