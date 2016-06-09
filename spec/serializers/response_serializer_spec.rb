@@ -1,6 +1,6 @@
 describe ResponseSerializer do
   subject do
-    response = Response.new(answer_values: { 'EL02' => 1 })
+    response = Response.new(answer_values: { 'EL02' => 1 }, domain_ids: ['POS-PQ'])
     JSON.parse(ResponseSerializer.new(response).to_json)['response']
   end
 
@@ -14,7 +14,7 @@ describe ResponseSerializer do
       variance: 0.6,
       done: false,
       questions: [{
-        key: 'EL02',
+        id: 'EL02',
         text: 'Vraag 1',
         answer_value: 1,
         answer_option_set: {
@@ -31,7 +31,7 @@ describe ResponseSerializer do
           ]
         }
       }, {
-        key: 'EL03',
+        id: 'EL03',
         text: 'Vraag 2',
         answer_value: nil,
         answer_option_set: {

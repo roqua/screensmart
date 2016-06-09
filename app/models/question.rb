@@ -2,7 +2,7 @@ class Question < BaseModel
   attr_accessor :id, :answer_value
 
   validates_inclusion_of :id, in: -> (_) { RPackage.question_ids },
-                              message: "`%{value}` not found"
+                              message: '`%{value}` not found'
 
   def text
     ensure_valid do

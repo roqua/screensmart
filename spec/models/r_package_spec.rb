@@ -1,22 +1,22 @@
 describe RPackage do
   let(:described_module) { RPackage }
 
-  describe '.question_keys' do
-    it 'returns the question_keys' do
-      expect(described_module.question_keys).to include 'EL02', 'EL03'
+  describe '.question_ids' do
+    it 'returns the question_ids' do
+      expect(described_module.question_ids).to include 'EL02', 'EL03'
     end
   end
 
   describe '.questions' do
     subject { described_module.questions.first }
 
-    it { is_expected.to include('key' => 'EL02') }
+    it { is_expected.to include('id' => 'EL02') }
   end
 
   describe '.domains' do
     subject { described_module.domains }
 
-    it { is_expected.to include('key' => 'POS-PQ', 'description' => 'Positieve symptomen voor psychose') }
+    it { is_expected.to include('id' => 'POS-PQ', 'description' => 'Positieve symptomen voor psychose') }
   end
 
   describe '.data_for' do
@@ -31,7 +31,7 @@ describe RPackage do
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
         expect(described_module.data_for({}, domains)).to eq \
-          next_question_key: 'EL02',
+          next_question_id: 'EL02',
           estimate: 1.0,
           variance: 0.5,
           done: false
@@ -41,7 +41,7 @@ describe RPackage do
     context 'with answers and domains' do
       it 'returns a new next_question, estimate and variance' do
         expect(described_module.data_for({ 'EL02' => 1 }, domains)).to eq \
-          next_question_key: 'EL03',
+          next_question_id: 'EL03',
           estimate: 0.7,
           variance: 0.6,
           done: false
