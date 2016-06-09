@@ -1,7 +1,7 @@
 { createFactory } = React
 { Route } = ReactRouter
 
-setDomains = (nextState) ->
+setDomainsBasedOnQuery = (nextState) ->
   domain_keys = nextState.location.query.domain_keys?.split?(',')
   if domain_keys
     Screensmart.store.dispatch Screensmart.Actions.setDomainKeys domain_keys
@@ -16,5 +16,5 @@ Screensmart.routes =
     createFactory(Route)
       path: '/fill_out'
       component: createFactory(FeedContainer)
-      onEnter: setDomains
+      onEnter: setDomainsBasedOnQuery
   ]
