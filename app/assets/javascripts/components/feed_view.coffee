@@ -3,6 +3,9 @@
 @FeedView = React.createClass
   displayName: 'FeedView'
 
+  componentWillMount: ->
+    Screensmart.store.dispatch Screensmart.Actions.updateResponse()
+
   componentDidUpdate: ->
     justStarted = @props.children.length == 1
     unless justStarted
