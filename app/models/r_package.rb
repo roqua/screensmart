@@ -9,11 +9,7 @@ module RPackage
   end
 
   def self.questions
-    # TODO: remove map after R Package is updated to call things "id" instead of "key"
-    database['questions'].map do |question|
-      question['id'] = question['key']
-      question
-    end
+    database['questions']
   end
 
   def self.domain_ids
@@ -21,11 +17,7 @@ module RPackage
   end
 
   def self.domains
-    # TODO: remove map after R Package is updated to call things "id" instead of "key"
-    database['domains'].map do |domain|
-      domain['id'] = domain['key']
-      domain
-    end
+    database['domains']
   end
 
   def self.database
@@ -43,7 +35,7 @@ module RPackage
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: memo[:estimate].try(:to_f),
                  variance: memo[:variance].try(:to_f),
-                 domain: domains }.compact
+                 domain: domain_ids }.compact
 
       raw_data = call('call_shadowcat', params)
 

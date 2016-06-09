@@ -36,6 +36,7 @@
             input
               type: 'radio'
               name: question_id
+              id: key
               value: answer_option.value
               onClick: @onOptionClick
             label
