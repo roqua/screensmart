@@ -16,15 +16,6 @@ describe Response do
     end
   end
 
-  describe '#without_answers_after' do
-    it 'returns a new response without answers after the given id' do
-      response = r(answer_values: { 'EL02' => 1, 'EL40' => 1, 'EL03' => 0 })
-      expected_answers = { 'EL02' => 1, 'EL40' => 1 }
-
-      expect(response.without_answers_after('EL40').answer_values).to eq expected_answers
-    end
-  end
-
   describe '#questions' do
     context 'when not done testing' do
       it 'contains all answered questions plus the next one' do
