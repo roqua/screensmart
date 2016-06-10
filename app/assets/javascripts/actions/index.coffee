@@ -29,13 +29,17 @@ Screensmart.Actions =
       syncResponse(response).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
-  setDomainKeys: (domain_ids) ->
+  setDomainIds: (domain_ids) ->
     (dispatch, getState) =>
-      dispatch @_setDomainKeys(domain_ids)
+      dispatch @_setDomainIds(domain_ids)
+      dispatch @resetQuestions()
       dispatch @updateResponse()
 
-  _setDomainKeys: (domain_ids) ->
-    type: 'SET_DOMAIN_KEYS'
+  resetQuestions: ->
+    type: 'RESET_QUESTIONS'
+
+  _setDomainIds: (domain_ids) ->
+    type: 'SET_DOMAIN_IDS'
     domain_ids: domain_ids
 
   startResponseUpdate: ->
