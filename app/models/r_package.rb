@@ -30,9 +30,7 @@ module RPackage
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    raw_data = call('call_shadowcat', answers: [], domain: domain_ids)
-
-    hash = rewrite_response_hash raw_data
+    hash = normalized_shadowcat answers: [], domain: domain_ids
 
     # Recalculate the estimate and variance for <index> answers,
     # then recalculate it for <index + 1> answers with the previous estimate and variance,
@@ -43,14 +41,16 @@ module RPackage
                  variance: hash[:variance].try(:to_f),
                  domain: domain_ids }.compact
 
-      raw_data = call('call_shadowcat', params)
-
-      hash = rewrite_response_hash(raw_data)
+      hash = normalized_shadowcat params
     end
     hash
   end
 
-  def self.rewrite_response_hash(raw_data)
+  def self.normalized_shadowcat(params)
+    rewrite_shadowcat_output call('call_shadowcat', params)
+  end
+
+  def self.rewrite_shadowcat_output(raw_data)
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
