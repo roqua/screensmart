@@ -40,7 +40,7 @@ module RPackage
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: hash[:estimate],
                  variance: hash[:variance],
-                 domain: domain_ids }.compact
+                 domain: domain_ids }
 
       hash = normalized_shadowcat params
     end
