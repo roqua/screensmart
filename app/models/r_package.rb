@@ -34,6 +34,10 @@ module RPackage
     memo = rewrite_response_hash(raw_data)
 
     hash = rewrite_response_hash raw_data
+
+    # Recalculate the estimate and variance for <index> answers,
+    # then recalculate it for <index + 1> answers with the previous estimate and variance,
+    # repeat until done for all answers
     answers.each_with_index do |_, index|
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: memo[:estimate].try(:to_f),
