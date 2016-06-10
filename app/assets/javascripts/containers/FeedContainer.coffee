@@ -8,4 +8,5 @@ mapStateToProps = (state) ->
   ).getReactComponents()
 
 @FeedContainer = ReactRedux.connect(
-  mapStateToProps)(FeedView)
+  mapStateToProps
+)(FeedView)

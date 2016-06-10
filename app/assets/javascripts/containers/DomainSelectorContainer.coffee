@@ -1,5 +1,3 @@
-mapStateToProps = (state) ->
-  domains: state.app.domains
-
 @DomainSelectorContainer = ReactRedux.connect(
-  mapStateToProps)(DomainSelector)
+  (state) -> domains: state.app.domains
+)(DomainSelector)

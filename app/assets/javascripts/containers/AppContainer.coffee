@@ -9,8 +9,6 @@ App = React.createClass
         @props.router
       ]...
 
-mapStateToProps = (state) ->
-  messages: state.app.messages
-
 @AppContainer = ReactRedux.connect(
-  mapStateToProps)(App)
+  (state) -> messages: state.app.messages
+)(App)
