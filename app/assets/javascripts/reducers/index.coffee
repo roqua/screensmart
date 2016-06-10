@@ -29,7 +29,10 @@ Screensmart.reducer = Redux.combineReducers
 
   response: (response = defaultResponse, action) ->
     switch action.type
-      when 'SET_DOMAIN_KEYS'
+      when 'RESET_QUESTIONS'
+        merge response,
+              questions: defaultResponse.questions
+      when 'SET_DOMAIN_IDS'
         merge response,
               domain_ids: action.domain_ids
       when 'SET_ANSWER'
