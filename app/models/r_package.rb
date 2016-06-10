@@ -26,7 +26,7 @@ module RPackage
 
   # Retrieve a hash of attributes defined by the R package
   # for a given set of answers (e.g. 'EL02' => 1)
-  #                 and domain_ids(e.g. ['POS-PQ'])
+  # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
