@@ -34,7 +34,7 @@ class ResponseValidator < ActiveModel::Validator
   end
 
   def question_ids_for_domains
-    questions_for_domains.map { question['id'] }
+    questions_for_domains.map { |question| question['id'] }
   end
 
   def questions_for_domains
