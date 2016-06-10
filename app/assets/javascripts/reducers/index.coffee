@@ -36,15 +36,11 @@ Screensmart.reducer = Redux.combineReducers
         merge response,
               domain_ids: action.domainIds
       when 'SET_ANSWER'
-        updatedResponse = responseWithoutNonFilledOutQuestions(
-          responseWithAnswer(
+        responseWithoutNonFilledOutQuestions \
+          responseWithAnswer \
             response,
             action.id,
             action.value
-          )
-        )
-
-        updatedResponse
 
       when 'START_RESPONSE_UPDATE'
         merge response,
