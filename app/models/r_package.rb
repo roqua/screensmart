@@ -31,7 +31,6 @@ module RPackage
     raise 'No domains given' unless domain_ids.present?
 
     raw_data = call('call_shadowcat', answers: [], domain: domain_ids)
-    memo = rewrite_response_hash(raw_data)
 
     hash = rewrite_response_hash raw_data
 
@@ -40,8 +39,8 @@ module RPackage
     # repeat until done for all answers
     answers.each_with_index do |_, index|
       params = { answers: [answers.take(index + 1).to_h],
-                 estimate: memo[:estimate].try(:to_f),
-                 variance: memo[:variance].try(:to_f),
+                 estimate: hash[:estimate].try(:to_f),
+                 variance: hash[:variance].try(:to_f),
                  domain: domain_ids }.compact
 
       raw_data = call('call_shadowcat', params)
