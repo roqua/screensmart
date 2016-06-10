@@ -25,7 +25,7 @@ module RPackage
   end
 
   def self.data_for(answers, domain_ids)
-    raise 'No domains given' unless domains.present?
+    raise 'No domains given' unless domain_ids.present?
 
     raw_data = call('call_shadowcat', answers: [], domain: domain_ids)
     memo = rewrite_response_hash(raw_data)

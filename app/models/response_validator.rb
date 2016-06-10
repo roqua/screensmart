@@ -39,7 +39,7 @@ class ResponseValidator < ActiveModel::Validator
 
     if nonexistant_domains.present?
       @response.errors.add :domain_ids,
-                           "contains nonexistant domains: #{nonexistant_domains}"
+                           "must all have ids defined by R package, non-found ids: #{nonexistant_domains}"
     end
   end
 

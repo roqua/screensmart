@@ -11,15 +11,14 @@ describe 'answering questions' do
     end
   end
 
+  before { visit '/fill_out?domain_ids=POS-PQ' }
+
   scenario 'answering a question' do
-    visit '/'
     answer_question 1, 'Eens'
     expect_last_question_to_be 'Vraag 2'
   end
 
   scenario 'changing a previously answered question' do
-    visit '/'
-
     answer_question 1, 'Eens'
     expect_last_question_to_be 'Vraag 2'
 

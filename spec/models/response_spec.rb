@@ -1,6 +1,6 @@
 describe Response do
   def r(args = {})
-    Response.new(args)
+    Response.new args.merge(domain_ids: ['POS-PQ'])
   end
 
   let(:response)      { r }
