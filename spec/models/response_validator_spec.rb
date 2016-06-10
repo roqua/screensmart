@@ -18,18 +18,23 @@ describe ResponseValidator do
         expect_error
       end
 
-      it 'validates answer ids exist' do
-        allow(RPackage).to receive(:question_ids).and_return %w( EL02 EL03 )
-
-        response.answer_values = { 'nonexistant_id' => 1 }
-        expect_error
+      it 'is valid with no answers' do
+        expect_no_error
       end
 
-      it 'is valid with proper ids and values' do
-        expect_no_error
+      context 'contains question ids that are not in the domain' do
+        before { response.domain_ids = ['POS-PQ'] }
+        it 'is invalid' do
+          response.answer_values = { 'question_in_other_domain' => 1 }
+          expect_error
+        end
+      end
 
-        response.answer_values = { 'EL02' => 1 }
-        expect_no_error
+      context 'questions ids that are in the domain' do
+        it 'is valid' do
+          response.answer_values = { 'EL02' => 1 }
+          expect_no_error
+        end
       end
     end
 
@@ -52,22 +57,6 @@ describe ResponseValidator do
         it 'is invalid' do
           response.domain_ids = []
           expect_error
-        end
-      end
-
-      context 'when one domain' do
-        context 'when known domain' do
-          it 'is valid' do
-            response.domain_ids = ['POS-PQ']
-            expect_no_error
-          end
-        end
-
-        context 'when unknown domain' do
-          it 'is invalid' do
-            response.domain_ids = ['Invalidate domain']
-            expect_error
-          end
         end
       end
 

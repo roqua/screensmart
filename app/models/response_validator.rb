@@ -3,7 +3,7 @@ class ResponseValidator < ActiveModel::Validator
     @response = response # use instance variable to avoid parameter duplication
 
     answer_values_integers
-    answer_ids_exist
+    question_ids_in_domains if @response.domain_ids.present?
     domain_ids_exist
     only_one_domain_id
   end
@@ -21,14 +21,25 @@ class ResponseValidator < ActiveModel::Validator
     end
   end
 
-  def answer_ids_exist
+  def question_ids_in_domains
     answers_with_nonexistant_ids = @response.answer_values.reject do |id, _value|
-      RPackage.question_ids.include? id
+      question_ids_for_domains.include? id
     end
 
     if answers_with_nonexistant_ids.present?
       @response.errors.add :answer_values,
-                           "must all have ids defined by R package, non-found ids: #{answers_with_nonexistant_ids}"
+                           "must all be related to domains #{@response.domain_ids}," \
+                           "non-found ids: #{answers_with_nonexistant_ids}"
+    end
+  end
+
+  def question_ids_for_domains
+    questions_for_domains.map { question['id'] }
+  end
+
+  def questions_for_domains
+    RPackage.questions.select do |question|
+      @response.domain_ids.include? question['domain_id']
     end
   end
 
