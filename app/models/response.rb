@@ -43,16 +43,4 @@ class Response < BaseModel
   def next_question
     Question.new id: next_question_id unless done
   end
-
-  def without_answers_after(answer_id)
-    remaining_answer_values = answer_values.each_with_object(result: [], found: false) do |(id, value), memo|
-      unless memo[:found]
-        memo[:result] << [id, value]
-        memo[:found] = id == answer_id
-      end
-      memo
-    end[:result].to_h
-
-    self.class.new(answer_values: remaining_answer_values)
-  end
 end
