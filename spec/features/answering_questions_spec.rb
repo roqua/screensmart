@@ -11,7 +11,7 @@ describe 'answering questions' do
     end
   end
 
-  before { visit '/fill_out?domain_ids=POS-PQ' }
+  before { visit '/fill_out?domainIds=POS-PQ' }
 
   scenario 'answering a question' do
     answer_question 1, 'Eens'
