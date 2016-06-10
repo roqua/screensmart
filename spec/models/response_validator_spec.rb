@@ -25,7 +25,7 @@ describe ResponseValidator do
         expect_error
       end
 
-      it 'is validate with proper ids and values' do
+      it 'is valid with proper ids and values' do
         expect_no_error
 
         response.answer_values = { 'EL02' => 1 }
