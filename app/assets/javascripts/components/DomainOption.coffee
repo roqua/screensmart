@@ -8,5 +8,5 @@
         to:
           pathname: "/fill_out"
           query:
-            domain_ids: @props.id
+            domainIds: @props.id
         @props.description

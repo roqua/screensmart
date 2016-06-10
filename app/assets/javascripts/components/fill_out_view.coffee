@@ -2,7 +2,7 @@
   displayName: 'FillOutView'
 
   componentDidMount: ->
-    Screensmart.store.dispatch Screensmart.Actions.setDomainIds @props.location.query.domain_ids.split(',')
+    Screensmart.store.dispatch Screensmart.Actions.setDomainIds @props.location.query.domainIds.split(',')
 
   render: ->
     React.createElement FeedContainer,
