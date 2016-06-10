@@ -56,6 +56,7 @@ http_interactions:
           {
             "id": "EL02",
             "database_id": "POS01_UTC",
+            "domain_id": "POS-PQ",
             "calculation_model": "GPCM",
             "text": "Vraag 1",
             "intro": "",
@@ -74,6 +75,7 @@ http_interactions:
           {
             "id": "EL03",
             "database_id": "POS02_CD",
+            "domain_id": "POS-PQ",
             "calculation_model": "GPCM",
             "text": "Vraag 2",
             "intro": "",
@@ -92,6 +94,7 @@ http_interactions:
           {
             "id": "EL04",
             "database_id": "POS02_CD",
+            "domain_id": "POS-PQ",
             "calculation_model": "GPCM",
             "text": "Vraag 3",
             "intro": "",
@@ -110,6 +113,7 @@ http_interactions:
           {
             "id": "enough_answers_to_be_done",
             "database_id": "POS03_CD",
+            "domain_id": "POS-PQ",
             "calculation_model": "GPCM",
             "text": "mock question to test the situation where enough questions have been filled out",
             "intro": "",
