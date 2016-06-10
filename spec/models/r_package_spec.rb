@@ -81,7 +81,7 @@ describe RPackage do
       context 'when the same parameters are provided twice' do
         context 'when no error is raised during the first call' do
           it 'calls OpenCPU once' do
-            expect(OpenCPU).to receive(:client).and_call_original.once
+            expect_any_instance_of(OpenCPU::Client).to receive(:execute).once.and_call_original
 
             2.times { first_call }
           end
@@ -89,8 +89,9 @@ describe RPackage do
 
         context 'when an error is raised during the first call' do
           it 'calls OpenCPU twice' do
-            allow(OpenCPU).to receive(:client) { raise RuntimeError }
-            expect(OpenCPU).to receive(:client).twice
+            allow_any_instance_of(OpenCPU::Client).to receive(:execute) do
+              raise RuntimeError
+            end
 
             2.times { expect { first_call }.to raise_error RuntimeError }
           end
@@ -99,7 +100,7 @@ describe RPackage do
 
       context 'when the parameters are different in the next call' do
         it 'calls the R package again' do
-          expect(OpenCPU).to receive(:client).and_call_original.twice
+          expect_any_instance_of(OpenCPU::Client).to receive(:execute).twice.and_call_original
           first_call
           second_call
         end
@@ -118,5 +119,13 @@ describe RPackage do
         end
       end
     end
+  end
+
+  describe '.cache_key_for' do
+    subject { RPackage.cache_key_for 'some_function', {} }
+
+    let(:date_of_last_r_package_deploy) { '2016-06-09 13:54:44 UTC' }
+
+    it { is_expected.to match date_of_last_r_package_deploy }
   end
 end

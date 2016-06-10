@@ -87,6 +87,14 @@ module RPackage
   end
 
   def self.cache_key_for(function, parameters)
-    "#{ENV['RAILS_ENV']}/R/#{function}/#{parameters}"
+    "#{ENV['RAILS_ENV']}/#{last_deploy_date}/#{function}/#{parameters}"
+  end
+
+  def self.last_deploy_date
+    description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+  end
+
+  def self.description
+    OpenCPU.client.description('screensmart')
   end
 end

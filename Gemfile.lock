@@ -1,9 +1,9 @@
 GIT
   remote: git://github.com/roqua/opencpu.git
-  revision: 139d74eb7a0515e57699ed57cbaaebd432473347
-  branch: better-http-exceptions
+  revision: 72ef921a8b0a03c87f40f5168ee835899d13f09e
+  branch: add-description-accessor
   specs:
-    opencpu (0.10.0)
+    opencpu (0.9.2)
       httmultiparty (~> 0.3.16)
       yajl-ruby (~> 1.2, >= 1.2.0)
 

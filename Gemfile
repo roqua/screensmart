@@ -22,7 +22,7 @@ gem 'bourbon'
 gem 'font-awesome-rails'
 gem 'react-rails', '~> 1.7.1'
 
-gem 'opencpu', github: 'roqua/opencpu', branch: 'better-http-exceptions'
+gem 'opencpu', github: 'roqua/opencpu', branch: 'add-description-accessor'
 
 gem 'dotenv-rails'
 
