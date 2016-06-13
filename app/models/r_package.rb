@@ -95,6 +95,15 @@ module RPackage
   end
 
   def self.description
-    OpenCPU.client.description('screensmart')
+    Client.instance.description('screensmart')
+  end
+
+  class Client < SimpleDelegator
+    include Singleton
+
+    def initialize
+      @client = OpenCPU.client
+      super(@client)
+    end
   end
 end
