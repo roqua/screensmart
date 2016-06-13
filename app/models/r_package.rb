@@ -30,20 +30,19 @@ module RPackage
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    hash = normalized_shadowcat answers: [], domain: domain_ids
+    initial_hash = normalized_shadowcat answers: [], domain: domain_ids
 
     # Recalculate the estimate and variance for <index> answers,
     # then recalculate it for <index + 1> answers with the previous estimate and variance,
     # repeat until done for all answers
-    answers.each_with_index do |_, index|
+    answers.each_with_index.inject(initial_hash) do |hash, (_, index)|
       params = { answers: [answers.take(index + 1).to_h],
                  estimate: hash[:estimate],
                  variance: hash[:variance],
                  domain: domain_ids }
 
-      hash = normalized_shadowcat params
+      normalized_shadowcat params
     end
-    hash
   end
 
   def self.normalized_shadowcat(params)
