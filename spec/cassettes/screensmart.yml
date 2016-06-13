@@ -402,7 +402,7 @@ http_interactions:
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/info
     body:
       encoding: US-ASCII
-      string: '""'
+      string: ''
     headers:
       Accept-Encoding:
       - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
