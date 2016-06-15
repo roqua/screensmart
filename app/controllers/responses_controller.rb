@@ -1,6 +1,5 @@
 class ResponsesController < ApplicationController
-  rescue_from BaseModel::RecordInvalid, with: :unprocessable_entity
-  rescue_from ActionController::ParameterMissing, with: :parameter_missing
+  rescue_from BaseModel::RecordInvalid, ActionController::ParameterMissing, with: :unprocessable_entity
 
   wrap_parameters Response, format: :json
 
@@ -19,10 +18,6 @@ class ResponsesController < ApplicationController
       end,
       domain_ids: response_params[:domain_ids]
     }
-  end
-
-  def parameter_missing(exception)
-    render json: { message: exception.message }, status: :unprocessable_entity
   end
 
   def unprocessable_entity(exception)
