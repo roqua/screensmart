@@ -13,9 +13,7 @@ class ResponsesController < ApplicationController
   # TODO: update model to be equal to the model used by clientside so this conversion is unneccesary
   def convert_response_params
     {
-      answer_values: response_params[:questions].each_with_object({}) do |question, memo|
-        memo[question[:id]] = question[:answer_value]
-      end,
+      answer_values: Hash[response_params[:questions].map{ |q| [q['id'], q['answer_value']] }],
       domain_ids: response_params[:domain_ids]
     }
   end
