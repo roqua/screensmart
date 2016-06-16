@@ -12,5 +12,5 @@ App = React.createClass
       ]...
 
 @AppContainer = ReactRedux.connect(
-  (state) -> messages: state.app.messages
+  (state) -> { messages } = state.app
 )(App)
