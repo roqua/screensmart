@@ -1,3 +1,5 @@
+{ DOM: { div, h1, ul }, createFactory } = React
+
 @DomainSelector = React.createClass
   displayName: 'DomainSelector'
 
@@ -5,16 +7,16 @@
     Screensmart.store.dispatch Screensmart.Actions.fetchDomains()
 
   render: ->
-    React.DOM.div
+    div
       className: 'app'
-      React.DOM.h1
+      h1
         null
         "Kies een domein om op te testen"
-        React.DOM.ul
+        ul
           null
           @props.domains.map (domain) ->
             { id, description } = domain
-            React.createFactory(DomainOption)
+            createFactory(DomainOption)
               id: id
               key: id
               description: description
