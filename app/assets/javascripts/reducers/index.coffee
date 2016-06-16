@@ -64,9 +64,9 @@ responseWithAnswer = (response, id, value) ->
         questions: questions
 
 indexOfQuestion = (questions, id) ->
-  questions.indexOf questionByKey(questions, id)
+  questions.indexOf questionById(questions, id)
 
-questionByKey = (questions, id) ->
+questionById = (questions, id) ->
   questions.filter((question) ->
     question.id == id
   )[0]
