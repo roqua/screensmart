@@ -1,3 +1,3 @@
 @DomainSelectorContainer = ReactRedux.connect(
-  (state) -> domains: state.app.domains
+  (state) -> { domains } = state.app
 )(DomainSelector)
