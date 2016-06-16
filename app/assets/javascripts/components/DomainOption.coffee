@@ -1,10 +1,13 @@
+{ DOM: { li }, createFactory } = React
+{ Link } = ReactRouter
+
 @DomainOption = React.createClass
   displayName: 'DomainOption'
 
   render: ->
-    React.DOM.li
+    li
       className: 'domain'
-      React.createFactory(ReactRouter.Link)
+      createFactory(Link)
         to:
           pathname: "/fill_out"
           query:

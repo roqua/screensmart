@@ -1,10 +1,12 @@
+{ DOM: { div }, createFactory } = React
+
 App = React.createClass
   displayName: 'App'
   render: ->
-    React.DOM.div
+    div
       className: 'app'
       [
-        React.createFactory(MessagesView)
+        createFactory(MessagesView)
           messages: @props.messages
         @props.router
       ]...
