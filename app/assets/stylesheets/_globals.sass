@@ -56,7 +56,7 @@ header
           background-color: $feed-item-background-color
           transition: border-color 0.6s
           border: 3px solid $past-feed-item-border-color
-          border-radius: $option-border-radius
+          border-radius: $feed-item-border-radius
           min-height: $feed-item-height
           max-height: 1000px
           padding: $feed-item-padding-vertical $feed-item-padding-horizontal
@@ -78,13 +78,13 @@ header
                 border: 1px solid $past-option-border-color
                 color: $past-option-color
                 padding: 5px 15px
-                width: 3rem
 
               input[type="radio"]:checked + label
                 background-color: $option-background-color-checked
                 box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
                 color: $option-color-checked
 
+          .options:not(.multiple-answer-domain)
             .option:first-of-type label
               border-left: 1px solid $option-border-color
               border-bottom-left-radius: $option-border-radius
@@ -96,6 +96,25 @@ header
 
             .option + .option label
               border-left: none
+
+          // styling for domains with questions with more than two answers
+          .options.multiple-answer-domain
+            .option
+              display: inline-block
+              min-width: 173.7px
+              width: calc(50% - 0.5rem)
+              list-style-type: none
+              margin-right: 0.5rem
+              margin-bottom: 0.5rem
+            label
+              display: inline-block
+              background-color: $option-background-color
+              border: 1px solid $past-option-border-color
+              border-radius: $option-border-radius
+              color: $past-option-color
+              padding: 5px 15px
+              width: 100%
+
           &:hover
             &:not(.disabled)
               @extend .active-item
@@ -117,6 +136,7 @@ header
           .outcome,
           .loading-indicator
             @extend .active-item
+
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper
@@ -140,3 +160,5 @@ header
     .options
       input[type="radio"] + span
         font-size: 1rem
+      .option
+        width: 100%
