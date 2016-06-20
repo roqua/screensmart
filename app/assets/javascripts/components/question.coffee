@@ -27,7 +27,7 @@
         className: 'text'
         text
       ul
-        className: 'options'
+        className: "options answer-option-set-#{answer_option_set.id}"
         answer_option_set.answer_options.map (answer_option) =>
           key = "question_#{questionId}_answer_#{answer_option.value}"
           li
