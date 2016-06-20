@@ -165,12 +165,16 @@ header
       margin-top: $logo-height
       .feed
         margin-bottom: 10%
-      .item
-        .question,
-        .outcome
-          padding: $feed-item-padding-vertical-mobile $feed-item-padding-horizontal-mobile
-    .options
-      input[type="radio"] + span
-        font-size: 1rem
-      .option
-        width: 100%
+        .item
+          .question,
+          .outcome
+            padding: $feed-item-padding-vertical-mobile $feed-item-padding-horizontal-mobile
+            .options
+              input[type="radio"] + span
+                font-size: 1rem
+            .options.answer-option-set-5,
+            .options.answer-option-set-4,
+            .options.answer-option-set-3
+              .option
+                width: 100%
+                margin-right: 0rem
