@@ -17,4 +17,7 @@ Screensmart.routes =
       path: '/fill_out'
       component: createFactory(FeedContainer)
       onEnter: setDomainsBasedOnQuery
+    createFactory(Route)
+      path: '/invitations/new'
+      component: createFactory(InvitationFormContainer)
   ]
