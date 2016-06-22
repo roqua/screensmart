@@ -5,7 +5,7 @@ class ResponseSerializer < ActiveModel::Serializer
 end
 
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :text, :answer_value
+  attributes :id, :text, :intro, :answer_value
 
   has_one :answer_option_set
 end

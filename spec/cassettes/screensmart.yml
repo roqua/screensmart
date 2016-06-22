@@ -59,7 +59,7 @@ http_interactions:
             "domain_id": "POS-PQ",
             "calculation_model": "GPCM",
             "text": "Vraag 1",
-            "intro": "",
+            "intro": "Geef a.u.b. antwoord voor de afgelopen 7 dagen.",
             "answer_option_set_id": 2,
             "answer_options": [
               {

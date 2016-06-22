@@ -5,13 +5,18 @@ describe 'answering questions' do
     end
   end
 
-  def expect_last_question_to_be(text)
+  def expect_last_question_to_be(text, intro_text = nil)
     within '.item:last-child' do
       expect(page).to have_content text
+      expect(page).to have_content intro_text if intro_text
     end
   end
 
   before { visit '/fill_out?domainIds=POS-PQ' }
+
+  scenario 'initial intro text and answer text' do
+    expect_last_question_to_be 'Vraag 1', 'Geef a.u.b. antwoord voor de afgelopen 7 dagen.'
+  end
 
   scenario 'answering a question' do
     answer_question 1, 'Eens'

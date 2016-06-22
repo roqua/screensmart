@@ -4,9 +4,12 @@ class Question < BaseModel
   validates_inclusion_of :id, in: -> (_) { RPackage.question_ids },
                               message: '`%{value}` not found'
 
-  def text
-    ensure_valid do
-      RPackage.question_by_id(id)['text']
+  # accessors for attributes defined by R package
+  %w( text intro ).each do |r_attribute|
+    define_method r_attribute do
+      ensure_valid do
+        RPackage.question_by_id(id)[r_attribute]
+      end
     end
   end
 

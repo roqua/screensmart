@@ -1,4 +1,4 @@
-{div, h1, p, ul, li, input, label, i} = React.DOM
+{div, h1, p, em, ul, li, input, label, i} = React.DOM
 
 @Question = React.createClass
   displayName: 'Question'
@@ -18,11 +18,17 @@
     className
 
   render: ->
-    {text, answer_option_set} = @props.question
+    {text, intro, answer_option_set} = @props.question
     questionId = @props.question.id
 
     div
       className: @className()
+
+      p
+        className: 'intro-text'
+        em
+          className: ''
+          intro
       p
         className: 'text'
         text
