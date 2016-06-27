@@ -9,7 +9,7 @@
   componentDidUpdate: ->
     justStarted = @props.children.length == 1
     unless justStarted
-      window.scrollTo(0, ReactDOM.findDOMNode(this).offsetHeight)
+      $('body').animate(scrollTop: ReactDOM.findDOMNode(this).offsetHeight, 500)
 
   render: ->
     div
