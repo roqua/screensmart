@@ -2,9 +2,6 @@
 @LoadingIndicator = React.createClass
   displayName: 'LoadingIndicator'
 
-  componentDidMount: ->
-    $('body').animate(scrollTop: $(ReactDOM.findDOMNode(this)).offset().top, 500)
-
   render: ->
     div
       className: 'loading-indicator'
