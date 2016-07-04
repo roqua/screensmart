@@ -8,7 +8,7 @@ class @FeedBuilder
     { questions, loading, done } = @response
     elements = []
 
-    for question, index in questions
+    for question in questions
       elements.push React.createElement Question,
         question: question
         key: elements.length
