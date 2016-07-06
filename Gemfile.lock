@@ -190,7 +190,7 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    opencpu (0.9.2)
+    opencpu (0.10.0)
       httmultiparty (~> 0.3.16)
       yajl-ruby (~> 1.2, >= 1.2.0)
     parser (2.3.0.6)
@@ -358,7 +358,7 @@ DEPENDENCIES
   haml-rails (~> 0.9)
   jquery-rails
   neat (~> 1.7.3)
-  opencpu (~> 0.9.2)
+  opencpu (~> 0.10.0)
   poltergeist (~> 1.9.0)
   puma
   rack-haproxy_status (~> 0.8.1)

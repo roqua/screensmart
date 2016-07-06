@@ -34,7 +34,7 @@ describe ResponseSerializer do
       }, {
         id: 'EL03',
         text: 'Vraag 2',
-        into: '',
+        intro: '',
         answer_value: nil,
         answer_option_set: {
           id: 2,

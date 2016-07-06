@@ -64,22 +64,46 @@ module RPackage
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
         logged_call function, parameters
+      rescue OpenCPU::Errors::AccessDenied
+        explain_opencpu_configuration
       rescue RuntimeError => e
         raise "Call to R failed with message: #{e.message}"
       end
     end
   end
 
+  def self.explain_opencpu_configuration
+    raise 'OpenCPU authentication failed. Ensure' \
+      'OPENCPU_ENDPOINT_URL, OPENCPU_USERNAME and OPENCPU_PASSWORD environment variables are set correctly.'
+  end
+
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
-    result = OpenCPU.client.execute 'screensmart', function,
-                                    user: :system, data: parameters, convert_na_to_nil: true
+    result = Client.instance.execute 'screensmart', function,
+                                     user: :system, data: parameters, convert_na_to_nil: true
     Rails.logger.debug "Result: #{result}"
     result
   end
 
   def self.cache_key_for(function, parameters)
-    "#{Rails.env}/R/#{function}/#{parameters}"
+    "#{ENV['RAILS_ENV']}/#{last_deploy_date}/#{function}/#{parameters}"
+  end
+
+  def self.last_deploy_date
+    description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+  end
+
+  def self.description
+    Client.instance.description('screensmart')
+  end
+
+  class Client < SimpleDelegator
+    include Singleton
+
+    def initialize
+      @client = OpenCPU.client
+      super(@client)
+    end
   end
 end
