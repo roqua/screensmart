@@ -2,6 +2,8 @@
 @LoadingIndicator = React.createClass
   displayName: 'LoadingIndicator'
 
+  mixins: [ScrollToOnMountMixin]
+
   render: ->
     div
       className: 'loading-indicator'

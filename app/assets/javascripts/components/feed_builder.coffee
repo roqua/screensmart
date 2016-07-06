@@ -18,11 +18,11 @@ class @FeedBuilder
 
     if loading
       elements.push React.createElement LoadingIndicator,
-        key: elements.length
+        key: "loading-indicator-#{elements.length}"
 
     if done
       elements.push React.createElement Outcome,
-        key: elements.length
+        key: "outcome-#{elements.length}"
         response: @response
 
     elements

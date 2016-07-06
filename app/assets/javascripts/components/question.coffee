@@ -3,6 +3,8 @@
 @Question = React.createClass
   displayName: 'Question'
 
+  mixins: [ScrollToOnMountMixin]
+
   propTypes:
     question: React.PropTypes.object.isRequired
     onAnswerChange: React.PropTypes.func.isRequired

@@ -3,6 +3,8 @@
 @Outcome = React.createClass
   displayName: 'Outcome'
 
+  mixins: [ScrollToOnMountMixin]
+
   propTypes: ->
     response: React.PropTypes.object.isRequired
 
