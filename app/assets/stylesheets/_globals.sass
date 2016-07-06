@@ -1,23 +1,18 @@
 body
   background-color: $application-background-color
+  margin: 0
 
 .container, .app
   height: 100%
 
 header
-  position: fixed
   z-index: 5
   width: 100%
-  height: $header-height
-  top: 0
-  left: 0
   background-color: $application-background-color
-  box-shadow: 0px -1px 14px 1px #c3c3c2
   .brand-logo
-    min-height: $logo-height
     img
       max-width: $logo-width
-      margin: 15px auto 0
+      margin: 0 auto
       display: block
 
 .active-item
@@ -40,7 +35,6 @@ header
           color: $option-color-checked
 
 #root
-  margin-top: $header-height
   @include outer-container
   .app
     @include span-columns(8)
