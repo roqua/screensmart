@@ -16,6 +16,7 @@ describe ResponseSerializer do
       questions: [{
         id: 'EL02',
         text: 'Vraag 1',
+        intro: 'Geef a.u.b. antwoord voor de afgelopen 7 dagen.',
         answer_value: 2,
         answer_option_set: {
           id: 2,
@@ -33,6 +34,7 @@ describe ResponseSerializer do
       }, {
         id: 'EL03',
         text: 'Vraag 2',
+        into: '',
         answer_value: nil,
         answer_option_set: {
           id: 2,
