@@ -11,6 +11,7 @@
 //= require ReactRouter
 //= require ReactRouterRedux
 //= require redux-thunk
+//= require redux-form
 //= require initializer
 //= require components
 //= require routes

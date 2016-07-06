@@ -1,3 +1,3 @@
 @InvitationFormContainer = ReactRedux.connect(
-  (state) -> { domains } = state.app
+  (state) -> { domains } = state
 )(InvitationForm)

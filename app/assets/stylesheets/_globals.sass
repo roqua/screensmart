@@ -37,6 +37,9 @@ header
 #root
   @include outer-container
   .app
+    &.invitation-form
+      input
+        display: block
     @include span-columns(8)
     @include shift(2)
     .feed
@@ -139,6 +142,9 @@ header
           .outcome,
           .loading-indicator
             @extend .active-item
+
+.small
+  font-size: 0.9rem
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper

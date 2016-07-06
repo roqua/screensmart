@@ -1,3 +1,5 @@
+{ routerReducer } = ReactRouterRedux
+
 merge = (objects...) ->
   $.extend {}, objects...
 
@@ -9,7 +11,9 @@ defaultResponse =
   loading: true
   done: false
 
-Screensmart.reducer = Redux.combineReducers
+Screensmart.reducers = Redux.combineReducers
+  routing: routerReducer
+  form: ReduxForm.reducer
   domains: (domains = [], action) ->
     switch action.type
       when 'RECEIVE_DOMAINS'

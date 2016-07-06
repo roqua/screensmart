@@ -24,7 +24,7 @@ Screensmart.Actions =
 
   updateResponse: ->
     (dispatch, getState) =>
-      response = getState().app.response
+      response = getState().response
       dispatch @startResponseUpdate()
       syncResponse(response).then (data) =>
         dispatch @receiveResponseUpdate(data)
