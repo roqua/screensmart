@@ -8,6 +8,9 @@ Screensmart.Actions =
     type: 'RECEIVE_DOMAINS'
     domains: data.domains
 
+  sendInvitation: ->
+    type: 'SEND_INVITATION'
+
   addMessage: (message) ->
     type: 'ADD_MESSAGE'
     message: message

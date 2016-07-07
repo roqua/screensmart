@@ -14,7 +14,7 @@
     { fields: { respondentEmail, requesterEmail, domain }, handleSubmit } = @props
 
     form
-      onSubmit: handleSubmit
+      onSubmit: @props.handleSubmit
       input
         type: 'text'
         placeholder: 'e-mail respondent'
@@ -24,10 +24,10 @@
         placeholder: 'uw e-mail'
         requesterEmail...
       span.small
-        "Na invulling wordt de uitkomst naar dit e-mailadres gestuurd"
+        'Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
       p
         className: ''
-        "Kies een domein om op te testen"
+        'Kies een domein om op te testen'
       input
         ul
           className: 'domains'
@@ -47,7 +47,7 @@
         type: 'submit'
         "Verstuur uitnodiging"
 
-@InvitationForm = reduxForm({
-  form: 'invitation',
+@InvitationForm = reduxForm(
+  form: 'invitation'
   fields: ['respondentEmail', 'requesterEmail', 'domain']
-})(@InvitationForm)
+)(@InvitationForm)
