@@ -36,11 +36,12 @@ Screensmart.reducer = Redux.combineReducers
         merge response,
               domain_ids: action.domainIds
       when 'SET_ANSWER'
-        responseWithoutNonFilledOutQuestions \
-          responseWithAnswer \
-            response,
-            action.id,
-            action.value
+        merge responseWithDoneFalse \
+                responseWithoutNonFilledOutQuestions \
+                  responseWithAnswer \
+                    response,
+                    action.id,
+                    action.value
 
       when 'START_RESPONSE_UPDATE'
         merge response,
@@ -70,6 +71,12 @@ findQuestion = (questions, id) ->
   questions.filter((question) ->
     question.id == id
   )[0]
+
+responseWithDoneFalse = (response) ->
+  merge response,
+        done: false # Ensure no old outcome is shown
+                    # in case user changes an answer
+                    # after finishing
 
 responseWithoutNonFilledOutQuestions = (response) ->
   merge response,
