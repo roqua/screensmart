@@ -91,7 +91,9 @@ module RPackage
   end
 
   def self.last_deploy_date
-    description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+    Rails.cache.fetch(:last_r_deploy_date) do
+      description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+    end
   end
 
   def self.description
