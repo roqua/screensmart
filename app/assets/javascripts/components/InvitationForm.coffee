@@ -10,7 +10,6 @@
 
   render: ->
     { domains } = @props
-    { dispatch } = Screensmart.store
     { fields: { respondentEmail, requesterEmail, domain }, handleSubmit } = @props
 
     form
