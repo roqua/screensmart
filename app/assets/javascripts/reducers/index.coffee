@@ -1,11 +1,5 @@
 { routerReducer } = ReactRouterRedux
 
-merge = (objects...) ->
-  $.extend {}, objects...
-
-deepCopy = (originalObject, into = {}) ->
-  $.extend(true, into, originalObject)
-
 defaultResponse =
   questions: []
   loading: true
@@ -17,9 +11,6 @@ Screensmart.reducers = Redux.combineReducers
 
   invitation: (invitation = { sending: false, sent: false }, action) ->
     switch action.type
-      when 'INVITATION_REQUESTED'
-        merge invitation,
-              sending: true
       when 'INVITATION_SENT'
         merge invitation,
               sending: false

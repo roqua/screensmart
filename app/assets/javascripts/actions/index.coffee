@@ -10,12 +10,8 @@ Screensmart.Actions =
 
   sendInvitation: (enteredValues) ->
     (dispatch) =>
-      dispatch @startInvitationSend()
       $.postJSON('/invitations', enteredValues).then =>
         dispatch @finishInvitationSend()
-
-  startInvitationSend: ->
-    type: 'INVITATION_REQUESTED'
 
   finishInvitationSend: ->
     type: 'INVITATION_SENT'

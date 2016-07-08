@@ -2,9 +2,10 @@
 //= require es5-shim
 //
 //= require jquery
-//= require jquery_extensions
+//= require jquery_configuration
 //= require appsignal
 //= require error_handler
+//= require email-validator
 //= require react
 //= require react_ujs
 //= require redux
