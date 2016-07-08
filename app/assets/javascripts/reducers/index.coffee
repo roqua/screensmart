@@ -14,6 +14,19 @@ defaultResponse =
 Screensmart.reducers = Redux.combineReducers
   routing: routerReducer
   form: ReduxForm.reducer
+
+  invitation: (invitation = { sending: false, sent: false }, action) ->
+    switch action.type
+      when 'INVITATION_REQUESTED'
+        merge invitation,
+              sending: true
+      when 'INVITATION_SENT'
+        merge invitation,
+              sending: false
+              delivered: true
+      else
+        invitation
+
   domains: (domains = [], action) ->
     switch action.type
       when 'RECEIVE_DOMAINS'

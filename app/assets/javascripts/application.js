@@ -2,6 +2,7 @@
 //= require es5-shim
 //
 //= require jquery
+//= require jquery_extensions
 //= require appsignal
 //= require error_handler
 //= require react

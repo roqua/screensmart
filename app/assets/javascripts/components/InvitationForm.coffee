@@ -8,12 +8,19 @@ invitationForm = React.createClass
     { dispatch } = Screensmart.store
     dispatch Screensmart.Actions.fetchDomains()
 
+  submit: (enteredValues) ->
+    { dispatch } = Screensmart.store
+    dispatch Screensmart.Actions.sendInvitation(enteredValues)
+
   render: ->
     { domains } = @props
-    { fields: { respondentEmail, requesterEmail, domain }, handleSubmit } = @props
+    { fields: { respondentEmail, requesterEmail, domain },
+      handleSubmit,
+      sending,
+      sent } = @props
 
     form
-      onSubmit: @props.handleSubmit
+      onSubmit: @props.handleSubmit(@submit)
       input
         type: 'text'
         placeholder: 'e-mail respondent'
@@ -45,6 +52,8 @@ invitationForm = React.createClass
       button
         type: 'submit'
         "Verstuur uitnodiging"
+      if sending
+        "Wordt verzonden"
 
 @InvitationForm = reduxForm(
   form: 'invitation'
