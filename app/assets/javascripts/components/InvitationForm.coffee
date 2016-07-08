@@ -1,7 +1,7 @@
 { DOM: { div, input, span, small, ul, li, p, label, button, form } } = React
 { reduxForm } = ReduxForm
 
-@InvitationForm = React.createClass
+invitationForm = React.createClass
   displayName: 'InvitationForm'
 
   componentWillMount: ->
@@ -49,4 +49,4 @@
 @InvitationForm = reduxForm(
   form: 'invitation'
   fields: ['respondentEmail', 'requesterEmail', 'domain']
-)(@InvitationForm)
+)(invitationForm)
