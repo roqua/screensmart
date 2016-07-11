@@ -1,4 +1,4 @@
-{ DOM: { div, input, span, small, ul, li, p, label, button, form } } = React
+{ DOM: { div, input, span, small, ul, li, p, label, button, form, i } } = React
 { reduxForm } = ReduxForm
 { emailValid } = EmailValidator
 
@@ -103,9 +103,25 @@ invitationForm = React.createClass
         type: 'submit'
         'Verstuur uitnodiging'
       div
-        className: 'error'
-        key: "error-#{index}"
-        error
+        className: 'sent-form-info'
+        if triedToSendInvalidForm
+          span
+            className: 'warning'
+            i
+              className: 'fa fa-exclamation-circle'
+            'Controleer het formulier'
+        if submitting
+          span
+            className: 'submitting'
+            i
+              className: 'fa fa-hourglass-half'
+            'Wordt verzonden'
+        if invitation.sent
+          span
+            className: 'sent'
+            i
+              className: 'fa fa-check-circle'
+            'De uitnodiging is verzonden'
 
   renderErrorFor: (fieldName) ->
     error = @errors()[fieldName]
