@@ -79,6 +79,26 @@ invitationForm = React.createClass
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
       @renderErrorFor 'domainId'
+      div
+        className: if triedToSendInvalidForm && !@fieldIsValid('domainId') then 'domain-wrapper invalid' else 'domain-wrapper'
+        p
+          'Kies een domein om op te testen'
+        input
+          ul
+            className: 'domains'
+            domains.map (domain) ->
+              li
+                key: domain.id
+                className: 'domain'
+                input \
+                  merge domainId,
+                        type: 'radio'
+                        name: 'domain'
+                        id: domain.id
+                        value: domain.id
+                label
+                  htmlFor: domain.id
+                  domain.description
       button
         type: 'submit'
         'Verstuur uitnodiging'
