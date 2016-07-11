@@ -14,6 +14,7 @@ invitationForm = React.createClass
     { dispatch } = Screensmart.store
     dispatch Screensmart.Actions.fetchDomains()
 
+  # field-specific validators called by ValidationHelpers when you use @errorFor('respondentEmail')
   respondentEmailError: (value) ->
     'Vul een geldig e-mailadres in' unless emailValid(value)
 
@@ -36,6 +37,7 @@ invitationForm = React.createClass
     form
       className: 'invitation-form'
       onSubmit: @props.handleSubmit(@submit)
+
       @renderErrorFor 'respondentEmail'
       input \
         merge respondentEmail,
@@ -44,6 +46,7 @@ invitationForm = React.createClass
               placeholder: 'e-mail respondent'
               size: '40'
       @renderErrorFor 'requesterEmail'
+
       input \
         merge requesterEmail,
               className: if triedToSendInvalidForm && !@fieldIsValid('requesterEmail') then 'invalid' else ''
@@ -53,6 +56,7 @@ invitationForm = React.createClass
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
+
       @renderErrorFor 'domainId'
       div
         className: if triedToSendInvalidForm && !@fieldIsValid('domainId') then 'domain-wrapper invalid' else 'domain-wrapper'
@@ -99,7 +103,8 @@ invitationForm = React.createClass
             'De uitnodiging is verzonden'
 
   renderErrorFor: (fieldName) ->
-    @props.fields[fieldName].touched && @errorFor fieldName &&
+    error = @errorFor fieldName
+    @props.fields[fieldName].touched && error &&
       span
         className: 'error'
         error
