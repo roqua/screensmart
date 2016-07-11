@@ -15,6 +15,7 @@ invitationForm = React.createClass
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
     if @valid()
+      @setState triedToSendInvalidForm: false
       dispatch Screensmart.Actions.sendInvitation(enteredValues)
     else
       @setState triedToSendInvalidForm: true
@@ -25,9 +26,6 @@ invitationForm = React.createClass
   errors: ->
     errors = {}
     for field, { value } of @props.fields
-      unless !!value
-        errors[field] = 'vul dit veld a.u.b. in'
-        continue
       fieldSpecificValidator = @["#{field}Error"]
 
       if typeof fieldSpecificValidator == 'function'
@@ -42,10 +40,13 @@ invitationForm = React.createClass
     Object.keys(@errors())
 
   respondentEmailError: (value) ->
-    'vul een geldig e-mailadres in' unless emailValid(value)
+    'Vul een geldig e-mailadres in' unless emailValid(value)
 
   requesterEmailError: (value) ->
-    'vul een geldig e-mailadres in' unless emailValid(value)
+    'Vul een geldig e-mailadres in' unless emailValid(value)
+
+  domainIdError: (value) ->
+    'Kies een domein' unless !!value
 
   render: ->
     { fields: { respondentEmail, requesterEmail, domainId },
@@ -59,14 +60,16 @@ invitationForm = React.createClass
 
     form
       onSubmit: @props.handleSubmit(@submit)
-      @renderAllErrors() if triedToSendInvalidForm
+      @renderErrorFor 'respondentEmail'
       input \
         merge respondentEmail,
+              className: if triedToSendInvalidForm && ! @fieldIsValid('respondentEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'e-mail respondent'
       @renderErrorFor 'respondentEmail'
       input \
         merge requesterEmail,
+              className: if triedToSendInvalidForm && !@fieldIsValid('requesterEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'uw e-mail'
       @renderErrorFor 'requesterEmail'
@@ -95,19 +98,6 @@ invitationForm = React.createClass
       button
         type: 'submit'
         'Verstuur uitnodiging'
-      if triedToSendInvalidForm
-        'Er zitten nog fouten in het formulier'
-      if submitting
-        'Wordt verzonden'
-      if invitation.sent
-        'De uitnodiging is verzonden'
-
-  renderAllErrors: ->
-    [
-      'Vul a.u.b het ontvangerse-mailadres in' unless @fieldIsValid('respondentEmail')
-      'Vul a.u.b uw eigen e-mailadres in' unless @fieldIsValid('requesterEmail')
-      'Kies a.u.b. een domain om op te testen' unless @fieldIsValid('domainId')
-    ].map (error, index) ->
       div
         className: 'error'
         key: "error-#{index}"
