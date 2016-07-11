@@ -59,6 +59,7 @@ invitationForm = React.createClass
     errors = @errors()
 
     form
+      className: 'invitation-form'
       onSubmit: @props.handleSubmit(@submit)
       @renderErrorFor 'respondentEmail'
       input \
