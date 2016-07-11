@@ -51,8 +51,8 @@ invitationForm = React.createClass
     { fields: { respondentEmail, requesterEmail, domainId },
       handleSubmit,
       submitting,
-      sent,
-      domains } = @props
+      domains,
+      invitation } = @props
     { triedToSendInvalidForm } = @state
 
     errors = @errors()
@@ -64,12 +64,12 @@ invitationForm = React.createClass
         merge respondentEmail,
               type: 'text'
               placeholder: 'e-mail respondent'
-      @renderErrorsFor 'respondentEmail'
+      @renderErrorFor 'respondentEmail'
       input \
         merge requesterEmail,
               type: 'text'
               placeholder: 'uw e-mail'
-      @renderErrorsFor 'requesterEmail'
+      @renderErrorFor 'requesterEmail'
       span.small
         'Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
       p
@@ -91,7 +91,7 @@ invitationForm = React.createClass
               label
                 htmlFor: domain.id
                 domain.description
-      @renderErrorsFor 'domainId'
+      @renderErrorFor 'domainId'
       button
         type: 'submit'
         'Verstuur uitnodiging'
@@ -99,6 +99,8 @@ invitationForm = React.createClass
         'Er zitten nog fouten in het formulier'
       if submitting
         'Wordt verzonden'
+      if invitation.sent
+        'De uitnodiging is verzonden'
 
   renderAllErrors: ->
     [
@@ -111,11 +113,12 @@ invitationForm = React.createClass
         key: "error-#{index}"
         error
 
-  renderErrorsFor: (fieldName) ->
-    @props.fields[fieldName].touched && @errors()[fieldName] &&
+  renderErrorFor: (fieldName) ->
+    error = @errors()[fieldName]
+    @props.fields[fieldName].touched && error &&
       span
         className: 'error'
-        @errors()[fieldName]
+        error
 
 @InvitationForm = reduxForm(
   form: 'invitation'
