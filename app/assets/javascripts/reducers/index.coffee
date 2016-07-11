@@ -9,12 +9,11 @@ Screensmart.reducers = Redux.combineReducers
   routing: routerReducer
   form: ReduxForm.reducer
 
-  invitation: (invitation = { sending: false, sent: false }, action) ->
+  invitation: (invitation = { sent: false }, action) ->
     switch action.type
       when 'INVITATION_SENT'
         merge invitation,
-              sending: false
-              delivered: true
+              sent: true
       else
         invitation
 

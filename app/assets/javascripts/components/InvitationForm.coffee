@@ -9,12 +9,18 @@ invitationForm = React.createClass
     { dispatch } = Screensmart.store
     dispatch Screensmart.Actions.fetchDomains()
 
+  getInitialState: ->
+    {}
+
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
-    dispatch Screensmart.Actions.sendInvitation(enteredValues)
+    if @valid()
+      dispatch Screensmart.Actions.sendInvitation(enteredValues)
+    else
+      @setState triedToSendInvalidForm: true
 
   valid: ->
-    Object.keys(@errors()).length == 0
+    @fieldNamesWithErrors().length == 0
 
   errors: ->
     errors = {}
@@ -29,41 +35,41 @@ invitationForm = React.createClass
           errors[field] = fieldSpecificError
     errors
 
+  fieldIsValid: (name) ->
+    @fieldNamesWithErrors().indexOf(name) == -1
+
+  fieldNamesWithErrors: ->
+    Object.keys(@errors())
+
   respondentEmailError: (value) ->
     'vul een geldig e-mailadres in' unless emailValid(value)
 
   requesterEmailError: (value) ->
     'vul een geldig e-mailadres in' unless emailValid(value)
 
-  errorsFor: (fieldName) ->
-    @props.fields[fieldName].touched && @errors()[fieldName] &&
-      span
-        className: 'error'
-        @errors()[fieldName]
-
   render: ->
-    { domains } = @props
     { fields: { respondentEmail, requesterEmail, domainId },
       handleSubmit,
       submitting,
-      sent } = @props
+      sent,
+      domains } = @props
+    { triedToSendInvalidForm } = @state
 
     errors = @errors()
 
-    console.log errors['respondentEmail']
-    console.log !!errors['respondentEmail']
     form
       onSubmit: @props.handleSubmit(@submit)
+      @renderAllErrors() if triedToSendInvalidForm
       input \
         merge respondentEmail,
               type: 'text'
               placeholder: 'e-mail respondent'
-      @errorsFor 'respondentEmail'
+      @renderErrorsFor 'respondentEmail'
       input \
         merge requesterEmail,
               type: 'text'
               placeholder: 'uw e-mail'
-      @errorsFor 'requesterEmail'
+      @renderErrorsFor 'requesterEmail'
       span.small
         'Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
       p
@@ -85,12 +91,31 @@ invitationForm = React.createClass
               label
                 htmlFor: domain.id
                 domain.description
+      @renderErrorsFor 'domainId'
       button
         type: 'submit'
-        disabled: !@valid()
-        "Verstuur uitnodiging"
+        'Verstuur uitnodiging'
+      if triedToSendInvalidForm
+        'Er zitten nog fouten in het formulier'
       if submitting
-        "Wordt verzonden"
+        'Wordt verzonden'
+
+  renderAllErrors: ->
+    [
+      'Vul a.u.b het ontvangerse-mailadres in' unless @fieldIsValid('respondentEmail')
+      'Vul a.u.b uw eigen e-mailadres in' unless @fieldIsValid('requesterEmail')
+      'Kies a.u.b. een domain om op te testen' unless @fieldIsValid('domainId')
+    ].map (error, index) ->
+      div
+        className: 'error'
+        key: "error-#{index}"
+        error
+
+  renderErrorsFor: (fieldName) ->
+    @props.fields[fieldName].touched && @errors()[fieldName] &&
+      span
+        className: 'error'
+        @errors()[fieldName]
 
 @InvitationForm = reduxForm(
   form: 'invitation'
