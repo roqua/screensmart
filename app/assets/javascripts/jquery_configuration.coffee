@@ -1,7 +1,11 @@
-# Normally, jQuery would not accept empty responses on a JSON post,
+# Without this data filter, jQuery would not accept empty responses on a JSON post,
 # which would force the server to send a meaningless message(e.g. { status: 'ok' })
-# when all that is needed is a "201 CREATED" status code
+# when all that is needed is a 201 "created" HTTP status
 # from https://github.com/django-tastypie/django-tastypie/issues/886#issuecomment-29858414
+$.ajaxSetup
+  dataFilter: (data, type) ->
+    data = null if type == 'json' && data == ''
+    data
 
 # Global jQuery configuration
 $.ajaxSetup
@@ -10,11 +14,8 @@ $.ajaxSetup
   contentType: 'application/json'
   dataType: 'json'
 
-$.ajaxSetup
-  dataFilter: (data, type) ->
-    data = null if type == 'json' && data == ''
-    data
 
+# Shorthand for our standard way of submitting data through jQuery
 $.postJSON = (url, data, args = {}) ->
   $.ajax
     url: url
@@ -22,8 +23,8 @@ $.postJSON = (url, data, args = {}) ->
     data: JSON.stringify data
     args...
 
+# Global shorthands for frequently used jQuery methods
 window.merge = (objects...) ->
   $.extend {}, objects...
-
 window.deepCopy = (originalObject, into = {}) ->
   $.extend(true, into, originalObject)
