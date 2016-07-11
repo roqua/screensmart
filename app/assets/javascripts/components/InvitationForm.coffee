@@ -67,34 +67,17 @@ invitationForm = React.createClass
               className: if triedToSendInvalidForm && ! @fieldIsValid('respondentEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'e-mail respondent'
-      @renderErrorFor 'respondentEmail'
+              size: '40'
+      @renderErrorFor 'requesterEmail'
       input \
         merge requesterEmail,
               className: if triedToSendInvalidForm && !@fieldIsValid('requesterEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'uw e-mail'
-      @renderErrorFor 'requesterEmail'
-      span.small
-        'Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
-      p
-        className: ''
-        'Kies een domein om op te testen'
-      input
-        ul
-          className: 'domains'
-          domains.map (domain) ->
-            li
-              key: domain.id
-              className: 'domain'
-              input \
-                merge domainId,
-                      type: 'radio'
-                      name: 'domain'
-                      id: domain.id
-                      value: domain.id
-              label
-                htmlFor: domain.id
-                domain.description
+              size: '40'
+      span
+        className: 'small'
+        '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
       @renderErrorFor 'domainId'
       button
         type: 'submit'
