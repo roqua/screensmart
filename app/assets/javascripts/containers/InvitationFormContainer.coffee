@@ -1,3 +1,5 @@
 @InvitationFormContainer = ReactRedux.connect(
-  (state) -> state.slice 'domains', 'invitation'
+  (state) ->
+    invitation: state.invitation
+    domains: state.domains
 )(InvitationForm)
