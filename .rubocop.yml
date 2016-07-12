@@ -3,6 +3,7 @@ AllCops:
     # Exclude generated or external code
     - bin/**/*
     - vendor/**/*
+    - db/schema.rb
 
 Metrics/LineLength:
   Max: 120
