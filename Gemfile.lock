@@ -195,6 +195,7 @@ GEM
       yajl-ruby (~> 1.2, >= 1.2.0)
     parser (2.3.0.6)
       ast (~> 2.2)
+    pg (0.18.4)
     pkg-config (1.1.7)
     poltergeist (1.9.0)
       capybara (~> 2.1)
@@ -359,6 +360,7 @@ DEPENDENCIES
   jquery-rails
   neat (~> 1.7.3)
   opencpu (~> 0.10.0)
+  pg (~> 0.18.4)
   poltergeist (~> 1.9.0)
   puma
   rack-haproxy_status (~> 0.8.1)
