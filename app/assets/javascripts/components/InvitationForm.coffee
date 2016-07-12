@@ -82,19 +82,19 @@ invitationForm = React.createClass
       div
         className: 'sent-form-info'
         if triedToSendInvalidForm
-          span
+          div
             className: 'warning'
             i
               className: 'fa fa-exclamation-circle'
             'Controleer het formulier'
         if submitting
-          span
+          div
             className: 'submitting'
             i
               className: 'fa fa-hourglass-half'
             'Wordt verzonden'
         if invitation.sent
-          span
+          div
             className: 'sent'
             i
               className: 'fa fa-check-circle'
