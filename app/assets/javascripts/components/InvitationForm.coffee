@@ -44,7 +44,6 @@ invitationForm = React.createClass
               className: if triedToSendInvalidForm && ! @fieldIsValid('respondentEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'e-mail respondent'
-              size: '40'
       @renderErrorFor 'requesterEmail'
 
       input \
@@ -52,7 +51,6 @@ invitationForm = React.createClass
               className: if triedToSendInvalidForm && !@fieldIsValid('requesterEmail') then 'invalid' else ''
               type: 'text'
               placeholder: 'uw e-mail'
-              size: '40'
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
