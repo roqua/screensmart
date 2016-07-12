@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20160712143827) do
   create_table "events", force: :cascade do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "response_uuid"
+    t.uuid     "response_uuid"
     t.text     "type"
     t.json     "data"
   end
