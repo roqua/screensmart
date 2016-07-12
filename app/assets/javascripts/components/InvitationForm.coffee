@@ -5,48 +5,37 @@
 invitationForm = React.createClass
   displayName: 'InvitationForm'
 
-  mixins: [ValidationHelpers]
-
-  getInitialState: ->
-    {}
-
   componentWillMount: ->
     { dispatch } = Screensmart.store
     dispatch Screensmart.Actions.fetchDomains()
 
-  # field-specific validators called by ValidationHelpers when you use @errorFor('respondentEmail')
-  respondentEmailError: (value) ->
-    'Vul een geldig e-mailadres in' unless emailValid(value)
-
-  requesterEmailError: (value) ->
-    'Vul een geldig e-mailadres in' unless emailValid(value)
-
-  domainIdError: (value) ->
-    'Kies een domein' unless !!value
+  submit: (enteredValues) ->
+    { dispatch } = Screensmart.store
+    dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
 
   render: ->
     { fields: { respondentEmail, requesterEmail, domainId },
       handleSubmit,
       submitting,
       domains,
-      invitation } = @props
-    { triedToSendInvalidForm } = @state
+      invitation,
+      submitFailed } = @props
 
     form
       className: 'invitation-form'
-      onSubmit: @props.handleSubmit(@submit)
+      onSubmit: handleSubmit(@submit)
 
       @renderErrorFor 'respondentEmail'
       input \
         merge respondentEmail,
-              className: if triedToSendInvalidForm && ! @fieldIsValid('respondentEmail') then 'invalid' else ''
+              className: if @shouldShowErrorFor 'respondentEmail' then 'invalid' else ''
               type: 'text'
               placeholder: 'e-mail respondent'
       @renderErrorFor 'requesterEmail'
 
       input \
         merge requesterEmail,
-              className: if triedToSendInvalidForm && !@fieldIsValid('requesterEmail') then 'invalid' else ''
+              className: if @shouldShowErrorFor 'requesterEmail' then 'invalid' else ''
               type: 'text'
               placeholder: 'uw e-mail'
       span
@@ -56,7 +45,7 @@ invitationForm = React.createClass
       @renderErrorFor 'domainId'
       div
         className:
-          if triedToSendInvalidForm && !@fieldIsValid('domainId') then 'domain-wrapper invalid'
+          if @shouldShowErrorFor 'domainId' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
           'Kies een domein om op te testen'
@@ -81,7 +70,7 @@ invitationForm = React.createClass
         'Verstuur uitnodiging'
       div
         className: 'sent-form-info'
-        if triedToSendInvalidForm
+        if submitFailed
           div
             className: 'warning'
             i
@@ -101,13 +90,26 @@ invitationForm = React.createClass
             'De uitnodiging is verzonden'
 
   renderErrorFor: (fieldName) ->
-    error = @errorFor fieldName
-    @props.fields[fieldName].touched && error &&
+    if @shouldShowErrorFor fieldName
       span
         className: 'error'
-        error
+        @errorFor fieldName
+
+  errorFor: (fieldName) ->
+    @props.fields[fieldName].error
+
+  shouldShowErrorFor: (fieldName) ->
+    (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
+
+validate = (values) ->
+  errors = {}
+  errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.respondentEmail)
+  errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.requesterEmail)
+  errors.domainId = 'Kies een domein' unless !!values.domainId
+  errors
 
 @InvitationForm = reduxForm(
   form: 'invitation'
   fields: ['respondentEmail', 'requesterEmail', 'domainId']
+  validate: validate
 )(invitationForm)
