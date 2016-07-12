@@ -32,8 +32,6 @@ invitationForm = React.createClass
       invitation } = @props
     { triedToSendInvalidForm } = @state
 
-    errors = @errors()
-
     form
       className: 'invitation-form'
       onSubmit: @props.handleSubmit(@submit)
@@ -57,7 +55,9 @@ invitationForm = React.createClass
 
       @renderErrorFor 'domainId'
       div
-        className: if triedToSendInvalidForm && !@fieldIsValid('domainId') then 'domain-wrapper invalid' else 'domain-wrapper'
+        className:
+          if triedToSendInvalidForm && !@fieldIsValid('domainId') then 'domain-wrapper invalid'
+          else 'domain-wrapper'
         p
           'Kies een domein om op te testen'
         input
