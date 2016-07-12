@@ -3,6 +3,7 @@
 //
 //= require jquery
 //= require jquery_configuration
+//= require global_helpers
 //= require appsignal
 //= require error_handler
 //= require email-validator
