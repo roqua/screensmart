@@ -9,6 +9,10 @@ describe SendInvite do
         Events::InviteSent.count
       }.by(1)
     end
+
+    it 'sets a uuid' do
+      expect(subject.response_uuid).to be
+    end
   end
 
   context 'with invalid parameters' do

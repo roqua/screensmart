@@ -13,6 +13,7 @@ class SendInvite < ActiveInteraction::Base
       requester_email: requester_email,
       domains: domains
     )
+    # TODO: Send email(s)
   end
 
   private
