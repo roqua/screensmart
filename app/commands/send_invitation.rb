@@ -1,4 +1,4 @@
-class SendInvite < ActiveInteraction::Base
+class SendInvitation < ActiveInteraction::Base
   string :requester_email
   array :domains do
     string
@@ -8,7 +8,7 @@ class SendInvite < ActiveInteraction::Base
   validate :validate_domains_defined_by_r_package
 
   def execute
-    Events::InviteSent.create!(
+    Events::InvitationSent.create!(
       response_uuid: SecureRandom.uuid,
       requester_email: requester_email,
       domains: domains
