@@ -78,7 +78,7 @@ and see all the steps someone took to finish their response.
 
 Because of this, Screensmart uses [Event Sourcing](http://docs.geteventstore.com/introduction/event-sourcing-basics/)
 to model responses. Every Response has a unique UUID, which can have various events happen to it:
-- `invite_sent`: a doctor requested that someone makes a response for a given domain and an e-mail is sent
+- `invitation_sent`: a doctor requested that someone makes a response for a given domain and an e-mail is sent
 - `response_started`: the respondent opened the invitation link in the e-mail
 - `answer_set`: the respondent set (created or changed) their answer to a given question
 
