@@ -1,5 +1,5 @@
 module Events
-  class InviteSent < Event
+  class InvitationSent < Event
     jsonb_accessor(
       :data,
       requester_email: :string,

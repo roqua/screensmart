@@ -1,7 +1,10 @@
 class InvitationsController < ApplicationController
   def create
-    # TODO: Commands::SendInvitation.run!
-    #       (actually send the invitation and save the event)
-    head :created
+    outcome = SendInvitation.run(params)
+    if outcome.valid?
+      head :created
+    else
+      head :bad_request
+    end
   end
 end
