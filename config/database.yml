@@ -13,7 +13,7 @@ test:
 
 staging: &staging
   <<: *default
-  database: <%= ENV['SCREENSMART_DATABASE_HOST'] || "screensmart_#{ENV['RAILS_ENV']}" %>
+  database: <%= ENV['SCREENSMART_DATABASE_NAME'] || "screensmart_#{ENV['RAILS_ENV']}" %>
   host: <%= ENV['SCREENSMART_DATABASE_HOST'] %>
   port: <%= ENV['SCREENSMART_DATABASE_PORT'] %>
   username: <%= ENV['SCREENSMART_DATABASE_USERNAME'] %>
