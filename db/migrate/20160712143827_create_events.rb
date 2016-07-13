@@ -4,7 +4,7 @@ class CreateEvents < ActiveRecord::Migration
       t.timestamps
       t.uuid :response_uuid
       t.text :type
-      t.json :data
+      t.jsonb :data
     end
   end
 end
