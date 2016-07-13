@@ -24,6 +24,8 @@ gem 'font-awesome-rails'
 gem 'react-rails', '~> 1.7.1'
 
 gem 'opencpu', '~> 0.10.0'
+gem 'active_interaction', '~> 3.0'
+gem 'jsonb_accessor'
 
 gem 'dotenv-rails'
 

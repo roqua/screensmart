@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20160712143827) do
     t.datetime "updated_at"
     t.uuid     "response_uuid"
     t.text     "type"
-    t.json     "data"
+    t.jsonb    "data"
   end
 
 end
