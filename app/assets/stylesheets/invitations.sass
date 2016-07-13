@@ -1,12 +1,9 @@
 .invitation-form
-  margin-top: $screensmart-font-size
   background-color: $form-background-color
   border: 3px solid $form-border-color
   border-radius: $form-border-radius
   padding: $form-padding
   margin: $form-margin
-  color: $application-text-color
-  opacity: 1
   input[type="text"]
     width: 100%
     padding: 10px
@@ -51,10 +48,9 @@
     font-style: italic
     color: darken($screensmart-red, 23%)
     &:before
-      font-family: FontAwesome
-      content: '\f06a'
+      @extend .fa
+      @extend .fa-exclamation-circle:before
       padding-right: 10px
-      font-style: normal
 
   .sent-form-info
     display: inline-block
