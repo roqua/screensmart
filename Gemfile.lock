@@ -196,6 +196,8 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    olive_branch (1.1.0)
+      rails (>= 4.0)
     opencpu (0.10.0)
       httmultiparty (~> 0.3.16)
       yajl-ruby (~> 1.2, >= 1.2.0)
@@ -371,6 +373,7 @@ DEPENDENCIES
   jquery-rails
   jsonb_accessor
   neat (~> 1.7.3)
+  olive_branch (~> 1.1.0)
   opencpu (~> 0.10.0)
   pg (~> 0.18.4)
   poltergeist (~> 1.9.0)

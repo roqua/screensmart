@@ -32,6 +32,8 @@ gem 'dotenv-rails'
 
 gem 'puma'
 
+gem 'olive_branch', '~> 1.1.0'
+
 group :development, :test do
   gem 'byebug'
   gem 'awesome_print', '~> 1.6'

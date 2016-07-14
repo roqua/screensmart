@@ -8,5 +8,6 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
+    config.middleware.use 'OliveBranch::Middleware'
   end
 end
