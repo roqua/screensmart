@@ -39,6 +39,9 @@ Screensmart.reducers = Redux.combineReducers
       when 'RESET_QUESTIONS'
         merge response,
               questions: defaultResponse.questions
+      when 'SET_RESPONSE_UUID'
+        merge response,
+              uuid: action.uuid
       when 'SET_DOMAIN_IDS'
         merge response,
               domain_ids: action.domainIds

@@ -1,32 +1,17 @@
 describe ResponsesController do
-  describe '#create' do
-    before :each do
-      post :create, format: :json, response: response_params
-    end
+  let(:model) { Response.find('c8d56681-03be-495e-a78d-472c84098e75') }
 
-    context 'with no answers' do
-      let(:response_params) { { questions: [], domain_ids: ['POS-PQ'] } }
+  before do
+    Events::InvitationSent.create! response_uuid: model.uuid,
+                                   requester_email: 'some@doctor.dev',
+                                   domain_ids: ['POS-PQ']
+  end
 
-      it 'includes the first question' do
-        expect(assigns(:response).next_question.id).to eq 'EL02'
-      end
-    end
+  describe '#show' do
+    it 'renders the entire model as JSON' do
+      get :show, uuid: model.uuid
 
-    context 'with answers and a domain' do
-      let(:response_params) { { questions: [{ 'id' => 'EL02', 'answer_value' => 2 }], domain_ids: ['POS-PQ'] } }
-
-      it 'includes the next question' do
-        expect(assigns(:response).next_question.id).to eq 'EL03'
-      end
-    end
-
-    context 'with wrongly formatted answer' do
-      let(:response_params) { { questions: [{ 'id' => 'EL02' }] } }
-
-      it 'returns 422' do
-        expect(assigns(:response)).to be_nil
-        expect(response.status).to eq 422
-      end
+      expect(response.body).to eq ResponseSerializer.new(model).as_json.to_json
     end
   end
 end

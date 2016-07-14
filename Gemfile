@@ -52,6 +52,8 @@ group :development do
 end
 
 group :test do
+  gem 'database_cleaner'
+
   gem 'rubocop'
   gem 'coffeelint'
   gem 'rspec-rails', '~> 3.4.2'

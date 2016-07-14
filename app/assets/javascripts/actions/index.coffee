@@ -23,25 +23,29 @@ Screensmart.Actions =
   setAnswer: (id, value) ->
     (dispatch) =>
       dispatch @_setAnswer(id, value)
-      dispatch @updateResponse()
+      dispatch @postAnswer(id, value)
 
   _setAnswer: (id, value) ->
     type: 'SET_ANSWER'
     id: id
     value: value
 
-  updateResponse: ->
+  postAnswer: (questionId, answerValue) ->
     (dispatch, getState) =>
       response = getState().response
       dispatch @startResponseUpdate()
-      $.postJSON('/responses', response).then (data) =>
+      $.postJSON('/answers', {response_uuid: response.uuid, question_id: questionId, answer_value: answerValue}).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
   setDomainIds: (domainIds) ->
     (dispatch, getState) =>
       dispatch @_setDomainIds(domainIds)
       dispatch @resetQuestions()
-      dispatch @updateResponse()
+      dispatch @postAnswer()
+
+  setResponseUUID: (responseUUID) ->
+    type: 'SET_RESPONSE_UUID'
+    uuid: responseUUID
 
   resetQuestions: ->
     type: 'RESET_QUESTIONS'

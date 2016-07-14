@@ -3,6 +3,7 @@ require 'rspec/rails'
 require 'rspec/collection_matchers'
 require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
+require 'database_cleaner'
 require 'vcr'
 require 'opencpu'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
@@ -23,4 +24,12 @@ RSpec.configure do |config|
   mock_all_calls_to_r
 
   Capybara.default_driver = :poltergeist
+
+  config.before(:suite) do
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
 end
