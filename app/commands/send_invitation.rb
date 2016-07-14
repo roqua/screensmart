@@ -5,6 +5,7 @@ class SendInvitation < ActiveInteraction::Base
   end
 
   validates :requester_email, presence: true, email: true
+  validates :domains, presence: true
   validate :validate_domains_defined_by_r_package
 
   def execute
