@@ -30,6 +30,11 @@ describe SendInvitation do
         params[:domains] = ['whatever']
         expect(subject).to have(1).errors_on(:domains)
       end
+
+      it 'has an error on empty domains' do
+        params[:domains] = []
+        expect(subject).to have(1).errors_on(:domains)
+      end
     end
   end
 end
