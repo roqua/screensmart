@@ -5,14 +5,14 @@ describe SetAnswer do
     Events::InvitationSent.create!(
       response_uuid: response_uuid,
       requester_email: 'behandelaar@example.com',
-      domains: ['POS-PQ']
+      domain_ids: ['POS-PQ']
     )
   end
 
   let(:params) do
     {
       response_uuid: response_uuid,
-      question_key: 'EL02',
+      question_id: 'EL02',
       answer_value: 1
     }
   end
@@ -37,15 +37,15 @@ describe SetAnswer do
       end
     end
 
-    context 'question_key is invalid' do
-      it 'has an error on question_key when empty' do
-        params[:question_key] = ''
-        expect(subject).to have(2).errors_on(:question_key)
+    context 'question_id is invalid' do
+      it 'has an error on question_id when empty' do
+        params[:question_id] = ''
+        expect(subject).to have(2).errors_on(:question_id)
       end
 
-      it 'has an error on question_key when key is unknown' do
-        params[:question_key] = 'BOGUS'
-        expect(subject).to have(1).errors_on(:question_key)
+      it 'has an error on question_id when key is unknown' do
+        params[:question_id] = 'BOGUS'
+        expect(subject).to have(1).errors_on(:question_id)
       end
     end
 

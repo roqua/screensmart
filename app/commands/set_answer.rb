@@ -1,9 +1,9 @@
 class SetAnswer < ActiveInteraction::Base
   string :response_uuid
-  string :question_key
+  string :question_id
   integer :answer_value
 
-  validates :response_uuid, :question_key, :answer_value, presence: true
+  validates :response_uuid, :question_id, :answer_value, presence: true
   validate :validate_response_uuid_is_found
   validate :validate_question_id_defined_by_r_package
   validate :validate_answer_value_included_in_answer_options
@@ -11,7 +11,7 @@ class SetAnswer < ActiveInteraction::Base
   def execute
     Events::AnswerSet.create!(
       response_uuid: response_uuid,
-      question_key: question_key,
+      question_id: question_id,
       answer_value: answer_value
     )
   end
@@ -22,12 +22,12 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_question_id_defined_by_r_package
-    return unless RPackage.question_by_id(question_key).nil?
-    errors.add(:question_key, 'is unknown')
+    return unless RPackage.question_by_id(question_id).nil?
+    errors.add(:question_id, 'is unknown')
   end
 
   def validate_answer_value_included_in_answer_options
-    question = RPackage.question_by_id(question_key)
+    question = RPackage.question_by_id(question_id)
     if question
       answer_option_ids = question['answer_options'].map { |o| o['id'] }
       return if answer_option_ids.include?(answer_value)

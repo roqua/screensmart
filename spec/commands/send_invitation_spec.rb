@@ -1,5 +1,5 @@
 describe SendInvitation do
-  let(:params) { { requester_email: 'behandelaar@example.com', domains: ['POS-PQ'] } }
+  let(:params) { { requester_email: 'behandelaar@example.com', domain_ids: ['POS-PQ'] } }
 
   context 'with valid parameters' do
     subject { described_class.run!(params) }
@@ -27,13 +27,13 @@ describe SendInvitation do
 
     context 'domain is invalid' do
       it 'has an error on domain' do
-        params[:domains] = ['whatever']
-        expect(subject).to have(1).errors_on(:domains)
+        params[:domain_ids] = ['whatever']
+        expect(subject).to have(1).errors_on(:domain_ids)
       end
 
-      it 'has an error on empty domains' do
-        params[:domains] = []
-        expect(subject).to have(1).errors_on(:domains)
+      it 'has an error on empty domain_ids' do
+        params[:domain_ids] = []
+        expect(subject).to have(1).errors_on(:domain_ids)
       end
     end
   end

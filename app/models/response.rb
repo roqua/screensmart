@@ -7,9 +7,7 @@
 #   # => [#<Question:0x007faadb3459a8 @id="EL02", @answer_value: 1>,
 #         #<Question:0x007faadb2d49d8 @id="EL03">]
 class Response < BaseModel
-  attr_accessor :answer_values, :domain_ids
-
-  validates_with ResponseValidator
+  attr_accessor :uuid
 
   # accessors for attributes defined by R package
   %i( next_question_id estimate variance done ).each do |r_attribute|
@@ -20,10 +18,8 @@ class Response < BaseModel
     end
   end
 
-  def initialize(attributes = {})
-    super
-    self.answer_values ||= {}
-    self.domain_ids ||= []
+  def domain_ids
+    Events::InvitationSent.find_by!(response_uuid: uuid).domain_ids
   end
 
   def questions
@@ -40,7 +36,15 @@ class Response < BaseModel
     end
   end
 
+  def answer_values
+    Events::AnswerSet.last_answers_for(uuid)
+  end
+
   def next_question
     Question.new id: next_question_id unless done
+  end
+
+  def self.find(uuid)
+    new uuid: uuid
   end
 end

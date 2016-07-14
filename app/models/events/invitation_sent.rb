@@ -3,7 +3,7 @@ module Events
     jsonb_accessor(
       :data,
       requester_email: :string,
-      domains: :string_array
+      domain_ids: :string_array
     )
   end
 end

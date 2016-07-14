@@ -1,29 +1,29 @@
 class SendInvitation < ActiveInteraction::Base
   string :requester_email
-  array :domains do
+  array :domain_ids do
     string
   end
 
   validates :requester_email, presence: true, email: true
-  validates :domains, presence: true
-  validate :validate_domains_defined_by_r_package
+  validates :domain_ids, presence: true
+  validate :validate_domain_ids_defined_by_r_package
 
   def execute
     Events::InvitationSent.create!(
       response_uuid: SecureRandom.uuid,
       requester_email: requester_email,
-      domains: domains
+      domain_ids: domain_ids
     )
     # TODO: Send email(s)
   end
 
   private
 
-  def validate_domains_defined_by_r_package
-    return if domains.empty?
-    domains_not_found = domains - RPackage.domain_ids
-    domains_not_found.each do |domain_not_found|
-      errors.add(:domains, "#{domain_not_found} is not a valid domain")
+  def validate_domain_ids_defined_by_r_package
+    return if domain_ids.empty?
+    domain_ids_not_found = domain_ids - RPackage.domain_ids
+    domain_ids_not_found.each do |domain_not_found|
+      errors.add(:domain_ids, "#{domain_not_found} is not a valid domain")
     end
   end
 end
