@@ -6,8 +6,4 @@
   render: ->
     div
       className: 'feed'
-      @props.children.map (child) ->
-        div
-          key: child.key
-          className: 'item'
-          child
+      @props.children
