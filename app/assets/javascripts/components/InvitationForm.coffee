@@ -109,7 +109,7 @@ validate = (values) ->
   errors = {}
   errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.respondentEmail)
   errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.requesterEmail)
-  errors.domainId = 'Kies een domein' unless !!values.domainIds
+  errors.domainIds = 'Kies een domein' unless !!values.domainIds
   errors
 
 @InvitationForm = reduxForm(
