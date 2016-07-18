@@ -20,7 +20,7 @@
     className
 
   render: ->
-    {text, intro, answer_option_set, answer_value} = @props.question
+    {text, intro, answerOptionSet, answerValue} = @props.question
     questionId = @props.question.id
 
     div
@@ -35,9 +35,9 @@
         className: 'text'
         text
       ul
-        className: "options answer-option-set-#{answer_option_set.id}"
-        answer_option_set.answer_options.map (answer_option) =>
-          key = "question_#{questionId}_answer_#{answer_option.id}"
+        className: "options answer-option-set-#{answerOptionSet.id}"
+        answerOptionSet.answerOptions.map (answerOption) =>
+          key = "question_#{questionId}_answer_#{answerOption.id}"
           li
             className: 'option'
             key: key
@@ -45,10 +45,10 @@
               type: 'radio'
               name: questionId
               id: key
-              value: answer_option.id
+              value: answerOption.id
               onChange: @onOptionClick
-              checked: answer_value == answer_option.id
+              checked: answerValue == answerOption.id
             label
               className: 'text'
               htmlFor: key
-              answer_option.text
+              answerOption.text

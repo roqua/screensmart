@@ -40,7 +40,7 @@ Screensmart.Actions =
     (dispatch, getState) =>
       response = getState().response
       dispatch @startResponseUpdate()
-      $.postJSON('/answers', {response_uuid: response.uuid, question_id: questionId, answer_value: answerValue}).then (data) =>
+      $.postJSON('/answers', {responseUuid: response.uuid, questionId: questionId, answerValue: answerValue}).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
 

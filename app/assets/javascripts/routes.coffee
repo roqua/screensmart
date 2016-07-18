@@ -11,7 +11,7 @@ setResponseUUIDBasedOnQuery = (query) ->
 Screensmart.routes =
   [
     createFactory(Route)
-      path: '/fill_out'
+      path: '/fillOut'
       component: createFactory(FeedContainer)
       onEnter: (nextState) ->
         query = nextState.location.query
