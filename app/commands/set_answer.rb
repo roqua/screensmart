@@ -9,11 +9,9 @@ class SetAnswer < ActiveInteraction::Base
   validate :validate_answer_value_included_in_answer_options
 
   def execute
-    Events::AnswerSet.create!(
-      response_uuid: response_uuid,
-      question_id: question_id,
-      answer_value: answer_value
-    )
+    Events::AnswerSet.create! response_uuid: response_uuid,
+                              question_id: question_id,
+                              answer_value: answer_value
   end
 
   def validate_response_uuid_is_found
@@ -27,7 +25,7 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_answer_value_included_in_answer_options
-    # Validation is meaningless without a valid question
+    # Answer values validity depends on a valid question
     return if errors[:question_id].present?
 
     return if question.answer_option_ids.include?(answer_value)
