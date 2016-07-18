@@ -9,11 +9,9 @@ class SendInvitation < ActiveInteraction::Base
   validate :validate_domain_ids_defined_by_r_package
 
   def execute
-    Events::InvitationSent.create!(
-      response_uuid: SecureRandom.uuid,
-      requester_email: requester_email,
-      domain_ids: domain_ids
-    )
+    Events::InvitationSent.create! response_uuid: SecureRandom.uuid,
+                                   requester_email: requester_email,
+                                   domain_ids: domain_ids
     # TODO: Send email(s)
   end
 
