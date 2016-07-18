@@ -6,7 +6,7 @@ mapStateToProps = (state) ->
     response: state.response,
     onAnswerChange: onAnswerChange
   ).getReactComponents()
-  responseUuid: state.response.uuid
+  responseUUID: state.response.uuid
 
 @FeedContainer = ReactRedux.connect(
   mapStateToProps
