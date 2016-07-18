@@ -20,7 +20,7 @@
     className
 
   render: ->
-    {text, intro, answer_option_set} = @props.question
+    {text, intro, answer_option_set, answer_value} = @props.question
     questionId = @props.question.id
 
     div
@@ -46,7 +46,8 @@
               name: questionId
               id: key
               value: answer_option.id
-              onClick: @onOptionClick
+              onChange: @onOptionClick
+              checked: answer_value == answer_option.id
             label
               className: 'text'
               htmlFor: key

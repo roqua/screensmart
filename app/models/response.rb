@@ -37,7 +37,7 @@ class Response < BaseModel
   end
 
   def answer_values
-    Events::AnswerSet.last_answers_for(uuid)
+    Events::AnswerSet.answer_values_for(uuid)
   end
 
   def next_question

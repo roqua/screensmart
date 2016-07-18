@@ -7,7 +7,7 @@ describe AnswersController do
                                      domain_ids: ['POS-PQ']
     end
 
-    subject { post :create, { format: :json }.merge(params) }
+    subject { post :create, params }
 
     context 'with valid params' do
       let(:params) do

@@ -4,7 +4,7 @@
   displayName: 'FeedView'
 
   componentWillMount: ->
-    Screensmart.store.dispatch Screensmart.Actions.updateResponse()
+    Screensmart.store.dispatch Screensmart.Actions.fetchInitialResponse(@props.response_uuid)
 
   render: ->
     div

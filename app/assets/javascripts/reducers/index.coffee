@@ -17,13 +17,6 @@ Screensmart.reducers = Redux.combineReducers
       else
         invitation
 
-  domains: (domains = [], action) ->
-    switch action.type
-      when 'RECEIVE_DOMAINS'
-        action.domains
-      else
-        domains
-
   messages: (messages = [], action) ->
     switch action.type
       when 'ADD_MESSAGE'
