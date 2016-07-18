@@ -22,13 +22,13 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_question_id_exists
-    return if question
+    return if RPackage.question_by_id(question_id)
     errors.add(:question_id, 'is unknown')
   end
 
   def validate_answer_value_included_in_answer_options
     if question
-      answer_option_ids = question['answer_options'].map { |o| o['id'] }
+      answer_option_ids = question.answer_options.map { |o| o['id'] }
       return if answer_option_ids.include?(answer_value)
       errors.add(:answer_value, 'is not valid for this question')
     else

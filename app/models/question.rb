@@ -5,10 +5,10 @@ class Question < BaseModel
                               message: '`%{value}` not found'
 
   # accessors for attributes defined by R package
-  %w( text intro ).each do |r_attribute|
+  %w( text intro answer_options ).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.question_by_id(id)[r_attribute]
+        data_from_r[r_attribute]
       end
     end
   end
@@ -16,7 +16,7 @@ class Question < BaseModel
   def answer_option_set
     AnswerOptionSet.new(
       id: data_from_r['answer_option_set_id'],
-      answer_options: data_from_r['answer_options'].map do |attributes|
+      answer_options: answer_options.map do |attributes|
         AnswerOption.new(attributes)
       end
     )
@@ -31,6 +31,6 @@ class Question < BaseModel
   end
 
   def self.find(id)
-    RPackage.question_ids.detect { |question| question['id'] == id }
+    new id: id
   end
 end

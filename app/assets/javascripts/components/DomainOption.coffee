@@ -9,7 +9,7 @@
       className: 'domain'
       createFactory(Link)
         to:
-          pathname: "/fill_out"
+          pathname: "/fillOut"
           query:
             domainIds: @props.id
         @props.description

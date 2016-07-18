@@ -44,7 +44,7 @@ Screensmart.reducers = Redux.combineReducers
               uuid: action.uuid
       when 'SET_DOMAIN_IDS'
         merge response,
-              domain_ids: action.domainIds
+              domainIds: action.domainIds
       when 'SET_ANSWER'
         merge responseWithDoneFalse \
                 responseWithoutNonFilledOutQuestions \
@@ -69,7 +69,7 @@ responseWithAnswer = (response, id, value) ->
   questions = deepCopy response.questions, []
 
   index = indexOfQuestion(questions, id)
-  questions[index].answer_value = value
+  questions[index].answerValue = value
 
   merge response,
         questions: questions
@@ -91,4 +91,4 @@ responseWithDoneFalse = (response) ->
 responseWithoutNonFilledOutQuestions = (response) ->
   merge response,
         questions: response.questions.filter (question) ->
-          question.answer_value?
+          question.answerValue?

@@ -11,6 +11,8 @@ $.ajaxSetup
 $.ajaxSetup
   headers:
     'X-CSRF-Token': window.csrfToken
+    'X-Key-Inflection': 'camel' # Let server know that we prefer camelCase attribute names
+                                # See https://www.viget.com/articles/introducing-olivebranch
   contentType: 'application/json'
   dataType: 'json'
 
