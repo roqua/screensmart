@@ -4,11 +4,11 @@ describe 'Error reporting' do
     def cause_internal_server_error
       visit '/'
 
-      allow_any_instance_of(ResponsesController).to receive(:create) do |controller|
+      allow_any_instance_of(AnswersController).to receive(:create) do |controller|
         controller.head :internal_server_error
       end
 
-      page.execute_script "$.ajax('/responses', { method: 'POST',
+      page.execute_script "$.ajax('/answers', { method: 'POST',
                                                   async: false
                                                 })"
     end

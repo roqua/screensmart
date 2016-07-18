@@ -4,7 +4,7 @@ describe InvitationsController do
       {
         respondent_email: 'test@example.com',
         requester_email: 'test2@example.com',
-        domains: ['POS-PQ']
+        domain_ids: ['POS-PQ']
       }
     end
 
