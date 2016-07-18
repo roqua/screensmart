@@ -29,4 +29,8 @@ class Question < BaseModel
   def data_from_r
     RPackage.question_by_id(id)
   end
+
+  def self.find(id)
+    RPackage.question_ids.detect { |question| question['id'] == id }
+  end
 end

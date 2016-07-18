@@ -1,9 +1,5 @@
 # Only module that should communicate with screensmart-r.
 module RPackage
-  def self.question_by_id(id)
-    questions.detect { |question| question['id'] == id }
-  end
-
   def self.question_ids
     questions.map { |question| question['id'] }
   end
