@@ -11,10 +11,14 @@ invitationForm = React.createClass
 
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
+
+    # Place domainId value in an array. To be removed in the future when multiple domains
+    # can be chosen.
+    enteredValues.domainIds = [enteredValues.domainIds]
     dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
 
   render: ->
-    { fields: { respondentEmail, requesterEmail, domainId },
+    { fields: { respondentEmail, requesterEmail, domainIds },
       handleSubmit,
       submitting,
       domains,
@@ -42,10 +46,10 @@ invitationForm = React.createClass
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
 
-      @renderErrorFor 'domainId'
+      @renderErrorFor 'domainIds'
       div
         className:
-          if @shouldShowErrorFor 'domainId' then 'domain-wrapper invalid'
+          if @shouldShowErrorFor 'domainIds' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
           'Kies een domein om op te testen'
@@ -57,9 +61,9 @@ invitationForm = React.createClass
                 key: domain.id
                 className: 'domain'
                 input \
-                  merge domainId,
+                  merge domainIds,
                         type: 'radio'
-                        name: 'domain'
+                        name: 'domainIds'
                         id: domain.id
                         value: domain.id
                 label
@@ -105,11 +109,11 @@ validate = (values) ->
   errors = {}
   errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.respondentEmail)
   errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.requesterEmail)
-  errors.domainId = 'Kies een domein' unless !!values.domainId
+  errors.domainId = 'Kies een domein' unless !!values.domainIds
   errors
 
 @InvitationForm = reduxForm(
   form: 'invitation'
-  fields: ['respondentEmail', 'requesterEmail', 'domainId']
+  fields: ['respondentEmail', 'requesterEmail', 'domainIds']
   validate: validate
 )(invitationForm)
