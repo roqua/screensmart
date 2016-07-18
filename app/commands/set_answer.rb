@@ -27,20 +27,14 @@ class SetAnswer < ActiveInteraction::Base
   end
 
   def validate_answer_value_included_in_answer_options
-    if question
-      answer_option_ids = question.answer_options.map { |o| o['id'] }
-      return if answer_option_ids.include?(answer_value)
-      errors.add(:answer_value, 'is not valid for this question')
-    else
-      errors.add(:answer_value, 'is unknown')
-    end
+    # Validation is meaningless without a valid question
+    return if errors[:question_id].present?
+
+    return if question.answer_option_ids.include?(answer_value)
+    errors.add(:answer_value, 'is not valid for this question')
   end
 
   def question
     Question.find(question_id)
-  end
-
-  def domain
-    Events::InvitationSent.find_by(response_uuid: response_uuid).domains.first
   end
 end

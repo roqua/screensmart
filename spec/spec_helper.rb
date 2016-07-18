@@ -16,7 +16,13 @@ RSpec.configure do |config|
 
   config.disable_monkey_patching!
   config.infer_spec_type_from_file_location!
-  config.default_formatter = 'doc' if config.files_to_run.one?
+
+  if config.files_to_run.one?
+    config.default_formatter = 'doc'
+  else
+    SimpleCov.start 'rails'
+  end
+
   config.order = :random
   config.expose_dsl_globally = true
 

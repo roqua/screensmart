@@ -21,3 +21,4 @@
 .env.development
 .byebug_history
 npm-debug.log
+/coverage

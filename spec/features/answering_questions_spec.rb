@@ -16,7 +16,7 @@ describe 'answering questions' do
     invitation_sent = Events::InvitationSent.create! response_uuid: SecureRandom.uuid,
                                                      requester_email: 'some@doctor.dev',
                                                      domain_ids: ['POS-PQ']
-    visit "/fill_out?responseUUID=#{invitation_sent.response_uuid}"
+    visit "/fillOut?responseUUID=#{invitation_sent.response_uuid}"
   end
 
   scenario 'initial intro text and answer text' do
