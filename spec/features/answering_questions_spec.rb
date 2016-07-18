@@ -12,7 +12,12 @@ describe 'answering questions' do
     end
   end
 
-  before { visit '/fill_out?domainIds=POS-PQ' }
+  before do
+    invitation_sent = Events::InvitationSent.create! response_uuid: SecureRandom.uuid,
+                                                     requester_email: 'some@doctor.dev',
+                                                     domain_ids: ['POS-PQ']
+    visit "/fill_out?responseUUID=#{invitation_sent.response_uuid}"
+  end
 
   scenario 'initial intro text and answer text' do
     expect_last_question_to_be 'Vraag 1', 'Geef a.u.b. antwoord voor de afgelopen 7 dagen.'
