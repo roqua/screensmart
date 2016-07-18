@@ -1,10 +1,7 @@
 module Events
   class AnswerSet < Event
-    jsonb_accessor(
-      :data,
-      question_id: :string,
-      answer_value: :integer
-    )
+    event_attributes question_id: :string,
+                     answer_value: :integer
 
     # Key-value pair of answers for a given response UUID
     def self.answer_values_for(response_uuid)
