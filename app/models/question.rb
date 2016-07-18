@@ -22,8 +22,8 @@ class Question < BaseModel
     )
   end
 
-  def answer
-    Answer.new id: id, value: answer_value
+  def answer_option_ids
+    answer_options.map { |answer_option| answer_option['id'] }
   end
 
   def data_from_r
@@ -31,6 +31,7 @@ class Question < BaseModel
   end
 
   def self.find(id)
+    raise "Question #{id} not found" unless RPackage.question_ids.include? id
     new id: id
   end
 end
