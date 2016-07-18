@@ -25,7 +25,7 @@ gem 'react-rails', '~> 1.7.1'
 
 gem 'opencpu', '~> 0.10.0'
 gem 'active_interaction', '~> 3.0'
-gem 'jsonb_accessor'
+gem 'jsonb_accessor', '~> 0.3.2'
 gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails'
