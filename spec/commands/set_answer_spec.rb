@@ -2,11 +2,9 @@ describe SetAnswer do
   let!(:response_uuid) { SecureRandom.uuid }
 
   before do
-    Events::InvitationSent.create!(
-      response_uuid: response_uuid,
-      requester_email: 'behandelaar@example.com',
-      domain_ids: ['POS-PQ']
-    )
+    Events::InvitationSent.create! response_uuid: response_uuid,
+                                   requester_email: 'requester@example.dev',
+                                   domain_ids: ['POS-PQ']
   end
 
   let(:params) do
@@ -21,9 +19,7 @@ describe SetAnswer do
     subject { described_class.run!(params) }
 
     it 'stores AnswerSet event' do
-      expect { subject }.to change{
-        Events::AnswerSet.count
-      }.by(1)
+      expect { subject }.to change { Events::AnswerSet.count }.by 1
     end
   end
 
