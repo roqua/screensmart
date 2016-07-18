@@ -377,7 +377,7 @@ DEPENDENCIES
   guard-rubocop (~> 1.1)
   haml-rails (~> 0.9)
   jquery-rails
-  jsonb_accessor
+  jsonb_accessor (~> 0.3.2)
   neat (~> 1.7.3)
   olive_branch (~> 1.1.0)
   opencpu (~> 0.10.0)
