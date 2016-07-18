@@ -1,6 +1,14 @@
 describe ResponseSerializer do
   subject do
-    response = Response.new(answer_values: { 'EL02' => 2 }, domain_ids: ['POS-PQ'])
+    invitation_sent = Events::InvitationSent.create!(response_uuid: SecureRandom.uuid,
+                                                     requester_email: 'some@doctor.dev',
+                                                     domain_ids: ['POS-PQ'])
+
+    response = Response.find(invitation_sent.response_uuid)
+    Events::AnswerSet.create!(response_uuid: response.uuid,
+                              question_id: 'EL02',
+                              answer_value: 2)
+
     JSON.parse(ResponseSerializer.new(response).to_json)['response']
   end
 

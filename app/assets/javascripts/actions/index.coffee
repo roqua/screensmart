@@ -30,6 +30,12 @@ Screensmart.Actions =
     id: id
     value: value
 
+  fetchInitialResponse: (uuid) ->
+    (dispatch) =>
+      dispatch @startResponseUpdate()
+      $.getJSON("/responses/#{uuid}").then (data) =>
+        dispatch @receiveResponseUpdate(data)
+
   postAnswer: (questionId, answerValue) ->
     (dispatch, getState) =>
       response = getState().response
@@ -37,11 +43,6 @@ Screensmart.Actions =
       $.postJSON('/answers', {response_uuid: response.uuid, question_id: questionId, answer_value: answerValue}).then (data) =>
         dispatch @receiveResponseUpdate(data)
 
-  setDomainIds: (domainIds) ->
-    (dispatch, getState) =>
-      dispatch @_setDomainIds(domainIds)
-      dispatch @resetQuestions()
-      dispatch @postAnswer()
 
   setResponseUUID: (responseUUID) ->
     type: 'SET_RESPONSE_UUID'
@@ -49,10 +50,6 @@ Screensmart.Actions =
 
   resetQuestions: ->
     type: 'RESET_QUESTIONS'
-
-  _setDomainIds: (domainIds) ->
-    type: 'SET_DOMAIN_IDS'
-    domainIds: domainIds
 
   startResponseUpdate: ->
     type: 'START_RESPONSE_UPDATE'

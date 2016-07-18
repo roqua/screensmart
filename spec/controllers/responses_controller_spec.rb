@@ -9,7 +9,7 @@ describe ResponsesController do
 
   describe '#show' do
     it 'renders the entire model as JSON' do
-      get :show, uuid: model.uuid
+      get :show, id: model.uuid
 
       expect(response.body).to eq ResponseSerializer.new(model).as_json.to_json
     end
