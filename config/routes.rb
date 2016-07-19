@@ -10,5 +10,6 @@ Rails.application.routes.draw do
     resources :invitations, only: [:create]
   end
 
+  get '/fillOut' => 'app#index', as: 'fill_out'
   get '*path' => 'app#index' # Handle routing using react-redux-router
 end
