@@ -24,7 +24,7 @@
     "DATABASE_URL": {
       "required": true
     },
-    "MAILGUN_API_KEY": {
+    "MAILGUN_APIKEY": {
       "required": true
     },
     "MAILGUN_DOMAIN": {
