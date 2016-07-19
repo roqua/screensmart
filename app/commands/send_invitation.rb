@@ -1,16 +1,18 @@
 class SendInvitation < ActiveInteraction::Base
   string :requester_email
+  string :respondent_email
   array :domain_ids do
     string
   end
 
-  validates :requester_email, presence: true, email: true
+  validates :requester_email, :requester_email, email: true
   validates :domain_ids, presence: true
   validate :validate_domain_ids_defined_by_r_package
 
   def execute
     response_uuid = SecureRandom.uuid
-    InvitationMailer.invitation_email(to: requester_email,
+    InvitationMailer.invitation_email(from: requester_email,
+                                      to: respondent_email,
                                       response_uuid: response_uuid).deliver_now
     Events::InvitationSent.create! response_uuid: response_uuid,
                                    requester_email: requester_email,

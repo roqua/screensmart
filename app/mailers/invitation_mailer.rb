@@ -2,7 +2,8 @@ class InvitationMailer < ActionMailer::Base
   domain = ENV.fetch('MAILGUN_DOMAIN', 'roqua.nl')
   default from: "noreply@#{domain}"
 
-  def invitation_email(to:, response_uuid:)
+  def invitation_email(from:, to:, response_uuid:)
+    @from = from
     @link = fill_out_path(response_uuid: response_uuid)
 
     mail to: to,

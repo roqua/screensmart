@@ -2,4 +2,13 @@
   %head
     %meta{'http-equiv' => 'Content-type', content: 'text/html; charset=UTF-8'}
       %body
-        Bla
+        %p
+          Uw arts of behandelaar met het e-mailadres
+          = mail_to @from
+          heeft met u afgesproken dat u een vragenlijst gaat invullen. Als dit inderdaad het geval is, klik dan op onderstaande link.
+
+        %p
+          Als dit niet het geval is, kunt u deze e-mail als niet verzonden beschouwen.
+
+        %p
+          = link_to 'Vul de vragenlijst in', @link
