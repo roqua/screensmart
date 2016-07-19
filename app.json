@@ -3,9 +3,6 @@
   "scripts": {
   },
   "env": {
-    "LANG": {
-      "required": true
-    },
     "OPENCPU_PASSWORD": {
       "required": true
     },
