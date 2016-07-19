@@ -1,2 +1,0 @@
-describe InvitationMailer do
-end

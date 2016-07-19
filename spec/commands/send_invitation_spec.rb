@@ -1,6 +1,10 @@
 describe SendInvitation do
   let(:params) { { requester_email: 'requester@example.dev', domain_ids: ['POS-PQ'] } }
 
+  before do
+    allow(InvitationMailer).to receive_message_chain(:invitation_email, :deliver_now)
+  end
+
   context 'with valid parameters' do
     subject { described_class.run!(params) }
 
