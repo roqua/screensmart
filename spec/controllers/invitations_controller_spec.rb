@@ -14,7 +14,7 @@ describe InvitationsController do
         expect(response.status).to eq 201
       end
 
-      it 'creates the invite_sent event' do
+      it 'creates the invitation_sent event' do
         expect { post :create, valid_params }.to change { Events::InvitationSent.count }.by(1)
       end
 
