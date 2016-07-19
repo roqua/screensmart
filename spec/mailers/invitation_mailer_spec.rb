@@ -5,14 +5,14 @@ describe InvitationMailer do
     context 'valid params' do
       let(:params) do
         {
-          from: 'some@doctor.dev',
-          to: 'some@patient.dev',
+          requester_email: 'some@doctor.dev',
+          respondent_email: 'some@patient.dev',
           response_uuid: 'some_uuid'
         }
       end
 
       it 'is sent to the to address' do
-        expect(subject.to).to eq [params[:to]]
+        expect(subject.to).to eq [params[:respondent_email]]
       end
 
       it 'contains a link to fill out the questionnaire' do

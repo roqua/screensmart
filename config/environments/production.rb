@@ -31,5 +31,5 @@ Rails.application.configure do
   heroku_app_path = "https://#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME']
   config.action_mailer.default_url_options = { host: ENV['SCREENSMART_URL'] ||
                                                      heroku_app_path ||
-                                                    "https://screensmart.herokuapp.com" }
+                                                     'https://screensmart.herokuapp.com' }
 end

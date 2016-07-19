@@ -11,9 +11,11 @@ class SendInvitation < ActiveInteraction::Base
 
   def execute
     response_uuid = SecureRandom.uuid
-    InvitationMailer.invitation_email(from: requester_email,
-                                      to: respondent_email,
+
+    InvitationMailer.invitation_email(requester_email: requester_email,
+                                      respondent_email: respondent_email,
                                       response_uuid: response_uuid).deliver_now
+
     Events::InvitationSent.create! response_uuid: response_uuid,
                                    requester_email: requester_email,
                                    domain_ids: domain_ids
