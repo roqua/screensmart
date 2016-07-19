@@ -10,7 +10,7 @@ gem 'rack-haproxy_status', '~> 0.8.1'
 
 gem 'sprockets-rails', '~> 3.0.4'
 
-gem 'appsignal', '~> 0.11.17'
+gem 'appsignal', '~> 1.2.3'
 
 gem 'activeresource'
 
