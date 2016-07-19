@@ -1,1 +1,1 @@
-eval Rails.root.join 'config', 'environments', 'staging.rb'
+require File.expand_path('../staging', __FILE__)

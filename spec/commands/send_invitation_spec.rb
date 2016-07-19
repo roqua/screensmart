@@ -13,6 +13,15 @@ describe SendInvitation do
     it 'sets a uuid' do
       expect(subject.response_uuid).to be
     end
+
+    it 'sends the invitation' do
+      allow(SecureRandom).to receive(:uuid).and_return SecureRandom.uuid # fixed value
+
+      expect(InvitationMailer).to receive(:invitation_email).with to: params[:requester_email],
+                                                                  response_uuid: SecureRandom.uuid
+
+      subject
+    end
   end
 
   context 'with invalid parameters' do
