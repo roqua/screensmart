@@ -1,4 +1,4 @@
-ENV['APPSIGNAL_APP_ENV'] = ENV['HEROKU_APP_NAME'].gsub(/screensmart-?/, '') if ENV['HEROKU_APP_NAME']
+ENV['APPSIGNAL_APP_ENV'] = ENV['HEROKU_APP_NAME'].gsub(/screensmart-pr-?/, '') if ENV['HEROKU_APP_NAME']
 require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
