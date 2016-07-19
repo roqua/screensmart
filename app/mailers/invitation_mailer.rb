@@ -4,7 +4,7 @@ class InvitationMailer < ActionMailer::Base
 
   def invitation_email(from:, to:, response_uuid:)
     @from = from
-    @link = fill_out_path(response_uuid: response_uuid)
+    @link = fill_out_url(responseUUID: response_uuid)
 
     mail to: to,
          subject: 'Verzoek om vragenlijst in te vullen'

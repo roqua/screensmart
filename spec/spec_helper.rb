@@ -32,6 +32,8 @@ RSpec.configure do |config|
 
   Capybara.default_driver = :poltergeist
 
+  Rails.application.routes.default_url_options[:host] = 'test_host'
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end
