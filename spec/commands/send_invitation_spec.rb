@@ -26,8 +26,8 @@ describe SendInvitation do
     it 'sends the invitation' do
       allow(SecureRandom).to receive(:uuid).and_return SecureRandom.uuid # fixed value
 
-      expect(InvitationMailer).to receive(:invitation_email).with from: params[:requester_email],
-                                                                  to: params[:respondent_email],
+      expect(InvitationMailer).to receive(:invitation_email).with requester_email: params[:requester_email],
+                                                                  respondent_email: params[:respondent_email],
                                                                   response_uuid: SecureRandom.uuid
 
       subject
