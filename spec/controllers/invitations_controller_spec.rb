@@ -9,16 +9,20 @@ describe InvitationsController do
     end
 
     context 'with valid params' do
+      subject { post :create, valid_params }
       it 'returns status created' do
-        post :create, valid_params
+        subject
         expect(response.status).to eq 201
       end
 
       it 'creates the invitation_sent event' do
-        expect { post :create, valid_params }.to change { Events::InvitationSent.count }.by(1)
+        expect { subject }.to change { Events::InvitationSent.count }.by(1)
       end
 
-      it 'sends the email'
+      it 'sends the email' do
+        expect(InvitationMailer).to receive(:invitation_email).and_call_original
+        subject
+      end
     end
 
     context 'missing params' do
