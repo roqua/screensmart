@@ -7,7 +7,7 @@ describe InvitationMailer do
         {
           requester_email: 'some@doctor.dev',
           respondent_email: 'some@patient.dev',
-          response_uuid: 'some_uuid'
+          response_uuid: SecureRandom.uuid
         }
       end
 
