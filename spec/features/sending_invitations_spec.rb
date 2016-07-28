@@ -9,7 +9,7 @@ describe 'sending invitations' do
     choose 'Positieve symptomen voor psychose'
   end
 
-  before { visit '/invitations/new' }
+  before { visit '/' }
 
   scenario 'filling out all fields and submitting the form' do
     fill_out_all_fields
