@@ -29,9 +29,6 @@
                 key: 'thanks'
                 'Bedankt voor het invullen'
             ]
-          p
-            key: 'estimate-variance'
-            "Estimate: #{estimate}, variance: #{variance}"
         ]
       else
         [
