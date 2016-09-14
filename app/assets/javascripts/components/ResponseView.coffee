@@ -14,6 +14,10 @@
         React.createElement CreationDate,
           createdAt: response.createdAt
           key: 'creation-date'
+        React.createElement EstimateAndVariance,
+          key: 'estimate-and-variance'
+          estimate: response.estimate
+          variance: response.variance
         React.createElement AnswersTable,
           questions: response.questions
           key: 'outcome'
@@ -28,6 +32,21 @@
     div
       className: 'creation-date'
       "Ingevuld op: #{moment(createdAt).format('dddd D-M-Y H:m')}"
+
+@EstimateAndVariance = React.createClass
+  displayName: 'EstimateAndVariance'
+
+  render: ->
+    { estimate, variance } = @props
+
+    div
+      className: ''
+      div
+        className: 'estimate'
+        "Schatting: #{estimate}"
+      div
+        className: 'variance'
+        "Standaardafwijking: #{variance}"
 
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'
