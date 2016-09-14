@@ -1,4 +1,4 @@
-{ div, table, tbody, tr, td } = React.DOM
+{ div, table, tbody, tr, td, i } = React.DOM
 
 @ResponseView = React.createClass
   displayName: 'ResponseView'
@@ -31,6 +31,8 @@
 
     div
       className: 'creation-date'
+      i
+        className: 'fa fa-clock-o fa-lg'
       "Ingevuld op: #{moment(createdAt).format('dddd D-M-Y H:mm')}"
 
 @EstimateAndVariance = React.createClass
