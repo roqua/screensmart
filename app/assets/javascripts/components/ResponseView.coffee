@@ -11,13 +11,13 @@
     div
       className: 'response'
       [
-        React.createElement CreationDate,
-          createdAt: response.createdAt
-          key: 'creation-date'
         React.createElement EstimateAndVariance,
           key: 'estimate-and-variance'
           estimate: response.estimate
           variance: response.variance
+        React.createElement CreationDate,
+          createdAt: response.createdAt
+          key: 'creation-date'
         React.createElement AnswersTable,
           questions: response.questions
           key: 'outcome'
@@ -42,7 +42,7 @@
     { estimate, variance } = @props
 
     div
-      className: ''
+      className: 'estimate-and-variance'
       div
         className: 'estimate'
         "Schatting: #{estimate}"
