@@ -7,7 +7,7 @@ class InvitationMailer < ApplicationMailer
     noreply_with_requester_name.display_name = requester_name
 
     mail to: respondent_email,
-         from: noreply_with_requester_name,
+         from: noreply_with_requester_name.format,
          subject: 'Verzoek om vragenlijst in te vullen'
   end
 end
