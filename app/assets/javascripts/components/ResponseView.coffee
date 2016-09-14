@@ -31,7 +31,7 @@
 
     div
       className: 'creation-date'
-      "Ingevuld op: #{moment(createdAt).format('dddd D-M-Y H:m')}"
+      "Ingevuld op: #{moment(createdAt).format('dddd D-M-Y H:mm')}"
 
 @EstimateAndVariance = React.createClass
   displayName: 'EstimateAndVariance'
