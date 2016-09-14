@@ -18,7 +18,7 @@ invitationForm = React.createClass
     dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
 
   render: ->
-    { fields: { respondentEmail, requesterEmail, domainIds },
+    { fields: { respondentEmail, requesterName, requesterEmail, domainIds },
       handleSubmit,
       submitting,
       domains,
@@ -35,8 +35,15 @@ invitationForm = React.createClass
               className: if @shouldShowErrorFor 'respondentEmail' then 'invalid' else ''
               type: 'text'
               placeholder: 'e-mail respondent'
-      @renderErrorFor 'requesterEmail'
 
+      @renderErrorFor 'requesterName'
+      input \
+        merge requesterName,
+              className: if @shouldShowErrorFor 'requesterName' then 'invalid' else ''
+              type: 'text'
+              placeholder: 'uw volledige naam'
+
+      @renderErrorFor 'requesterEmail'
       input \
         merge requesterEmail,
               className: if @shouldShowErrorFor 'requesterEmail' then 'invalid' else ''
@@ -107,14 +114,17 @@ invitationForm = React.createClass
     (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
+  { respondentEmail, requesterName, requesterEmail, domainIds } = values
+
   errors = {}
-  errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.respondentEmail)
-  errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(values.requesterEmail)
-  errors.domainIds = 'Kies een domein' unless !!values.domainIds
+  errors.requesterName = 'Vul uw naam in' unless requesterName != ''
+  errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(respondentEmail)
+  errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(requesterEmail)
+  errors.domainIds = 'Kies een domein' unless !!domainIds
   errors
 
 @InvitationForm = reduxForm(
   form: 'invitation'
-  fields: ['respondentEmail', 'requesterEmail', 'domainIds']
+  fields: ['respondentEmail', 'requesterName', 'requesterEmail', 'domainIds']
   validate: validate
 )(invitationForm)

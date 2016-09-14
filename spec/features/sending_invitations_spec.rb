@@ -5,6 +5,7 @@ describe 'sending invitations' do
 
   def fill_out_all_fields
     fill_out_placeholder 'e-mail respondent', 'some@patient.dev'
+    fill_out_placeholder 'uw volledige naam', 'Some Doctor'
     fill_out_placeholder 'uw e-mail', 'some@doctor.dev'
     find('.domain-label', text: 'Positieve symptomen voor psychose').click
   end

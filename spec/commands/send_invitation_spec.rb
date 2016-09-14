@@ -1,6 +1,7 @@
 describe SendInvitation do
   let(:params) do
-    { requester_email: 'requester@example.dev',
+    { requester_name: 'Some Doctor',
+      requester_email: 'requester@example.dev',
       respondent_email: 'patient@example.dev',
       domain_ids: ['POS-PQ']
     }
@@ -26,7 +27,7 @@ describe SendInvitation do
     it 'sends the invitation' do
       allow(SecureRandom).to receive(:uuid).and_return SecureRandom.uuid # fixed value
 
-      expect(InvitationMailer).to receive(:invitation_email).with requester_email: params[:requester_email],
+      expect(InvitationMailer).to receive(:invitation_email).with requester_name: params[:requester_name],
                                                                   respondent_email: params[:respondent_email],
                                                                   invitation_uuid: SecureRandom.uuid
 
@@ -36,6 +37,13 @@ describe SendInvitation do
 
   context 'with invalid parameters' do
     subject { described_class.run(params) }
+
+    context 'requester_name is invalid' do
+      it 'has an error on requester name' do
+        params[:requester_name] = ''
+        expect(subject).to have(1).errors_on(:requester_name)
+      end
+    end
 
     context 'requester_email is invalid' do
       it 'has an error on requester email' do
