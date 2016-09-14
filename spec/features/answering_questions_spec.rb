@@ -25,11 +25,7 @@ describe 'answering questions' do
     click_on 'Afronden'
   end
 
-  let(:invitation_sent) do
-    SendInvitation.run! requester_email: 'some@doctor.dev',
-                        respondent_email: 'some@patient.dev',
-                        domain_ids: ['POS-PQ']
-  end
+  let(:invitation_sent) { Fabricate :invitation_sent }
 
   before { visit fill_out_url }
 

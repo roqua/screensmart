@@ -1,8 +1,6 @@
 describe Response do
+  let(:invitation_sent) { Fabricate :invitation_sent }
   let(:response) do
-    invitation_sent = SendInvitation.run! requester_email: 'some@doctor.dev',
-                                          respondent_email: 'some@patient.dev',
-                                          domain_ids: ['POS-PQ']
     invitation_accepted = AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
     Response.find invitation_accepted.response_uuid
   end

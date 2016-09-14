@@ -5,7 +5,7 @@ describe InvitationMailer do
     context 'valid params' do
       let(:params) do
         {
-          requester_email: 'some@doctor.dev',
+          requester_name: 'Some Doctor',
           respondent_email: 'some@patient.dev',
           invitation_uuid: SecureRandom.uuid
         }

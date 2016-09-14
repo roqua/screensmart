@@ -3,6 +3,7 @@ describe InvitationsController do
     let(:valid_params) do
       {
         respondent_email: 'test@example.com',
+        requester_name: 'Some Doctor',
         requester_email: 'test2@example.com',
         domain_ids: ['POS-PQ']
       }

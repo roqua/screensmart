@@ -1,13 +1,5 @@
 describe ResponseSerializer do
-  let(:invitation_sent) do
-    SendInvitation.run! requester_email: 'some@doctor.dev',
-                        respondent_email: 'some@patient.dev',
-                        domain_ids: ['POS-PQ']
-  end
-
-  let(:invitation_accepted) do
-    AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
-  end
+  let(:invitation_accepted) { Fabricate :invitation_accepted }
 
   subject do
     response = Response.find(invitation_accepted.response_uuid)

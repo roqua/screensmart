@@ -1,11 +1,7 @@
 describe AcceptInvitation do
   subject { described_class.run(params) }
 
-  let(:invitation_sent) do
-    SendInvitation.run! respondent_email: 'some@respondent.dev',
-                        requester_email: 'some@doctor.dev',
-                        domain_ids: ['POS-PQ']
-  end
+  let(:invitation_sent) { Fabricate :invitation_sent }
 
   context 'with valid parameters' do
     let(:params) { { invitation_uuid: invitation_sent.invitation_uuid } }

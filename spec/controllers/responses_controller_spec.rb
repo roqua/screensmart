@@ -1,9 +1,5 @@
 describe ResponsesController do
-  let!(:invitation_sent) do
-    SendInvitation.run! requester_email: 'some@doctor.dev',
-                        respondent_email: 'some@patient.dev',
-                        domain_ids: ['POS-PQ']
-  end
+  let(:invitation_sent) { Fabricate :invitation_sent }
 
   describe '#create' do
     subject { post :create, invitation_uuid: invitation_sent.invitation_uuid }

@@ -1,9 +1,5 @@
 describe Invitation do
-  let!(:invitation_sent) do
-    SendInvitation.run! respondent_email: 'some@respondent.dev',
-                        requester_email: 'some@doctor.dev',
-                        domain_ids: ['POS-PQ']
-  end
+  let(:invitation_sent) { Fabricate :invitation_sent }
 
   let!(:invitation_accepted) do
     AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid

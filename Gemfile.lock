@@ -106,6 +106,7 @@ GEM
     erubis (2.7.0)
     eventmachine (1.0.9.1)
     execjs (2.6.0)
+    fabrication (2.15.2)
     ffi (1.9.10)
     font-awesome-rails (4.5.0.1)
       railties (>= 3.2, < 5.1)
@@ -386,6 +387,7 @@ DEPENDENCIES
   coffeelint
   database_cleaner
   dotenv-rails
+  fabrication (~> 2.15.2)
   font-awesome-rails
   guard (~> 2.13.0)
   guard-bundler
