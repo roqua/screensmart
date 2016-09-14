@@ -46,7 +46,7 @@
         "Schatting: #{estimate}"
       div
         className: 'variance'
-        "Standaardafwijking: #{variance}"
+        "Variantie: #{variance}"
 
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'
