@@ -16,7 +16,7 @@ describe InvitationMailer do
       end
 
       it 'includes the requester name and email in the from field' do
-        expect(subject.header[:from].value).to eq "\"#{params[:requester_name]}\" <noreply@roqua.nl>"
+        expect(subject.header[:from].value).to eq "#{params[:requester_name]} <noreply@roqua.nl>"
       end
 
       it 'contains a link to fill out the questionnaire' do
