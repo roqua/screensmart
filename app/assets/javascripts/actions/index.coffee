@@ -46,8 +46,8 @@ Screensmart.Actions =
     (dispatch) =>
       dispatch @startResponseUpdate()
       $.getJSON("/responses/show?show_secret=#{showSecret}")
-        .then (data) =>
-          dispatch @receiveResponseUpdate(data)
+      .then (data) =>
+        dispatch @receiveResponseUpdate(data)
 
   postAnswer: (questionId, answerValue) ->
     (dispatch, getState) =>
