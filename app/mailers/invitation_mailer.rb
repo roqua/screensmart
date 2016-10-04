@@ -3,11 +3,7 @@ class InvitationMailer < ApplicationMailer
     @requester_name = requester_name
     @link = fill_out_url(invitationUUID: invitation_uuid)
 
-    noreply_with_requester_name = Mail::Address.new self.class.default_params[:from]
-    noreply_with_requester_name.display_name = requester_name
-
     mail to: respondent_email,
-         from: noreply_with_requester_name.format,
-         subject: 'Verzoek om vragenlijst in te vullen'
+         subject: "Verzoek van #{requester_name} om vragenlijst in te vullen"
   end
 end
