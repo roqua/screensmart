@@ -23,7 +23,6 @@ describe 'answering questions' do
     answer_question 3, 'Oneens'
     answer_question 4, 'Oneens'
     expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
-    expect(page).to have_content 'Afronden'
 
     click_on 'Afronden'
   end
@@ -67,7 +66,9 @@ describe 'answering questions' do
 
     visit "/show?showSecret=#{Events::InvitationAccepted.last.show_secret}"
 
-    expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk' # It shows the question title
-    expect(page).to have_content 'Oneens' # It shows the chosen option
+    # It shows the question title
+    expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
+    # It shows the chosen option
+    expect(page).to have_content 'Oneens'
   end
 end
