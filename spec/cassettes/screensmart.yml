@@ -1,5 +1,5 @@
 ---
-https_interactions:
+http_interactions:
 - request:
     method: get
     uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/info
