@@ -14,7 +14,7 @@ def mock_all_calls_to_r
   configure_vcr
   always_use_vcr
 
-  enable_update_mode # uncomment for development, see instructions above
+  # enable_update_mode # uncomment for development, see instructions above
 end
 
 def ensure_endpoint_matches_cassette
@@ -50,8 +50,7 @@ end
 def enable_update_mode
   OpenCPU.configure do |opencpu|
     # change url to own IP if not using docker-machine
-    # opencpu.endpoint_url = "http://#{`docker-machine ip default`.strip}/ocpu"
-    opencpu.endpoint_url = "http://129.125.147.133/ocpu"
+    opencpu.endpoint_url = "http://#{`docker-machine ip default`.strip}/ocpu"
   end
 
   VCR.configure do |vcr|

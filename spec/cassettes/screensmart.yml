@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/info
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/info
     body:
       encoding: US-ASCII
       string: ''
@@ -59,11 +59,11 @@ http_interactions:
         \                   3.1.0), lintr (>= 1.0.0)\nRoxygenNote:        5.0.1\nNeedsCompilation:
         \  no\nPackaged:           2016-11-01 13:52:28 UTC; root\nBuilt:              R
         3.3.1; ; 2016-11-01 13:52:28 UTC; unix\n"
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:02 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[],"domain":["POS-PQ"]}'
@@ -82,7 +82,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x029938cec5/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x029938cec5/
       X-Ocpu-Session:
       - x029938cec5
       Access-Control-Allow-Origin:
@@ -121,11 +121,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:03 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL02":2}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
@@ -144,7 +144,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x044767c9b6/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x044767c9b6/
       X-Ocpu-Session:
       - x044767c9b6
       Access-Control-Allow-Origin:
@@ -187,11 +187,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:04 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/get_itembank_rdata/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/get_itembank_rdata/json
     body:
       encoding: UTF-8
       string: "{}"
@@ -210,7 +210,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x0cc030fa81/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0cc030fa81/
       X-Ocpu-Session:
       - x0cc030fa81
       Access-Control-Allow-Origin:
@@ -2905,11 +2905,11 @@ http_interactions:
         CiAgICAgICJkZXNjcmlwdGlvbiI6ICJFbW90aW9uZWxlIHN0ZXVuIgogICAg
         fSwKICAgIHsKICAgICAgImlkIjogIkRJUy00REtMIiwKICAgICAgImRlc2Ny
         aXB0aW9uIjogIkRpc3RyZXNzIgogICAgfQogIF0KfQo=
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:06 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL02":2}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -2928,7 +2928,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x00d69b5db3/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x00d69b5db3/
       X-Ocpu-Session:
       - x00d69b5db3
       Access-Control-Allow-Origin:
@@ -2971,11 +2971,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:07 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -2994,7 +2994,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x0fdce31773/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0fdce31773/
       X-Ocpu-Session:
       - x0fdce31773
       Access-Control-Allow-Origin:
@@ -3033,11 +3033,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:08 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -3056,7 +3056,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x02080b50d5/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x02080b50d5/
       X-Ocpu-Session:
       - x02080b50d5
       Access-Control-Allow-Origin:
@@ -3099,11 +3099,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:10 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":2}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -3122,7 +3122,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x0caae87d13/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0caae87d13/
       X-Ocpu-Session:
       - x0caae87d13
       Access-Control-Allow-Origin:
@@ -3165,11 +3165,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:12 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1}],"estimate":-0.6777,"variance":0.6842,"domain":["POS-PQ"]}'
@@ -3188,7 +3188,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x0636fa57c9/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0636fa57c9/
       X-Ocpu-Session:
       - x0636fa57c9
       Access-Control-Allow-Origin:
@@ -3232,11 +3232,11 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:43 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1}],"estimate":-1.0326,"variance":0.5685,"domain":["POS-PQ"]}'
@@ -3255,7 +3255,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x07f21ff06a/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x07f21ff06a/
       X-Ocpu-Session:
       - x07f21ff06a
       Access-Control-Allow-Origin:
@@ -3300,11 +3300,11 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:45 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@129.125.147.133/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: http://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1,"EL38":1}],"estimate":-1.3085,"variance":0.5082,"domain":["POS-PQ"]}'
@@ -3323,7 +3323,7 @@ http_interactions:
       Cache-Control:
       - max-age=300, public
       Location:
-      - http://129.125.147.133/ocpu/tmp/x0ed201bbd3/
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0ed201bbd3/
       X-Ocpu-Session:
       - x0ed201bbd3
       Access-Control-Allow-Origin:
@@ -3369,6 +3369,6 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:46 GMT
 recorded_with: VCR 3.0.1
