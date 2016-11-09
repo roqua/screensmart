@@ -19,8 +19,10 @@ describe 'answering questions' do
   def complete_response
     # Question 1 = 'Oneens' means done in VCR cassette
     answer_question 1, 'Oneens'
-    expect_last_question_to_be 'Vraag 1'
-    expect(page).to have_content 'Afronden'
+    answer_question 2, 'Oneens'
+    answer_question 3, 'Oneens'
+    answer_question 4, 'Oneens'
+    expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
 
     click_on 'Afronden'
   end
@@ -30,20 +32,20 @@ describe 'answering questions' do
   before { visit fill_out_url }
 
   scenario 'initial intro text and answer text' do
-    expect_last_question_to_be 'Vraag 1', 'Geef a.u.b. antwoord voor de afgelopen 7 dagen.'
+    expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord.'
   end
 
   scenario 'answering a question' do
     answer_question 1, 'Eens'
-    expect_last_question_to_be 'Vraag 2'
+    expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
   end
 
   scenario 'finishing' do
-    expect_last_question_to_be 'Vraag 1'
+    expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord'
 
     # Question 1 = 'Eens' means there is a next question in VCR cassette
-    answer_question 1, 'Eens'
-    expect_last_question_to_be 'Vraag 2'
+    # answer_question 1, 'Eens'
+    # expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
 
     complete_response
 
@@ -52,11 +54,11 @@ describe 'answering questions' do
 
   scenario 'starting over' do
     answer_question 1, 'Eens'
-    expect_last_question_to_be 'Vraag 2'
+    expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
 
     visit fill_out_url
 
-    expect_last_question_to_be 'Vraag 1'
+    expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord'
   end
 
   scenario 'viewing a completed response' do
@@ -64,7 +66,9 @@ describe 'answering questions' do
 
     visit "/show?showSecret=#{Events::InvitationAccepted.last.show_secret}"
 
-    expect(page).to have_content 'Vraag 1' # It shows the question title
-    expect(page).to have_content 'Oneens'  # It shows the chosen option
+    # It shows the question title
+    expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
+    # It shows the chosen option
+    expect(page).to have_content 'Oneens'
   end
 end

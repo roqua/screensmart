@@ -1,0 +1,463 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/get_itembank_rdata/json
+    body:
+      encoding: UTF-8
+      string: "{}"
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 02 Jun 2016 08:48:01 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x01e1bd108a/
+      X-Ocpu-Session:
+      - x01e1bd108a
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-06-02 08:48:02 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "questions": [
+          {
+            "id": "EL02",
+            "database_id": "POS01_UTC",
+            "domain_id": "POS-PQ",
+            "calculation_model": "GPCM",
+            "text": "Vraag 1",
+            "intro": "Geef a.u.b. antwoord voor de afgelopen 7 dagen.",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "id": 1,
+                "text": "Oneens"
+              },
+              {
+                "id": 2,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "id": "EL03",
+            "database_id": "POS02_CD",
+            "domain_id": "POS-PQ",
+            "calculation_model": "GPCM",
+            "text": "Vraag 2",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "id": 1,
+                "text": "Oneens"
+              },
+              {
+                "id": 2,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "id": "EL04",
+            "database_id": "POS02_CD",
+            "domain_id": "POS-PQ",
+            "calculation_model": "GPCM",
+            "text": "Vraag 3",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "id": 1,
+                "text": "Oneens"
+              },
+              {
+                "id": 2,
+                "text": "Eens"
+              }
+            ]
+          },
+          {
+            "id": "enough_answers_to_be_done",
+            "database_id": "POS03_CD",
+            "domain_id": "POS-PQ",
+            "calculation_model": "GPCM",
+            "text": "mock question to test the situation where enough questions have been filled out",
+            "intro": "",
+            "answer_option_set_id": 2,
+            "answer_options": [
+              {
+                "id": 1,
+                "text": "Oneens"
+              },
+              {
+                "id": 2,
+                "text": "Eens"
+              }
+            ]
+          }
+        ],"domains": [
+            {
+              "id": "POS-PQ",
+              "description": "Positieve symptomen voor psychose"
+            },
+            {
+              "id": "NEG-PQ",
+              "description": "Negatieve symptomen voor psychose"
+            }
+          ]}
+    http_version: 
+  recorded_at: Thu, 02 Jun 2016 08:48:01 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[],"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Mar 2016 09:29:31 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      X-Ocpu-Session:
+      - x05ba1cbb51
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-03-03 09:29:33 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includesubdomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL02",
+          "estimate": [1],
+          "variance": [0.5],
+          "answers": [],
+          "continue_test": true
+        }
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 09:29:33 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL02":2}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Mar 2016 09:29:31 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      X-Ocpu-Session:
+      - x05ba1cbb51
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-03-03 09:29:33 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includesubdomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL03",
+          "estimate": [0.7],
+          "variance": [0.6],
+          "answers": [],
+          "continue_test": true
+        }
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 09:29:33 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL02":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Thu, 03 Mar 2016 09:29:31 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x05ba1cbb51/
+      X-Ocpu-Session:
+      - x05ba1cbb51
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-03-03 09:29:33 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includesubdomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL04",
+          "estimate": [0.7],
+          "variance": [0.6],
+          "answers": [],
+          "continue_test": false
+        }
+    http_version: 
+  recorded_at: Thu, 03 Mar 2016 09:29:33 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 30 Mar 2016 07:53:50 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x0331ac3cd7/
+      X-Ocpu-Session:
+      - x0331ac3cd7
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-03-30 07:53:52 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includesubdomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL03",
+          "estimate": [0.7],
+          "variance": [0.6],
+          "answers": [],
+          "continue_test": false
+        }
+    http_version: 
+  recorded_at: Wed, 30 Mar 2016 07:53:52 GMT
+- request:
+    method: get
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/info
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Fri, 10 Jun 2016 16:54:25 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=86400, public
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.2.3 (2015-12-10)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-06-10 16:54:25 UTC
+      X-Ocpu-Version:
+      - 1.5.2
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Content-Length:
+      - '467'
+      Content-Type:
+      - text/plain; charset=utf-8
+    body:
+      encoding: ASCII-8BIT
+      string: "\n\t\tInformation on package 'screensmart'\n\nDescription:\n\nPackage:
+        \           screensmart\nType:               Package\nTitle:              screensmart
+        package\nVersion:            0.1\nDate:               February 2016\nAuthor:
+        \            Rivka de Vries <r.m.de.vries@umcg.nl> and Henk van\n                    der
+        Veen <henk.van.der.veen@roqua.nl>\nMaintainer:         Rivka de Vries <r.m.de.vries@umcg.nl>\nDescription:
+        \       Wrapper around shadowcat to include all questions\n                    and
+        config and allow a next question to be asked.\nLicense:            MIT + file
+        LICENSE\nLazyData:           true\nImports:            ShadowCAT, stringr,
+        matrixcalc\nSuggests:           testthat (>= 0.8.1), MTS, roxygen2 (>= 3.1.0),\n
+        \                   lintr\nRoxygenNote:        5.0.1\nNeedsCompilation:   no\nPackaged:
+        \          2016-06-09 13:54:44 UTC; root\nBuilt:              R 3.2.3; ; 2016-06-09
+        13:54:44 UTC; unix\n"
+    http_version: 
+  recorded_at: Fri, 10 Jun 2016 16:54:25 GMT

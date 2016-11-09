@@ -4,7 +4,7 @@ describe Question do
   describe '#text' do
     it 'returns the question text when an existant id is given' do
       subject.id = 'EL02'
-      expect(subject.text).to eq 'Vraag 1'
+      expect(subject.text).to eq 'De tijd lijkt onnatuurlijk veel sneller of langzamer te gaan dan anders.'
     end
 
     it 'raises an exception when a nonexistant id is given' do

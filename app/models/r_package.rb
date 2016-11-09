@@ -53,6 +53,8 @@ module RPackage
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
+      estimate_interpretation: raw_data['estimate_interpretation'],
+      warning: raw_data['warning'],
       done: !raw_data['continue_test'] }
   end
 

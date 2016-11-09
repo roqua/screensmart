@@ -1,5 +1,5 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :uuid, :created_at, :estimate, :variance, :done
+  attributes :uuid, :created_at, :estimate, :variance, :done, :estimate_interpretation, :warning, :domain_ids
 
   has_many :questions
 end

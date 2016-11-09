@@ -30,21 +30,25 @@ describe RPackage do
 
     context 'with no answers' do
       it 'returns the first question, estimate and variance' do
-        expect(described_module.data_for({}, domains)).to eq \
-          next_question_id: 'EL02',
-          estimate: 1.0,
-          variance: 0.5,
-          done: false
+        response = described_module.data_for({}, domains)
+        expect(response[:next_question_id]).to start_with('EL')
+        expect(response[:estimate]).to be_a(Float)
+        expect(response[:variance]).to be_a(Float)
+        expect(response[:done]).to be_falsey
+        expect(response[:estimate_interpretation]).to be_a(String)
+        expect(response[:warning]).to be_nil
       end
     end
 
     context 'with answers and domains' do
-      it 'returns a new next_question, estimate and variance' do
-        expect(described_module.data_for({ 'EL02' => 2 }, domains)).to eq \
-          next_question_id: 'EL03',
-          estimate: 0.7,
-          variance: 0.6,
-          done: false
+      it 'returns a new next_question, estimate, variance, estimate_interpretation and warning' do
+        response = described_module.data_for({ 'EL02' => 2 }, domains)
+        expect(response[:next_question_id]).to start_with('EL')
+        expect(response[:estimate]).to be_a(Float)
+        expect(response[:variance]).to be_a(Float)
+        expect(response[:done]).to be_falsey
+        expect(response[:estimate_interpretation]).to be_a(String)
+        expect(response[:warning]).to be_nil
       end
     end
 
@@ -124,8 +128,7 @@ describe RPackage do
   describe '.cache_key_for' do
     subject { RPackage.cache_key_for 'some_function', {} }
 
-    let(:date_of_last_r_package_deploy) { '2016-06-09 13:54:44 UTC' }
-
-    it { is_expected.to match date_of_last_r_package_deploy }
+    # Should contain a date
+    it { is_expected.to match(/\d{4}\-\d{2}\-\d{2}/) }
   end
 end

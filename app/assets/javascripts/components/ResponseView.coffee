@@ -18,6 +18,11 @@
         React.createElement CreationDate,
           createdAt: response.createdAt
           key: 'creation-date'
+        React.createElement EstimateInterpretation,
+          key: 'estimate-interpretation'
+          domainId: response.domainIds[0]
+          estimateInterpretation: response.estimateInterpretation
+          warning: response.warning
         React.createElement AnswersTable,
           questions: response.questions
           key: 'outcome'
@@ -49,6 +54,20 @@
       div
         className: 'variance'
         "Variantie: #{variance}"
+
+@EstimateInterpretation = React.createClass
+  displayName: 'EstimateInterpretation'
+
+  render: ->
+    { estimateInterpretation, warning, domainId } = @props
+    divClass = if warning then 'estimate-interpretation warning' else 'estimate-interpretation'
+    warningClass = if warning then 'fa fa-warning fa-lg' else ''
+
+    div
+      className: divClass
+      i
+        className: warningClass
+      "Interpretatie #{domainId}: #{estimateInterpretation}"
 
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'
