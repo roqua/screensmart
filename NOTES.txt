@@ -1,0 +1,52 @@
+Events
+
+InvitationSent
+InvitationAccepted
+AnswerSet : respondent heeft een antwoordt aangeklikt (mag ook nieuw antwoord op vorige vraag zijn)
+ResponseFinished : respondent heeft op 'Klaar' geklikt
+
+
+Response State
+
+requester_email    -> invitation
+requester_name
+respondent_email
+domain_ids (array)
+
+response_uuid   -> aangemaakt na accepteren uitnodiging
+show_secret     -> idem
+
+results (hash, per domein) -> opbouwen vanuit answer events, chronologisch
+  answers
+  estimate
+  variance
+  estimate_interpretation
+  warning
+  next_question_id
+  done
+
+current_domain -> eerste domain dat nog niet done is
+finished (bool) -> is er een response finished event (niet: zijn alle domains done)
+
+
+
+Response Methods
+  next_question
+  done?
+
+
+Opmerkingen
+
+Als je het vorige-vorige antwoord verandert kunnen de daar op volgende vragen anders worden.
+
+Een AnswerEvent wordt gevuld met het hele resultaat van R. Voordelen:
+- staat op te bouwen zonder R opnieuw aan te roepen
+- makkelijk de reponse state op te bouwen adhv done attribuut
+
+Voor de respondent maakt het niet uit met welk domein je bezig bent: toon altijd alle vragen onder elkaar, domeinen lopen in elkaar over.
+
+Tijdens het invullen wil je eigenlijk maar 2 dingen weten:
+- ben ik al klaar?
+- wat is de volgende vraag?
+
+Het resultaat van de invulling kun je vinden in het results attribute.
