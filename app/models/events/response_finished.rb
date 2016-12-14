@@ -5,5 +5,6 @@ module Events
     #                  variance: :float,
     #                  estimate_interpretation: :string,
     #                  warning: :string
+    event_attributes results: :array
   end
 end

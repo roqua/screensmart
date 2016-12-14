@@ -6840,4 +6840,619 @@ http_interactions:
       string: '51691300'
     http_version: 
   recorded_at: Wed, 14 Dec 2016 14:11:28 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:43864/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 15:41:35 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '59550700'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 15:41:35 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:41432/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 15:45:52 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '53236820'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 15:45:52 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:42497/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 15:57:11 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '55619880'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 15:57:11 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:52887/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 16:06:14 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '52014660'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:06:14 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:57623/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 16:08:45 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '58860080'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:08:45 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:50665/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 16:13:26 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '49175860'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:13:26 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:35576/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 16:17:46 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '57700360'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:17:46 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:60233/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 16:23:34 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '47898360'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:23:34 GMT
+- request:
+    method: post
+    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL49":1}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Dec 2016 16:23:37 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://localhost/ocpu/tmp/x0cd26914c2/
+      X-Ocpu-Session:
+      - x0cd26914c2
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-12-14 16:23:42 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL37",
+          "continue_test": true,
+          "estimate": [-0.6777],
+          "variance": [0.6842],
+          "answers": [
+            {
+              "EL49": 1
+            }
+          ],
+          "estimate_interpretation": "Matig niveau (+)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:23:42 GMT
+- request:
+    method: post
+    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL49":2}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Dec 2016 16:23:43 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://localhost/ocpu/tmp/x0bccbd1e0e/
+      X-Ocpu-Session:
+      - x0bccbd1e0e
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-12-14 16:23:47 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL65",
+          "continue_test": true,
+          "estimate": [0.4252],
+          "variance": [0.7291],
+          "answers": [
+            {
+              "EL49": 2
+            }
+          ],
+          "estimate_interpretation": "Verhoogd niveau (-)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:23:47 GMT
+- request:
+    method: post
+    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL49":1,"EL37":1}],"estimate":-0.6777,"variance":0.6842,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Dec 2016 16:23:49 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://localhost/ocpu/tmp/x053c480084/
+      X-Ocpu-Session:
+      - x053c480084
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-12-14 16:23:52 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL03",
+          "continue_test": true,
+          "estimate": [-1.0326],
+          "variance": [0.5685],
+          "answers": [
+            {
+              "EL49": 1,
+              "EL37": 1
+            }
+          ],
+          "estimate_interpretation": "Laag niveau (++)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 16:23:52 GMT
+- request:
+    method: get
+    uri: http://127.0.0.1:58735/__identify__
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      User-Agent:
+      - Ruby
+  response:
+    status:
+      code: 200
+      message: 'OK '
+    headers:
+      Server:
+      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
+      Date:
+      - Wed, 14 Dec 2016 18:11:41 GMT
+      Content-Length:
+      - '8'
+      Connection:
+      - Keep-Alive
+    body:
+      encoding: UTF-8
+      string: '55768760'
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 18:11:41 GMT
+- request:
+    method: post
+    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1}],"estimate":-1.0326,"variance":0.5685,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Dec 2016 18:11:49 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://localhost/ocpu/tmp/x0ca2176485/
+      X-Ocpu-Session:
+      - x0ca2176485
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-12-14 18:11:52 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "EL38",
+          "continue_test": true,
+          "estimate": [-1.3085],
+          "variance": [0.5082],
+          "answers": [
+            {
+              "EL49": 1,
+              "EL37": 1,
+              "EL03": 1
+            }
+          ],
+          "estimate_interpretation": "Laag niveau (++)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 18:11:52 GMT
+- request:
+    method: post
+    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1,"EL38":1}],"estimate":-1.3085,"variance":0.5082,"domain":["POS-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Wed, 14 Dec 2016 18:11:58 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://localhost/ocpu/tmp/x0d2c21e393/
+      X-Ocpu-Session:
+      - x0d2c21e393
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2016-12-14 18:12:01 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": null,
+          "continue_test": false,
+          "estimate": [-1.412],
+          "variance": [0.4715],
+          "answers": [
+            {
+              "EL49": 1,
+              "EL37": 1,
+              "EL03": 1,
+              "EL38": 1
+            }
+          ],
+          "estimate_interpretation": "Laag niveau (++)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Wed, 14 Dec 2016 18:12:01 GMT
 recorded_with: VCR 3.0.1

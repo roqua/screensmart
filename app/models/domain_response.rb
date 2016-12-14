@@ -33,7 +33,7 @@ class DomainResponse < BaseModel
 
   def answers
     answer_values.map do |id, value|
-      Answer.new id: id, value: value
+      Answer.new id: id, domain_id: domain_id, value: value
     end
   end
 
@@ -42,7 +42,7 @@ class DomainResponse < BaseModel
   end
 
   def next_question
-    Question.new id: next_question_id unless done
+    Question.new id: next_question_id, domain_id: domain_id unless done
   end
 
   def invitation
