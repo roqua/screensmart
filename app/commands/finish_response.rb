@@ -13,11 +13,6 @@ class FinishResponse < ActiveInteraction::Base
       Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
                                        response_uuid: response_uuid,
                                        results: response.results
-                                       # answer_values: response.answer_values,
-                                       # estimate: response.estimate,
-                                       # variance: response.variance,
-                                       # estimate_interpretation: response.estimate_interpretation,
-                                       # warning: response.warning
 
     send_response_email
 

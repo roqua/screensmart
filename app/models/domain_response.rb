@@ -1,4 +1,4 @@
-# A stateless response to a given set of questions.
+# A stateless response to a given set of questions in one domain.
 # Initializing is done by setting answer_values as a hash, for example:
 #   r = Response.new(answer_values: { 'EL02' => 1 })
 #
@@ -8,11 +8,6 @@
 #         #<Question:0x007faadb2d49d8 @id="EL03">]
 class DomainResponse < BaseModel
   attr_accessor :uuid, :domain_id
-
-  # Accessors for attributes defined by events
-  # delegate :show_secret, to: :invitation_accepted
-  # delegate :created_at, to: :invitation_accepted
-  delegate :domain_ids, to: :invitation
 
   # accessors for attributes defined by R package
   %i( next_question_id estimate variance done estimate_interpretation warning ).each do |r_attribute|
@@ -45,23 +40,11 @@ class DomainResponse < BaseModel
     Question.new id: next_question_id, domain_id: domain_id unless done
   end
 
-  def invitation
-    Invitation.find_by_response_uuid uuid
-  end
-
-  def invitation_accepted
-    Events::InvitationAccepted.find_by response_uuid: uuid
-  end
-
   def events
     Events::Event.where response_uuid: uuid
   end
 
-  def response
-    Response.find(uuid)
-  end
-
-  # Finder method that ensures there are events for the given UUID
+  # Finder method that ensures there are events for the given UUID and domain_id
   def self.find(uuid, domain_id)
     new(uuid: uuid, domain_id: domain_id).tap do |model|
       raise "No events for #{model.class} with UUID #{model.uuid} and domain #{model.domain_id}" unless model.events.any?
@@ -71,9 +54,4 @@ class DomainResponse < BaseModel
   def self.exists?(uuid, domain_id)
     new(uuid: uuid, domain_id: domain_id).events.any?
   end
-
-  # def self.find_by_show_secret(show_secret)
-  #   invitation_accepted = Events::InvitationAccepted.find_by_show_secret show_secret
-  #   find invitation_accepted.response_uuid
-  # end
 end
