@@ -2,6 +2,7 @@ class ResponseSerializer < ActiveModel::Serializer
   attributes :uuid, :created_at, :domain_ids, :done, :next_domain_id
 
   has_many :domain_responses
+  has_many :questions
 end
 
 class DomainResponseSerializer < ActiveModel::Serializer
@@ -11,7 +12,7 @@ class DomainResponseSerializer < ActiveModel::Serializer
 end
 
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :text, :intro, :answer_value
+  attributes :id, :domain_id, :text, :intro, :answer_value
 
   has_one :answer_option_set
 end

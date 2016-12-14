@@ -51,6 +51,18 @@ class Response < BaseModel
     end
   end
 
+  # As stored in FinishResponse event
+  def results
+    domain_responses.map do |domain_response|
+      { answer_values: domain_response.answer_values,
+        estimate: domain_response.estimate,
+        variance: domain_response.variance,
+        estimate_interpretation: domain_response.estimate_interpretation,
+        warning: domain_response.warning
+      }
+    end
+  end
+
   def next_domain_response
     domain_responses.find do |domain_id|
       !domain_id.done
@@ -61,8 +73,24 @@ class Response < BaseModel
     next_domain_response.try(:domain_id)
   end
 
+  def questions
+    next_question.present? ? completed_questions.push(next_question) : completed_questions
+  end
+
+  def completed_questions
+    answers.map(&:question).flatten
+  end
+
+  def answers
+    domain_responses.map(&:answers).flatten
+  end
+
+  def answer_values
+    domain_responses.map(&:answer_values)
+  end
+
   def next_question
-    Question.new id: next_domain_response.next_question_id unless done
+    Question.new id: next_domain_response.next_question_id, domain_id: next_domain_id unless done
   end
 
   def invitation

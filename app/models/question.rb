@@ -1,8 +1,9 @@
 class Question < BaseModel
-  attr_accessor :id, :answer_value
+  attr_accessor :id, :domain_id, :answer_value
 
   validates_inclusion_of :id, in: -> (_) { RPackage.question_ids },
                               message: '`%{value}` not found'
+  # validates_inclusion_of :domain_id, in: -> (_) { RPackage.domain_ids }
 
   # accessors for attributes defined by R package
   %w(text intro answer_options).each do |r_attribute|

@@ -24,6 +24,18 @@ describe ResponseSerializer do
     expect(serialized[:domain_ids]).to eq(['POS-PQ'])
     expect(serialized[:next_domain_id]).to eq('POS-PQ')
 
+    expect(serialized[:questions]).to be_an(Array)
+    question = serialized[:questions][0]
+    expect(question).to include(:id, :domain_id, :text, :intro, :answer_value, :answer_option_set)
+    expect(question[:id]).to eq('EL02')
+    expect(question[:domain_id]).to eq('POS-PQ')
+    expect(question[:text]).to be_a(String)
+    expect(question[:intro].class).to be_in([String, NilClass])
+    expect(question[:answer_value]).to eq(2)
+    expect(question[:answer_option_set]).to include(:id, :answer_options)
+    expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
+
+
     domain_response = serialized[:domain_responses][0]
     expect(domain_response[:estimate]).to be_a(Float)
     expect(domain_response[:variance]).to be_a(Float)
@@ -32,8 +44,9 @@ describe ResponseSerializer do
     expect(domain_response[:done]).to be_falsey
     expect(domain_response[:domain_id]).to eq('POS-PQ')
     expect(domain_response[:questions]).to be_an(Array)
-    expect(domain_response[:questions][0]).to include(:id, :text, :intro, :answer_value, :answer_option_set)
+    expect(domain_response[:questions][0]).to include(:id, :domain_id, :text, :intro, :answer_value, :answer_option_set)
     expect(domain_response[:questions][0][:id]).to eq('EL02')
+    expect(domain_response[:questions][0][:domain_id]).to eq('POS-PQ')
     expect(domain_response[:questions][0][:text]).to be_a(String)
     expect(domain_response[:questions][0][:intro].class).to be_in([String, NilClass])
     expect(domain_response[:questions][0][:answer_value]).to eq(2)
