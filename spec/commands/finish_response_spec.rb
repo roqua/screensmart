@@ -43,6 +43,13 @@ describe FinishResponse do
     #   expect(subject.result.variance).to be_a(Float)
     # end
 
+    it 'saves the domain results' do
+      results = subject.result.results
+      expect(results).to be_an(Array)
+      expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
+                                                            :warning, :variance, :answer_values)
+    end
+
     it 'sends an email to the requester' do
       invitation_sent = Events::InvitationSent.find_by(invitation_uuid: invitation_uuid)
       expect(ResponseMailer).to receive(:response_email).with show_secret: show_secret,

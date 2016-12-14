@@ -37,21 +37,12 @@ describe ResponseSerializer do
 
 
     domain_response = serialized[:domain_responses][0]
+    expect(domain_response).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id)
     expect(domain_response[:estimate]).to be_a(Float)
     expect(domain_response[:variance]).to be_a(Float)
     expect(domain_response[:estimate_interpretation]).to be_a(String)
     expect(domain_response[:warning].class).to be_in([String, NilClass])
-    expect(domain_response[:done]).to be_falsey
     expect(domain_response[:domain_id]).to eq('POS-PQ')
-    expect(domain_response[:questions]).to be_an(Array)
-    expect(domain_response[:questions][0]).to include(:id, :domain_id, :text, :intro, :answer_value, :answer_option_set)
-    expect(domain_response[:questions][0][:id]).to eq('EL02')
-    expect(domain_response[:questions][0][:domain_id]).to eq('POS-PQ')
-    expect(domain_response[:questions][0][:text]).to be_a(String)
-    expect(domain_response[:questions][0][:intro].class).to be_in([String, NilClass])
-    expect(domain_response[:questions][0][:answer_value]).to eq(2)
-    expect(domain_response[:questions][0][:answer_option_set]).to include(:id, :answer_options)
-    expect(domain_response[:questions][0][:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     # TODO: Remove if we settle for above test
     # expect(pretty(subject)).to eq(pretty({

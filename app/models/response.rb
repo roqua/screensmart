@@ -14,33 +14,6 @@ class Response < BaseModel
   delegate :created_at, to: :invitation_accepted
   delegate :domain_ids, to: :invitation
 
-  # accessors for attributes defined by R package
-  # %i( next_question_id estimate variance done estimate_interpretation warning ).each do |r_attribute|
-  #   define_method r_attribute do
-  #     ensure_valid do
-  #       RPackage.data_for(answer_values, domain_ids)[r_attribute]
-  #     end
-  #   end
-  # end
-
-  # def questions
-  #   next_question.present? ? completed_questions.push(next_question) : completed_questions
-  # end
-
-  # def completed_questions
-  #   answers.map(&:question)
-  # end
-
-  # def answers
-  #   answer_values.map do |id, value|
-  #     Answer.new id: id, value: value
-  #   end
-  # end
-
-  # def answer_values
-  #   Events::AnswerSet.answer_values_for(uuid)
-  # end
-
   def done
     domain_responses.all?(&:done)
   end

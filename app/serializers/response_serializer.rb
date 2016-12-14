@@ -6,9 +6,7 @@ class ResponseSerializer < ActiveModel::Serializer
 end
 
 class DomainResponseSerializer < ActiveModel::Serializer
-  attributes :uuid, :domain_id, :estimate, :variance, :done, :estimate_interpretation, :warning
-
-  has_many :questions
+  attributes :domain_id, :estimate, :variance, :estimate_interpretation, :warning
 end
 
 class QuestionSerializer < ActiveModel::Serializer
