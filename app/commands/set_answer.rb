@@ -1,16 +1,19 @@
 class SetAnswer < ActiveInteraction::Base
   string :response_uuid
+  string :domain_id
   string :question_id
   integer :answer_value
 
-  validates :response_uuid, :question_id, :answer_value, presence: true
+  validates :response_uuid, :domain_id, :question_id, :answer_value, presence: true
   validate :validate_response_uuid_is_found
   validate :validate_response_is_not_finished
+  validate :validate_domain_id_exists
   validate :validate_question_id_exists
   validate :validate_answer_value_included_in_answer_options
 
   def execute
     Events::AnswerSet.create! response_uuid: response_uuid,
+                              domain_id: domain_id,
                               question_id: question_id,
                               answer_value: answer_value
   end
@@ -23,6 +26,10 @@ class SetAnswer < ActiveInteraction::Base
   def validate_response_is_not_finished
     return unless Events::ResponseFinished.find_by(response_uuid: response_uuid)
     errors.add(:response_uuid, 'has already been finished')
+
+  def validate_domain_id_exists
+    return if RPackage.domain_ids.include?(domain_id)
+    errors.add(:domain_id, 'is unknown')
   end
 
   def validate_question_id_exists

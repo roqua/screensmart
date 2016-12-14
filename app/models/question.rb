@@ -5,7 +5,7 @@ class Question < BaseModel
                               message: '`%{value}` not found'
 
   # accessors for attributes defined by R package
-  %w( text intro answer_options ).each do |r_attribute|
+  %w(text intro answer_options).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
         data_from_r[r_attribute]
