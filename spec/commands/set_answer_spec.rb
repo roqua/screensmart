@@ -10,6 +10,7 @@ describe SetAnswer do
   let(:params) do
     {
       response_uuid: response_uuid,
+      domain_id: 'POS-PQ',
       question_id: 'EL02',
       answer_value: 1
     }
@@ -30,6 +31,18 @@ describe SetAnswer do
       it 'has an error when uuid is unkown' do
         params[:response_uuid] = 'FOOBAR'
         expect(subject).to have(1).errors_on(:response_uuid)
+      end
+    end
+
+    context 'domain_id is invalid' do
+      it 'has an error on domain_id when empty' do
+        params[:domain_id] = ''
+        expect(subject).to have(2).errors_on(:domain_id)
+      end
+
+      it 'has an error on domain_id when domain is bogus' do
+        params[:domain_id] = 'BOGUS'
+        expect(subject).to have(1).errors_on(:domain_id)
       end
     end
 

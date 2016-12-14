@@ -6,6 +6,6 @@ class AnswersController < ApplicationController
   end
 
   def answer_params
-    params.permit(:response_uuid, :question_id, :answer_value)
+    params.permit(:response_uuid, :domain_id, :question_id, :answer_value)
   end
 end

@@ -4,6 +4,7 @@ describe ResponseSerializer do
   subject do
     response = Response.find(invitation_accepted.response_uuid)
     Events::AnswerSet.create! response_uuid: response.uuid,
+                              domain_id: 'POS-PQ',
                               question_id: 'EL02',
                               answer_value: 2
 
@@ -19,21 +20,25 @@ describe ResponseSerializer do
 
     expect(serialized[:uuid]).to eq(invitation_accepted.response_uuid)
     expect(serialized[:created_at]).to eq(invitation_accepted.created_at.iso8601)
-    expect(serialized[:estimate]).to be_a(Float)
-    expect(serialized[:variance]).to be_a(Float)
-    expect(serialized[:estimate_interpretation]).to be_a(String)
-    expect(serialized[:warning].class).to be_in([String, NilClass])
-    expect(serialized[:done]).to be_falsey
-    expect(serialized[:domain_ids]).to be_an(Array)
+    expect(serialized[:done]).to eq(false)
     expect(serialized[:domain_ids]).to eq(['POS-PQ'])
-    expect(serialized[:questions]).to be_an(Array)
-    expect(serialized[:questions][0]).to include(:id, :text, :intro, :answer_value, :answer_option_set)
-    expect(serialized[:questions][0][:id]).to eq('EL02')
-    expect(serialized[:questions][0][:text]).to be_a(String)
-    expect(serialized[:questions][0][:intro].class).to be_in([String, NilClass])
-    expect(serialized[:questions][0][:answer_value]).to eq(2)
-    expect(serialized[:questions][0][:answer_option_set]).to include(:id, :answer_options)
-    expect(serialized[:questions][0][:answer_option_set][:answer_options][0]).to include(:id, :text)
+    expect(serialized[:next_domain_id]).to eq('POS-PQ')
+
+    domain_response = serialized[:domain_responses][0]
+    expect(domain_response[:estimate]).to be_a(Float)
+    expect(domain_response[:variance]).to be_a(Float)
+    expect(domain_response[:estimate_interpretation]).to be_a(String)
+    expect(domain_response[:warning].class).to be_in([String, NilClass])
+    expect(domain_response[:done]).to be_falsey
+    expect(domain_response[:domain_id]).to eq('POS-PQ')
+    expect(domain_response[:questions]).to be_an(Array)
+    expect(domain_response[:questions][0]).to include(:id, :text, :intro, :answer_value, :answer_option_set)
+    expect(domain_response[:questions][0][:id]).to eq('EL02')
+    expect(domain_response[:questions][0][:text]).to be_a(String)
+    expect(domain_response[:questions][0][:intro].class).to be_in([String, NilClass])
+    expect(domain_response[:questions][0][:answer_value]).to eq(2)
+    expect(domain_response[:questions][0][:answer_option_set]).to include(:id, :answer_options)
+    expect(domain_response[:questions][0][:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     # TODO: Remove if we settle for above test
     # expect(pretty(subject)).to eq(pretty({

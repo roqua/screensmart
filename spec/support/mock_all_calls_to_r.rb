@@ -14,7 +14,7 @@ def mock_all_calls_to_r
   configure_vcr
   always_use_vcr
 
-  # enable_update_mode # uncomment for development, see instructions above
+  enable_update_mode # uncomment for development, see instructions above
 end
 
 def ensure_endpoint_matches_cassette
@@ -30,7 +30,7 @@ def configure_vcr
     vcr.cassette_library_dir = 'spec/cassettes'
     vcr.hook_into :webmock
     vcr.configure_rspec_metadata!
-    vcr.ignore_localhost = true
+    vcr.ignore_localhost = false
 
     vcr.default_cassette_options = {
       allow_playback_repeats: true,
@@ -50,7 +50,8 @@ end
 def enable_update_mode
   OpenCPU.configure do |opencpu|
     # change url to own IP if not using docker-machine
-    opencpu.endpoint_url = "http://#{`docker-machine ip default`.strip}/ocpu"
+    # opencpu.endpoint_url = "http://#{`docker-machine ip default`.strip}/ocpu"
+    opencpu.endpoint_url = "http://localhost/ocpu"
   end
 
   VCR.configure do |vcr|

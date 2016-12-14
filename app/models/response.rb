@@ -23,26 +23,46 @@ class Response < BaseModel
   #   end
   # end
 
-  def questions
-    next_question.present? ? completed_questions.push(next_question) : completed_questions
+  # def questions
+  #   next_question.present? ? completed_questions.push(next_question) : completed_questions
+  # end
+
+  # def completed_questions
+  #   answers.map(&:question)
+  # end
+
+  # def answers
+  #   answer_values.map do |id, value|
+  #     Answer.new id: id, value: value
+  #   end
+  # end
+
+  # def answer_values
+  #   Events::AnswerSet.answer_values_for(uuid)
+  # end
+
+  def done
+    domain_responses.all?(&:done)
   end
 
-  def completed_questions
-    answers.map(&:question)
-  end
-
-  def answers
-    answer_values.map do |id, value|
-      Answer.new id: id, value: value
+  def domain_responses
+    domain_ids.map do |domain_id|
+      DomainResponse.find(uuid, domain_id)
     end
   end
 
-  def answer_values
-    Events::AnswerSet.answer_values_for(uuid)
+  def next_domain_response
+    domain_responses.find do |domain_id|
+      !domain_id.done
+    end
+  end
+
+  def next_domain_id
+    next_domain_response.try(:domain_id)
   end
 
   def next_question
-    Question.new id: next_question_id unless done
+    Question.new id: next_domain_response.next_question_id unless done
   end
 
   def invitation
