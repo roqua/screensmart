@@ -10,7 +10,7 @@ class DomainResponse < BaseModel
   attr_accessor :uuid, :domain_id
 
   # accessors for attributes defined by R package
-  %i( next_question_id estimate variance done estimate_interpretation warning ).each do |r_attribute|
+  %i(next_question_id estimate variance done estimate_interpretation warning).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
         RPackage.data_for(answer_values, [domain_id])[r_attribute]

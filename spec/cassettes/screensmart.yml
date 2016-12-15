@@ -59,7 +59,7 @@ http_interactions:
         \                   3.1.0), lintr (>= 1.0.0)\nRoxygenNote:        5.0.1\nNeedsCompilation:
         \  no\nPackaged:           2016-11-01 13:52:28 UTC; root\nBuilt:              R
         3.3.1; ; 2016-11-01 13:52:28 UTC; unix\n"
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:02 GMT
 - request:
     method: post
@@ -121,7 +121,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:03 GMT
 - request:
     method: post
@@ -187,7 +187,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:04 GMT
 - request:
     method: post
@@ -2905,7 +2905,7 @@ http_interactions:
         CiAgICAgICJkZXNjcmlwdGlvbiI6ICJFbW90aW9uZWxlIHN0ZXVuIgogICAg
         fSwKICAgIHsKICAgICAgImlkIjogIkRJUy00REtMIiwKICAgICAgImRlc2Ny
         aXB0aW9uIjogIkRpc3RyZXNzIgogICAgfQogIF0KfQo=
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:06 GMT
 - request:
     method: post
@@ -2971,7 +2971,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:07 GMT
 - request:
     method: post
@@ -3033,7 +3033,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:08 GMT
 - request:
     method: post
@@ -3099,7 +3099,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:10 GMT
 - request:
     method: post
@@ -3165,7 +3165,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 10:56:12 GMT
 - request:
     method: post
@@ -3232,7 +3232,7 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:43 GMT
 - request:
     method: post
@@ -3300,7 +3300,7 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:45 GMT
 - request:
     method: post
@@ -3369,11 +3369,11 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 02 Nov 2016 14:59:46 GMT
 - request:
     method: get
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/info
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/info
     body:
       encoding: US-ASCII
       string: ''
@@ -3430,42 +3430,11 @@ http_interactions:
         \                   3.1.0), lintr (>= 1.0.0)\nRoxygenNote:        5.0.1\nNeedsCompilation:
         \  no\nPackaged:           2016-12-06 15:19:13 UTC; root\nBuilt:              R
         3.3.1; ; 2016-12-06 15:19:13 UTC; unix\n"
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:42:50 GMT
 - request:
-    method: get
-    uri: http://127.0.0.1:35618/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 12:42:51 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '48304920'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 12:42:51 GMT
-- request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[],"domain":["POS-PQ"]}'
@@ -3523,11 +3492,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:43:17 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL02":2}],"estimate":1.0,"variance":0.5,"domain":["POS-PQ"]}'
@@ -3589,11 +3558,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:43:19 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -3651,11 +3620,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:43:20 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL02":2}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -3717,11 +3686,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:43:21 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/get_itembank_rdata/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/get_itembank_rdata/json
     body:
       encoding: UTF-8
       string: "{}"
@@ -6435,73 +6404,11 @@ http_interactions:
         CiAgICAgICJkZXNjcmlwdGlvbiI6ICJFbW90aW9uZWxlIHN0ZXVuIgogICAg
         fSwKICAgIHsKICAgICAgImlkIjogIkRJUy00REtMIiwKICAgICAgImRlc2Ny
         aXB0aW9uIjogIkRpc3RyZXNzIgogICAgfQogIF0KfQo=
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:43:25 GMT
 - request:
-    method: get
-    uri: http://127.0.0.1:36367/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 12:53:51 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '55793300'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 12:53:51 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:38404/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 12:55:33 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '74308500'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 12:55:33 GMT
-- request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[],"domain":["NEG-PQ"]}'
@@ -6559,11 +6466,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:55:39 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"enough_answers_to_be_done":1}],"estimate":0.0,"variance":25.0,"domain":["NEG-PQ"]}'
@@ -6621,476 +6528,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 12:55:40 GMT
 - request:
-    method: get
-    uri: http://127.0.0.1:38321/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 12:56:39 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '59984340'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 12:56:39 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:43389/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 13:44:56 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '55633500'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 13:44:56 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:33993/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 13:58:39 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '56891020'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 13:58:39 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:42079/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 14:00:04 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '46257560'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 14:00:04 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:37836/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 14:00:36 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '60030660'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 14:00:36 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:36631/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 14:04:40 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '57504680'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 14:04:40 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:50719/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 14:11:28 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '51691300'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 14:11:28 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:43864/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 15:41:35 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '59550700'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 15:41:35 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:41432/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 15:45:52 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '53236820'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 15:45:52 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:42497/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 15:57:11 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '55619880'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 15:57:11 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:52887/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 16:06:14 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '52014660'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 16:06:14 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:57623/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 16:08:45 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '58860080'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 16:08:45 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:50665/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 16:13:26 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '49175860'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 16:13:26 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:35576/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 16:17:46 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '57700360'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 16:17:46 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:60233/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 16:23:34 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '47898360'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 16:23:34 GMT
-- request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -7152,11 +6594,11 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 16:23:42 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":2}],"estimate":0.0,"variance":25.0,"domain":["POS-PQ"]}'
@@ -7218,11 +6660,11 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 16:23:47 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1}],"estimate":-0.6777,"variance":0.6842,"domain":["POS-PQ"]}'
@@ -7285,7 +6727,7 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 16:23:52 GMT
 - request:
     method: get
@@ -7316,11 +6758,11 @@ http_interactions:
     body:
       encoding: UTF-8
       string: '55768760'
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 18:11:41 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1}],"estimate":-1.0326,"variance":0.5685,"domain":["POS-PQ"]}'
@@ -7384,11 +6826,11 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 18:11:52 GMT
 - request:
     method: post
-    uri: http://deploy:needed_for_opencpu_integration@localhost/ocpu/library/screensmart/R/call_shadowcat/json
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
     body:
       encoding: UTF-8
       string: '{"answers":[{"EL49":1,"EL37":1,"EL03":1,"EL38":1}],"estimate":-1.3085,"variance":0.5082,"domain":["POS-PQ"]}'
@@ -7453,192 +6895,6 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    http_version: 
+    http_version:
   recorded_at: Wed, 14 Dec 2016 18:12:01 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:48106/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 20:01:59 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '54992060'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 20:01:59 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:58960/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 21:15:50 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '53824940'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 21:15:50 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:44362/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 21:21:02 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '46850180'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 21:21:02 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:47688/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 21:40:54 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '59504060'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 21:40:54 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:56496/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 21:44:08 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '49771940'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 21:44:08 GMT
-- request:
-    method: get
-    uri: http://127.0.0.1:40864/__identify__
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-      User-Agent:
-      - Ruby
-  response:
-    status:
-      code: 200
-      message: 'OK '
-    headers:
-      Server:
-      - WEBrick/1.3.1 (Ruby/2.2.3/2015-08-18)
-      Date:
-      - Wed, 14 Dec 2016 21:44:54 GMT
-      Content-Length:
-      - '8'
-      Connection:
-      - Keep-Alive
-    body:
-      encoding: UTF-8
-      string: '53185460'
-    http_version: 
-  recorded_at: Wed, 14 Dec 2016 21:44:54 GMT
 recorded_with: VCR 3.0.1
