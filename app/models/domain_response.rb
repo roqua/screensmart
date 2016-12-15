@@ -47,7 +47,9 @@ class DomainResponse < BaseModel
   # Finder method that ensures there are events for the given UUID and domain_id
   def self.find(uuid, domain_id)
     new(uuid: uuid, domain_id: domain_id).tap do |model|
-      raise "No events for #{model.class} with UUID #{model.uuid} and domain #{model.domain_id}" unless model.events.any?
+      unless model.events.any?
+        raise "No events for #{model.class} with UUID #{model.uuid} and \domain #{model.domain_id}"
+      end
     end
   end
 

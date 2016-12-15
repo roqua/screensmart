@@ -30,7 +30,6 @@ describe DomainResponse do
                                   domain_id: invitation_sent.domain_ids.first,
                                   question_id: 'EL02',
                                   answer_value: 2)
-        # expect(response.questions.map(&:id)).to eq %w( EL02 EL03 )
         domain_response.questions.map(&:id).each do |id|
           expect(id).to start_with('EL')
         end
@@ -40,7 +39,7 @@ describe DomainResponse do
     context 'when done testing' do
       it 'contains all answered questions' do
         complete_response
-        expect(domain_response.questions.map(&:id)).to eq %w( enough_answers_to_be_done )
+        expect(domain_response.questions.map(&:id)).to eq %w(enough_answers_to_be_done)
       end
     end
   end
@@ -51,7 +50,7 @@ describe DomainResponse do
                                 domain_id: invitation_sent.domain_ids.first,
                                 question_id: 'EL02',
                                 answer_value: 2)
-      expect(domain_response.answers.map(&:id)).to eq %w( EL02 )
+      expect(domain_response.answers.map(&:id)).to eq %w(EL02)
     end
   end
 end
