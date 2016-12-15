@@ -35,7 +35,6 @@ describe ResponseSerializer do
     expect(question[:answer_option_set]).to include(:id, :answer_options)
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
-
     domain_response = serialized[:domain_responses][0]
     expect(domain_response).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id)
     expect(domain_response[:estimate]).to be_a(Float)
