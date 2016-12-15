@@ -16,9 +16,11 @@ describe ResponseSerializer do
   end
 
   it 'includes estimate, variance, estimate_interpretation, warning and questions' do
+    invitation = Invitation.find_by_response_uuid(invitation_accepted.response_uuid)
     serialized = subject.with_indifferent_access
 
     expect(serialized[:uuid]).to eq(invitation_accepted.response_uuid)
+    expect(serialized[:requested_at]).to eq(invitation.requested_at.iso8601)
     expect(serialized[:created_at]).to eq(invitation_accepted.created_at.iso8601)
     expect(serialized[:done]).to eq(false)
     expect(serialized[:domain_ids]).to eq(['POS-PQ'])
@@ -36,12 +38,16 @@ describe ResponseSerializer do
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     domain_response = serialized[:domain_responses][0]
-    expect(domain_response).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id)
+    expect(domain_response).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id,
+                                       :quartile, :domain_sign, :norm_population_label)
     expect(domain_response[:estimate]).to be_a(Float)
     expect(domain_response[:variance]).to be_a(Float)
     expect(domain_response[:estimate_interpretation]).to be_a(String)
     expect(domain_response[:warning].class).to be_in([String, NilClass])
     expect(domain_response[:domain_id]).to eq('POS-PQ')
+    expect(domain_response[:quartile]).to be_a(String)
+    expect(domain_response[:domain_sign]).to eq('neg')
+    expect(domain_response[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
 
     # TODO: Remove if we settle for above test
     # expect(pretty(subject)).to eq(pretty({

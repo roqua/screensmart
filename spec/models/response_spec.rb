@@ -25,6 +25,28 @@ describe Response do
     end
   end
 
+  describe '#questions' do
+    context 'when not done testing' do
+      it 'contains all answered questions plus the next one' do
+        Events::AnswerSet.create!(response_uuid: response.uuid,
+                                  domain_id: domain_ids[0],
+                                  question_id: 'EL02',
+                                  answer_value: 2)
+        response.questions.map(&:id).each do |id|
+          expect(id).to start_with('EL')
+        end
+      end
+    end
+
+    context 'when done testing' do
+      it 'contains all answered questions' do
+        complete_response(domain_ids[0])
+        complete_response(domain_ids[1])
+        expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done enough_answers_to_be_done)
+      end
+    end
+  end
+
   describe '#next_domain_response' do
     it 'returns the next domain response' do
       expect(response.next_domain_response.domain_id).to eq(domain_ids[0])
