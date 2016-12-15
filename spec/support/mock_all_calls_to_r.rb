@@ -51,6 +51,7 @@ def enable_update_mode
   OpenCPU.configure do |opencpu|
     # change url to own IP if not using docker-machine
     opencpu.endpoint_url = "http://#{`docker-machine ip default`.strip}/ocpu"
+    # opencpu.endpoint_url = 'http://localhost/ocpu'
   end
 
   VCR.configure do |vcr|

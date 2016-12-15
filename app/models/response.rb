@@ -10,17 +10,40 @@ class Response < BaseModel
   attr_accessor :uuid
 
   # Accessors for attributes defined by events
-  delegate :show_secret, to: :invitation_sent
+  delegate :show_secret, to: :invitation_accepted
   delegate :created_at, to: :invitation_accepted
   delegate :domain_ids, to: :invitation
+  delegate :requested_at, to: :invitation
 
-  # accessors for attributes defined by R package
-  %i( next_question_id estimate variance done estimate_interpretation warning ).each do |r_attribute|
-    define_method r_attribute do
-      ensure_valid do
-        RPackage.data_for(answer_values, domain_ids)[r_attribute]
-      end
+  def done
+    domain_responses.all?(&:done)
+  end
+
+  def domain_responses
+    domain_ids.map do |domain_id|
+      DomainResponse.find(uuid, domain_id)
     end
+  end
+
+  # As stored in FinishResponse event
+  def results
+    domain_responses.map do |domain_response|
+      { answer_values: domain_response.answer_values,
+        estimate: domain_response.estimate,
+        variance: domain_response.variance,
+        estimate_interpretation: domain_response.estimate_interpretation,
+        warning: domain_response.warning }
+    end
+  end
+
+  def next_domain_response
+    domain_responses.find do |domain_id|
+      !domain_id.done
+    end
+  end
+
+  def next_domain_id
+    next_domain_response.try(:domain_id)
   end
 
   def questions
@@ -28,21 +51,19 @@ class Response < BaseModel
   end
 
   def completed_questions
-    answers.map(&:question)
+    answers.map(&:question).flatten
   end
 
   def answers
-    answer_values.map do |id, value|
-      Answer.new id: id, value: value
-    end
+    domain_responses.map(&:answers).flatten
   end
 
   def answer_values
-    Events::AnswerSet.answer_values_for(uuid)
+    domain_responses.map(&:answer_values)
   end
 
   def next_question
-    Question.new id: next_question_id unless done
+    Question.new id: next_domain_response.next_question_id, domain_id: next_domain_id unless done
   end
 
   def invitation
