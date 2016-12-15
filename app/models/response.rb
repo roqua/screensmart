@@ -31,8 +31,7 @@ class Response < BaseModel
         estimate: domain_response.estimate,
         variance: domain_response.variance,
         estimate_interpretation: domain_response.estimate_interpretation,
-        warning: domain_response.warning
-      }
+        warning: domain_response.warning }
     end
   end
 
