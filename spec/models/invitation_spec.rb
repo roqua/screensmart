@@ -12,6 +12,13 @@ describe Invitation do
     end
   end
 
+  describe '#requested_at' do
+    subject { described_class.find_by_response_uuid invitation_accepted.response_uuid }
+    it 'returns the created_at from the InvitationSent event' do
+      expect(subject.requested_at.to_i).to eq(invitation_sent.created_at.to_i)
+    end
+  end
+
   describe '.find_by_response_uuid' do
     subject { described_class.find_by_response_uuid invitation_accepted.response_uuid }
 

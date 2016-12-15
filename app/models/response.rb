@@ -13,6 +13,7 @@ class Response < BaseModel
   delegate :show_secret, to: :invitation_accepted
   delegate :created_at, to: :invitation_accepted
   delegate :domain_ids, to: :invitation
+  delegate :requested_at, to: :invitation
 
   def done
     domain_responses.all?(&:done)
