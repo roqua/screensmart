@@ -1,3 +1,10 @@
+GIT
+  remote: git@github.com:roqua/olive_branch.git
+  revision: 6d15f363c327d1c1c853904a058b40a2ed0e66fa
+  specs:
+    olive_branch (1.2.0)
+      rails (>= 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -209,8 +216,6 @@ GEM
     notiffany (0.0.8)
       nenv (~> 0.1)
       shellany (~> 0.0)
-    olive_branch (1.1.0)
-      rails (>= 4.0)
     opencpu (0.10.0)
       httmultiparty (~> 0.3.16)
       yajl-ruby (~> 1.2, >= 1.2.0)
@@ -401,7 +406,7 @@ DEPENDENCIES
   letter_opener
   mailgun_rails (~> 0.8.0)
   neat (~> 1.7.3)
-  olive_branch (~> 1.1.0)
+  olive_branch!
   opencpu (~> 0.10.0)
   pg (~> 0.18.4)
   poltergeist (~> 1.9.0)
@@ -425,4 +430,4 @@ DEPENDENCIES
   webmock (~> 1.24.2)
 
 BUNDLED WITH
-   1.12.5
+   1.13.6
