@@ -3,7 +3,8 @@
 defaultResponse =
   questions: []
   loading: true
-  done: false
+  done: false       # Enough questions answered
+  finished: false   # User clicked finish button
 
 Screensmart.reducers = Redux.combineReducers
   routing: routerReducer

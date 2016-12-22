@@ -47,6 +47,7 @@ describe 'answering questions' do
 
     complete_response
 
+    expect(page).to_not have_content 'Vraag 1'
     expect(page).to have_content 'Bedankt voor het invullen'
   end
 
