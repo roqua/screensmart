@@ -59,6 +59,8 @@ describe SetAnswer do
   end
 
   context 'when response has been finished' do
+    subject { described_class.run(params) }
+
     it 'has an error when trying to set an answer' do
       Events::ResponseFinished.create!(response_uuid: response_uuid)
       expect(subject).to have(1).errors_on(:response_uuid)

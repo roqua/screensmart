@@ -5,6 +5,7 @@ class SetAnswer < ActiveInteraction::Base
 
   validates :response_uuid, :question_id, :answer_value, presence: true
   validate :validate_response_uuid_is_found
+  validate :validate_response_is_not_finished
   validate :validate_question_id_exists
   validate :validate_answer_value_included_in_answer_options
 
@@ -17,6 +18,11 @@ class SetAnswer < ActiveInteraction::Base
   def validate_response_uuid_is_found
     return if Response.exists? response_uuid
     errors.add(:response_uuid, 'is unknown')
+  end
+
+  def validate_response_is_not_finished
+    return unless Events::ResponseFinished.find_by(response_uuid: response_uuid)
+    errors.add(:response_uuid, 'has already been finished')
   end
 
   def validate_question_id_exists
