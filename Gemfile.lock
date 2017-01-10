@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:roqua/olive_branch.git
+  remote: git://github.com/roqua/olive_branch.git
   revision: 6d15f363c327d1c1c853904a058b40a2ed0e66fa
   specs:
     olive_branch (1.2.0)
