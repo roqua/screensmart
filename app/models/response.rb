@@ -1,11 +1,4 @@
-# A stateless response to a given set of questions.
-# Initializing is done by setting answer_values as a hash, for example:
-#   r = Response.new(answer_values: { 'EL02' => 1 })
-#
-# After this, all attributes can be read in an OOP way, for example:
-#   r.questions # All questions, including the next (unanswered) one
-#   # => [#<Question:0x007faadb3459a8 @id="EL02", @answer_value: 1>,
-#         #<Question:0x007faadb2d49d8 @id="EL03">]
+# A stateless response to a given set of questions in one ore more domains.
 class Response < BaseModel
   attr_accessor :uuid
 

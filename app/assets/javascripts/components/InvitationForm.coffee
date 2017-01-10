@@ -11,16 +11,11 @@ invitationForm = React.createClass
 
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
-
-    # Place domainId value in an array. To be removed in the future when multiple domains
-    # can be chosen.
-    # enteredValues.domainIds = [enteredValues.domainIds]
     dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
 
-  toggleDomain: (event) ->
+  toggleDomain: (domainId, checked) ->
     { fields: { domainIds } } = @props
-    domainId = event.target.value
-    if event.target.checked
+    if checked
       domainIds.addField(domainId)
     else
       idx = domainIds.findIndex (el) ->
@@ -69,7 +64,7 @@ invitationForm = React.createClass
           if @shouldShowErrorFor 'domainIds' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
-          'Kies één of meerdere domein om op te testen'
+          'Kies één of meerdere domeinen om op te testen'
         ul
           className: 'domains'
           domains.map (domain) =>
@@ -82,7 +77,7 @@ invitationForm = React.createClass
                       name: 'domainIds[]'
                       id: domain.id
                       value: domain.id
-                      onChange: (event) => @toggleDomain(event)
+                      onChange: (event) => @toggleDomain(event.target.value, event.target.checked)
               label
                 className: 'domain-label'
                 htmlFor: domain.id
@@ -124,9 +119,9 @@ invitationForm = React.createClass
       @props.fields[fieldName].error
 
   shouldShowErrorFor: (fieldName) ->
-    # redux-form v5 does not handle array errors very wells
+    # redux-form v5 does not handle array errors very well
     if fieldName == 'domainIds'
-      (@props.submitFailed) && @props.error
+      @props.submitFailed && @props.error
     else
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
@@ -137,7 +132,7 @@ validate = (values) ->
   errors.requesterName = 'Vul uw naam in' unless requesterName != ''
   errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(respondentEmail)
   errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(requesterEmail)
-  errors._error = 'Kies een domein' if domainIds.length == 0 # set as global error, no array errors...
+  errors._error = 'Kies minimaal één domein' if domainIds.length == 0 # set as global error, no array errors...
   errors
 
 @InvitationForm = reduxForm(

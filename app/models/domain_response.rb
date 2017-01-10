@@ -1,6 +1,6 @@
 # A stateless response to a given set of questions in one domain.
 # Initializing is done by setting answer_values as a hash, for example:
-#   r = Response.new(answer_values: { 'EL02' => 1 })
+#   r = DomainResponse.new(domain_id: 'POS-PQ', answer_values: { 'EL02' => 1 })
 #
 # After this, all attributes can be read in an OOP way, for example:
 #   r.questions # All questions, including the next (unanswered) one
