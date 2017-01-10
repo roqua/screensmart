@@ -134,6 +134,18 @@ button[type="submit"]
         &:last-of-type
           @extend .active-item
 
+      &.finished
+        .question,
+        .question:hover
+          min-height: 0
+          opacity: 0
+          overflow: hidden
+          max-height: 0
+          visibility: hidden
+          padding: 0
+          margin: 0
+          box-sizing: border-box
+
 .small
   font-size: 0.9rem
 

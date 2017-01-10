@@ -34,7 +34,7 @@
         [
           p
             key: 'instructions'
-            'U kunt de invulling afronden of uw antwoorden aanpassen'
+            'U kunt nu de invulling afronden'
           button
             type: 'submit'
             key: 'button'
