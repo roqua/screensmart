@@ -33,7 +33,8 @@ gem 'dotenv-rails'
 
 gem 'puma'
 
-gem 'olive_branch', '~> 1.1.0'
+# gem 'olive_branch', '~> 1.1.0'
+gem 'olive_branch', git: 'git@github.com:roqua/olive_branch.git'
 
 group :development, :test do
   gem 'byebug'
