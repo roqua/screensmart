@@ -9,13 +9,18 @@ describe ResponseMailer do
     end
 
     def complete_response
-      Events::AnswerSet.create! response_uuid: response.uuid,
-                                question_id: 'enough_answers_to_be_done',
-                                answer_value: 1
+      %w(EL49 EL37 EL03 EL38).each do |question_id|
+        Events::AnswerSet.create!(
+          response_uuid: response.uuid,
+          question_id: question_id,
+          answer_value: 1
+        )
+      end
     end
 
     before do
       allow_any_instance_of(ResponseReport).to receive(:selected_answer_text).and_return('Ja')
+      complete_response
     end
 
     context 'valid params' do
@@ -36,7 +41,6 @@ describe ResponseMailer do
       end
 
       it 'contains a response report pdf as attachment' do
-        complete_response
         expect(subject.attachments.count).to eq(1)
       end
     end

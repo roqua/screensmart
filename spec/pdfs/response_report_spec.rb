@@ -6,9 +6,13 @@ describe ResponseReport do
   end
 
   def complete_response
-    Events::AnswerSet.create! response_uuid: response.uuid,
-                              question_id: 'enough_answers_to_be_done',
-                              answer_value: 1
+    %w(EL49 EL37 EL03 EL38).each do |question_id|
+      Events::AnswerSet.create!(
+        response_uuid: response.uuid,
+        question_id: question_id,
+        answer_value: 1
+      )
+    end
   end
 
   subject { described_class.new(response) }
@@ -18,6 +22,7 @@ describe ResponseReport do
   end
 
   it 'has one page' do
+    complete_response
     expect(subject.page_number).to eq(1)
   end
 
@@ -25,6 +30,7 @@ describe ResponseReport do
     let(:pdf_content) { PDF::Reader.new(StringIO.new(subject.render)).page(1).to_s }
 
     it 'contains the date of the response' do
+      complete_response
       expect(pdf_content).to include('Ingevuld op')
     end
   end
