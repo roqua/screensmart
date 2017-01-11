@@ -29,11 +29,13 @@ describe ResponsesController do
     end
 
     before do
-      Events::AnswerSet.create!(
-        response_uuid: invitation_accepted.response_uuid,
-        question_id: 'enough_answers_to_be_done',
-        answer_value: 1
-      )
+      %w(EL49 EL37 EL03 EL38).each do |question_id|
+        Events::AnswerSet.create!(
+          response_uuid: invitation_accepted.response_uuid,
+          question_id: question_id,
+          answer_value: 1
+        )
+      end
     end
 
     subject { put :update, id: invitation_accepted.response_uuid }
