@@ -44,7 +44,7 @@ class Response < BaseModel
   end
 
   def completed_questions
-    answers.map(&:question).flatten
+    answers.map(&:question)
   end
 
   def answers
