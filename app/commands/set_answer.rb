@@ -1,10 +1,9 @@
 class SetAnswer < ActiveInteraction::Base
   string :response_uuid
-  string :domain_id
   string :question_id
   integer :answer_value
 
-  validates :response_uuid, :domain_id, :question_id, :answer_value, presence: true
+  validates :response_uuid, :question_id, :answer_value, presence: true
   validate :validate_response_uuid_is_found
   validate :validate_response_is_not_finished
   validate :validate_domain_id_exists
@@ -13,7 +12,6 @@ class SetAnswer < ActiveInteraction::Base
 
   def execute
     Events::AnswerSet.create! response_uuid: response_uuid,
-                              domain_id: domain_id,
                               question_id: question_id,
                               answer_value: answer_value
   end

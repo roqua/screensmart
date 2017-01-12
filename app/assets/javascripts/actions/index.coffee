@@ -20,10 +20,10 @@ Screensmart.Actions =
     type: 'ADD_MESSAGE'
     message: message
 
-  setAnswer: (id, domainId, value) ->
+  setAnswer: (id, value) ->
     (dispatch) =>
       dispatch @_setAnswer(id, value)
-      dispatch @postAnswer(id, domainId, value)
+      dispatch @postAnswer(id, value)
 
   _setAnswer: (id, value) ->
     type: 'SET_ANSWER'
@@ -49,14 +49,13 @@ Screensmart.Actions =
       .then (data) =>
         dispatch @receiveResponseUpdate(data)
 
-  postAnswer: (questionId, domainId, answerValue) ->
+  postAnswer: (questionId, answerValue) ->
     (dispatch, getState) =>
       response = getState().response
       dispatch @startResponseUpdate()
       $.postJSON '/answers',
         responseUUID: response.uuid,
         questionId: questionId,
-        domainId: domainId,
         answerValue: answerValue
       .then (data) =>
         dispatch @receiveResponseUpdate(data)
