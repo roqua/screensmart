@@ -6,9 +6,8 @@ describe Response do
     Response.find invitation_accepted.response_uuid
   end
 
-  def complete_response(domain_id)
+  def complete_response
     Events::AnswerSet.create! response_uuid: response.uuid,
-                              domain_id: domain_id,
                               question_id: 'enough_answers_to_be_done',
                               answer_value: 1
   end
@@ -19,8 +18,7 @@ describe Response do
     end
 
     it 'is nil when done' do
-      complete_response(domain_ids[0])
-      complete_response(domain_ids[1])
+      complete_response
       expect(response.next_question).to be_nil
     end
   end
@@ -29,7 +27,6 @@ describe Response do
     context 'when not done testing' do
       it 'contains all answered questions plus the next one' do
         Events::AnswerSet.create!(response_uuid: response.uuid,
-                                  domain_id: domain_ids[0],
                                   question_id: 'EL02',
                                   answer_value: 2)
         response.questions.map(&:id).each do |id|
@@ -44,18 +41,6 @@ describe Response do
         complete_response(domain_ids[1])
         expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done enough_answers_to_be_done)
       end
-    end
-  end
-
-  describe '#next_domain_response' do
-    it 'returns the next domain response' do
-      expect(response.next_domain_response.domain_id).to eq(domain_ids[0])
-    end
-
-    it 'is nil when done' do
-      complete_response(domain_ids[0])
-      complete_response(domain_ids[1])
-      expect(response.next_domain_response).to be_nil
     end
   end
 

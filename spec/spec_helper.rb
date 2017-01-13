@@ -26,6 +26,10 @@ RSpec.configure do |config|
   config.order = :random
   config.expose_dsl_globally = true
 
+  # Add focus: true to a context to run only that test
+  config.filter_run focus: true
+  config.run_all_when_everything_filtered = true
+
   save_screenshots_as_circleci_artifacts
 
   mock_all_calls_to_r

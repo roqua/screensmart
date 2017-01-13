@@ -35,10 +35,10 @@ class DomainResponse < BaseModel
     'neg' => 'Cliënten eerste lijn GGZ'
   }.freeze
 
-  attr_accessor :uuid, :domain_id
+  attr_accessor :domain_id, :response
 
   # accessors for attributes defined by R package
-  %i(next_question_id estimate variance done estimate_interpretation warning).each do |r_attribute|
+  %i(estimate variance warning).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
         RPackage.data_for(answer_values, [domain_id])[r_attribute]
@@ -46,26 +46,11 @@ class DomainResponse < BaseModel
     end
   end
 
-  def questions
-    next_question.present? ? completed_questions.push(next_question) : completed_questions
-  end
-
-  def completed_questions
-    answers.map(&:question)
-  end
-
-  def answers
-    answer_values.map do |id, value|
-      Answer.new id: id, domain_id: domain_id, value: value
-    end
-  end
-
   def answer_values
-    Events::AnswerSet.answer_values_for(uuid, domain_id)
-  end
-
-  def next_question
-    Question.new id: next_question_id, domain_id: domain_id unless done
+    # Filter all of the response's answer values by those belonging to this domain
+    response.answer_values.select do |id, _|
+      RPackage.question_by_id(id)['domain_id'] == domain_id
+    end
   end
 
   def domain_sign
@@ -78,22 +63,5 @@ class DomainResponse < BaseModel
 
   def quartile
     QUARTILE_MAPPINGS[estimate_interpretation]
-  end
-
-  def events
-    Events::Event.where response_uuid: uuid
-  end
-
-  # Finder method that ensures there are events for the given UUID and domain_id
-  def self.find(uuid, domain_id)
-    new(uuid: uuid, domain_id: domain_id).tap do |model|
-      unless model.events.any?
-        raise "No events for #{model.class} with UUID #{model.uuid} and \domain #{model.domain_id}"
-      end
-    end
-  end
-
-  def self.exists?(uuid, domain_id)
-    new(uuid: uuid, domain_id: domain_id).events.any?
   end
 end

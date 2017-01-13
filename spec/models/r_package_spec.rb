@@ -58,6 +58,25 @@ describe RPackage do
           done: true
       end
     end
+
+    context 'testing with multiple domains' do
+      let(:domains) { %w( POS-PQ NEG-PQ ) }
+
+      context 'first domain is done' do
+        subject { described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains) }
+
+        # This responsibility should move to screensmart-r's call_shadowcat function so that
+        # it accepts multiple domains
+        it 'calls normalized_shadowcat for the first domain that is not done', focus: true do
+          expect(described_module).to receive(:normalized_shadowcat).with(hash_including(domain: ['NEG-PQ']))
+          subject
+        end
+
+        it 'returns the first question of the second domain' do
+          expect(subject['next_question_id']).to eq 'first_question_of_second_domain'
+        end
+      end
+    end
   end
 
   describe '.call' do

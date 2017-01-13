@@ -15,13 +15,18 @@ class Response < BaseModel
   delegate :domain_ids, to: :invitation
   delegate :requested_at, to: :invitation
 
-  def done
-    domain_responses.all?(&:done)
+  # accessors for attributes defined by R package
+  %i(next_question_id done).each do |r_attribute|
+    define_method r_attribute do
+      ensure_valid do
+        RPackage.data_for(answer_values, domain_ids)[r_attribute]
+      end
+    end
   end
 
   def domain_responses
     domain_ids.map do |domain_id|
-      DomainResponse.find(uuid, domain_id)
+      DomainResponse.new(response: self, domain_id: domain_id)
     end
   end
 
@@ -34,16 +39,6 @@ class Response < BaseModel
         estimate_interpretation: domain_response.estimate_interpretation,
         warning: domain_response.warning }
     end
-  end
-
-  def next_domain_response
-    domain_responses.find do |domain_id|
-      !domain_id.done
-    end
-  end
-
-  def next_domain_id
-    next_domain_response.try(:domain_id)
   end
 
   def questions
@@ -59,11 +54,11 @@ class Response < BaseModel
   end
 
   def answer_values
-    domain_responses.map(&:answer_values)
+    Events::AnswerSet.answer_values_for(uuid)
   end
 
   def next_question
-    Question.new id: next_domain_response.next_question_id, domain_id: next_domain_id unless done
+    Question.new id: next_question_id unless done
   end
 
   def invitation

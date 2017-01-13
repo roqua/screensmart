@@ -35,13 +35,16 @@ module RPackage
     # Recalculate the estimate and variance for <index> answers,
     # then recalculate it for <index + 1> answers with the previous estimate and variance,
     # repeat until done for all answers
-    answers.each_with_index.inject(initial_hash) do |hash, (_, index)|
-      params = { answers: [answers.take(index + 1).to_h],
-                 estimate: hash[:estimate],
-                 variance: hash[:variance],
-                 domain: domain_ids }
+    domain_ids.each do |domain_id|
+      initial_hash = answers.each_with_index.inject(initial_hash) do |hash, (_, index)|
+        params = { answers: [answers.take(index + 1).to_h],
+                   estimate: hash[:estimate],
+                   variance: hash[:variance],
+                   domain: [domain_id] }
 
-      normalized_shadowcat params
+        normalized_shadowcat params
+      end
+      puts initial_hash
     end
   end
 
