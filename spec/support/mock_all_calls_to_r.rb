@@ -31,6 +31,7 @@ def configure_vcr
     vcr.hook_into :webmock
     vcr.configure_rspec_metadata!
     vcr.ignore_localhost = true
+    vcr.before_record { |i| i.response.body.force_encoding('UTF-8') }
 
     vcr.default_cassette_options = {
       allow_playback_repeats: true,

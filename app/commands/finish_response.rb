@@ -11,6 +11,7 @@ class FinishResponse < ActiveInteraction::Base
     response_finished =
       Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
                                        response_uuid: response_uuid,
+                                       answer_values: response.answer_values,
                                        results: response.results
 
     send_response_email

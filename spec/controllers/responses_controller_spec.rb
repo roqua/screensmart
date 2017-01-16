@@ -31,7 +31,6 @@ describe ResponsesController do
     before do
       Events::AnswerSet.create!(
         response_uuid: invitation_accepted.response_uuid,
-        domain_id: 'POS-PQ',
         question_id: 'enough_answers_to_be_done',
         answer_value: 1
       )

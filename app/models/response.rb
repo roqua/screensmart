@@ -50,7 +50,9 @@ class Response < BaseModel
   end
 
   def answers
-    domain_responses.map(&:answers).flatten
+    answer_values.map do |id, value|
+      Answer.new id: id, value: value
+    end
   end
 
   def answer_values

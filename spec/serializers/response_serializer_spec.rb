@@ -4,7 +4,6 @@ describe ResponseSerializer do
   subject do
     response = Response.find(invitation_accepted.response_uuid)
     Events::AnswerSet.create! response_uuid: response.uuid,
-                              domain_id: 'POS-PQ',
                               question_id: 'EL02',
                               answer_value: 2
 
@@ -24,7 +23,6 @@ describe ResponseSerializer do
     expect(serialized[:created_at]).to eq(invitation_accepted.created_at.iso8601)
     expect(serialized[:done]).to eq(false)
     expect(serialized[:domain_ids]).to eq(['POS-PQ'])
-    expect(serialized[:next_domain_id]).to eq('POS-PQ')
 
     expect(serialized[:questions]).to be_an(Array)
     question = serialized[:questions][0]
@@ -48,52 +46,5 @@ describe ResponseSerializer do
     expect(domain_response[:quartile]).to be_a(String)
     expect(domain_response[:domain_sign]).to eq('neg')
     expect(domain_response[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
-
-    # TODO: Remove if we settle for above test
-    # expect(pretty(subject)).to eq(pretty({
-    #   uuid: invitation_accepted.response_uuid,
-    #   created_at: invitation_accepted.created_at.iso8601,
-    #   estimate: 0.7,
-    #   variance: 0.6,
-    #   done: false,
-    #   questions: [{
-    #     id: 'EL02',
-    #     text: 'Vraag 1',
-    #     intro: 'Geef a.u.b. antwoord voor de afgelopen 7 dagen.',
-    #     answer_value: 2,
-    #     answer_option_set: {
-    #       id: 2,
-    #       answer_options: [
-    #         {
-    #           id: 1,
-    #           text: 'Oneens'
-    #         },
-    #         {
-    #           id: 2,
-    #           text: 'Eens'
-    #         }
-    #       ]
-    #     }
-    #   }, {
-    #     id: 'EL03',
-    #     text: 'Vraag 2',
-    #     intro: '',
-    #     answer_value: nil,
-    #     answer_option_set: {
-    #       id: 2,
-    #       answer_options: [
-    #         {
-    #           id: 1,
-    #           text: 'Oneens'
-    #         },
-    #         {
-    #           id: 2,
-    #           text: 'Eens'
-    #         }
-    #       ]
-    #     }
-    #   }
-    #   ]
-    # }.with_indifferent_access))
   end
 end

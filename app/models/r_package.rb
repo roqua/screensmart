@@ -52,7 +52,7 @@ module RPackage
       end
     end
 
-    { next_question_id: domain_results.last[:next_question_id],
+    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
       done: domain_results.all? { |domain| domain[:done] },
       domain_results: domain_ids.zip(domain_results).map do |domain_id, domain|
         [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]

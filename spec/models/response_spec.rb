@@ -13,6 +13,7 @@ describe Response do
   end
 
   describe '#next_question' do
+    let(:domain_ids) { ['POS-PQ'] } # One domain instead of two so that we are done testing after only one question
     it 'returns the next question from the R package' do
       expect(response.next_question.id).to start_with('EL')
     end
@@ -36,25 +37,11 @@ describe Response do
     end
 
     context 'when done testing' do
+      let(:domain_ids) { ['POS-PQ'] } # One domain instead of two so that we are done testing after only one question
       it 'contains all answered questions' do
-        complete_response(domain_ids[0])
-        complete_response(domain_ids[1])
-        expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done enough_answers_to_be_done)
+        complete_response
+        expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done)
       end
-    end
-  end
-
-  describe '#next_domain_id' do
-    it 'returns the next domain_id' do
-      expect(response.next_domain_id).to eq(domain_ids[0])
-      complete_response(domain_ids[0])
-      expect(response.next_domain_id).to eq(domain_ids[1])
-    end
-
-    it 'is nil when done' do
-      complete_response(domain_ids[0])
-      complete_response(domain_ids[1])
-      expect(response.next_domain_id).to be_nil
     end
   end
 end
