@@ -59,7 +59,7 @@ http_interactions:
         \                   3.1.0), lintr (>= 1.0.0)\nRoxygenNote:        5.0.1\nNeedsCompilation:
         \  no\nPackaged:           2016-11-01 13:52:28 UTC; root\nBuilt:              R
         3.3.1; ; 2016-11-01 13:52:28 UTC; unix\n"
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:02 GMT
 - request:
     method: post
@@ -121,7 +121,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:03 GMT
 - request:
     method: post
@@ -187,7 +187,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:04 GMT
 - request:
     method: post
@@ -2905,7 +2905,7 @@ http_interactions:
         CiAgICAgICJkZXNjcmlwdGlvbiI6ICJFbW90aW9uZWxlIHN0ZXVuIgogICAg
         fSwKICAgIHsKICAgICAgImlkIjogIkRJUy00REtMIiwKICAgICAgImRlc2Ny
         aXB0aW9uIjogIkRpc3RyZXNzIgogICAgfQogIF0KfQo=
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:06 GMT
 - request:
     method: post
@@ -2971,7 +2971,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:07 GMT
 - request:
     method: post
@@ -3033,7 +3033,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:08 GMT
 - request:
     method: post
@@ -3099,7 +3099,7 @@ http_interactions:
           "estimate_interpretation": "Matig niveau (+)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:10 GMT
 - request:
     method: post
@@ -3165,7 +3165,7 @@ http_interactions:
           "estimate_interpretation": "Verhoogd niveau (-)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 10:56:12 GMT
 - request:
     method: post
@@ -3232,7 +3232,7 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 14:59:43 GMT
 - request:
     method: post
@@ -3300,7 +3300,7 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 14:59:45 GMT
 - request:
     method: post
@@ -3369,6 +3369,72 @@ http_interactions:
           "estimate_interpretation": "Laag niveau (++)",
           "warning": null
         }
-    https_version:
+    http_version: 
   recorded_at: Wed, 02 Nov 2016 14:59:46 GMT
+- request:
+    method: post
+    uri: https://deploy:needed_for_opencpu_integration@opencpu.roqua-staging.nl/ocpu/library/screensmart/R/call_shadowcat/json
+    body:
+      encoding: UTF-8
+      string: '{"answers":[],"domain":["NEG-PQ"]}'
+    headers:
+      Content-Type:
+      - application/json
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Mon, 16 Jan 2017 10:21:49 GMT
+      Server:
+      - Apache/2.4.7 (Ubuntu)
+      Cache-Control:
+      - max-age=300, public
+      Location:
+      - http://opencpu.roqua-staging.nl/ocpu/tmp/x00b0e67786/
+      X-Ocpu-Session:
+      - x00b0e67786
+      Access-Control-Allow-Origin:
+      - "*"
+      Access-Control-Expose-Headers:
+      - Location, X-ocpu-session, Content-Type, Cache-Control
+      Access-Control-Allow-Headers:
+      - Origin, Content-Type, Accept, Accept-Encoding, Cache-Control, Authorization
+      Access-Control-Allow-Credentials:
+      - 'true'
+      X-Ocpu-R:
+      - R version 3.3.1 (2016-06-21)
+      X-Ocpu-Locale:
+      - en_US.UTF-8
+      X-Ocpu-Time:
+      - 2017-01-16 10:21:51 UTC
+      X-Ocpu-Version:
+      - 1.6.3
+      X-Ocpu-Server:
+      - rApache
+      Vary:
+      - Accept-Encoding
+      Connection:
+      - close
+      Transfer-Encoding:
+      - chunked
+      Content-Type:
+      - application/json
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+    body:
+      encoding: UTF-8
+      string: |
+        {
+          "key_new_item": "first_question_of_second_domain",
+          "continue_test": true,
+          "estimate": [0],
+          "variance": [25],
+          "answers": [],
+          "estimate_interpretation": "Matig niveau (+)",
+          "warning": null
+        }
+    http_version: 
+  recorded_at: Mon, 16 Jan 2017 10:21:51 GMT
 recorded_with: VCR 3.0.1

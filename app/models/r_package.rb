@@ -30,22 +30,44 @@ module RPackage
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    initial_hash = normalized_shadowcat answers: [], domain: domain_ids
+    # This outer loop move to screensmart-r's call_shadowcat function so that
+    # it accepts multiple domain
+    domain_results = domain_ids.map do |domain_id|
+      accumulator = normalized_shadowcat answers: [], domain: [domain_id]
 
-    # Recalculate the estimate and variance for <index> answers,
-    # then recalculate it for <index + 1> answers with the previous estimate and variance,
-    # repeat until done for all answers
-    domain_ids.each do |domain_id|
-      initial_hash = answers.each_with_index.inject(initial_hash) do |hash, (_, index)|
-        params = { answers: [answers.take(index + 1).to_h],
+      answers_in_domain = answers.select do |question_id, _|
+        domain_id_for_question_id(question_id) == domain_id
+      end
+
+      # Recalculate the estimate and variance for <index> answers,
+      # then recalculate it for <index + 1> answers with the previous estimate and variance,
+      # repeat until done for all answers
+      answers_in_domain.each_with_index.inject(accumulator) do |hash, (_, index)|
+        params = { answers: [answers_in_domain.take(index + 1).to_h],
                    estimate: hash[:estimate],
                    variance: hash[:variance],
                    domain: [domain_id] }
 
         normalized_shadowcat params
       end
-      puts initial_hash
     end
+
+    { next_question_id: domain_results.last[:next_question_id],
+      done: domain_results.all? { |domain| domain[:done] },
+      domain_results: domain_ids.zip(domain_results).map do |domain_id, domain|
+        [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]
+      end.to_h
+    }
+  end
+
+  def self.domain_id_for_question_id(id)
+    question = questions.find do |q|
+      q['id'] == id
+    end
+
+    raise "No question with id #{id}" if question.nil?
+
+    question['domain_id']
   end
 
   def self.normalized_shadowcat(params)
