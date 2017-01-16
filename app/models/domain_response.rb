@@ -35,15 +35,19 @@ class DomainResponse < BaseModel
     'neg' => 'Cliënten eerste lijn GGZ'
   }.freeze
 
-  attr_accessor :domain_id, :response, :estimate_interpretation
+  attr_accessor :domain_id, :response
 
   # accessors for attributes defined by R package
-  %i(estimate variance warning).each do |r_attribute|
+  %i(estimate estimate_interpretation variance warning).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.data_for(answer_values, [domain_id])[r_attribute]
+        data_from_r[r_attribute]
       end
     end
+  end
+
+  def data_from_r
+    response.data_from_r[:domain_results][domain_id]
   end
 
   def answer_values

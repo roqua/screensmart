@@ -19,9 +19,13 @@ class Response < BaseModel
   %i(next_question_id done).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.data_for(answer_values, domain_ids)[r_attribute]
+        data_from_r[r_attribute]
       end
     end
+  end
+
+  def data_from_r
+    RPackage.data_for(answer_values, domain_ids)
   end
 
   def domain_responses

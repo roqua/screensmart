@@ -71,5 +71,12 @@ describe 'answering questions' do
     expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
     # It shows the chosen option
     expect(page).to have_content 'Oneens'
+
+    # It shows the quartile score
+    within '.results-table' do
+      expect(page).to have_content 'Q4'
+      # It shows the estimate interpretation
+      expect(page).to have_content 'Sterk verhoogd niveau (--)'
+    end
   end
 end
