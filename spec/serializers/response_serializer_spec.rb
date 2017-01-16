@@ -26,9 +26,8 @@ describe ResponseSerializer do
 
     expect(serialized[:questions]).to be_an(Array)
     question = serialized[:questions][0]
-    expect(question).to include(:id, :domain_id, :text, :intro, :answer_value, :answer_option_set)
+    expect(question).to include(:id, :text, :intro, :answer_value, :answer_option_set)
     expect(question[:id]).to eq('EL02')
-    expect(question[:domain_id]).to eq('POS-PQ')
     expect(question[:text]).to be_a(String)
     expect(question[:intro].class).to be_in([String, NilClass])
     expect(question[:answer_value]).to eq(2)

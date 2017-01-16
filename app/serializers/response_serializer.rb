@@ -11,7 +11,7 @@ class DomainResponseSerializer < ActiveModel::Serializer
 end
 
 class QuestionSerializer < ActiveModel::Serializer
-  attributes :id, :domain_id, :text, :intro, :answer_value
+  attributes :id, :text, :intro, :answer_value
 
   has_one :answer_option_set
 end

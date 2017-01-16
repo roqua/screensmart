@@ -74,9 +74,9 @@ describe 'answering questions' do
 
     # It shows the quartile score
     within '.results-table' do
-      expect(page).to have_content 'Q4'
+      expect(page).to have_content 'Q1'
       # It shows the estimate interpretation
-      expect(page).to have_content 'Sterk verhoogd niveau (--)'
+      expect(page).to have_content 'Laag niveau (++)'
     end
   end
 end
