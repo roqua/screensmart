@@ -30,8 +30,9 @@ module RPackage
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    # This outer loop move to screensmart-r's call_shadowcat function so that
-    # it accepts multiple domain
+    #TODO: Move this outer loop to screensmart-r
+    #      so that it can handle multiple domains
+    #      without this ugly loop
     domain_results = domain_ids.map do |domain_id|
       accumulator = normalized_shadowcat answers: [], domain: [domain_id]
 
