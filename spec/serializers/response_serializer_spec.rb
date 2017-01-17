@@ -34,16 +34,16 @@ describe ResponseSerializer do
     expect(question[:answer_option_set]).to include(:id, :answer_options)
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
-    domain_response = serialized[:domain_responses][0]
-    expect(domain_response).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id,
+    domain_result = serialized[:domain_results][0]
+    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id,
                                        :quartile, :domain_sign, :norm_population_label)
-    expect(domain_response[:estimate]).to be_a(Float)
-    expect(domain_response[:variance]).to be_a(Float)
-    expect(domain_response[:estimate_interpretation]).to be_a(String)
-    expect(domain_response[:warning].class).to be_in([String, NilClass])
-    expect(domain_response[:domain_id]).to eq('POS-PQ')
-    expect(domain_response[:quartile]).to be_a(String)
-    expect(domain_response[:domain_sign]).to eq('neg')
-    expect(domain_response[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
+    expect(domain_result[:estimate]).to be_a(Float)
+    expect(domain_result[:variance]).to be_a(Float)
+    expect(domain_result[:estimate_interpretation]).to be_a(String)
+    expect(domain_result[:warning].class).to be_in([String, NilClass])
+    expect(domain_result[:domain_id]).to eq('POS-PQ')
+    expect(domain_result[:quartile]).to be_a(String)
+    expect(domain_result[:domain_sign]).to eq('neg')
+    expect(domain_result[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
   end
 end
