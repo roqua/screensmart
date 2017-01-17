@@ -17,7 +17,6 @@ describe 'answering questions' do
   end
 
   def complete_response
-    # Question 1 = 'Oneens' means done in VCR cassette
     answer_question 1, 'Oneens'
     answer_question 2, 'Oneens'
     answer_question 3, 'Oneens'
