@@ -28,20 +28,20 @@ class Response < BaseModel
     RPackage.data_for(answer_values, domain_ids)
   end
 
-  def domain_responses
+  def domain_results
     domain_ids.map do |domain_id|
-      DomainResponse.new(response: self, domain_id: domain_id)
+      DomainResult.new(response: self, domain_id: domain_id)
     end
   end
 
   # As stored in FinishResponse event
   def results
-    domain_responses.map do |domain_response|
-      { answer_values: domain_response.answer_values,
-        estimate: domain_response.estimate,
-        variance: domain_response.variance,
-        estimate_interpretation: domain_response.estimate_interpretation,
-        warning: domain_response.warning }
+    domain_results.map do |domain_result|
+      { answer_values: domain_result.answer_values,
+        estimate: domain_result.estimate,
+        variance: domain_result.variance,
+        estimate_interpretation: domain_result.estimate_interpretation,
+        warning: domain_result.warning }
     end
   end
 

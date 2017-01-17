@@ -1,12 +1,5 @@
-# A stateless response to a given set of questions in one domain.
-# Initializing is done by setting answer_values as a hash, for example:
-#   r = Response.new(answer_values: { 'EL02' => 1 })
-#
-# After this, all attributes can be read in an OOP way, for example:
-#   r.questions # All questions, including the next (unanswered) one
-#   # => [#<Question:0x007faadb3459a8 @id="EL02", @answer_value: 1>,
-#         #<Question:0x007faadb2d49d8 @id="EL03">]
-class DomainResponse < BaseModel
+# Value object that represents all test outcomes for a given domain
+class DomainResult < BaseModel
   # @see https://github.com/roqua/screensmart-r/blob/master/inst/extdata/estimate_interpretations_quartiles.csv
   QUARTILE_MAPPINGS = {
     'Laag niveau (++)'            => 'Q1', # Psychopathologie
