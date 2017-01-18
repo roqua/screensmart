@@ -58,10 +58,13 @@ describe 'answering questions' do
   end
 
   scenario 'viewing a completed response' do
+    allow_any_instance_of(Question).to receive(:intro).and_return 'Some intro text'
     complete_response
 
     visit "/show?showSecret=#{Events::InvitationAccepted.last.show_secret}"
 
+    # It shows the question intro text
+    expect(page).to have_content 'Some intro text'
     # It shows the question title
     expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
     # It shows the chosen option

@@ -1,4 +1,4 @@
-{ div, table, tbody, thead, tr, td, th, i, p, h1, span, br } = React.DOM
+{ div, table, tbody, thead, tr, td, th, i, p, h1, span, br, em } = React.DOM
 
 @ResponseView = React.createClass
   displayName: 'ResponseView'
@@ -62,13 +62,25 @@
   displayName: 'AnswersRow'
 
   render: ->
-    { question } = @props
+    { question: { intro, text } } = @props
 
     tr
       className: ''
       td
         className: 'question-text'
-        question.text
+        [
+          if intro && intro != ''
+            p
+              key: 'intro'
+              className: 'intro-text'
+              em
+                className: ''
+                intro
+          p
+            key: 'text'
+            className: ''
+            text
+        ]
       td
         className: 'answer-value'
         @text()
