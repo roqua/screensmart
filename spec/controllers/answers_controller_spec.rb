@@ -13,7 +13,6 @@ describe AnswersController do
       let(:params) do
         {
           response_uuid: uuid,
-          domain_id: 'POS-PQ',
           question_id: 'EL02',
           answer_value: 1
         }

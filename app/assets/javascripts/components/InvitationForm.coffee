@@ -68,7 +68,7 @@ invitationForm = React.createClass
           if @shouldShowErrorFor 'domainIds' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
-          'Kies één of meerdere domein om op te testen'
+          'Kies één of meerdere domeinen om op te testen'
         ul
           className: 'domains'
           domains.map (domain) =>
