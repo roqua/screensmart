@@ -6,8 +6,10 @@ class ResponseSerializer < ActiveModel::Serializer
 end
 
 class DomainResultSerializer < ActiveModel::Serializer
-  attributes :domain_id, :estimate, :variance, :estimate_interpretation, :warning,
+  attributes :estimate, :variance, :estimate_interpretation, :warning,
              :quartile, :domain_sign, :norm_population_label
+
+  has_one :domain
 end
 
 class QuestionSerializer < ActiveModel::Serializer
@@ -20,4 +22,8 @@ class AnswerOptionSetSerializer < ActiveModel::Serializer
   attributes :id
 
   has_many :answer_options
+end
+
+class DomainSerializer < ActiveModel::Serializer
+  attributes :id, :description, :norm_population
 end

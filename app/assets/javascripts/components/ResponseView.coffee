@@ -45,7 +45,7 @@
   displayName: 'EstimateInterpretation'
 
   render: ->
-    { estimateInterpretation, warning, domainId } = @props
+    { estimateInterpretation, warning, domain } = @props
     divClass = if warning then 'estimate-interpretation warning' else 'estimate-interpretation'
     warningClass = if warning then 'fa fa-warning fa-lg' else ''
 
@@ -53,7 +53,7 @@
       className: divClass
       i
         className: warningClass
-      "Interpretatie #{domainId}: #{estimateInterpretation}"
+      "Interpretatie #{domain.description}: #{estimateInterpretation}"
 
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'

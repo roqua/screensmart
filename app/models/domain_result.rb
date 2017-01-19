@@ -38,6 +38,10 @@ class DomainResult < BaseModel
     end
   end
 
+  def domain
+    Domain.new id: domain_id
+  end
+
   def data_from_r
     response.data_from_r[:domain_results][domain_id]
   end
