@@ -12,8 +12,6 @@ invitationForm = React.createClass
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
 
-    # Place domainId value in an array. To be removed in the future when multiple domains
-    # can be chosen.
     dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
 
   toggleDomain: (event) ->
