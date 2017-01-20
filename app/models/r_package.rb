@@ -34,7 +34,7 @@ module RPackage
     #      so that it can handle multiple domains
     #      without this ugly loop
     domain_results = domain_ids.map do |domain_id|
-      accumulator = normalized_shadowcat answers: [], domain: [domain_id]
+      accumulator = normalized_shadowcat answers: [], domain: domain_id
 
       answers_in_domain = answers.select do |question_id, _|
         domain_id_for_question_id(question_id) == domain_id
@@ -47,7 +47,7 @@ module RPackage
         params = { answers: [answers_in_domain.take(index + 1).to_h],
                    estimate: hash[:estimate],
                    variance: hash[:variance],
-                   domain: [domain_id] }
+                   domain: domain_id }
 
         normalized_shadowcat params
       end
@@ -72,7 +72,14 @@ module RPackage
   end
 
   def self.normalized_shadowcat(params)
-    normalize_shadowcat_output shadowcat(params)
+    # Allow this function to be called with sensible params
+    # by denormalizing them here
+    denormalized_params = params.tap do |params|
+      # screensmart-r requires an array 'domain' value, although it can currently only contain one value
+      params[:domain] = [params[:domain]]
+    end
+
+    normalize_shadowcat_output shadowcat(denormalized_params)
   end
 
   def self.normalize_shadowcat_output(raw_data)
