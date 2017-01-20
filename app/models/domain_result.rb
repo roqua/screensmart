@@ -2,11 +2,11 @@
 class DomainResult < BaseModel
   # @see https://github.com/roqua/screensmart-r/blob/master/inst/extdata/estimate_interpretations_quartiles.csv
   QUARTILE_MAPPINGS = {
-    'Laag niveau (++)'            => 'Q1', # Psychopathologie
+    'Laag niveau (++)'            => 'Q1', # Psychopathology
     'Matig niveau (+)'            => 'Q2',
     'Verhoogd niveau (-)'         => 'Q3',
     'Sterk verhoogd niveau (--)'  => 'Q4',
-    'Laag niveau (--)'            => 'Q1', # Positieve constructen
+    'Laag niveau (--)'            => 'Q1', # Positive constructs
     'Matig niveau (-)'            => 'Q2',
     'Hoog niveau (+)'             => 'Q3',
     'Zeer hoog niveau (++)'       => 'Q4'
@@ -41,13 +41,6 @@ class DomainResult < BaseModel
 
   def data_from_r
     response.data_from_r[:domain_results][domain_id]
-  end
-
-  def answer_values
-    # Filter all of the response's answer values by those belonging to this domain
-    response.answer_values.select do |id, _|
-      RPackage.question_by_id(id)['domain_id'] == domain_id
-    end
   end
 
   def domain_sign
