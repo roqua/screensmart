@@ -1096,6 +1096,21 @@ http_interactions:
                   "id": 2
                 }
               ]
+            },
+            {
+              "id": "enough_answers_to_be_done",
+              "database_id": "POS-PQ",
+              "domain_id": "POS-PQ",
+              "calculation_model": "GPCM",
+              "text": "Enough answers to be done testing",
+              "intro": null,
+              "answer_option_set_id": 1,
+              "answer_options": [
+                {
+                  "text": "Eens",
+                  "id": 1
+                }
+              ]
             }
           ],
           "domains": [
