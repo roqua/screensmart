@@ -39,7 +39,7 @@ describe FinishResponse do
       results = subject.result.results
       expect(results).to be_an(Array)
       expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
-                                                            :warning, :variance, :answer_values)
+                                                            :warning, :variance)
     end
 
     it 'sends an email to the requester' do

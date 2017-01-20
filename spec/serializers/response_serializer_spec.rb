@@ -36,7 +36,7 @@ describe ResponseSerializer do
 
     domain_result = serialized[:domain_results][0]
     expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id,
-                                       :quartile, :domain_sign, :norm_population_label)
+                                     :quartile, :domain_sign, :norm_population_label)
     expect(domain_result[:estimate]).to be_a(Float)
     expect(domain_result[:variance]).to be_a(Float)
     expect(domain_result[:estimate_interpretation]).to be_a(String)

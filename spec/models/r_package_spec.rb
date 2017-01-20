@@ -88,17 +88,15 @@ describe RPackage do
           expect(subject[:next_question_id]).to eq 'first_question_of_second_domain'
         end
 
-        it 'returns the results in a hash' do
-          expect(subject[:domain_results]).to eq ({
-            'NEG-PQ' => { estimate: 0.0,
-                          variance: 25.0,
-                          estimate_interpretation: 'Matig niveau (+)',
-                          warning: nil },
-            'POS-PQ' => { estimate: -0.6777,
-                          variance: 0.6842,
-                          estimate_interpretation: 'Matig niveau (+)',
-                          warning: nil }
-          })
+        it 'returns the per-domain results in a hash' do
+          expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
+                                                               variance: 25.0,
+                                                               estimate_interpretation: 'Matig niveau (+)',
+                                                               warning: nil },
+                                                 'POS-PQ' => { estimate: -0.6777,
+                                                               variance: 0.6842,
+                                                               estimate_interpretation: 'Matig niveau (+)',
+                                                               warning: nil }
         end
       end
     end

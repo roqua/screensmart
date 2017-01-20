@@ -24,15 +24,14 @@ module RPackage
     call('get_itembank_rdata')
   end
 
-  # Retrieve a hash of attributes defined by the R package
-  # for a given set of answers (e.g. 'EL02' => 1)
+  # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    #TODO: Allow screensmart-r's call_shadowcat function to handle
-    #      multiple domains, which will allow us to simply return
-    #      its return value here, greatly reducing complexity.
+    # TODO: Allow screensmart-r's call_shadowcat function to handle
+    #       multiple domains, which will allow us to simply return
+    #       its return value here, greatly reducing complexity.
     domain_results = domain_ids.map do |domain_id|
       data_for_domain(answers, domain_id)
     end
@@ -79,11 +78,10 @@ module RPackage
   end
 
   def self.normalized_shadowcat(params)
-    # Allow this function to be called with sensible params
-    # by denormalizing them here
-    denormalized_params = params.tap do |params|
+    # Allow this function to be called with sensible params by denormalizing them here
+    denormalized_params = params.tap do |p|
       # screensmart-r requires an array 'domain' value, although it can currently only contain one value
-      params[:domain] = [params[:domain]]
+      p[:domain] = [p[:domain]]
     end
 
     normalize_shadowcat_output shadowcat(denormalized_params)

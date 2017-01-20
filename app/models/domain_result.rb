@@ -29,13 +29,12 @@ class DomainResult < BaseModel
   }.freeze
 
   attr_accessor :domain_id, :response
+  alias_attribute :to_h, :data_from_r
 
   # accessors for attributes defined by R package
   %i(estimate estimate_interpretation variance warning).each do |r_attribute|
     define_method r_attribute do
-      ensure_valid do
-        data_from_r[r_attribute]
-      end
+      data_from_r[r_attribute]
     end
   end
 

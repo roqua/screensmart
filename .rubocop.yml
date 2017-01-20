@@ -9,6 +9,11 @@ AllCops:
 Metrics/LineLength:
   Max: 120
 
+Metrics/ModuleLength:
+  Exclude:
+    # Temporarily contains functionality that belongs to screensmart-r
+    - app/models/r_package.rb
+
 # Trust developers to document where neccesary, otherwise
 # rely on the code being self-documenting
 Style/Documentation:

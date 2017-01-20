@@ -36,13 +36,7 @@ class Response < BaseModel
 
   # As stored in FinishResponse event
   def results
-    domain_results.map do |domain_result|
-      { answer_values: domain_result.answer_values,
-        estimate: domain_result.estimate,
-        variance: domain_result.variance,
-        estimate_interpretation: domain_result.estimate_interpretation,
-        warning: domain_result.warning }
-    end
+    domain_results.map(&:to_h)
   end
 
   def questions
