@@ -35,8 +35,7 @@ def configure_vcr
 
     vcr.default_cassette_options = {
       allow_playback_repeats: true,
-      match_requests_on: [:body, :uri, :method]
-    }
+      match_requests_on: [:body, :uri, :method] }
   end
 end
 
