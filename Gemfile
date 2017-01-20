@@ -72,5 +72,5 @@ group :test do
 
   gem 'capybara',            '~> 2.6.2'
   gem 'capybara-screenshot', '~> 1.0.11'
-  gem 'poltergeist',         '~> 1.9.0'
+  gem 'poltergeist',         '~> 1.10.0'
 end

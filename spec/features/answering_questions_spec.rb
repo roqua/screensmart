@@ -42,10 +42,6 @@ describe 'answering questions' do
   scenario 'finishing' do
     expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord'
 
-    # Question 1 = 'Eens' means there is a next question in VCR cassette
-    # answer_question 1, 'Eens'
-    # expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
-
     complete_response
 
     expect(page).to_not have_content 'Vraag 1'
