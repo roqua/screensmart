@@ -71,7 +71,7 @@ module RPackage
     find_question(id)['domain_id']
   end
 
-  def find_question(id)
+  def self.find_question(id)
     questions.find { |q| q['id'] == id } || raise("No question with id #{id}")
   end
 
