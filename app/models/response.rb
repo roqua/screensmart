@@ -34,7 +34,6 @@ class Response < BaseModel
     end
   end
 
-  # As stored in FinishResponse event
   def results
     domain_results.map(&:to_h)
   end
