@@ -72,7 +72,7 @@
           if intro && intro != ''
             p
               key: 'intro'
-              className: 'intro-text'
+              className: 'intro'
               em
                 className: ''
                 intro
