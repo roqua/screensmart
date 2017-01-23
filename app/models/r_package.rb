@@ -38,9 +38,13 @@ module RPackage
 
     { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
       done: domain_results.all? { |domain| domain[:done] },
-      domain_results: domain_ids.zip(domain_results).map do |domain_id, domain|
-        [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]
-      end.to_h }
+      domain_results: domain_results_hash(domain_ids, domain_results) }
+  end
+
+  def self.domain_results_hash(domain_ids, domain_results)
+    domain_ids.zip(domain_results).map do |domain_id, domain|
+      [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]
+    end.to_h
   end
 
   def self.data_for_domain(answers, domain_id)
