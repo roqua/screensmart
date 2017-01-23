@@ -68,13 +68,11 @@ module RPackage
   end
 
   def self.domain_id_for_question_id(id)
-    question = questions.find do |q|
-      q['id'] == id
-    end
+    find_question(id)['domain_id']
+  end
 
-    raise "No question with id #{id}" if question.nil?
-
-    question['domain_id']
+  def find_question(id)
+    questions.find { |q| q['id'] == id } || raise("No question with id #{id}")
   end
 
   def self.normalized_shadowcat(params)
