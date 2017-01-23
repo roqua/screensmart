@@ -62,7 +62,9 @@ invitationForm = React.createClass
       @renderErrorFor 'domainIds'
       div
         className:
-          if @shouldShowErrorFor 'domainIds' then 'domain-wrapper invalid'
+          # redux-form v5 cannot store errors for array like for normal attributes,
+          # so the error gets added to the form as a whole.
+          if @shouldShowErrorFor 'base' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
           'Kies één of meerdere domeinen om op te testen'
@@ -114,14 +116,14 @@ invitationForm = React.createClass
         @errorFor fieldName
 
   errorFor: (fieldName) ->
-    if fieldName == 'domainIds'
+    if fieldName == 'base'
       @props.error
     else
       @props.fields[fieldName].error
 
   shouldShowErrorFor: (fieldName) ->
     # redux-form v5 does not handle array errors very well
-    if fieldName == 'domainIds'
+    if fieldName == 'base'
       @props.submitFailed && @props.error
     else
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
