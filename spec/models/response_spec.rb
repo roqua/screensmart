@@ -1,5 +1,5 @@
 describe Response do
-  let(:domain_ids) { ['POS-PQ', 'NEG-PQ'] }
+  let(:domain_ids) { ['POS-PQ'] }
   let(:invitation_sent) { Fabricate :invitation_sent, domain_ids: domain_ids }
   let(:response) do
     invitation_accepted = AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
@@ -13,7 +13,6 @@ describe Response do
   end
 
   describe '#next_question' do
-    let(:domain_ids) { ['POS-PQ'] } # One domain instead of two so that we are done testing after only one question
     it 'returns the next question from the R package' do
       expect(response.next_question.id).to start_with('EL')
     end
@@ -37,7 +36,6 @@ describe Response do
     end
 
     context 'when done testing' do
-      let(:domain_ids) { ['POS-PQ'] } # One domain instead of two so that we are done testing after only one question
       it 'contains all answered questions' do
         complete_response
         expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done)
