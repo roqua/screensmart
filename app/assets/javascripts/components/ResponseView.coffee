@@ -36,10 +36,10 @@
       i
         className: 'fa fa-clock-o fa-lg'
       span className: 'date-requested',
-        "Aangevraagd op: #{fullDateTime(requestedAt)}",
+        "Aangevraagd op: #{moment(requestedAt).format('LLL')}",
         br {}
       span className: 'date-created',
-        "Ingevuld op: #{fullDateTime(createdAt)}"
+        "Ingevuld op: #{moment(createdAt).format('LLL')}"
 
 @EstimateInterpretation = React.createClass
   displayName: 'EstimateInterpretation'
