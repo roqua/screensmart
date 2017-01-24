@@ -9,7 +9,10 @@
   %body
     %header
       .brand-logo
-        = image_tag 'screensmart.png'
+        = image_tag 'catja.png'
 
     = yield
     = javascript_include_tag 'application'
+    .powered-by-roqua
+      = link_to 'https://roqua.nl', target: '_blank' do
+        = image_tag 'powered_by_roqua.png'

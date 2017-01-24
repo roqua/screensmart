@@ -1,9 +1,13 @@
 [![Circle CI](https://circleci.com/gh/roqua/screensmart.svg?style=svg)](https://circleci.com/gh/roqua/screensmart)
 [![Issue Count](https://codeclimate.com/github/roqua/screensmart/badges/issue_count.svg)](https://codeclimate.com/github/roqua/screensmart)
 
+# Screensmart
+
+screensmart is the working title for the CATja project.
+
 # Development Machine installation
 First, obtain the OpenCPU staging password (needed to access screensmart-r) by running this command:
-ssh -qt stag-screensmart-web1 'sudo cat /var/www/screensmart.roqua-staging.nl/current/.env | grep OPENCPU_PASSWORD'
+ssh -qt stag-screensmart-web1 'sudo cat /var/www/catja.roqua-staging.nl/current/.env | grep OPENCPU_PASSWORD'
 Add a file .env.local, containing the output of the last command:
 ```sh
 # .env.local
@@ -35,11 +39,11 @@ screensmart needs to be adapted to match this schema.
 # Architecture
 ## Roles of services
 ```
-                               +--------------+       +-----------+
-                               |              |       |           |
-       - Stores events as JSON |  PostgreSQL  |       |  Mailgun  | - Service for invitation e-mails
-                               |              |       |           |
-                               +--------------+       +-----------+
+                               +--------------+       +-------------+
+                               |              |       |             |
+       - Stores events as JSON |  PostgreSQL  |       |  Sparkpost  | - Service for e-mails
+                               |              |       |             |
+                               +--------------+       +-------------+
                                       ^                 ^
                                       |                 |
                                       |                 |

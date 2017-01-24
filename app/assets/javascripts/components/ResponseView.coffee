@@ -95,10 +95,10 @@
     tr
       className: ''
       td
-        className: ''
+        className: 'question-text'
         question.text
       td
-        className: ''
+        className: 'answer-value'
         @text()
 
   text: ->
