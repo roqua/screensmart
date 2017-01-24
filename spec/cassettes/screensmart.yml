@@ -119,6 +119,7 @@ http_interactions:
           "variance": [25],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 
@@ -185,6 +186,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1220,6 +1222,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1282,6 +1285,7 @@ http_interactions:
           "variance": [0.6842],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1348,6 +1352,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 
@@ -1414,6 +1419,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1481,6 +1487,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1549,6 +1556,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1618,6 +1626,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1684,6 +1693,7 @@ http_interactions:
           "variance": [25],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 

@@ -31,8 +31,7 @@ describe ResponseSerializer do
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     domain_result = serialized[:domain_results][0]
-    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain,
-                                     :quartile, :domain_sign, :norm_population_label)
+    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain, :quartile)
     expect(domain_result[:estimate]).to be_a(Float)
     expect(domain_result[:variance]).to be_a(Float)
     expect(domain_result[:estimate_interpretation]).to be_a(String)
