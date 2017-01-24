@@ -17,7 +17,6 @@ describe 'answering questions' do
   end
 
   def complete_response
-    # Question 1 = 'Oneens' means done in VCR cassette
     answer_question 1, 'Oneens'
     answer_question 2, 'Oneens'
     answer_question 3, 'Oneens'
@@ -43,10 +42,6 @@ describe 'answering questions' do
   scenario 'finishing' do
     expect_last_question_to_be 'Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord'
 
-    # Question 1 = 'Eens' means there is a next question in VCR cassette
-    # answer_question 1, 'Eens'
-    # expect_last_question_to_be 'Mijn gedachten zijn soms zo sterk dat ik ze bijna kan horen'
-
     complete_response
 
     expect(page).to_not have_content 'Vraag 1'
@@ -71,5 +66,12 @@ describe 'answering questions' do
     expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
     # It shows the chosen option
     expect(page).to have_content 'Oneens'
+
+    # It shows the quartile score
+    within '.results-table' do
+      expect(page).to have_content 'Q1'
+      # It shows the estimate interpretation
+      expect(page).to have_content 'Laag niveau (++)'
+    end
   end
 end

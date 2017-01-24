@@ -14,6 +14,13 @@
     .fa-clock-o
       color: darken($screensmart-yellow, 2%)
       padding-right: 0.67rem
+    .date-created
+      margin-left: 1.7rem
+    .date-requested
+      margin-left: 0rem
+  .report-text
+    @extend .creation-date
+    white-space: pre-line
   .estimate-interpretation
     border: 2px solid $response-estimate-interpretation-border-color
     background-color: $response-background-color
@@ -27,6 +34,17 @@
     .fa-warning
       color: darken($screensmart-red, 2%)
       padding-right: 0.67rem
+  .results-table
+    border: 2px solid $response-estimate-interpretation-border-color
+    background-color: $response-background-color
+    padding: 0.5rem 1.6rem
+    border-radius: $response-border-radius
+    font-size: 0.9rem
+    margin-top: 1rem
+    width: 100%
+    table
+      width: 100%
+      text-align: left
   .answers-table
     table
       border-collapse: separate

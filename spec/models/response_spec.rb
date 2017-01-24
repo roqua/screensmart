@@ -1,5 +1,6 @@
 describe Response do
-  let(:invitation_sent) { Fabricate :invitation_sent }
+  let(:domain_ids) { ['POS-PQ'] }
+  let(:invitation_sent) { Fabricate :invitation_sent, domain_ids: domain_ids }
   let(:response) do
     invitation_accepted = AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
     Response.find invitation_accepted.response_uuid
@@ -18,7 +19,7 @@ describe Response do
 
     it 'is nil when done' do
       complete_response
-      expect(response.next_question).to be nil
+      expect(response.next_question).to be_nil
     end
   end
 
@@ -28,7 +29,6 @@ describe Response do
         Events::AnswerSet.create!(response_uuid: response.uuid,
                                   question_id: 'EL02',
                                   answer_value: 2)
-        # expect(response.questions.map(&:id)).to eq %w( EL02 EL03 )
         response.questions.map(&:id).each do |id|
           expect(id).to start_with('EL')
         end
@@ -38,17 +38,8 @@ describe Response do
     context 'when done testing' do
       it 'contains all answered questions' do
         complete_response
-        expect(response.questions.map(&:id)).to eq %w( enough_answers_to_be_done )
+        expect(response.questions.map(&:id)).to eq %w(enough_answers_to_be_done)
       end
-    end
-  end
-
-  describe '#answers' do
-    it 'contains all answers to filled out questions' do
-      Events::AnswerSet.create!(response_uuid: response.uuid,
-                                question_id: 'EL02',
-                                answer_value: 2)
-      expect(response.answers.map(&:id)).to eq %w( EL02 )
     end
   end
 end

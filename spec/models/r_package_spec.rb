@@ -32,11 +32,12 @@ describe RPackage do
       it 'returns the first question, estimate and variance' do
         response = described_module.data_for({}, domains)
         expect(response[:next_question_id]).to start_with('EL')
-        expect(response[:estimate]).to be_a(Float)
-        expect(response[:variance]).to be_a(Float)
         expect(response[:done]).to be_falsey
-        expect(response[:estimate_interpretation]).to be_a(String)
-        expect(response[:warning]).to be_nil
+        domain_result = response[:domain_results]['POS-PQ']
+        expect(domain_result[:estimate]).to be_a(Float)
+        expect(domain_result[:variance]).to be_a(Float)
+        expect(domain_result[:estimate_interpretation]).to be_a(String)
+        expect(domain_result[:warning]).to be_nil
       end
     end
 
@@ -44,18 +45,59 @@ describe RPackage do
       it 'returns a new next_question, estimate, variance, estimate_interpretation and warning' do
         response = described_module.data_for({ 'EL02' => 2 }, domains)
         expect(response[:next_question_id]).to start_with('EL')
-        expect(response[:estimate]).to be_a(Float)
-        expect(response[:variance]).to be_a(Float)
         expect(response[:done]).to be_falsey
-        expect(response[:estimate_interpretation]).to be_a(String)
-        expect(response[:warning]).to be_nil
+        domain_result = response[:domain_results]['POS-PQ']
+        expect(domain_result[:estimate]).to be_a(Float)
+        expect(domain_result[:variance]).to be_a(Float)
+        expect(domain_result[:estimate_interpretation]).to be_a(String)
+        expect(domain_result[:warning]).to be_nil
       end
     end
 
     context 'when done testing according to the algorithm' do
       it 'includes done: true' do
+        allow(described_module).to receive(:questions).and_return [
+          { 'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ' },
+          { 'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ' }
+        ]
+
         expect(described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains)).to include \
           done: true
+      end
+    end
+
+    context 'testing with multiple domains' do
+      let(:domains) { %w( POS-PQ NEG-PQ ) }
+
+      context 'first domain is done' do
+        subject { described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains) }
+
+        before do
+          allow(described_module).to receive(:questions).and_return [
+            { 'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ' },
+            { 'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ' }
+          ]
+        end
+
+        it 'calls normalized_shadowcat for the first domain that is not done' do
+          expect(described_module).to receive(:normalized_shadowcat).thrice.and_call_original
+          subject
+        end
+
+        it 'returns the first question of the second domain as next_question_id' do
+          expect(subject[:next_question_id]).to eq 'first_question_of_second_domain'
+        end
+
+        it 'returns the per-domain results in a hash' do
+          expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
+                                                               variance: 25.0,
+                                                               estimate_interpretation: 'Matig niveau (+)',
+                                                               warning: nil },
+                                                 'POS-PQ' => { estimate: -0.6777,
+                                                               variance: 0.6842,
+                                                               estimate_interpretation: 'Matig niveau (+)',
+                                                               warning: nil }
+        end
       end
     end
   end

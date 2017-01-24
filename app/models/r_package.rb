@@ -24,29 +24,69 @@ module RPackage
     call('get_itembank_rdata')
   end
 
-  # Retrieve a hash of attributes defined by the R package
-  # for a given set of answers (e.g. 'EL02' => 1)
+  # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
     raise 'No domains given' unless domain_ids.present?
 
-    initial_hash = normalized_shadowcat answers: [], domain: domain_ids
+    # TODO: Allow screensmart-r's call_shadowcat function to handle
+    #       multiple domains, which will allow us to simply return
+    #       its return value here, greatly reducing complexity.
+    domain_results = domain_ids.map do |domain_id|
+      data_for_domain(answers, domain_id)
+    end
+
+    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
+      done: domain_results.all? { |domain| domain[:done] },
+      domain_results: domain_results_hash(domain_ids, domain_results) }
+  end
+
+  def self.domain_results_hash(domain_ids, domain_results)
+    domain_ids.zip(domain_results).map do |domain_id, domain|
+      [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]
+    end.to_h
+  end
+
+  def self.data_for_domain(answers, domain_id)
+    accumulator = normalized_shadowcat answers: [], domain: domain_id
+
+    answers_in_domain = filter_answers_by_domain(answers, domain_id)
 
     # Recalculate the estimate and variance for <index> answers,
     # then recalculate it for <index + 1> answers with the previous estimate and variance,
     # repeat until done for all answers
-    answers.each_with_index.inject(initial_hash) do |hash, (_, index)|
-      params = { answers: [answers.take(index + 1).to_h],
+    answers_in_domain.each_with_index.inject(accumulator) do |hash, (_, index)|
+      params = { answers: [answers_in_domain.take(index + 1).to_h],
                  estimate: hash[:estimate],
                  variance: hash[:variance],
-                 domain: domain_ids }
+                 domain: domain_id }
 
       normalized_shadowcat params
     end
   end
 
+  def self.filter_answers_by_domain(answers, domain_id)
+    answers.select do |question_id, _|
+      domain_id_for_question_id(question_id) == domain_id
+    end
+  end
+
+  def self.domain_id_for_question_id(id)
+    find_question(id)['domain_id']
+  end
+
+  def self.find_question(id)
+    questions.find { |q| q['id'] == id } || raise("No question with id #{id}")
+  end
+
   def self.normalized_shadowcat(params)
-    normalize_shadowcat_output shadowcat(params)
+    # Allow this function to be called with sensible params by denormalizing them here
+    denormalized_params = params.tap do |p|
+      # screensmart-r requires an array 'domain' value, although it can currently only contain one value
+      p[:domain] = [p[:domain]]
+    end
+
+    normalize_shadowcat_output shadowcat(denormalized_params)
   end
 
   def self.normalize_shadowcat_output(raw_data)

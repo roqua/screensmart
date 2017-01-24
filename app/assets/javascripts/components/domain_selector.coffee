@@ -11,7 +11,7 @@
       className: 'app'
       h1
         null
-        "Kies een domein om op te testen"
+        "Kies één of meerdere domeinen om op te testen"
         ul
           null
           @props.domains.map (domain) ->

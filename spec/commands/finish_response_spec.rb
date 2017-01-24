@@ -35,11 +35,11 @@ describe FinishResponse do
       expect { subject }.to change { Events::ResponseFinished.count }.by(1)
     end
 
-    it 'saves the estimate_interpretation, warning, estimate and variance' do
-      expect(subject.result.estimate_interpretation.class).to be_in([String, NilClass])
-      expect(subject.result.warning.class).to be_in([String, NilClass])
-      expect(subject.result.estimate).to be_a(Float)
-      expect(subject.result.variance).to be_a(Float)
+    it 'saves the domain results' do
+      results = subject.result.results
+      expect(results).to be_an(Array)
+      expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
+                                                            :warning, :variance)
     end
 
     it 'sends an email to the requester' do

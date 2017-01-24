@@ -3,8 +3,7 @@ describe SetAnswer do
 
   before do
     Events::InvitationSent.create! response_uuid: response_uuid,
-                                   requester_email: 'requester@example.dev',
-                                   domain_ids: ['POS-PQ']
+                                   requester_email: 'requester@example.dev'
   end
 
   let(:params) do

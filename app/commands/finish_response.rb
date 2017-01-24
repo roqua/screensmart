@@ -7,16 +7,12 @@ class FinishResponse < ActiveInteraction::Base
   validate :validate_response_is_not_finished
   validate :validate_all_questions_answered
 
-  # rubocop:disable Metrics/AbcSize
   def execute
     response_finished =
       Events::ResponseFinished.create! invitation_uuid: invitation.invitation_uuid,
                                        response_uuid: response_uuid,
                                        answer_values: response.answer_values,
-                                       estimate: response.estimate,
-                                       variance: response.variance,
-                                       estimate_interpretation: response.estimate_interpretation,
-                                       warning: response.warning
+                                       results: response.results
 
     send_response_email
 

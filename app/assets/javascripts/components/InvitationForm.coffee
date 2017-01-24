@@ -1,4 +1,4 @@
-{ DOM: { div, input, span, small, ul, li, p, label, button, form, i } } = React
+{ DOM: { div, input, select, option, span, small, ul, li, p, label, button, form, i } } = React
 { reduxForm } = ReduxForm
 { emailValid } = EmailValidator
 
@@ -12,10 +12,16 @@ invitationForm = React.createClass
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
 
-    # Place domainId value in an array. To be removed in the future when multiple domains
-    # can be chosen.
-    enteredValues.domainIds = [enteredValues.domainIds]
     dispatch Screensmart.Actions.sendInvitation(enteredValues) if @props.valid
+
+  toggleDomain: (domainId, checked) ->
+    { fields: { domainIds } } = @props
+    if checked
+      domainIds.addField(domainId)
+    else
+      idx = domainIds.findIndex (el) ->
+        el.value == domainId
+      domainIds.removeField(idx)
 
   render: ->
     { fields: { respondentEmail, requesterName, requesterEmail, domainIds },
@@ -56,27 +62,29 @@ invitationForm = React.createClass
       @renderErrorFor 'domainIds'
       div
         className:
-          if @shouldShowErrorFor 'domainIds' then 'domain-wrapper invalid'
+          # redux-form v5 cannot store errors for array like for normal attributes,
+          # so the error gets added to the form as a whole.
+          if @shouldShowErrorFor 'base' then 'domain-wrapper invalid'
           else 'domain-wrapper'
         p
-          'Kies een domein om op te testen'
-        input
-          ul
-            className: 'domains'
-            domains.map (domain) ->
-              li
-                key: domain.id
-                className: 'domain'
-                input \
-                  merge domainIds,
-                        type: 'radio'
-                        name: 'domainIds'
-                        id: domain.id
-                        value: domain.id
-                label
-                  className: 'domain-label'
-                  htmlFor: domain.id
-                  domain.description
+          'Kies één of meerdere domeinen om op te testen'
+        ul
+          className: 'domains'
+          domains.map (domain) =>
+            li
+              key: domain.id
+              className: 'domain'
+              input \
+                merge domainIds,
+                      type: 'checkbox'
+                      name: 'domainIds[]'
+                      id: domain.id
+                      value: domain.id
+                      onChange: (event) => @toggleDomain(event.target.value, event.target.checked)
+              label
+                className: 'domain-label'
+                htmlFor: domain.id
+                domain.description
       button
         type: 'submit'
         'Verstuur uitnodiging'
@@ -108,10 +116,17 @@ invitationForm = React.createClass
         @errorFor fieldName
 
   errorFor: (fieldName) ->
-    @props.fields[fieldName].error
+    if fieldName == 'base'
+      @props.error
+    else
+      @props.fields[fieldName].error
 
   shouldShowErrorFor: (fieldName) ->
-    (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
+    # redux-form v5 does not handle array errors very well
+    if fieldName == 'base'
+      @props.submitFailed && @props.error
+    else
+      (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
   { respondentEmail, requesterName, requesterEmail, domainIds } = values
@@ -120,11 +135,11 @@ validate = (values) ->
   errors.requesterName = 'Vul uw naam in' unless requesterName != ''
   errors.respondentEmail = 'Vul een geldig e-mailadres in' unless emailValid(respondentEmail)
   errors.requesterEmail = 'Vul een geldig e-mailadres in' unless emailValid(requesterEmail)
-  errors.domainIds = 'Kies een domein' unless !!domainIds
+  errors._error = 'Kies minimaal één domein' if domainIds.length == 0 # set as global error, no array errors...
   errors
 
 @InvitationForm = reduxForm(
   form: 'invitation'
-  fields: ['respondentEmail', 'requesterName', 'requesterEmail', 'domainIds']
+  fields: ['respondentEmail', 'requesterName', 'requesterEmail', 'domainIds[]']
   validate: validate
 )(invitationForm)

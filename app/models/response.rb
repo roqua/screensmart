@@ -10,17 +10,32 @@ class Response < BaseModel
   attr_accessor :uuid
 
   # Accessors for attributes defined by events
-  delegate :show_secret, to: :invitation_sent
+  delegate :show_secret, to: :invitation_accepted
   delegate :created_at, to: :invitation_accepted
   delegate :domain_ids, to: :invitation
+  delegate :requested_at, to: :invitation
 
   # accessors for attributes defined by R package
-  %i( next_question_id estimate variance done estimate_interpretation warning ).each do |r_attribute|
+  %i(next_question_id done).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
-        RPackage.data_for(answer_values, domain_ids)[r_attribute]
+        data_from_r[r_attribute]
       end
     end
+  end
+
+  def data_from_r
+    RPackage.data_for(answer_values, domain_ids)
+  end
+
+  def domain_results
+    domain_ids.map do |domain_id|
+      DomainResult.new(response: self, domain_id: domain_id)
+    end
+  end
+
+  def results
+    domain_results.map(&:to_h)
   end
 
   def questions
