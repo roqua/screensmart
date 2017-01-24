@@ -23,7 +23,3 @@ class AnswerOptionSetSerializer < ActiveModel::Serializer
 
   has_many :answer_options
 end
-
-class DomainSerializer < ActiveModel::Serializer
-  attributes :id, :description, :norm_population
-end
