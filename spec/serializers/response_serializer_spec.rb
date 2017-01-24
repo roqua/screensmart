@@ -31,7 +31,7 @@ describe ResponseSerializer do
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     domain_result = serialized[:domain_results][0]
-    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain_id,
+    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain,
                                      :quartile, :domain_sign, :norm_population_label)
     expect(domain_result[:estimate]).to be_a(Float)
     expect(domain_result[:variance]).to be_a(Float)
@@ -41,7 +41,7 @@ describe ResponseSerializer do
     expect(domain_result[:domain_sign]).to eq('neg')
     expect(domain_result[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
 
-    first_domain = serialized[:domain_results].first
+    first_domain = serialized[:domain_results].first[:domain]
     expect(first_domain[:id]).to eq 'POS-PQ'
     expect(first_domain[:description]).to eq 'Positieve symptomen van psychose'
     expect(first_domain[:norm_population]).to eq 'Algemene bevolking'
