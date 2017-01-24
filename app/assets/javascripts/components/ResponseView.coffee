@@ -145,7 +145,7 @@
             th {}, "Kwartielscore"
             th {}, "Interpretatie"
         tbody {},
-          domainResults.map (domainResult) =>
+          domainResults.map (domainResult) ->
             React.createElement ResultsRow,
               domainResult: domainResult
               key: domainResult.domainId
