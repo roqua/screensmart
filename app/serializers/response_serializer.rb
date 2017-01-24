@@ -7,7 +7,7 @@ end
 
 class DomainResultSerializer < ActiveModel::Serializer
   attributes :estimate, :variance, :estimate_interpretation, :warning,
-             :quartile, :domain_sign, :norm_population_label
+             :quartile
 
   has_one :domain
 end

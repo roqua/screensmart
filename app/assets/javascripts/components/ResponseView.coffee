@@ -41,20 +41,6 @@
       span className: 'date-created',
         "Ingevuld op: #{moment(createdAt).format('LLL')}"
 
-@EstimateInterpretation = React.createClass
-  displayName: 'EstimateInterpretation'
-
-  render: ->
-    { estimateInterpretation, warning, domain } = @props
-    divClass = if warning then 'estimate-interpretation warning' else 'estimate-interpretation'
-    warningClass = if warning then 'fa fa-warning fa-lg' else ''
-
-    div
-      className: divClass
-      i
-        className: warningClass
-      "Interpretatie #{domain.description}: #{estimateInterpretation}"
-
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'
 
@@ -148,17 +134,17 @@
           domainResults.map (domainResult) ->
             React.createElement ResultsRow,
               domainResult: domainResult
-              key: domainResult.domainId
+              key: domainResult.domain.id
 
 @ResultsRow = React.createClass
   displayName: 'ResultsRow'
 
   render: ->
-    { domainId, estimate, estimateInterpretation, quartile, normPopulationLabel } = @props.domainResult
+    { domain, estimate, estimateInterpretation, quartile, normPopulationLabel } = @props.domainResult
 
     tr
       className: ''
-      td {}, domainId
-      td {}, normPopulationLabel
+      td {}, domain.description
+      td {}, domain.normPopulation
       td {}, quartile
       td {}, estimateInterpretation
