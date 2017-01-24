@@ -26,8 +26,8 @@ describe ResponseMailer do
     context 'valid params' do
       let(:params) do
         {
-          requester_email: invitation_sent.requester_email, # 'some@doctor.dev',
-          show_secret: response.show_secret, # SecureRandom.uuid,
+          requester_email: invitation_sent.requester_email,
+          show_secret: response.show_secret,
           invitation_sent_at: Time.zone.now
         }
       end
