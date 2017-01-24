@@ -98,10 +98,12 @@ describe RPackage do
           expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
                                                                variance: 25.0,
                                                                estimate_interpretation: 'Matig niveau (+)',
+                                                               quartile: 'Q2',
                                                                warning: nil },
                                                  'POS-PQ' => { estimate: -0.6777,
                                                                variance: 0.6842,
                                                                estimate_interpretation: 'Matig niveau (+)',
+                                                               quartile: 'Q3',
                                                                warning: nil }
         end
       end

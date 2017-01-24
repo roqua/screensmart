@@ -8,15 +8,9 @@ describe DomainResult do
     it 'returns a hash containing results for the DomainResult\'s domain_id' do
       expect(subject).to eq estimate: 0.0,
                             estimate_interpretation: 'Matig niveau (+)',
+                            quartile: 'Q2',
                             variance: 25.0,
                             warning: nil
-    end
-  end
-
-  describe '#norm_population_label' do
-    subject { domain_result.norm_population_label }
-    it 'returns the norm population label belonging to the DomainResult\'s domain sign' do
-      expect(subject).to match 'Cliënten eerste lijn GGZ'
     end
   end
 

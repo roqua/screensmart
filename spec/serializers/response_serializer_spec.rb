@@ -37,8 +37,6 @@ describe ResponseSerializer do
     expect(domain_result[:estimate_interpretation]).to be_a(String)
     expect(domain_result[:warning].class).to be_in([String, NilClass])
     expect(domain_result[:quartile]).to be_a(String)
-    expect(domain_result[:domain_sign]).to eq('neg')
-    expect(domain_result[:norm_population_label]).to eq('Cliënten eerste lijn GGZ')
 
     first_domain = serialized[:domain_results].first[:domain]
     expect(first_domain[:id]).to eq 'POS-PQ'
