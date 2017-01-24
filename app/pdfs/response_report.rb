@@ -1,7 +1,4 @@
 class ResponseReport < Prawn::Document
-  TABLE_WIDTHS = [40, 100, 100, 100].freeze
-  TABLE_HEADERS = %w(Domein Normpopulatie Kwartielscore Interpretatie).freeze
-
   def initialize(response)
     super(page_size: 'A4')
     @response = response
