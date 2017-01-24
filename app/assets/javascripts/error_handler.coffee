@@ -28,6 +28,6 @@ $(document).ajaxError (event, xhr, settings, error ) ->
 
   if window.environment == 'development' || window.environment == 'test'
     console.log "#{type} #{url} failed: #{error}"
-    console.log JSON.stringify(xhr: xhr, settings: settings)
+    console.log xhr: xhr, settings: settings
   else
     appsignal.sendError new Error "#{type} #{url} failed: #{error}"

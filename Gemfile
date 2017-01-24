@@ -33,7 +33,6 @@ gem 'dotenv-rails'
 
 gem 'puma'
 
-# gem 'olive_branch', '~> 1.1.0'
 gem 'olive_branch', github: 'roqua/olive_branch'
 
 group :development, :test do
@@ -62,7 +61,7 @@ group :test do
 
   gem 'simplecov'
 
-  gem 'rubocop'
+  gem 'rubocop', '= 0.37.2'
   gem 'coffeelint'
   gem 'rspec-rails', '~> 3.4.2'
   gem 'fabrication', '~> 2.15.2'
