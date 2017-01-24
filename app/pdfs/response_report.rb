@@ -3,22 +3,29 @@ class ResponseReport < Prawn::Document
     super(page_size: 'A4')
     @response = response
 
+    header_text 'Inleiding'
     introduction
     move_down 20
 
     creation_date
     move_down 20
 
+    header_text 'Resultaten'
     domain_results_table
     move_down 20
 
+    header_text 'Antwoorden'
     answers_table
   end
 
   private
 
+  def header_text(str)
+    text str, size: 24, style: :bold
+  end
+
   def creation_date
-    text "Ingevuld op #{@response.created_at.to_formatted_s(:long)}"
+    text "Ingevuld op #{I18n.l @response.created_at, format: :long}"
   end
 
   def domain_results
@@ -32,7 +39,7 @@ class ResponseReport < Prawn::Document
       [domain_id, @response.estimate_interpretation]
     end
 
-    table table_data
+    table table_data, column_widths: [300, 150]
   end
 
   def answers_table
@@ -40,7 +47,7 @@ class ResponseReport < Prawn::Document
       [question.text, selected_answer_text(question)]
     end
 
-    table table_data
+    table table_data, column_widths: [350, 100]
   end
 
   def selected_answer_text(question)
