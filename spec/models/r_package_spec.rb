@@ -16,7 +16,13 @@ describe RPackage do
   describe '.domains' do
     subject { described_module.domains }
 
-    it { is_expected.to include('id' => 'POS-PQ', 'description' => 'Positieve symptomen voor psychose') }
+    let(:first_domain) do
+      { 'id' => 'POS-PQ',
+        'description' => 'Positieve symptomen van psychose',
+        'norm_population' => 'Algemene bevolking' }
+    end
+
+    it { is_expected.to include first_domain }
   end
 
   describe '.data_for' do

@@ -7,8 +7,8 @@ describe 'sending invitations' do
     fill_out_placeholder 'e-mail respondent', 'some@patient.dev'
     fill_out_placeholder 'uw volledige naam', 'Some Doctor'
     fill_out_placeholder 'uw e-mail', 'some@doctor.dev'
-    find('.domain-label', text: 'Positieve symptomen voor psychose').click
-    find('.domain-label', text: 'Negatieve symptomen voor psychose').click
+    find('.domain-label', text: 'Positieve symptomen van psychose').click
+    find('.domain-label', text: 'Negatieve symptomen van psychose').click
   end
 
   before { visit '/' }
