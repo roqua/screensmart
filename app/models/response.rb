@@ -39,9 +39,7 @@ class Response < BaseModel
   end
 
   def domains
-    domain_ids.map do |domain_id|
-      Domain.new id: domain_id
-    end
+    domain_results.map(&:id)
   end
 
   def questions
