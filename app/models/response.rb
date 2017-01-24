@@ -38,6 +38,10 @@ class Response < BaseModel
     domain_results.map(&:to_h)
   end
 
+  def domains
+    domain_results.map(&:id)
+  end
+
   def questions
     next_question.present? ? completed_questions.push(next_question) : completed_questions
   end

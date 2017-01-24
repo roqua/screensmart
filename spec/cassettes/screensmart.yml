@@ -119,6 +119,7 @@ http_interactions:
           "variance": [25],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 
@@ -185,6 +186,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1116,35 +1118,43 @@ http_interactions:
           "domains": [
             {
               "id": "POS-PQ",
-              "description": "Positieve symptomen voor psychose"
+              "description": "Positieve symptomen van psychose",
+              "norm_population": "Algemene bevolking"
             },
             {
               "id": "NEG-PQ",
-              "description": "Negatieve symptomen voor psychose"
+              "description": "Negatieve symptomen van psychose",
+              "norm_population": "Algemene bevolking"
             },
             {
               "id": "ANX-PRO",
-              "description": "Angst"
+              "description": "Angst",
+              "norm_population": "Algemene bevolking"
             },
             {
               "id": "DEP-PRO",
-              "description": "Depressie"
+              "description": "Depressie",
+              "norm_population": "Algemene bevolking"
             },
             {
               "id": "SAT-PRO",
-              "description": "Satisfactie met sociale rollen en activiteiten"
+              "description": "Satisfactie met sociale rollen en activiteiten",
+              "norm_population": "Cliënten eerste lijn GGZ"
             },
             {
               "id": "FRS-PRO",
-              "description": "Vriendschap"
+              "description": "Vriendschap",
+              "norm_population": "Cliënten eerste lijn GGZ"
             },
             {
               "id": "EMO-PRO",
-              "description": "Emotionele steun"
+              "description": "Emotionele steun",
+              "norm_population": "Cliënten eerste lijn GGZ"
             },
             {
               "id": "DIS-4DKL",
-              "description": "Distress"
+              "description": "Distress",
+              "norm_population": "Cliënten eerste lijn GGZ"
             }
           ]
         }
@@ -1212,6 +1222,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1274,6 +1285,7 @@ http_interactions:
           "variance": [0.6842],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1340,6 +1352,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 
@@ -1406,6 +1419,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Verhoogd niveau (-)",
+          "quartile": "Q3",
           "warning": null
         }
     http_version: 
@@ -1473,6 +1487,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1541,6 +1556,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1610,6 +1626,7 @@ http_interactions:
             }
           ],
           "estimate_interpretation": "Laag niveau (++)",
+          "quartile": "Q1",
           "warning": null
         }
     http_version: 
@@ -1676,6 +1693,7 @@ http_interactions:
           "variance": [25],
           "answers": [],
           "estimate_interpretation": "Matig niveau (+)",
+          "quartile": "Q2",
           "warning": null
         }
     http_version: 

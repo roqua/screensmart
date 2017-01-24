@@ -43,7 +43,7 @@ module RPackage
 
   def self.domain_results_hash(domain_ids, domain_results)
     domain_ids.zip(domain_results).map do |domain_id, domain|
-      [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :warning)]
+      [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :quartile, :warning)]
     end.to_h
   end
 
@@ -94,6 +94,7 @@ module RPackage
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
       estimate_interpretation: raw_data['estimate_interpretation'],
+      quartile: raw_data['quartile'],
       warning: raw_data['warning'],
       done: !raw_data['continue_test'] }
   end

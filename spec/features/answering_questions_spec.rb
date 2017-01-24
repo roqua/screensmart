@@ -70,6 +70,8 @@ describe 'answering questions' do
     # It shows the quartile score
     within '.results-table' do
       expect(page).to have_content 'Q1'
+      # It shows the domain name
+      expect(page).to have_content 'Positieve symptomen van psychose'
       # It shows the estimate interpretation
       expect(page).to have_content 'Laag niveau (++)'
     end

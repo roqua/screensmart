@@ -16,7 +16,13 @@ describe RPackage do
   describe '.domains' do
     subject { described_module.domains }
 
-    it { is_expected.to include('id' => 'POS-PQ', 'description' => 'Positieve symptomen voor psychose') }
+    let(:first_domain) do
+      { 'id' => 'POS-PQ',
+        'description' => 'Positieve symptomen van psychose',
+        'norm_population' => 'Algemene bevolking' }
+    end
+
+    it { is_expected.to include first_domain }
   end
 
   describe '.data_for' do
@@ -92,10 +98,12 @@ describe RPackage do
           expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
                                                                variance: 25.0,
                                                                estimate_interpretation: 'Matig niveau (+)',
+                                                               quartile: 'Q2',
                                                                warning: nil },
                                                  'POS-PQ' => { estimate: -0.6777,
                                                                variance: 0.6842,
                                                                estimate_interpretation: 'Matig niveau (+)',
+                                                               quartile: 'Q3',
                                                                warning: nil }
         end
       end

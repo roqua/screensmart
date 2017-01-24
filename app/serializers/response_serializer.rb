@@ -6,8 +6,10 @@ class ResponseSerializer < ActiveModel::Serializer
 end
 
 class DomainResultSerializer < ActiveModel::Serializer
-  attributes :domain_id, :estimate, :variance, :estimate_interpretation, :warning,
-             :quartile, :domain_sign, :norm_population_label
+  attributes :estimate, :variance, :estimate_interpretation, :warning,
+             :quartile
+
+  has_one :domain
 end
 
 class QuestionSerializer < ActiveModel::Serializer
