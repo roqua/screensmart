@@ -4,7 +4,7 @@ class ResponseMailer < ApplicationMailer
     @link = show_response_url(showSecret: show_secret)
     @show_secret = show_secret
 
-    attachments.inline['report.pdf'] = render_report
+    attachments.inline['Rapport-CATja-Screening.pdf'] = render_report
 
     mail to: requester_email,
          subject: 'Resultaten invulling'
