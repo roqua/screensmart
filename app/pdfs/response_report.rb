@@ -44,10 +44,11 @@ class ResponseReport < Prawn::Document
 
   def answers_table
     table_data = @response.questions.map do |question|
-      [question.text, selected_answer_text(question)]
+      question_text = question.intro.blank? ? question.text : "<i>#{question.intro}</i><br/>#{question.text}"
+      [question_text, selected_answer_text(question)]
     end
 
-    table table_data, column_widths: [350, 100]
+    table table_data, column_widths: [350, 100], cell_style: { inline_format: true }
   end
 
   def selected_answer_text(question)
