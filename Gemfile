@@ -1,8 +1,12 @@
 source 'https://rubygems.org'
 
+<<<<<<< HEAD
 ruby '2.3.3'
 
 gem 'rails', '~> 4.2.7'
+=======
+gem 'rails', '~> 5.0.1'
+>>>>>>> Upgrade gems
 gem 'pg', '~> 0.18.4'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -10,11 +14,11 @@ gem 'active_model_serializers', '~> 0.9.3'
 gem 'responders'
 gem 'rack-haproxy_status', '~> 0.8.1'
 
-gem 'sprockets-rails', '~> 3.0.4'
+gem 'sprockets-rails'
 
 gem 'appsignal', '~> 2.1.0'
 
-gem 'activeresource'
+gem 'activeresource', github: 'rails/activeresource', branch: 'master'
 
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.1.1'
@@ -28,7 +32,7 @@ gem 'react-rails', '~> 1.7.1'
 gem 'mailgun_rails', '~> 0.8.0'
 gem 'opencpu', '~> 0.10.0'
 gem 'active_interaction', '~> 3.0'
-gem 'jsonb_accessor', '~> 0.3.2'
+gem 'jsonb_accessor', github: 'devmynd/jsonb_accessor', branch: '0.x-versions'
 gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails'
@@ -64,6 +68,7 @@ group :test do
   gem 'rspec-repeat'
 
   gem 'database_cleaner'
+  gem 'rails-controller-testing'
 
   gem 'simplecov'
 
@@ -75,8 +80,8 @@ group :test do
   gem 'vcr', '~> 3.0.1'
   gem 'webmock', '~> 1.24.2'
 
-  gem 'capybara',            '~> 2.6.2'
-  gem 'capybara-screenshot', '~> 1.0.11'
-  gem 'poltergeist',         '~> 1.10.0'
+  gem 'capybara'
+  gem 'capybara-screenshot'
+  gem 'poltergeist'
   gem 'pdf-reader'
 end

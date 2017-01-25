@@ -2,7 +2,7 @@ class ResponsesController < ApplicationController
   rescue_from AcceptInvitation::AlreadyFinished, with: :already_finished
 
   def create
-    invitation_accepted = AcceptInvitation.run! params.slice(:invitation_uuid)
+    invitation_accepted = AcceptInvitation.run! params.to_unsafe_h.slice(:invitation_uuid)
     redirect_to response_url id: invitation_accepted.response_uuid
   end
 

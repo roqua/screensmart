@@ -10,7 +10,7 @@ describe InvitationsController do
     end
 
     context 'with valid params' do
-      subject { post :create, valid_params }
+      subject { post :create, params: valid_params }
       it 'returns status created' do
         subject
         expect(response.status).to eq 201
@@ -28,7 +28,7 @@ describe InvitationsController do
 
     context 'missing params' do
       it 'returns status bad request' do
-        post :create, {}
+        post :create, params: {}
         expect(response.status).to eq 400
       end
     end
