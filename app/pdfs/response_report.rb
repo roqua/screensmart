@@ -37,10 +37,10 @@ class ResponseReport < Prawn::Document
   def domain_results_table
     table_data = @response.domain_results.map do |domain_result|
       domain = domain_result.domain
-      [domain.description, domain_result.estimate_interpretation]
+      [domain.description, domain.norm_population, domain_result.quartile, domain_result.estimate_interpretation]
     end
 
-    table table_data, column_widths: [300, 150]
+    table table_data, column_widths: [150, 150, 100, 100]
   end
 
   def answers_table
