@@ -19,18 +19,21 @@ describe ResponseReport do
 
   before do
     allow_any_instance_of(ResponseReport).to receive(:selected_answer_text).and_return('Ja')
+    complete_response
   end
 
-  it 'has one page' do
-    complete_response
-    expect(subject.page_number).to eq(1)
+  it 'has at least one page' do
+    expect(subject.page_number).to be >= 1
   end
 
   context 'the rendered pdf content' do
     let(:pdf_content) { PDF::Reader.new(StringIO.new(subject.render)).page(1).to_s }
 
+    it 'contains the introduction text' do
+      expect(pdf_content).to include('In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst.')
+    end
+
     it 'contains the date of the response' do
-      complete_response
       expect(pdf_content).to include('Ingevuld op')
     end
   end
