@@ -3,7 +3,7 @@ if app_name && app_name.include?('-pr-')
   ENV['APPSIGNAL_APP_ENV'] = app_name.gsub(/screensmart-pr-?/, '')
 end
 
-require File.expand_path('../boot', __FILE__)
+require_relative 'boot'
 
 require 'rails/all'
 
@@ -13,7 +13,7 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
-    config.middleware.use 'OliveBranch::Middleware'
+    config.middleware.use OliveBranch::Middleware
 
     config.i18n.available_locales = :nl
     config.i18n.default_locale = :nl
