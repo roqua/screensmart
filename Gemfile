@@ -34,8 +34,6 @@ gem 'dotenv-rails'
 gem 'puma'
 
 gem 'olive_branch', github: 'roqua/olive_branch'
-gem 'prawn'
-gem 'prawn-table'
 
 group :development, :test do
   gem 'byebug'
@@ -74,5 +72,4 @@ group :test do
   gem 'capybara',            '~> 2.6.2'
   gem 'capybara-screenshot', '~> 1.0.11'
   gem 'poltergeist',         '~> 1.10.0'
-  gem 'pdf-reader'
 end
