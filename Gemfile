@@ -63,7 +63,7 @@ group :test do
 
   gem 'rubocop', '= 0.37.2'
   gem 'coffeelint'
-  gem 'rspec-rails', '~> 3.4.2'
+  gem 'rspec-rails'
   gem 'fabrication', '~> 2.15.2'
   gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'vcr', '~> 3.0.1'
