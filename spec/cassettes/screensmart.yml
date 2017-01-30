@@ -725,7 +725,7 @@ http_interactions:
               "domain_id": "POS-PQ",
               "calculation_model": "GPCM",
               "text": "Mijn denken voelt verward, door elkaar gehaald of op een of andere manier verstoord.",
-              "intro": null,
+              "intro": "Een introtekst",
               "answer_option_set_id": 2,
               "answer_options": [
                 {
