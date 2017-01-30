@@ -3,6 +3,9 @@ class ResponseReport < Prawn::Document
     super(page_size: 'A4')
     @response = response
 
+    register_font_family
+    font 'DejaVu Sans'
+
     header_text 'Inleiding'
     introduction
     move_down 20
@@ -19,6 +22,18 @@ class ResponseReport < Prawn::Document
   end
 
   private
+
+  def register_font_family
+    font_path = File.join(Rails.root.to_s, 'vendor', 'fonts', 'DejaVuSans.ttf')
+    font_families.update(
+      'DejaVu Sans' => {
+        normal: { file: font_path, font: 'DejaVuSans' },
+        italic: { file: font_path, font: 'DejaVuSans-Oblique' },
+        bold: { file: font_path, font: 'DejaVuSans-Bold' },
+        bold_italic: { file: font_path, font: 'DejaVuSans-BoldOblique' }
+      }
+    )
+  end
 
   def header_text(str)
     text str, size: 24, style: :bold
