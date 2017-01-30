@@ -67,8 +67,13 @@ Screensmart.reducers = Redux.combineReducers
         merge responseWithDoneTrue \
                 response
 
+      when 'START_FINISH_RESPONSE'
+        merge response,
+              finishing: true
+
       when 'RECEIVE_FINISH_RESPONSE'
         merge response,
+              finishing: false
               finished: true
 
       else
