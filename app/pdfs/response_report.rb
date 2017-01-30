@@ -24,13 +24,13 @@ class ResponseReport < Prawn::Document
   private
 
   def register_font_family
-    font_path = File.join(Rails.root.to_s, 'vendor', 'fonts', 'DejaVuSans.ttf')
+    font_path = File.join(Rails.root.to_s, 'vendor', 'fonts')
     font_families.update(
       'DejaVu Sans' => {
-        normal: { file: font_path, font: 'DejaVuSans' },
-        italic: { file: font_path, font: 'DejaVuSans-Oblique' },
-        bold: { file: font_path, font: 'DejaVuSans-Bold' },
-        bold_italic: { file: font_path, font: 'DejaVuSans-BoldOblique' }
+        normal: File.join(font_path, 'DejaVuSans.ttf'),
+        italic: File.join(font_path, 'DejaVuSans-Oblique.ttf'),
+        bold: File.join(font_path, 'DejaVuSans-Bold.ttf'),
+        bold_italic: File.join(font_path, 'DejaVuSans-BoldOblique.ttf')
       }
     )
   end
@@ -40,7 +40,7 @@ class ResponseReport < Prawn::Document
   end
 
   def creation_date
-    text "Ingevuld op #{I18n.l @response.created_at, format: :long}"
+    text "Ingevuld op #{I18n.l @response.created_at, format: :long}", style: :bold_italic
   end
 
   def domain_results
