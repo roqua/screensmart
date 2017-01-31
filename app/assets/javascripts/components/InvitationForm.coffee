@@ -40,21 +40,30 @@ invitationForm = React.createClass
         merge respondentEmail,
               className: if @shouldShowErrorFor 'respondentEmail' then 'invalid' else ''
               type: 'text'
-              placeholder: 'e-mail respondent'
+              required: 'required'
+      label
+        alt: "e-mailadres respondent"
+        placeholder: "e-mailadres respondent"
 
       @renderErrorFor 'requesterName'
       input \
         merge requesterName,
               className: if @shouldShowErrorFor 'requesterName' then 'invalid' else ''
               type: 'text'
-              placeholder: 'uw volledige naam'
+              required: 'required'
+      label
+        alt: 'uw naam'
+        placeholder: 'uw naam'
 
       @renderErrorFor 'requesterEmail'
       input \
         merge requesterEmail,
               className: if @shouldShowErrorFor 'requesterEmail' then 'invalid' else ''
               type: 'text'
-              placeholder: 'uw e-mail'
+              required: 'required'
+      label
+        alt: 'uw e-mailadres'
+        placeholder: 'uw e-mailadres'
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
