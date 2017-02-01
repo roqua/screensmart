@@ -1,7 +1,7 @@
 class Invitation < BaseModel
   attr_accessor :uuid
 
-  delegate :domain_ids, to: :invitation_sent
+  delegate :domain_ids, :requester_email, :requester_name, to: :invitation_sent
 
   def invitation_sent
     Events::InvitationSent.find_by_invitation_uuid uuid
