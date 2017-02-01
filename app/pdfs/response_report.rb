@@ -6,6 +6,9 @@ class ResponseReport < Prawn::Document
     register_font_family
     font 'DejaVu Sans'
 
+    header_text 'Resultaten CATja-screening'
+    move_down 20
+
     header_text 'Inleiding'
     introduction
     move_down 20
@@ -73,7 +76,6 @@ class ResponseReport < Prawn::Document
     end.text
   end
 
-  # rubocop:disable Metrics/MethodLength
   def introduction
     text <<-EOS
 In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst. Bij de interpretatie dient u rekening te houden met een aantal factoren die hieronder puntsgewijs besproken worden:

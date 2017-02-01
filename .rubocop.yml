@@ -26,3 +26,4 @@ Style/LambdaCall:
 Metrics/MethodLength:
   Exclude:
     - spec/**/*_spec.rb
+    - app/pdfs/response_report.rb
