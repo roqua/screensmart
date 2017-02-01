@@ -27,14 +27,15 @@ describe ResponseReport do
   end
 
   context 'the rendered pdf content' do
-    let(:pdf_content) { PDF::Reader.new(StringIO.new(subject.render)).page(1).to_s }
+    let(:page_1) { PDF::Reader.new(StringIO.new(subject.render)).page(1).to_s }
+    let(:page_2) { PDF::Reader.new(StringIO.new(subject.render)).page(2).to_s }
 
     it 'contains the introduction text' do
-      expect(pdf_content).to include('In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst.')
+      expect(page_1).to include('In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst.')
     end
 
     it 'contains the date of the response' do
-      expect(pdf_content).to include('Ingevuld op')
+      expect(page_2).to include('Ingevuld op')
     end
   end
 end
