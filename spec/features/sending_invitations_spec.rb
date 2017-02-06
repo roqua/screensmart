@@ -1,12 +1,8 @@
 describe 'sending invitations' do
-  def fill_out_placeholder(placeholder, value)
-    find("input[placeholder='#{placeholder}']").set value
-  end
-
   def fill_out_all_fields
-    fill_out_placeholder 'e-mail respondent', 'some@patient.dev'
-    fill_out_placeholder 'uw volledige naam', 'Some Doctor'
-    fill_out_placeholder 'uw e-mail', 'some@doctor.dev'
+    fill_in 'respondentEmail', with: 'some@patient.dev'
+    fill_in 'requesterName', with: 'some@patient.dev'
+    fill_in 'requesterEmail', with: 'some@patient.dev'
     find('.domain-label', text: 'Positieve symptomen van psychose').click
     find('.domain-label', text: 'Negatieve symptomen van psychose').click
   end
@@ -22,7 +18,7 @@ describe 'sending invitations' do
 
   scenario 'not filling out all fields' do
     fill_out_all_fields
-    fill_out_placeholder 'e-mail respondent', ''
+    fill_in 'respondentEmail', with: ''
 
     click_on 'Verstuur uitnodiging'
     expect(page).to have_css '.error'
@@ -31,7 +27,7 @@ describe 'sending invitations' do
 
   scenario 'entering invalid values' do
     fill_out_all_fields
-    fill_out_placeholder 'e-mail respondent', 'invalid'
+    fill_in 'respondentEmail', with: 'invalid'
 
     click_on 'Verstuur uitnodiging'
     expect(page).to have_css '.error'
