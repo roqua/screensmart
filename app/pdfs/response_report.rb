@@ -62,7 +62,9 @@ class ResponseReport < Prawn::Document
     end
     table_data.unshift %w(Domein Normpopulatie Kwartiel Niveau)
 
-    table table_data, column_widths: [150, 150, 80, 120], header: true
+    table(table_data, column_widths: [150, 150, 80, 120], header: true) do
+      row(0).style font_style: :bold
+    end
   end
 
   def answers_table
