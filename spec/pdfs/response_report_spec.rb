@@ -18,7 +18,6 @@ describe ResponseReport do
   subject { described_class.new(response) }
 
   before do
-    allow_any_instance_of(ResponseReport).to receive(:selected_answer_text).and_return('Ja')
     complete_response
   end
 
