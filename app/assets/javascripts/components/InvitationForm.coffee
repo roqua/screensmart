@@ -42,8 +42,8 @@ invitationForm = React.createClass
               type: 'text'
               required: 'required'
       label
-        alt: "e-mailadres respondent"
-        placeholder: "e-mailadres respondent"
+        alt: "e-mail respondent"
+        placeholder: "e-mail respondent"
 
       @renderErrorFor 'requesterName'
       input \
@@ -52,8 +52,8 @@ invitationForm = React.createClass
               type: 'text'
               required: 'required'
       label
-        alt: 'uw naam'
-        placeholder: 'uw naam'
+        alt: 'uw volledige naam'
+        placeholder: 'uw volledige naam'
 
       @renderErrorFor 'requesterEmail'
       input \
@@ -62,8 +62,8 @@ invitationForm = React.createClass
               type: 'text'
               required: 'required'
       label
-        alt: 'uw e-mailadres'
-        placeholder: 'uw e-mailadres'
+        alt: 'uw e-mail'
+        placeholder: 'uw e-mail'
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
