@@ -23,7 +23,7 @@ class Response < BaseModel
   end
 
   def data_from_r
-    RPackage.data_for(answer_values, domain_ids)
+    @data_from_r ||= RPackage.data_for(answer_values, domain_ids)
   end
 
   def domain_results
