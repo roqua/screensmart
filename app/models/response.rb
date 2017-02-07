@@ -27,7 +27,7 @@ class Response < BaseModel
   end
 
   def domain_results
-    domain_ids.map do |domain_id|
+    @domain_results ||= domain_ids.map do |domain_id|
       DomainResult.new(response: self, domain_id: domain_id)
     end
   end
@@ -41,7 +41,7 @@ class Response < BaseModel
   end
 
   def questions
-    next_question.present? ? completed_questions.push(next_question) : completed_questions
+    @questions ||= (next_question.present? ? completed_questions.push(next_question) : completed_questions)
   end
 
   def completed_questions
@@ -49,13 +49,13 @@ class Response < BaseModel
   end
 
   def answers
-    answer_values.map do |id, value|
+    @answers ||= answer_values.map do |id, value|
       Answer.new id: id, value: value
     end
   end
 
   def answer_values
-    Events::AnswerSet.answer_values_for(uuid)
+    @answer_values ||= Events::AnswerSet.answer_values_for(uuid)
   end
 
   def next_question
@@ -63,15 +63,15 @@ class Response < BaseModel
   end
 
   def invitation
-    Invitation.find_by_response_uuid uuid
+    @invitation ||= Invitation.find_by_response_uuid uuid
   end
 
   def invitation_accepted
-    Events::InvitationAccepted.find_by response_uuid: uuid
+    @invitation_accepted ||= Events::InvitationAccepted.find_by response_uuid: uuid
   end
 
   def events
-    Events::Event.where response_uuid: uuid
+    @events ||= Events::Event.where response_uuid: uuid
   end
 
   def self.find_by_show_secret(show_secret)
