@@ -4,7 +4,8 @@ defaultResponse =
   questions: []
   loading: true
   done: false       # Enough questions answered
-  finished: false   # User clicked finish button
+  finishing: false  # Submission of finished response in progress
+  finished: false   # Submission of finished response done
 
 Screensmart.reducers = Redux.combineReducers
   routing: routerReducer
@@ -67,8 +68,13 @@ Screensmart.reducers = Redux.combineReducers
         merge responseWithDoneTrue \
                 response
 
+      when 'START_FINISH_RESPONSE'
+        merge response,
+              finishing: true
+
       when 'RECEIVE_FINISH_RESPONSE'
         merge response,
+              finishing: false
               finished: true
 
       else

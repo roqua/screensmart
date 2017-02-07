@@ -73,7 +73,6 @@ class ResponseReport < Prawn::Document
     end.text
   end
 
-  # rubocop:disable Metrics/MethodLength
   def introduction
     text <<-EOS
 In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst. Bij de interpretatie dient u rekening te houden met een aantal factoren die hieronder puntsgewijs besproken worden:
