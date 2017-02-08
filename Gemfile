@@ -18,8 +18,6 @@ gem 'sprockets-rails'
 
 gem 'appsignal', '~> 2.1.0'
 
-gem 'activeresource', github: 'rails/activeresource', branch: 'master'
-
 gem 'jquery-rails'
 gem 'coffee-rails', '~> 4.1.1'
 gem 'coffee-script-source', '~> 1.10.0'
