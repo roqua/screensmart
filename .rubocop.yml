@@ -14,6 +14,15 @@ Metrics/ModuleLength:
     # Temporarily contains functionality that belongs to screensmart-r
     - app/models/r_package.rb
 
+Metrics/MethodLength:
+  Exclude:
+    - spec/**/*_spec.rb
+    - app/pdfs/response_report.rb
+
+Metrics/AbcSize:
+  Exclude:
+    - app/pdfs/response_report.rb
+
 # Trust developers to document where neccesary, otherwise
 # rely on the code being self-documenting
 Style/Documentation:
@@ -22,8 +31,3 @@ Style/Documentation:
 Style/LambdaCall:
   Exclude:
     - Guardfile
-
-Metrics/MethodLength:
-  Exclude:
-    - spec/**/*_spec.rb
-    - app/pdfs/response_report.rb

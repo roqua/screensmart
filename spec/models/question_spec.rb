@@ -16,4 +16,18 @@ describe Question do
       expect { subject.text }.to raise_error Exception
     end
   end
+
+  describe '#selected_answer_text' do
+    it 'returns nil if no answer is set' do
+      subject.id = 'EL02'
+      subject.answer_value = nil
+      expect(subject.selected_answer_text).to be_nil
+    end
+
+    it 'returns the selected answer text' do
+      subject.id = 'EL02'
+      subject.answer_value = 1
+      expect(subject.selected_answer_text).to eq('Oneens')
+    end
+  end
 end

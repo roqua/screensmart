@@ -19,7 +19,6 @@ describe ResponseMailer do
     end
 
     before do
-      allow_any_instance_of(ResponseReport).to receive(:selected_answer_text).and_return('Ja')
       complete_response
     end
 
@@ -27,7 +26,7 @@ describe ResponseMailer do
       let(:params) do
         {
           requester_email: invitation_sent.requester_email,
-          show_secret: response.show_secret,
+          response: response,
           invitation_sent_at: Time.zone.now
         }
       end
@@ -37,7 +36,9 @@ describe ResponseMailer do
       end
 
       it 'contains a link to show the filled in questionnaires' do
-        expect(subject.html_part.body.encoded).to include("http://test_host/show?showSecret=#{params[:show_secret]}")
+        expect(subject.html_part.body.encoded).to include(
+          "http://test_host/show?showSecret=#{params[:response].show_secret}"
+        )
       end
 
       it 'contains a response report pdf as attachment' do

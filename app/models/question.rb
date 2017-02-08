@@ -13,6 +13,12 @@ class Question < BaseModel
     end
   end
 
+  def selected_answer_text
+    answer_option_set.answer_options.find do |answer_option|
+      answer_option.id == answer_value
+    end.try(:text)
+  end
+
   def answer_option_set
     AnswerOptionSet.new(
       id: data_from_r['answer_option_set_id'],

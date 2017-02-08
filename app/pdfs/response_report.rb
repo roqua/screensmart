@@ -1,23 +1,29 @@
 class ResponseReport < Prawn::Document
   def initialize(response)
-    super(page_size: 'A4')
+    super(page_size: 'A4', font_size: 10)
     @response = response
 
     register_font_family
     font 'DejaVu Sans'
 
-    header_text 'Inleiding'
+    header_text 'Resultaten CATja-screening'
+    move_down 20
+
+    header_text 'Inleiding', size: 16
     introduction
+
+    start_new_page
+    header_text 'Resultaten CATja-screening', size: 16
     move_down 20
 
     creation_date
     move_down 20
 
-    header_text 'Resultaten'
+    header_text 'Resultaten', size: 16
     domain_results_table
     move_down 20
 
-    header_text 'Antwoorden'
+    header_text 'Antwoorden', size: 16
     answers_table
   end
 
@@ -35,8 +41,8 @@ class ResponseReport < Prawn::Document
     )
   end
 
-  def header_text(str)
-    text str, size: 24, style: :bold
+  def header_text(str, size: 24)
+    text str, size: size, style: :bold
   end
 
   def creation_date
@@ -54,23 +60,20 @@ class ResponseReport < Prawn::Document
       domain = domain_result.domain
       [domain.description, domain.norm_population, domain_result.quartile, domain_result.estimate_interpretation]
     end
+    table_data.unshift %w(Domein Normpopulatie Kwartiel Niveau)
 
-    table table_data, column_widths: [150, 150, 100, 100]
+    table(table_data, column_widths: [150, 150, 80, 120], header: true) do
+      row(0).style font_style: :bold
+    end
   end
 
   def answers_table
     table_data = @response.questions.map do |question|
       question_text = question.intro.blank? ? question.text : "<i>#{question.intro}</i><br/>#{question.text}"
-      [question_text, selected_answer_text(question)]
+      [question_text, question.selected_answer_text]
     end
 
-    table table_data, column_widths: [350, 100], cell_style: { inline_format: true }
-  end
-
-  def selected_answer_text(question)
-    question.answer_option_set.answer_options.find do |answer_option|
-      answer_option.id == question.answer_value
-    end.text
+    table table_data, column_widths: [350, 150], cell_style: { inline_format: true }
   end
 
   def introduction

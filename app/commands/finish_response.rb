@@ -23,7 +23,7 @@ class FinishResponse < ActiveInteraction::Base
   def send_response_email
     ResponseMailer.response_email(invitation_sent_at: invitation.requested_at,
                                   requester_email: invitation.requester_email,
-                                  show_secret: response.show_secret).deliver_now
+                                  response: response).deliver_now
   end
 
   def validate_response_uuid_is_found
