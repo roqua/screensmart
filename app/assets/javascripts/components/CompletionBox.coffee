@@ -13,7 +13,7 @@
     dispatch Screensmart.Actions.finishResponse(@props.response.uuid)
 
   render: ->
-    { estimate, variance, finished } = @props.response
+    { estimate, variance, finished, finishing } = @props.response
 
     div
       className: 'completion-box'
@@ -39,5 +39,6 @@
             type: 'submit'
             key: 'button'
             onClick: @onFinishClick
+            disabled: finishing
             'Afronden'
         ]

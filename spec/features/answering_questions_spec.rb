@@ -62,6 +62,8 @@ describe 'answering questions' do
 
     visit "/show?showSecret=#{Events::InvitationAccepted.last.show_secret}"
 
+    # It shows the question intro text
+    expect(page).to have_content 'Een introtekst'
     # It shows the question title
     expect(page).to have_content 'Het kost mij moeite om me te concentreren op een gedachte tegelijk'
     # It shows the chosen option

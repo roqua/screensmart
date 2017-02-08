@@ -43,10 +43,11 @@ describe FinishResponse do
     end
 
     it 'sends an email to the requester' do
+      response = Response.find(response_uuid)
       invitation_sent = Events::InvitationSent.find_by(invitation_uuid: invitation_uuid)
-      expect(ResponseMailer).to receive(:response_email).with show_secret: show_secret,
+      expect(ResponseMailer).to receive(:response_email).with invitation_sent_at: invitation_sent.created_at,
                                                               requester_email: 'requester@example.dev',
-                                                              invitation_sent_at: invitation_sent.created_at
+                                                              response: response
       subject
     end
   end

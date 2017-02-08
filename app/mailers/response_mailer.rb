@@ -1,9 +1,18 @@
 class ResponseMailer < ApplicationMailer
-  def response_email(invitation_sent_at:, requester_email:, show_secret:)
+  def response_email(invitation_sent_at:, requester_email:, response:)
     @invitation_sent_at = invitation_sent_at
-    @link = show_response_url(showSecret: show_secret)
+    @response = response
+    @link = show_response_url(showSecret: response.show_secret)
+
+    attachments.inline['Rapport-CATja-Screening.pdf'] = render_report
 
     mail to: requester_email,
          subject: 'Resultaten invulling'
+  end
+
+  private
+
+  def render_report
+    ResponseReport.new(@response).render
   end
 end

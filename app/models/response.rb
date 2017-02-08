@@ -10,10 +10,8 @@ class Response < BaseModel
   attr_accessor :uuid
 
   # Accessors for attributes defined by events
-  delegate :show_secret, to: :invitation_accepted
-  delegate :created_at, to: :invitation_accepted
-  delegate :domain_ids, to: :invitation
-  delegate :requested_at, to: :invitation
+  delegate :show_secret, :created_at, to: :invitation_accepted
+  delegate :domain_ids, :requested_at, to: :invitation
 
   # accessors for attributes defined by R package
   %i(next_question_id done).each do |r_attribute|

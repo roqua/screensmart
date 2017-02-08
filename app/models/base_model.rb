@@ -24,4 +24,9 @@ class BaseModel
   def self.exists?(uuid)
     new(uuid: uuid).events.any?
   end
+
+  # Overwrite comparison method to use `uuid` attribute
+  def ==(other)
+    other.instance_of?(self.class) && !uuid.nil? && other.uuid == uuid
+  end
 end
