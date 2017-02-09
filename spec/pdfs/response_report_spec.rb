@@ -34,8 +34,8 @@ describe ResponseReport do
     end
 
     it 'contains the date of the request and response' do
-      expect(page_2).to include('Aangevraagd op')
-      expect(page_2).to include('Ingevuld op')
+      expect(page_2).to include("Aangevraagd op: #{I18n.l response.requested_at, format: :long}")
+      expect(page_2).to include("Ingevuld op: #{I18n.l response.created_at, format: :long}")
     end
   end
 end
