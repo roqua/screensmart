@@ -17,7 +17,7 @@ describe InvitationMailer do
 
       it 'includes the requester name in the title' do
         expect(subject.header[:subject].value).to eq \
-          "Verzoek van #{params[:requester_name]} om vragenlijst in te vullen"
+          "Verzoek van #{params[:requester_name]} om een vragenlijst in te vullen"
       end
 
       it 'contains a link to fill out the questionnaire' do
