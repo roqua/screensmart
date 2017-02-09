@@ -4,6 +4,6 @@ class InvitationMailer < ApplicationMailer
     @link = fill_out_url(invitationUUID: invitation_uuid)
 
     mail to: respondent_email,
-         subject: "Verzoek van #{requester_name} om vragenlijst in te vullen"
+         subject: "Verzoek van #{requester_name} om een vragenlijst in te vullen"
   end
 end
