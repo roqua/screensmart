@@ -17,5 +17,7 @@ module Screensmart
 
     config.i18n.available_locales = :nl
     config.i18n.default_locale = :nl
+
+    config.time_zone = 'Amsterdam'
   end
 end
