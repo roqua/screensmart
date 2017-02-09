@@ -33,7 +33,8 @@ describe ResponseReport do
       expect(page_1).to include('In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst.')
     end
 
-    it 'contains the date of the response' do
+    it 'contains the date of the request and response' do
+      expect(page_2).to include('Aangevraagd op')
       expect(page_2).to include('Ingevuld op')
     end
   end
