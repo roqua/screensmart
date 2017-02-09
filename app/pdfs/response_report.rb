@@ -46,7 +46,8 @@ class ResponseReport < Prawn::Document
   end
 
   def creation_date
-    text "Ingevuld op #{I18n.l @response.created_at, format: :long}", style: :bold_italic
+    text "Aangevraagd op: <i>#{I18n.l @response.requested_at, format: :long}</i>", inline_format: true
+    text "Ingevuld op: <i>#{I18n.l @response.created_at, format: :long}</i>", inline_format: true
   end
 
   def domain_results

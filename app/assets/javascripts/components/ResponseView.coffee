@@ -36,10 +36,10 @@
       i
         className: 'fa fa-clock-o fa-lg'
       span className: 'date-requested',
-        "Aangevraagd op: #{moment(requestedAt).format('LLL')}",
+        "Aangevraagd op: #{moment(requestedAt).format('LLLL')}",
         br {}
       span className: 'date-created',
-        "Ingevuld op: #{moment(createdAt).format('LLL')}"
+        "Ingevuld op: #{moment(createdAt).format('LLLL')}"
 
 @AnswersTable = React.createClass
   displayName: 'AnswersTable'

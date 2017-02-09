@@ -205,6 +205,6 @@ nl:
     am: "'s ochtends"
     formats:
       default: "%a %d %b %Y %H:%M:%S %Z"
-      long: "%-d %B %Y %H:%M"
+      long: "%A %-d %B %Y %H:%M"
       short: "%d %b %H:%M"
     pm: "'s middags"
