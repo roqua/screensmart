@@ -33,4 +33,11 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: roqua_server_app_path ||
                                                      heroku_app_path ||
                                                      'https://screensmart.herokuapp.com' }
+
+  # Heroku needs stdout logging
+  if ENV['RAILS_LOG_TO_STDOUT'].present?
+    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger.formatter = config.log_formatter
+    config.logger = ActiveSupport::TaggedLogging.new(logger)
+  end
 end
