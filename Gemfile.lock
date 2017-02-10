@@ -30,11 +30,8 @@ GEM
       rails-html-sanitizer (~> 1.0, >= 1.0.2)
     active_interaction (3.4.0)
       activemodel (>= 4, < 6)
-    active_model_serializers (0.10.4)
-      actionpack (>= 4.1, < 6)
-      activemodel (>= 4.1, < 6)
-      case_transform (>= 0.2)
-      jsonapi (= 0.1.1.beta6)
+    active_model_serializers (0.9.3)
+      activemodel (>= 3.2)
     activejob (4.2.7.1)
       activesupport (= 4.2.7.1)
       globalid (>= 0.3.0)
@@ -85,8 +82,6 @@ GEM
     capybara-screenshot (1.0.14)
       capybara (>= 1.0, < 3)
       launchy
-    case_transform (0.2)
-      activesupport
     cliver (0.3.2)
     coderay (1.1.1)
     coffee-rails (4.1.1)
@@ -187,11 +182,6 @@ GEM
       railties (>= 4.2.0)
       thor (>= 0.14, < 2.0)
     json (1.8.6)
-    jsonapi (0.1.1.beta6)
-      jsonapi-parser (= 0.1.1.beta3)
-      jsonapi-renderer (= 0.1.1.beta1)
-    jsonapi-parser (0.1.1.beta3)
-    jsonapi-renderer (0.1.1.beta1)
     jsonb_accessor (0.3.3)
       activerecord (>= 4.2.1)
       pg (>= 0.18.1)
@@ -409,7 +399,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_interaction (~> 3.0)
-  active_model_serializers
+  active_model_serializers (~> 0.9.3)
   activeresource
   appsignal (~> 1.2.3)
   awesome_print (~> 1.6)
