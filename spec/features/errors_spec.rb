@@ -8,7 +8,10 @@ describe 'Error reporting' do
         controller.head :internal_server_error
       end
 
-      page.execute_script "$.ajax('/answers', { method: 'POST',
+      # First, disable global ajaxError handler to
+      # prevent error_handler.coffee from printing failure to test log
+      page.execute_script "$(document).ajaxError(function) {};
+                           $.ajax('/answers', { method: 'POST',
                                                   async: false
                                                 })
                            .fail(function() { throw new Error('test') } )"
