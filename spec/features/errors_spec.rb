@@ -8,7 +8,8 @@ describe 'Error reporting' do
         controller.head :internal_server_error
       end
 
-      page.execute_script "$.ajax('/answers', { method: 'POST',
+      page.execute_script "$(document).ajaxError(function) {};
+                           $.ajax('/answers', { method: 'POST',
                                                   async: false
                                                 })
                            .fail(function() { throw new Error('test') } )"
