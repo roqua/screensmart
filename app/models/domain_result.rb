@@ -15,6 +15,6 @@ class DomainResult < BaseModel
   end
 
   def data_from_r
-    response.data_from_r[:domain_results][domain_id]
+    @data_from_r ||= response.data_from_r[:domain_results][domain_id]
   end
 end
