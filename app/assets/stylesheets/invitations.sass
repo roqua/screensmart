@@ -17,48 +17,47 @@
     background: $form-background-color
     resize: none
     outline: none
-    &[required]
-      &:focus
-        border-color: lighten($screensmart-blue, 10%)
-        + label
-          &[placeholder]
-            &:before
-              color: lighten($screensmart-blue, 5%)
-      &:focus,
-      &:valid
-        + label
-          &[placeholder]
-            &:before
-              transition-duration: .2s
-              transform: translate(0, (-$form-text-input-padding)) scale(.9, .9)
-      &:invalid
-        + label
-          &[placeholder]
-            &[alt]
-              &:before
-                content: attr(alt)
-      &.invalid
-        border: 2px solid $screensmart-red
-
+    &:focus
+      border-color: lighten($screensmart-blue, 10%)
       + label
         &[placeholder]
-          display: block
-          pointer-events: none
-          line-height: $form-text-input-margin * 1.2
-          margin-top: -3.267rem
-          margin-bottom: 1.2rem
           &:before
-            content: attr(placeholder)
-            display: inline-block
-            margin: 0 calc(#{$form-text-input-margin} + #{$form-text-input-borders})
-            padding: 0 2px
-            color: #999
-            white-space: nowrap
-            transition: .3s ease-in-out
-            background-image: linear-gradient(to bottom, $form-background-color, $form-background-color)
-            background-size: 100% 8px
-            background-repeat: no-repeat
-            background-position: center
+            color: lighten($screensmart-blue, 5%)
+    &:focus,
+    &:valid
+      + label
+        &[placeholder]
+          &:before
+            transition-duration: .2s
+            transform: translate(0, (-$form-text-input-padding)) scale(.9, .9)
+    &:invalid
+      + label
+        &[placeholder]
+          &[alt]
+            &:before
+              content: attr(alt)
+    &.invalid
+      border: 2px solid $screensmart-red
+
+    + label
+      &[placeholder]
+        display: block
+        pointer-events: none
+        line-height: $form-text-input-margin * 1.2
+        margin-top: -3.267rem
+        margin-bottom: 1.2rem
+        &:before
+          content: attr(placeholder)
+          display: inline-block
+          margin: 0 calc(#{$form-text-input-margin} + #{$form-text-input-borders})
+          padding: 0 2px
+          color: #999
+          white-space: nowrap
+          transition: .3s ease-in-out
+          background-image: linear-gradient(to bottom, $form-background-color, $form-background-color)
+          background-size: 100% 8px
+          background-repeat: no-repeat
+          background-position: center
 
   .small
     font-size: 0.8rem
