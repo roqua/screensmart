@@ -41,9 +41,7 @@ invitationForm = React.createClass
               className: if @shouldShowErrorFor 'respondentEmail' then 'invalid' else ''
               type: 'text'
               required: 'required'
-      label
-        alt: "e-mail respondent"
-        placeholder: "e-mail respondent"
+      @inputLabel "e-mail respondent"
 
       @renderErrorFor 'requesterName'
       input \
@@ -51,9 +49,7 @@ invitationForm = React.createClass
               className: if @shouldShowErrorFor 'requesterName' then 'invalid' else ''
               type: 'text'
               required: 'required'
-      label
-        alt: 'uw volledige naam'
-        placeholder: 'uw volledige naam'
+      @inputLabel 'uw volledige naam'
 
       @renderErrorFor 'requesterEmail'
       input \
@@ -61,9 +57,7 @@ invitationForm = React.createClass
               className: if @shouldShowErrorFor 'requesterEmail' then 'invalid' else ''
               type: 'text'
               required: 'required'
-      label
-        alt: 'uw e-mail'
-        placeholder: 'uw e-mail'
+      @inputLabel 'uw e-mail'
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
@@ -136,6 +130,12 @@ invitationForm = React.createClass
       @props.submitFailed && @props.error
     else
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
+
+  inputLabel: (labelText) ->
+    label
+      htmlFor: labelText
+      alt: labelText
+      placeholder: labelText
 
 validate = (values) ->
   { respondentEmail, requesterName, requesterEmail, domainIds } = values
