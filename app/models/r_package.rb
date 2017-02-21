@@ -106,7 +106,7 @@ module RPackage
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
-        logged_call function, parameters
+        instrumented_call function, parameters
       rescue OpenCPU::Errors::AccessDenied
         explain_opencpu_configuration
       rescue RuntimeError => e
@@ -119,7 +119,11 @@ module RPackage
     raise 'OpenCPU authentication failed. Ensure' \
       'OPENCPU_ENDPOINT_URL, OPENCPU_USERNAME and OPENCPU_PASSWORD environment variables are set correctly.'
   end
-
+  def instrumented_call(function, parameters)
+    ActiveSupport::Notifications.instrument 'r_package_call', this: "#{function}(#{parameters})" do
+      logged_call function, parameters
+    end
+  end
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
