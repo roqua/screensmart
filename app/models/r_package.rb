@@ -121,7 +121,7 @@ module RPackage
   end
 
   def self.instrumented_call(function, parameters)
-    Appsignal.instrument "screensmart-r.#{function}", parameters.to_s do
+    Appsignal.instrument "screensmart-r.#{function}", "calling #{function}", parameters do
       logged_call function, parameters
     end
   end
