@@ -27,18 +27,20 @@ module RPackage
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
-    raise 'No domains given' unless domain_ids.present?
+    Appsignal.instrument "data_for", "getting data for domain ids #{domain_ids.join(', ')}" do
+      raise 'No domains given' unless domain_ids.present?
 
-    # TODO: Allow screensmart-r's call_shadowcat function to handle
-    #       multiple domains, which will allow us to simply return
-    #       its return value here, greatly reducing complexity.
-    domain_results = domain_ids.map do |domain_id|
-      data_for_domain(answers, domain_id)
+      # TODO: Allow screensmart-r's call_shadowcat function to handle
+      #       multiple domains, which will allow us to simply return
+      #       its return value here, greatly reducing complexity.
+      domain_results = domain_ids.map do |domain_id|
+        data_for_domain(answers, domain_id)
+      end
+
+      { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
+        done: domain_results.all? { |domain| domain[:done] },
+        domain_results: domain_results_hash(domain_ids, domain_results) }
     end
-
-    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
-      done: domain_results.all? { |domain| domain[:done] },
-      domain_results: domain_results_hash(domain_ids, domain_results) }
   end
 
   def self.domain_results_hash(domain_ids, domain_results)
@@ -106,7 +108,7 @@ module RPackage
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
-        instrumented_call function, parameters
+        logged_call function, parameters
       rescue OpenCPU::Errors::AccessDenied
         explain_opencpu_configuration
       rescue RuntimeError => e
@@ -118,12 +120,6 @@ module RPackage
   def self.explain_opencpu_configuration
     raise 'OpenCPU authentication failed. Ensure' \
       'OPENCPU_ENDPOINT_URL, OPENCPU_USERNAME and OPENCPU_PASSWORD environment variables are set correctly.'
-  end
-
-  def self.instrumented_call(function, parameters)
-    Appsignal.instrument "screensmart-r.#{function}", "calling #{function}", parameters.to_s do
-      logged_call function, parameters
-    end
   end
 
   def self.logged_call(function, parameters)
