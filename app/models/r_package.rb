@@ -119,11 +119,13 @@ module RPackage
     raise 'OpenCPU authentication failed. Ensure' \
       'OPENCPU_ENDPOINT_URL, OPENCPU_USERNAME and OPENCPU_PASSWORD environment variables are set correctly.'
   end
-  def instrumented_call(function, parameters)
+
+  def self.instrumented_call(function, parameters)
     ActiveSupport::Notifications.instrument 'r_package_call', this: "#{function}(#{parameters})" do
       logged_call function, parameters
     end
   end
+
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
