@@ -21,3 +21,4 @@
 //= require components
 //= require routes
 //= require entry_point
+//= require devtools
