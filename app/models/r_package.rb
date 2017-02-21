@@ -130,7 +130,8 @@ module RPackage
   end
 
   def self.cache_key_for(function, parameters)
-    "#{ENV['RAILS_ENV']}/#{last_deploy_date}/#{function}/#{parameters}"
+    # Use SHA1 hash because raw string might be too long for cache key
+    Digest::SHA1.hexdigest "#{ENV['RAILS_ENV']}/#{last_deploy_date}/#{function}/#{parameters}"
   end
 
   def self.last_deploy_date
