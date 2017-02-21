@@ -7,7 +7,7 @@ demographicsForm = React.createClass
   questions: [
     (
       id: 'gender'
-      intro: 'Voor onderzoek vragen we u om een paar vragen te beantwoorden over uw achtergrond'
+      intro: 'Voor onderzoek vragen we u om een paar vragen te beantwoorden over uw achtergrond. Door op verzenden te klikken gaat u akkoord met de voorwaarden.'
       text: 'Wat is uw geslacht?'
       options: [
         { value: 'male', text: 'Man' }
@@ -23,6 +23,8 @@ demographicsForm = React.createClass
       options: [
         { value: 'vmbo_or_below', text: 'VMBO of lager' }
         { value: 'mbo', text: 'MBO' }
+        { value: 'havo', text: 'HAVO' }
+        { value: 'vwo', text: 'VWO' }
         { value: 'hbo', text: 'HBO' }
         { value: 'wo', text: 'WO' }
       ]
@@ -41,7 +43,7 @@ demographicsForm = React.createClass
       text: 'Heeft u een relatie?'
       options: [
         { value: 'single', text: 'Alleenstaand' }
-        { value: 'living_alone_together', text: 'Latrelatie' }
+        { value: 'living_alone_together', text: 'Latrelatie (apart samenwonend)' }
         { value: 'living_together', text: 'Samenwonend' }
       ]
     )
