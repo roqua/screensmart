@@ -21,6 +21,8 @@ class @FeedBuilder
         key: "loading-indicator-#{elements.length}"
 
     if done
+      elements.push React.createElement DemographicsForm,
+        key: 'demographics-form'
       elements.push React.createElement CompletionBox,
         key: "completion-box-#{elements.length}"
         response: @response

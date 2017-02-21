@@ -23,6 +23,12 @@ describe 'answering questions' do
     answer_question 4, 'Oneens'
     expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
 
+    answer_question 5, 'Man'
+    fill_in 'age', with: 30
+    answer_question 7, 'HBO'
+    answer_question 8, 'Parttime'
+    answer_question 9, 'Alleenstaand'
+
     click_on 'Afronden'
   end
 
