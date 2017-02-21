@@ -121,7 +121,7 @@ module RPackage
   end
 
   def self.instrumented_call(function, parameters)
-    ActiveSupport::Notifications.instrument 'r_package_call', this: "#{function}(#{parameters})" do
+    Appsignal.instrument "screensmart-r.#{function}", parameters.to_s do
       logged_call function, parameters
     end
   end
