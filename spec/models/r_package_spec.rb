@@ -178,7 +178,9 @@ describe RPackage do
   describe '.cache_key_for' do
     subject { RPackage.cache_key_for 'some_function', {} }
 
-    # Should contain a date
-    it { is_expected.to match(/\d{4}\-\d{2}\-\d{2}/) }
+    it 'includes package date' do
+      expect(Digest::SHA1).to receive(:hexdigest).with /\d{4}\-\d{2}\-\d{2}/
+      subject
+    end
   end
 end
