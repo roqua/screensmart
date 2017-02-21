@@ -179,7 +179,7 @@ describe RPackage do
     subject { RPackage.cache_key_for 'some_function', {} }
 
     it 'includes package date' do
-      expect(Digest::SHA1).to receive(:hexdigest).with /\d{4}\-\d{2}\-\d{2}/
+      expect(Digest::SHA1).to receive(:hexdigest).with(/\d{4}\-\d{2}\-\d{2}/)
       subject
     end
   end
