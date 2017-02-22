@@ -7,7 +7,7 @@ GIT
 
 GIT
   remote: git://github.com/roqua/opencpu.git
-  revision: 9240e43b42e46b3c243cdc9f6ce18defdf9118a5
+  revision: cbdc7b60cd3773fcf7b7b598bb6ce6801d7e5492
   branch: add-instrumentation
   specs:
     opencpu (0.11.0)
