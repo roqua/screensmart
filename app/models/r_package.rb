@@ -21,13 +21,15 @@ module RPackage
   end
 
   def self.database
-    call('get_itembank_rdata')
+    Appsignal.instrument "RPackage.database", "Fetching static database from R" do
+      call('get_itembank_rdata')
+    end
   end
 
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
-    Appsignal.instrument "data_for", "getting data for domain ids #{domain_ids.join(', ')}" do
+    Appsignal.instrument "RPackage.data_for", "Getting answers for domains #{domain_ids.join(', ')} with #{answers.count} answers" do
       raise 'No domains given' unless domain_ids.present?
 
       # TODO: Allow screensmart-r's call_shadowcat function to handle
