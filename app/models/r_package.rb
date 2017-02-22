@@ -123,7 +123,7 @@ module RPackage
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
-    result = Appsignal.instrument 'opencpu', function, parameters.to_s do
+    result = Appsignal.instrument "screensmart-r.#{function}", function, parameters.to_s do
       Client.instance.execute 'screensmart', function,
                               user: :system, data: parameters, convert_na_to_nil: true
     end
@@ -144,7 +144,7 @@ module RPackage
   end
 
   def self.description
-    Appsignal.instrument 'screensmart-r', 'Fetching last deploy date' do
+    Appsignal.instrument 'screensmart-r.last_deploy_date', 'Fetching last deploy date' do
       Client.instance.description('screensmart')
     end
   end
