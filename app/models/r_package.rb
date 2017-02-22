@@ -27,7 +27,7 @@ module RPackage
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
-    Appsignal.instrument "RPackage.data_for", "Getting next question for #{answers.count} answers" do
+    Appsignal.instrument "RPackage.data_for", "Getting next question for domains #{domain_ids.join(', ')}" do
       raise 'No domains given' unless domain_ids.present?
 
       # TODO: Allow screensmart-r's call_shadowcat function to handle
