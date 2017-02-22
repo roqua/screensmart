@@ -27,20 +27,18 @@ module RPackage
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
-    Appsignal.instrument "RPackage.data_for", "Getting next question for domains #{domain_ids.join(', ')}" do
-      raise 'No domains given' unless domain_ids.present?
+    raise 'No domains given' unless domain_ids.present?
 
-      # TODO: Allow screensmart-r's call_shadowcat function to handle
-      #       multiple domains, which will allow us to simply return
-      #       its return value here, greatly reducing complexity.
-      domain_results = domain_ids.map do |domain_id|
-        data_for_domain(answers, domain_id)
-      end
-
-      { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
-        done: domain_results.all? { |domain| domain[:done] },
-        domain_results: domain_results_hash(domain_ids, domain_results) }
+    # TODO: Allow screensmart-r's call_shadowcat function to handle
+    #       multiple domains, which will allow us to simply return
+    #       its return value here, greatly reducing complexity.
+    domain_results = domain_ids.map do |domain_id|
+      data_for_domain(answers, domain_id)
     end
+
+    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
+      done: domain_results.all? { |domain| domain[:done] },
+      domain_results: domain_results_hash(domain_ids, domain_results) }
   end
 
   def self.domain_results_hash(domain_ids, domain_results)
@@ -108,9 +106,7 @@ module RPackage
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
-        Appsignal.instrument "screensmart-r.#{function}", "Non-cached call to #{function}" do
-          logged_call function, parameters
-        end
+        logged_call function, parameters
       rescue OpenCPU::Errors::AccessDenied
         explain_opencpu_configuration
       rescue RuntimeError => e
@@ -140,9 +136,7 @@ module RPackage
 
   def self.last_deploy_date
     Rails.cache.fetch(:last_r_deploy_date) do
-      Appsignal.instrument "screensmart-r.last_r_deploy_date", "Getting last screensmart-r deploy date" do
-        description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
-      end
+      description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
     end
   end
 
