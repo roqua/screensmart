@@ -21,9 +21,7 @@ module RPackage
   end
 
   def self.database
-    Appsignal.instrument "RPackage.database", "Fetching static database from R" do
-      call('get_itembank_rdata')
-    end
+    call('get_itembank_rdata')
   end
 
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
