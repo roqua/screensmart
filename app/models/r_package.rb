@@ -140,7 +140,9 @@ module RPackage
 
   def self.last_deploy_date
     Rails.cache.fetch(:last_r_deploy_date) do
-      description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+      Appsignal.instrument "screensmart-r.last_r_deploy_date", "Getting last screensmart-r deploy date" do
+        description.match(/Packaged: (?<package_date>.*);/).try(:[], :package_date)
+      end
     end
   end
 
