@@ -5,15 +5,6 @@ GIT
     olive_branch (1.2.0)
       rails (>= 4.0)
 
-GIT
-  remote: git://github.com/roqua/opencpu.git
-  revision: ced30a04c61edbacb18e245cccceb4d2e5895df0
-  branch: add-instrumentation
-  specs:
-    opencpu (0.11.0)
-      httmultiparty (~> 0.3.16)
-      yajl-ruby (~> 1.2, >= 1.2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -231,6 +222,9 @@ GEM
     notiffany (0.1.1)
       nenv (~> 0.1)
       shellany (~> 0.0)
+    opencpu (0.10.0)
+      httmultiparty (~> 0.3.16)
+      yajl-ruby (~> 1.2, >= 1.2.0)
     parser (2.4.0.0)
       ast (~> 2.2)
     pdf-core (0.6.1)
@@ -433,7 +427,7 @@ DEPENDENCIES
   mailgun_rails (~> 0.8.0)
   neat (~> 1.7.3)
   olive_branch!
-  opencpu!
+  opencpu (~> 0.10.0)
   pdf-reader
   pg (~> 0.18.4)
   poltergeist (~> 1.10.0)

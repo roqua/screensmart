@@ -26,7 +26,7 @@ gem 'font-awesome-rails'
 gem 'react-rails', '~> 1.7.1'
 
 gem 'mailgun_rails', '~> 0.8.0'
-gem 'opencpu', github: 'roqua/opencpu', branch: 'add-instrumentation'
+gem 'opencpu', '~> 0.10.0'
 gem 'active_interaction', '~> 3.0'
 gem 'jsonb_accessor', '~> 0.3.2'
 gem 'valid_email', '~> 0.0'
