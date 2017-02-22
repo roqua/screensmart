@@ -108,7 +108,9 @@ module RPackage
   def self.call(function, parameters = {})
     Rails.cache.fetch(cache_key_for(function, parameters)) do
       begin
-        logged_call function, parameters
+        Appsignal.instrument "screensmart-r.#{function}", "Non-cached call to #{function}" do
+          logged_call function, parameters
+        end
       rescue OpenCPU::Errors::AccessDenied
         explain_opencpu_configuration
       rescue RuntimeError => e
