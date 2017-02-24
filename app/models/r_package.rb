@@ -123,7 +123,7 @@ module RPackage
   def self.logged_call(function, parameters)
     Rails.logger.debug "Calling OpenCPU: #{function}(#{parameters})" # Only log non-cached calls
 
-    result = Appsignal.instrument "screensmart-r.#{function}", function, parameters.to_s do
+    result = Appsignal.instrument "screensmart-r.#{function}", function do
       Client.instance.execute 'screensmart', function,
                               user: :system, data: parameters, convert_na_to_nil: true
     end
