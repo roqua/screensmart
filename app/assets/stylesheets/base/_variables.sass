@@ -19,6 +19,7 @@ $application-card-border-radius: 4px
 
 $breakpoint-mobile: 500px
 $breakpoint-mobile-v: 500px
+$mobile-ratio: 1.2
 
 // typography
 $screensmart-font-size: 1.2rem
@@ -104,6 +105,15 @@ $form-submit-color: $option-color-hover
 $form-submit-border-color: darken($form-submit-background-color, 3%)
 $form-submit-background-color-hover: darken($form-submit-background-color, 5%)
 $form-submit-border-color-hover: darken($form-submit-border-color, 5%)
+$form-text-error-font-size: 1rem
+$form-text-input-height: 2rem
+$form-text-input-margin: 1.2rem
+$form-text-input-padding: $form-text-input-margin
+$form-text-input-border: 2px
+$form-text-input-borders: ($form-text-input-border * 2)
+$form-text-input-height-mobile: calc(#{$form-text-input-height} / #{$mobile-ratio})
+$form-text-input-margin-mobile: calc(#{$form-text-input-margin} / #{$mobile-ratio})
+$form-text-input-padding-mobile: 1.1rem
 
 //response view
 $response-background-color: $form-background-color

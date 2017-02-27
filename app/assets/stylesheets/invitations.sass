@@ -5,11 +5,60 @@
   padding: $form-padding
   margin: $form-margin
   input[type="text"]
-    width: 100%
-    padding: 10px
-    margin: 0 0 10px
-    border-radius: 5px
     font-size: $screensmart-font-size
+    box-sizing: border-box
+    width: 100%
+    height: calc(#{$form-text-input-height} + #{$form-text-input-borders})
+    margin: 0.5rem 0 $form-text-input-margin
+    padding: $form-text-input-padding
+    border: $form-text-input-border solid #ddd
+    border-radius: $option-border-radius
+    border-style: inset
+    background: $form-background-color
+    resize: none
+    outline: none
+    &:focus
+      border-color: lighten($screensmart-blue, 10%)
+      + label
+        &[placeholder]
+          &:before
+            color: lighten($screensmart-blue, 5%)
+    &:focus,
+    &:valid
+      + label
+        &[placeholder]
+          &:before
+            transition-duration: .2s
+            transform: translate(0, (-$form-text-input-padding)) scale(.9, .9)
+    &:invalid
+      + label
+        &[placeholder]
+          &[alt]
+            &:before
+              content: attr(alt)
+    &.invalid
+      border: 2px solid $screensmart-red
+
+    + label
+      &[placeholder]
+        display: block
+        pointer-events: none
+        line-height: $form-text-input-margin * 1.2
+        margin-top: -3.267rem
+        margin-bottom: 1.2rem
+        &:before
+          content: attr(placeholder)
+          display: inline-block
+          margin: 0 calc(#{$form-text-input-margin} + #{$form-text-input-borders})
+          padding: 0 2px
+          color: #999
+          white-space: nowrap
+          transition: .3s ease-in-out
+          background-image: linear-gradient(to bottom, $form-background-color, $form-background-color)
+          background-size: 100% 8px
+          background-repeat: no-repeat
+          background-position: center
+
   .small
     font-size: 0.8rem
     color: $past-option-color
@@ -52,14 +101,11 @@
         &:after
           content: '\2713'
           float: right
-
-  .invalid
-    border: 2px solid $screensmart-red
-    border-radius: 5px
   .error
     font-size: 1rem
     font-style: italic
     color: darken($screensmart-red, 23%)
+    margin-right: 2rem
     &:before
       @extend .fa
       @extend .fa-exclamation-circle:before
@@ -91,4 +137,24 @@
   @media only screen and (max-width: $breakpoint-mobile)
     padding: $form-padding-mobile
     font-size: $screensmart-font-size-mobile
-
+    input[type="text"]
+      margin: 0.5rem 0 $form-text-input-margin-mobile
+      padding: $form-text-input-padding-mobile 0.2rem
+      height: $form-text-input-height-mobile
+      &[required]
+        &:focus,
+        &:valid
+          + label
+            &[placeholder]
+              &:before
+                transform: translate(0, (-$form-text-input-padding-mobile)) scale(.9, .9)
+        + label
+          &[placeholder]
+            line-height: $form-text-input-margin-mobile
+            margin-top: calc(-3.267rem / #{$mobile-ratio})
+            &:before
+              margin: 0 15px
+    .error
+      font-size: calc(#{$form-text-error-font-size} / #{$mobile-ratio})
+    .small
+      margin-top: -3px

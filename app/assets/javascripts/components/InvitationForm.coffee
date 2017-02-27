@@ -40,21 +40,24 @@ invitationForm = React.createClass
         merge respondentEmail,
               className: if @shouldShowErrorFor 'respondentEmail' then 'invalid' else ''
               type: 'text'
-              placeholder: 'e-mail respondent'
+              required: 'required'
+      @inputLabel "e-mail respondent"
 
       @renderErrorFor 'requesterName'
       input \
         merge requesterName,
               className: if @shouldShowErrorFor 'requesterName' then 'invalid' else ''
               type: 'text'
-              placeholder: 'uw volledige naam'
+              required: 'required'
+      @inputLabel 'uw volledige naam'
 
       @renderErrorFor 'requesterEmail'
       input \
         merge requesterEmail,
               className: if @shouldShowErrorFor 'requesterEmail' then 'invalid' else ''
               type: 'text'
-              placeholder: 'uw e-mail'
+              required: 'required'
+      @inputLabel 'uw e-mail'
       span
         className: 'small'
         '* Na invulling wordt de uitkomst naar dit e-mailadres gestuurd'
@@ -127,6 +130,12 @@ invitationForm = React.createClass
       @props.submitFailed && @props.error
     else
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
+
+  inputLabel: (labelText) ->
+    label
+      htmlFor: labelText
+      alt: labelText
+      placeholder: labelText
 
 validate = (values) ->
   { respondentEmail, requesterName, requesterEmail, domainIds } = values
