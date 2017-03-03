@@ -14,7 +14,7 @@ gem 'active_model_serializers', '~> 0.9.3'
 gem 'responders'
 gem 'rack-haproxy_status', '~> 0.8.1'
 
-gem 'sprockets-rails'
+gem 'sprockets-rails', '~> 3.2.0'
 
 gem 'appsignal', '~> 2.1.0'
 
