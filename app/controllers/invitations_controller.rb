@@ -1,6 +1,6 @@
 class InvitationsController < ApplicationController
   def create
-    outcome = SendInvitation.run(invitation_params.to_h)
+    outcome = SendInvitation.run(invitation_params)
     if outcome.valid?
       head :created
     else

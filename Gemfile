@@ -29,7 +29,7 @@ gem 'react-rails', '~> 1.7.1'
 
 gem 'mailgun_rails', '~> 0.8.0'
 gem 'opencpu', '~> 0.10.0'
-gem 'active_interaction', '~> 3.0'
+gem 'active_interaction', '~> 3.4'
 gem 'jsonb_accessor', '0.4.0.beta'
 gem 'valid_email', '~> 0.0'
 

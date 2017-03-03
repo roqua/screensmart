@@ -1,6 +1,6 @@
 class AnswersController < ApplicationController
   def create
-    SetAnswer.run! answer_params.to_h
+    SetAnswer.run! answer_params
 
     redirect_to response_path(params[:response_uuid])
   end

@@ -400,7 +400,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  active_interaction (~> 3.0)
+  active_interaction (~> 3.4)
   active_model_serializers (~> 0.9.3)
   activeresource
   appsignal (~> 2.1.0)
