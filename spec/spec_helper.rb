@@ -35,6 +35,7 @@ RSpec.configure do |config|
   mock_all_calls_to_r
 
   Capybara.default_driver = :poltergeist
+  Capybara.default_max_wait_time = 5
 
   Rails.application.routes.default_url_options[:host] = 'test_host'
 
