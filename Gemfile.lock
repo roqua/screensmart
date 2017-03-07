@@ -321,6 +321,8 @@ GEM
       rspec-expectations (~> 3.5.0)
       rspec-mocks (~> 3.5.0)
       rspec-support (~> 3.5.0)
+    rspec-repeat (1.0.2)
+      rspec (~> 3.0)
     rspec-support (3.5.0)
     rubocop (0.37.2)
       parser (>= 2.3.0.4, < 3.0)
@@ -440,6 +442,7 @@ DEPENDENCIES
   responders
   rspec-collection_matchers (~> 1.1.2)
   rspec-rails
+  rspec-repeat
   rubocop (~> 0.37.2)
   sass-rails (~> 5.0)
   simplecov

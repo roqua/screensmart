@@ -61,6 +61,8 @@ group :development do
 end
 
 group :test do
+  gem 'rspec-repeat'
+
   gem 'database_cleaner'
 
   gem 'simplecov'

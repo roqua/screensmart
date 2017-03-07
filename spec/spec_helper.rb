@@ -10,6 +10,12 @@ require 'opencpu'
 Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 
 RSpec.configure do |config|
+  config.include RSpec::Repeat
+
+  config.around :example, type: :feature do |example|
+    repeat example, 5.times, verbose: true
+  end
+
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
   end
@@ -35,7 +41,7 @@ RSpec.configure do |config|
   mock_all_calls_to_r
 
   Capybara.default_driver = :poltergeist
-  Capybara.default_max_wait_time = 5
+  Capybara.default_max_wait_time = 7
 
   Rails.application.routes.default_url_options[:host] = 'test_host'
 
