@@ -5,3 +5,4 @@ test:
   override:
     - bundle exec rspec
     - bundle exec rubocop
+    - curl https://raw.githubusercontent.com/roqua/gemnasium_on_circleci/master/run_gemnasium.sh -sSf | sh

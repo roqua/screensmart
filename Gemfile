@@ -65,7 +65,7 @@ group :test do
 
   gem 'simplecov'
 
-  gem 'rubocop', '= 0.37.2'
+  gem 'rubocop', '~> 0.37.2'
   gem 'coffeelint'
   gem 'rspec-rails'
   gem 'fabrication', '~> 2.15.2'
