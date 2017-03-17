@@ -3,8 +3,7 @@ describe SendInvitation do
     { requester_name: 'Some Doctor',
       requester_email: 'requester@example.dev',
       respondent_email: 'patient@example.dev',
-      domain_ids: ['POS-PQ']
-    }
+      domain_ids: ['POS-PQ'] }
   end
 
   before do
@@ -15,7 +14,7 @@ describe SendInvitation do
     subject { described_class.run!(params) }
 
     it 'stores Invitation_sent event' do
-      expect { subject }.to change{
+      expect { subject }.to change {
         Events::InvitationSent.count
       }.by(1)
     end

@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
   Exclude:
     # Exclude generated or external code
     - bin/**/*
@@ -9,6 +9,12 @@ AllCops:
 Metrics/LineLength:
   Max: 120
 
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - config/environments/**/*.rb
+    - Guardfile
+
 Metrics/ModuleLength:
   Exclude:
     # Temporarily contains functionality that belongs to screensmart-r
@@ -17,6 +23,7 @@ Metrics/ModuleLength:
 Metrics/MethodLength:
   Exclude:
     - spec/**/*_spec.rb
+    - spec/support/mock_all_calls_to_r.rb
     - app/pdfs/response_report.rb
 
 Metrics/AbcSize:
@@ -26,6 +33,9 @@ Metrics/AbcSize:
 # Trust developers to document where neccesary, otherwise
 # rely on the code being self-documenting
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/LambdaCall:
