@@ -32,7 +32,11 @@ def configure_vcr
     vcr.configure_rspec_metadata!
     vcr.ignore_localhost = true
     vcr.before_record { |i| i.response.body.force_encoding('UTF-8') }
-    vcr.default_cassette_options = { allow_playback_repeats: true, match_requests_on: [:body, :uri, :method] }
+
+    vcr.default_cassette_options = {
+      allow_playback_repeats: true,
+      match_requests_on: [:body, :uri, :method]
+    }
   end
 end
 

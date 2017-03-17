@@ -23,6 +23,7 @@ Metrics/ModuleLength:
 Metrics/MethodLength:
   Exclude:
     - spec/**/*_spec.rb
+    - spec/support/*.rb
     - app/pdfs/response_report.rb
 
 Metrics/AbcSize:
