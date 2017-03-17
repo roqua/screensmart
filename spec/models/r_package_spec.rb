@@ -73,7 +73,7 @@ describe RPackage do
     end
 
     context 'testing with multiple domains' do
-      let(:domains) { %w( POS-PQ NEG-PQ ) }
+      let(:domains) { %w(POS-PQ NEG-PQ) }
 
       context 'first domain is done' do
         subject { described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains) }

@@ -1,7 +1,7 @@
 class Question < BaseModel
   attr_accessor :id, :answer_value
 
-  validates_inclusion_of :id, in: -> (_) { RPackage.question_ids },
+  validates_inclusion_of :id, in: ->(_) { RPackage.question_ids },
                               message: '`%{value}` not found'
 
   # accessors for attributes defined by R package

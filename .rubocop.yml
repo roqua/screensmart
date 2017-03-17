@@ -1,5 +1,5 @@
 AllCops:
-  TargetRubyVersion: 2.2
+  TargetRubyVersion: 2.3
   Exclude:
     # Exclude generated or external code
     - bin/**/*
@@ -8,6 +8,12 @@ AllCops:
 
 Metrics/LineLength:
   Max: 120
+
+Metrics/BlockLength:
+  Exclude:
+    - spec/**/*.rb
+    - config/environments/**/*.rb
+    - Guardfile
 
 Metrics/ModuleLength:
   Exclude:
@@ -26,6 +32,9 @@ Metrics/AbcSize:
 # Trust developers to document where neccesary, otherwise
 # rely on the code being self-documenting
 Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/LambdaCall:
