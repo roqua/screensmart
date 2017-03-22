@@ -30,7 +30,7 @@ gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails'
 
-gem 'puma'
+gem 'puma', '~> 3.4'
 
 gem 'olive_branch', github: 'roqua/olive_branch'
 gem 'prawn'
