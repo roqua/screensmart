@@ -128,6 +128,8 @@ module RPackage
                               user: :system, data: parameters, convert_na_to_nil: true
     end
 
+    result = '[STRIPPED]' if function == 'get_itembank_rdata'
+
     Rails.logger.debug "Result: #{result}"
     result
   end
