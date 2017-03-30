@@ -28,7 +28,7 @@ class Response < BaseModel
 
   def domain_results
     @domain_results ||= domain_ids.map do |domain_id|
-      DomainResult.new(response: self, domain_id: domain_id)
+      DomainResult.new(response: self, {domain_id: domain_id}.merge(data_from_r[domain_id]))
     end
   end
 
