@@ -1,6 +1,8 @@
-# Snapshot of how a response was when it was finished
+# Works same as Response.
+#
+# Uses the results stored in its ResponseFinished event instead of getting info realtime from R.
 class ResponseSnapshot < Response
-  delegate :answer_values, :results, to: :response_finished
+  delegate :results, :answer_values, to: :response_finished
   delegate :warning, :estimate, :quartile, :variance, :estimate_interpretation, to: :results
 
   def done
