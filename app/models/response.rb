@@ -28,12 +28,12 @@ class Response < BaseModel
 
   def domain_results
     @domain_results ||= domain_ids.map do |domain_id|
-      DomainResult.new(response: self, {domain_id: domain_id}.merge(data_from_r[domain_id]))
+      DomainResult.new({ domain_id: domain_id }.merge(data_from_r[:domain_results][domain_id]))
     end
   end
 
   def results
-    domain_results.map(&:to_h)
+    domain_results.map(&:as_json)
   end
 
   def domains

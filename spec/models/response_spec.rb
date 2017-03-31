@@ -23,6 +23,25 @@ describe Response do
     end
   end
 
+  describe '#domain_results' do
+    subject { response.domain_results }
+    it 'returns a DomainResult for each domain' do
+      expect(subject.first).to be_a DomainResult
+    end
+  end
+
+  describe '#results' do
+    subject { response.results }
+    it 'returns a hash of results per domain' do
+      expect(subject).to eq [{ 'domain_id' => 'POS-PQ',
+                               'estimate' => 0.0,
+                               'variance' => 25.0,
+                               'estimate_interpretation' => 'Matig niveau (+)',
+                               'quartile' => 'Q2',
+                               'warning' => nil }]
+    end
+  end
+
   describe '#questions' do
     context 'when not done testing' do
       it 'contains all answered questions plus the next one' do
