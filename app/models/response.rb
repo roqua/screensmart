@@ -67,7 +67,7 @@ class Response < BaseModel
   end
 
   def invitation_accepted
-    @invitation_accepted ||= Events::InvitationAccepted.find_by response_uuid: uuid
+    @invitation_accepted ||= Events::InvitationAccepted.where(response_uuid: uuid).last
   end
 
   def events
