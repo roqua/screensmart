@@ -9,7 +9,7 @@ createResponse = (invitationUUID) ->
 
 loadResponse = (showSecret) ->
   if showSecret
-    Screensmart.store.dispatch Screensmart.Actions.loadResponse showSecret, true
+    Screensmart.store.dispatch Screensmart.Actions.loadResponse showSecret
   else
     throw new Error 'No showSecret provided in query'
 

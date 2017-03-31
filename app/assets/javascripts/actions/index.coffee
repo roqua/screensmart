@@ -42,10 +42,10 @@ Screensmart.Actions =
         else
           throw new Error 'Unknown error'
 
-  loadResponse: (showSecret, snapshot = false) ->
+  loadResponse: (showSecret) ->
     (dispatch) =>
       dispatch @startResponseUpdate()
-      $.getJSON("/responses/show?show_secret=#{showSecret}&snapshot=#{snapshot}")
+      $.getJSON("/responses/show?show_secret=#{showSecret}")
       .then (data) =>
         dispatch @receiveResponseUpdate(data)
 
