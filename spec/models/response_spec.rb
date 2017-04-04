@@ -23,6 +23,13 @@ describe Response do
     end
   end
 
+  describe '#results' do
+    subject { response.results }
+    it 'returns a DomainResult for each domain' do
+      expect(subject.first).to be_a DomainResult
+    end
+  end
+
   describe '#questions' do
     context 'when not done testing' do
       it 'contains all answered questions plus the next one' do

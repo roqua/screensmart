@@ -26,7 +26,10 @@ class ResponsesController < ApplicationController
   end
 
   def response_by_show_secret_or_id
-    return Response.find_by_show_secret params[:show_secret] if params[:show_secret]
+    # Use cached results (ResponseSnapshot) when viewing
+    return ResponseSnapshot.find_by_show_secret params[:show_secret] if params[:show_secret]
+
+    # Use realtime results (Response) when answering
     return Response.find params[:id] if params[:id]
 
     raise 'Neither `id` nor `show_secret` provided in params'

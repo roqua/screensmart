@@ -1,7 +1,7 @@
 class ResponseSerializer < ActiveModel::Serializer
   attributes :uuid, :requested_at, :created_at, :domain_ids, :done
 
-  has_many :domain_results
+  has_many :results, root: :domain_results
   has_many :questions
 end
 
