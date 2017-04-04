@@ -14,7 +14,7 @@ class Response < BaseModel
   delegate :domain_ids, :requested_at, to: :invitation
 
   # accessors for attributes defined by R package
-  %i(raw_domain_results next_question_id done).each do |r_attribute|
+  %i(domain_results next_question_id done).each do |r_attribute|
     define_method r_attribute do
       ensure_valid do
         data_from_r[r_attribute]
@@ -26,9 +26,9 @@ class Response < BaseModel
     @data_from_r ||= RPackage.data_for(answer_values, domain_ids)
   end
 
-  def domain_results
-    @domain_results ||= domain_ids.map do |domain_id|
-      DomainResult.new({ domain_id: domain_id }.merge(raw_domain_results[domain_id]))
+  def results
+    @results ||= domain_ids.map do |domain_id|
+      DomainResult.new({ domain_id: domain_id }.merge(domain_results[domain_id]))
     end
   end
 

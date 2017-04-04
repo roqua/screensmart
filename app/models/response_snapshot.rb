@@ -9,8 +9,8 @@ class ResponseSnapshot < Response
     true
   end
 
-  def raw_domain_results
-    # TODO: rename to raw_domain_results in ResponseFinished to be able to delegate
+  def domain_results
+    # TODO: rename to domain_results in ResponseFinished to be able to delegate
     response_finished.results
   end
 

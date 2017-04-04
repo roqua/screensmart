@@ -23,8 +23,8 @@ describe Response do
     end
   end
 
-  describe '#domain_results' do
-    subject { response.domain_results }
+  describe '#results' do
+    subject { response.results }
     it 'returns a DomainResult for each domain' do
       expect(subject.first).to be_a DomainResult
     end
