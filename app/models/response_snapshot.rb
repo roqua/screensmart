@@ -2,16 +2,11 @@
 #
 # Uses the results stored in its ResponseFinished event instead of getting info realtime from R.
 class ResponseSnapshot < Response
-  delegate :answer_values, to: :response_finished
+  delegate :domain_results, :answer_values, to: :response_finished
   delegate :warning, :estimate, :quartile, :variance, :estimate_interpretation, to: :results
 
   def done
     true
-  end
-
-  def domain_results
-    # TODO: rename to domain_results in ResponseFinished to be able to delegate
-    response_finished.results
   end
 
   def response_finished

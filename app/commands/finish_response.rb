@@ -13,7 +13,7 @@ class FinishResponse < ActiveInteraction::Base
       Events::ResponseFinished.create! invitation_uuid: invitation.uuid,
                                        response_uuid: response_uuid,
                                        answer_values: response.answer_values,
-                                       results: response.domain_results
+                                       domain_results: response.domain_results
 
     send_response_email
 

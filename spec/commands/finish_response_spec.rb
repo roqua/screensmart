@@ -36,7 +36,7 @@ describe FinishResponse do
     end
 
     it 'saves the domain results' do
-      results = subject.result.results
+      results = subject.result.domain_results
       expect(results).to be_a(Hash)
       expect(results['POS-PQ'].with_indifferent_access).to include(:estimate, :estimate_interpretation,
                                                                    :warning, :variance)
