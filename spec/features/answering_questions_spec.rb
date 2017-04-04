@@ -24,6 +24,8 @@ describe 'answering questions' do
     expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
 
     click_on 'Afronden'
+
+    expect(page).to have_content 'Bedankt voor het invullen'
   end
 
   let(:invitation_sent) { Fabricate :invitation_sent }

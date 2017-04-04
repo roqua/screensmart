@@ -39,7 +39,7 @@ describe RPackage do
         response = described_module.data_for({}, domains)
         expect(response[:next_question_id]).to start_with('EL')
         expect(response[:done]).to be_falsey
-        domain_result = response[:domain_results]['POS-PQ']
+        domain_result = response[:raw_domain_results]['POS-PQ']
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
         expect(domain_result[:estimate_interpretation]).to be_a(String)
@@ -52,7 +52,7 @@ describe RPackage do
         response = described_module.data_for({ 'EL02' => 2 }, domains)
         expect(response[:next_question_id]).to start_with('EL')
         expect(response[:done]).to be_falsey
-        domain_result = response[:domain_results]['POS-PQ']
+        domain_result = response[:raw_domain_results]['POS-PQ']
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
         expect(domain_result[:estimate_interpretation]).to be_a(String)
@@ -95,16 +95,16 @@ describe RPackage do
         end
 
         it 'returns the per-domain results in a hash' do
-          expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
-                                                               variance: 25.0,
-                                                               estimate_interpretation: 'Matig niveau (+)',
-                                                               quartile: 'Q2',
-                                                               warning: nil },
-                                                 'POS-PQ' => { estimate: -0.6777,
-                                                               variance: 0.6842,
-                                                               estimate_interpretation: 'Matig niveau (+)',
-                                                               quartile: 'Q3',
-                                                               warning: nil }
+          expect(subject[:raw_domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
+                                                                   variance: 25.0,
+                                                                   estimate_interpretation: 'Matig niveau (+)',
+                                                                   quartile: 'Q2',
+                                                                   warning: nil },
+                                                     'POS-PQ' => { estimate: -0.6777,
+                                                                   variance: 0.6842,
+                                                                   estimate_interpretation: 'Matig niveau (+)',
+                                                                   quartile: 'Q3',
+                                                                   warning: nil }
         end
       end
     end

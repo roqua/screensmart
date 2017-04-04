@@ -32,13 +32,13 @@ module RPackage
     # TODO: Allow screensmart-r's call_shadowcat function to handle
     #       multiple domains, which will allow us to simply return
     #       its return value here, greatly reducing complexity.
-    domain_results = domain_ids.map do |domain_id|
+    raw_domain_results = domain_ids.map do |domain_id|
       data_for_domain(answers, domain_id)
     end
 
-    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
-      done: domain_results.all? { |domain| domain[:done] },
-      domain_results: domain_results_hash(domain_ids, domain_results) }
+    { next_question_id: raw_domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
+      done: raw_domain_results.all? { |domain| domain[:done] },
+      raw_domain_results: domain_results_hash(domain_ids, raw_domain_results) }
   end
 
   def self.domain_results_hash(domain_ids, domain_results)

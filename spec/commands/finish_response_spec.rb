@@ -37,9 +37,9 @@ describe FinishResponse do
 
     it 'saves the domain results' do
       results = subject.result.results
-      expect(results).to be_an(Array)
-      expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
-                                                            :warning, :variance)
+      expect(results).to be_a(Hash)
+      expect(results['POS-PQ'].with_indifferent_access).to include(:estimate, :estimate_interpretation,
+                                                                   :warning, :variance)
     end
 
     it 'sends an email to the requester' do
