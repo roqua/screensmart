@@ -1,8 +1,8 @@
 { DOM: { div, input, option, span, small, ul, li, p, label, button, form, i } } = React
 { reduxForm } = ReduxForm
 
-demographicsForm = React.createClass
-  displayName: 'DemographicsForm'
+demographicInfoForm = React.createClass
+  displayName: 'DemographicInfoForm'
 
   questions: [
     (
@@ -18,7 +18,7 @@ demographicsForm = React.createClass
       id: 'age'
       text: 'Wat is uw leeftijd?'
     ), (
-      id: 'educationLevel'
+      id: 'education'
       text: 'Wat is uw opleidingsniveau?'
       options: [
         { value: 'vmbo_or_below', text: 'VMBO of lager' }
@@ -29,7 +29,7 @@ demographicsForm = React.createClass
         { value: 'wo', text: 'WO' }
       ]
     ), (
-      id: 'employmentStatus'
+      id: 'employment'
       intro: 'Kies hetgeen waar u de meeste tijd aan besteedt'
       text: 'Heeft u werk of volgt u een opleiding?'
       options: [
@@ -39,7 +39,7 @@ demographicsForm = React.createClass
         { value: 'fulltime', text: 'Fulltime' }
       ]
     ), (
-      id: 'relationshipStatus',
+      id: 'relationship',
       text: 'Heeft u een relatie?'
       options: [
         { value: 'single', text: 'Alleenstaand' }
@@ -50,9 +50,9 @@ demographicsForm = React.createClass
   ]
 
   render: ->
-    { fields: { gender, age, educationLevel, employmentStatus, relationshipStatus } } = @props
-    div
-      className: 'form demographics-form'
+    { fields: { gender, age, education, employment, relationship } } = @props
+    form
+      className: 'form demographic-info-form'
 
       @questions.map (question) =>
         @renderErrorFor question.id
@@ -73,17 +73,19 @@ demographicsForm = React.createClass
             ul
               className: 'options'
               question.options.map (option) =>
+                id = "#{question.id}-#{option.value}"
                 li
                   key: option.value
                   className: 'option'
-                  input
-                    type: 'radio'
-                    name: question.id
-                    value: option.value
-                    onChange: @props.fields[question.id].onChange
-                    checked: @props.fields[question.id].value == option.value
+                  input \
+                    merge @props.fields[question.id],
+                          type: 'radio'
+                          name: question.id
+                          id: id
+                          value: option.value
                   label
                     className: 'text'
+                    htmlFor: id
                     option.text
           else
             input \
@@ -111,14 +113,14 @@ demographicsForm = React.createClass
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
-  { gender, age, educationLevel, employmentStatus, relationshipStatus } = values
+  { gender, age, education, employment, relationship } = values
 
   errors = {}
   errors.gender = 'Beantwoord deze vraag' unless gender != ''
   errors
 
-@DemographicsForm = reduxForm(
-  form: 'invitation'
-  fields: ['gender', 'age', 'educationLevel', 'employmentStatus', 'relationshipStatus']
+@DemographicInfoForm = reduxForm(
+  form: 'demographic-info'
+  fields: ['gender', 'age', 'education', 'employment', 'relationship']
   validate: validate
-)(demographicsForm)
+)(demographicInfoForm)

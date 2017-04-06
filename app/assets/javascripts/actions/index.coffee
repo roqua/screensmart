@@ -74,10 +74,10 @@ Screensmart.Actions =
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
 
-  finishResponse: (responseUUID) ->
+  finishResponse: (responseUUID, demographicInfo = null) ->
     (dispatch) =>
       dispatch @startFinishResponse()
-      $.putJSON("/responses/#{responseUUID}").then (data) =>
+      $.putJSON("/responses/#{responseUUID}", demographicInfo: demographicInfo).then (data) =>
         dispatch @receiveFinishResponse(data)
 
   startFinishResponse: ->

@@ -7,10 +7,11 @@
 
   propTypes: ->
     response: React.PropTypes.object.isRequired
+    demographicInfo: React.PropTypes.object
 
   onFinishClick: ->
     { dispatch } = Screensmart.store
-    dispatch Screensmart.Actions.finishResponse(@props.response.uuid)
+    dispatch Screensmart.Actions.finishResponse(@props.response.uuid, @props.demographicInfo)
 
   render: ->
     { estimate, variance, finished, finishing } = @props.response

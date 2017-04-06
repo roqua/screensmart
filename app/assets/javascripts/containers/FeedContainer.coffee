@@ -4,6 +4,7 @@ onAnswerChange = (id, value) ->
 mapStateToProps = (state) ->
   children: new FeedBuilder(
     response: state.response,
+    demographic_info: state.demographic_info,
     onAnswerChange: onAnswerChange
   ).getReactComponents()
   responseUUID: state.response.uuid
