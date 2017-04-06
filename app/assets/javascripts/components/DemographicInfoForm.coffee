@@ -120,7 +120,7 @@ validate = (values) ->
   errors
 
 @DemographicInfoForm = reduxForm(
-  form: 'demographic-info'
+  form: 'demographicInfo'
   fields: ['gender', 'age', 'education', 'employment', 'relationship']
   validate: validate
 )(demographicInfoForm)
