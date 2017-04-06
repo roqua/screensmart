@@ -8,6 +8,10 @@ class @FeedBuilder
     { questions, loading, done } = @response
     elements = []
 
+    # TODO: move to "if done" block after developing
+    elements.push React.createElement DemographicsForm,
+      key: 'demographics-form'
+
     for question in questions
       elements.push React.createElement Question,
         question: question
@@ -21,8 +25,6 @@ class @FeedBuilder
         key: "loading-indicator-#{elements.length}"
 
     if done
-      elements.push React.createElement DemographicsForm,
-        key: 'demographics-form'
       elements.push React.createElement CompletionBox,
         key: "completion-box-#{elements.length}"
         response: @response
