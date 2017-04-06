@@ -1,5 +1,12 @@
 class FinishResponse < ActiveInteraction::Base
   string :response_uuid
+  hash :demographic_info do
+    integer :age
+    string :education_level
+    string :employment_status
+    string :gender
+    string :relationship_status
+  end
 
   validates :response_uuid, presence: true
   validate :validate_response_uuid_is_found
@@ -13,7 +20,8 @@ class FinishResponse < ActiveInteraction::Base
       Events::ResponseFinished.create! invitation_uuid: invitation.uuid,
                                        response_uuid: response_uuid,
                                        answer_values: response.answer_values,
-                                       results: response.results
+                                       results: response.results,
+                                       demographic_info: demographic_info
 
     send_response_email
 

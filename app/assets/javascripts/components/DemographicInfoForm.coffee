@@ -18,7 +18,7 @@ demographicInfoForm = React.createClass
       id: 'age'
       text: 'Wat is uw leeftijd?'
     ), (
-      id: 'education'
+      id: 'educationLevel'
       text: 'Wat is uw opleidingsniveau?'
       options: [
         { value: 'vmbo_or_below', text: 'VMBO of lager' }
@@ -29,7 +29,7 @@ demographicInfoForm = React.createClass
         { value: 'wo', text: 'WO' }
       ]
     ), (
-      id: 'employment'
+      id: 'employmentStatus'
       intro: 'Kies hetgeen waar u de meeste tijd aan besteedt'
       text: 'Heeft u werk of volgt u een opleiding?'
       options: [
@@ -39,7 +39,7 @@ demographicInfoForm = React.createClass
         { value: 'fulltime', text: 'Fulltime' }
       ]
     ), (
-      id: 'relationship',
+      id: 'relationshipStatus',
       text: 'Heeft u een relatie?'
       options: [
         { value: 'single', text: 'Alleenstaand' }
@@ -50,7 +50,7 @@ demographicInfoForm = React.createClass
   ]
 
   render: ->
-    { fields: { gender, age, education, employment, relationship } } = @props
+    { fields: { gender, age, educationLevel, employmentStatus, relationshipStatus } } = @props
     form
       className: 'form demographic-info-form'
 
@@ -113,7 +113,7 @@ demographicInfoForm = React.createClass
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
-  { gender, age, education, employment, relationship } = values
+  { gender, age, educationLevel, employmentStatus, relationshipStatus } = values
 
   errors = {}
   errors.gender = 'Beantwoord deze vraag' unless gender != ''
@@ -121,6 +121,6 @@ validate = (values) ->
 
 @DemographicInfoForm = reduxForm(
   form: 'demographicInfo'
-  fields: ['gender', 'age', 'education', 'employment', 'relationship']
+  fields: ['gender', 'age', 'educationLevel', 'employmentStatus', 'relationshipStatus']
   validate: validate
 )(demographicInfoForm)

@@ -11,7 +11,7 @@ class ResponsesController < ApplicationController
   end
 
   def update
-    response_finished = FinishResponse.run response_uuid: params[:id]
+    response_finished = FinishResponse.run response_uuid: params[:id], demographic_info: params[:demographic_info]
     if response_finished.valid?
       head :ok
     else
