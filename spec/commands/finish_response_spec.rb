@@ -33,26 +33,26 @@ describe FinishResponse do
     allow(ResponseMailer).to receive_message_chain(:response_email, :deliver_now)
   end
 
-
   context 'with valid parameters' do
     subject { described_class.run!(params) }
     let(:params) { { response_uuid: response_uuid, demographic_info: demographic_info } }
 
-    it 'creates an ReponseFinished event', focus: true do
+    it 'creates an ReponseFinished event' do
       expect { subject }.to change { Events::ResponseFinished.count }.by(1)
     end
 
     it 'saves the domain results' do
-      results = subject.result.results
+      results = subject.results
       expect(results).to be_an(Array)
       expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
                                                             :warning, :variance)
     end
 
-    it 'saves demographic info' do
-      demographic_info = subject.result.demographic_info
+    it 'saves the demographic info' do
+      demographic_info = subject.demographic_info
       expect(demographic_info).to be_a(Hash)
-      expect(demographic_info.with_indifferent_acces).to include(:gender, :age, :education, :employment, :relationship)
+      expect(demographic_info.with_indifferent_access).to include(:gender, :age, :education_level,
+                                                                  :employment_status, :relationship_status)
     end
 
     it 'sends an email to the requester' do
@@ -82,8 +82,6 @@ describe FinishResponse do
     end
 
     context 'when response is already finished' do
-      let(:params) { { response_uuid: response_uuid } }
-
       before do
         Events::ResponseFinished.create!(
           invitation_uuid: invitation_uuid,

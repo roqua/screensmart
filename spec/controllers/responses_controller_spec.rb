@@ -1,5 +1,12 @@
 describe ResponsesController do
   let(:invitation_sent) { Fabricate :invitation_sent }
+  let(:demographic_info) do
+    { age: 18,
+      education_level: 'vmbo',
+      employment_status: 'fulltime',
+      gender: 'female',
+      relationship_status: 'living_together' }
+  end
 
   describe '#create' do
     subject { post :create, params: { invitation_uuid: invitation_sent.invitation_uuid } }
@@ -38,7 +45,10 @@ describe ResponsesController do
       end
     end
 
-    subject { put :update, params: { id: invitation_accepted.response_uuid } }
+    subject do
+      put :update, params: { id: invitation_accepted.response_uuid,
+                             demographic_info: demographic_info }
+    end
 
     it 'finishes the response' do
       expect { subject }.to change { Events::ResponseFinished.count }.by 1

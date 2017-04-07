@@ -14,6 +14,7 @@ class FinishResponse < ActiveInteraction::Base
   validate :validate_all_questions_answered
 
   delegate :invitation, to: :response
+  delegate :answer_values, :results, to: :response
 
   def execute
     response_finished =
