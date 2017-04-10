@@ -49,10 +49,18 @@ demographicInfoForm = React.createClass
     )
   ]
 
+  submit: (enteredValues) ->
+    { dispatch } = Screensmart.store
+
+    dispatch Screensmart.Actions.finishResponse(@props.responseUuid, @props.values)
+
   render: ->
-    { fields: { gender, age, educationLevel, employmentStatus, relationshipStatus } } = @props
+    { fields: { gender, age, educationLevel, employmentStatus, relationshipStatus },
+      handleSubmit, valid, submitFailed, submitting } = @props
+
     form
       className: 'form demographic-info-form'
+      onSubmit: handleSubmit(@submit)
 
       @questions.map (question) =>
         @renderErrorFor question.id
@@ -92,6 +100,25 @@ demographicInfoForm = React.createClass
               merge @props.fields[question.id],
                     type: 'text'
                     name: question.id
+      button
+        type: 'submit'
+        disabled: !valid || @finishing
+        'Afronden'
+
+      div
+        className: 'sent-form-info'
+        unless valid
+          div
+            className: 'warning'
+            i
+              className: 'fa fa-exclamation-circle'
+            'Vul a.u.b. uw demografische gegevens in'
+        if submitting
+          div
+            className: 'submitting'
+            i
+              className: 'fa fa-hourglass-half'
+            'Wordt verzonden'
 
   renderErrorFor: (fieldName) ->
     if @shouldShowErrorFor fieldName
@@ -113,10 +140,12 @@ demographicInfoForm = React.createClass
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
-  { gender, age, educationLevel, employmentStatus, relationshipStatus } = values
+  requiredFields = [ 'gender', 'age', 'educationLevel', 'employmentStatus', 'relationshipStatus' ]
 
   errors = {}
-  errors.gender = 'Beantwoord deze vraag' unless gender != ''
+  requiredFields.forEach (field) ->
+    errors[field] = 'Beantwoord deze vraag' unless values[field] != undefined && values[field] != ''
+
   errors
 
 @DemographicInfoForm = reduxForm(
