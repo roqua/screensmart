@@ -1,53 +1,55 @@
 { DOM: { div, input, option, span, small, ul, li, p, label, button, form, i } } = React
 { reduxForm } = ReduxForm
 
+questions = [
+  (
+    id: 'gender'
+    intro: 'Voor onderzoek vragen we u om een paar vragen te beantwoorden over uw achtergrond. Door op verzenden te klikken gaat u akkoord met de voorwaarden.'
+    text: 'Wat is uw geslacht?'
+    options: [
+      { value: 'male', text: 'Man' }
+      { value: 'female', text: 'Vrouw' }
+      { value: 'other', text: 'Anders' }
+    ]
+  ), (
+    id: 'age'
+    text: 'Wat is uw leeftijd?'
+  ), (
+    id: 'educationLevel'
+    text: 'Wat is uw opleidingsniveau?'
+    options: [
+      { value: 'vmbo_or_below', text: 'VMBO of lager' }
+      { value: 'mbo', text: 'MBO' }
+      { value: 'havo', text: 'HAVO' }
+      { value: 'vwo', text: 'VWO' }
+      { value: 'hbo', text: 'HBO' }
+      { value: 'wo', text: 'WO' }
+    ]
+  ), (
+    id: 'employmentStatus'
+    intro: 'Kies hetgeen waar u de meeste tijd aan besteedt'
+    text: 'Heeft u werk of volgt u een opleiding?'
+    options: [
+      { value: 'education', text: 'Opleiding' }
+      { value: 'looking_for_work', text: 'Werkzoekend' }
+      { value: 'parttime', text: 'Parttime' }
+      { value: 'fulltime', text: 'Fulltime' }
+    ]
+  ), (
+    id: 'relationshipStatus',
+    text: 'Heeft u een relatie?'
+    options: [
+      { value: 'single', text: 'Alleenstaand' }
+      { value: 'living_alone_together', text: 'Latrelatie (apart samenwonend)' }
+      { value: 'living_together', text: 'Samenwonend' }
+    ]
+  )
+]
+
+questionIds = questions.map (question) -> question.id
+
 demographicInfoForm = React.createClass
   displayName: 'DemographicInfoForm'
-
-  questions: [
-    (
-      id: 'gender'
-      intro: 'Voor onderzoek vragen we u om een paar vragen te beantwoorden over uw achtergrond. Door op verzenden te klikken gaat u akkoord met de voorwaarden.'
-      text: 'Wat is uw geslacht?'
-      options: [
-        { value: 'male', text: 'Man' }
-        { value: 'female', text: 'Vrouw' }
-        { value: 'other', text: 'Anders' }
-      ]
-    ), (
-      id: 'age'
-      text: 'Wat is uw leeftijd?'
-    ), (
-      id: 'educationLevel'
-      text: 'Wat is uw opleidingsniveau?'
-      options: [
-        { value: 'vmbo_or_below', text: 'VMBO of lager' }
-        { value: 'mbo', text: 'MBO' }
-        { value: 'havo', text: 'HAVO' }
-        { value: 'vwo', text: 'VWO' }
-        { value: 'hbo', text: 'HBO' }
-        { value: 'wo', text: 'WO' }
-      ]
-    ), (
-      id: 'employmentStatus'
-      intro: 'Kies hetgeen waar u de meeste tijd aan besteedt'
-      text: 'Heeft u werk of volgt u een opleiding?'
-      options: [
-        { value: 'education', text: 'Opleiding' }
-        { value: 'looking_for_work', text: 'Werkzoekend' }
-        { value: 'parttime', text: 'Parttime' }
-        { value: 'fulltime', text: 'Fulltime' }
-      ]
-    ), (
-      id: 'relationshipStatus',
-      text: 'Heeft u een relatie?'
-      options: [
-        { value: 'single', text: 'Alleenstaand' }
-        { value: 'living_alone_together', text: 'Latrelatie (apart samenwonend)' }
-        { value: 'living_together', text: 'Samenwonend' }
-      ]
-    )
-  ]
 
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
@@ -55,14 +57,13 @@ demographicInfoForm = React.createClass
     dispatch Screensmart.Actions.finishResponse(@props.responseUuid, @props.values)
 
   render: ->
-    { fields: { gender, age, educationLevel, employmentStatus, relationshipStatus },
-      handleSubmit, valid, submitFailed, submitting } = @props
+    { fields, handleSubmit, valid, submitFailed, submitting } = @props
 
     form
       className: 'form demographic-info-form'
       onSubmit: handleSubmit(@submit)
 
-      @questions.map (question) =>
+      questions.map (question) =>
         @renderErrorFor question.id
         div
           key: question.id
@@ -86,7 +87,7 @@ demographicInfoForm = React.createClass
                   key: option.value
                   className: 'option'
                   input \
-                    merge @props.fields[question.id],
+                    merge fields[question.id],
                           type: 'radio'
                           name: question.id
                           id: id
@@ -97,7 +98,7 @@ demographicInfoForm = React.createClass
                     option.text
           else
             input \
-              merge @props.fields[question.id],
+              merge fields[question.id],
                     type: 'text'
                     name: question.id
       button
@@ -140,16 +141,15 @@ demographicInfoForm = React.createClass
       (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
 
 validate = (values) ->
-  requiredFields = [ 'gender', 'age', 'educationLevel', 'employmentStatus', 'relationshipStatus' ]
-
   errors = {}
-  requiredFields.forEach (field) ->
+
+  questionIds.forEach (field) ->
     errors[field] = 'Beantwoord deze vraag' unless values[field] != undefined && values[field] != ''
 
   errors
 
 @DemographicInfoForm = reduxForm(
   form: 'demographicInfo'
-  fields: ['gender', 'age', 'educationLevel', 'employmentStatus', 'relationshipStatus']
+  fields: questionIds
   validate: validate
 )(demographicInfoForm)
