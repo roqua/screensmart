@@ -28,8 +28,8 @@
             key: 'thanks'
             'Bedankt voor het invullen. De uitslag van de test is verstuurd naar uw behandelaar.'
       else
-        React.createElement DemographicInfoForm,
-          key: 'demographic-info-form'
+        React.createElement CompletionForm,
+          key: 'completion-form'
           onFinishClick: @onFinishClick
           finishing: finishing
           responseUuid: uuid

@@ -60,7 +60,7 @@ completionForm = React.createClass
     { fields, handleSubmit, valid, submitFailed, submitting } = @props
 
     form
-      className: 'form demographic-info-form'
+      className: 'form completion-form'
       onSubmit: handleSubmit(@submit)
 
       questions.map (question) =>
