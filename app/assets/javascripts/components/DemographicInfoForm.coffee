@@ -64,12 +64,9 @@ demographicInfoForm = React.createClass
       onSubmit: handleSubmit(@submit)
 
       questions.map (question) =>
-        @renderErrorFor question.id
         div
           key: question.id
-          className:
-            if @shouldShowErrorFor question.id then "question #{question.id} invalid"
-            else "question #{question.id}"
+          className: 'question'
           p
             className: 'intro-text'
             small
