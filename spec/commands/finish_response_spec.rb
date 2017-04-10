@@ -1,14 +1,8 @@
 describe FinishResponse do
+  include ExampleDemographicInfo
   let!(:invitation_uuid) { SecureRandom.uuid }
   let!(:response_uuid) { SecureRandom.uuid }
   let!(:show_secret) { SecureRandom.uuid }
-  let(:demographic_info) do
-    { age: 18,
-      education_level: 'vmbo',
-      employment_status: 'fulltime',
-      gender: 'female',
-      relationship_status: 'living_together' }
-  end
 
   # Create a response with one answer (see VCR cassette) so we can finish the response
   before do

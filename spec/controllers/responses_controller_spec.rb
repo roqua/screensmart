@@ -1,12 +1,6 @@
 describe ResponsesController do
+  include ExampleDemographicInfo
   let(:invitation_sent) { Fabricate :invitation_sent }
-  let(:demographic_info) do
-    { age: 18,
-      education_level: 'vmbo',
-      employment_status: 'fulltime',
-      gender: 'female',
-      relationship_status: 'living_together' }
-  end
 
   describe '#create' do
     subject { post :create, params: { invitation_uuid: invitation_sent.invitation_uuid } }
