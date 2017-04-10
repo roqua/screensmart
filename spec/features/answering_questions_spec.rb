@@ -25,9 +25,7 @@ describe 'answering questions' do
 
     # Demographic info
     answer_question 5, 'Man'
-    within('.question.age') do
-      fill_in 'age', with: '18'
-    end
+    fill_in 'age', with: '18'
     answer_question 7, 'VMBO of lager'
     answer_question 8, 'Werkzoekend'
     answer_question 9, 'Samenwonend'
