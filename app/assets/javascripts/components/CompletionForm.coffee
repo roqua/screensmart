@@ -118,25 +118,6 @@ completionForm = React.createClass
               className: 'fa fa-hourglass-half'
             'Wordt verzonden'
 
-  renderErrorFor: (fieldName) ->
-    if @shouldShowErrorFor fieldName
-      span
-        className: 'error'
-        @errorFor fieldName
-
-  errorFor: (fieldName) ->
-    if fieldName == 'base'
-      @props.error
-    else
-      @props.fields[fieldName].error
-
-  shouldShowErrorFor: (fieldName) ->
-    # redux-form v5 does not handle array errors very well
-    if fieldName == 'base'
-      @props.submitFailed && @props.error
-    else
-      (@props.submitFailed || @props.fields[fieldName].touched) && @props.fields[fieldName].error
-
 validate = (values) ->
   errors = {}
 
