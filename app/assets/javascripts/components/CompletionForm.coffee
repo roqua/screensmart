@@ -110,7 +110,7 @@ completionForm = React.createClass
             className: 'warning'
             i
               className: 'fa fa-exclamation-circle'
-            'Vul a.u.b. uw demografische gegevens in'
+            'Vul a.u.b. alle bovenstaande vragen in'
         if submitting
           div
             className: 'submitting'
