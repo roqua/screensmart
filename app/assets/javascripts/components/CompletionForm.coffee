@@ -1,4 +1,4 @@
-{ DOM: { div, input, option, span, small, ul, li, p, label, button, form, i } } = React
+{ div, input, option, span, small, ul, li, p, label, button, form, i } = React.DOM
 { reduxForm } = ReduxForm
 
 questions = [
