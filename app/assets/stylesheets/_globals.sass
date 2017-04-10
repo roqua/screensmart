@@ -121,6 +121,10 @@ button[type="submit"]
     background-color: $form-submit-background-color-hover
     border: 2px solid $form-submit-border-color-hover
     cursor: pointer
+  &:disabled
+    background-color: lighten(desaturate($form-submit-background-color, 25%), 35%)
+    // color: #ccc
+    border-color:  lighten(desaturate($form-submit-border-color, 25%), 35%)
 
 #root
   @include outer-container
