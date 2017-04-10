@@ -48,8 +48,8 @@ questions = [
 
 questionIds = questions.map (question) -> question.id
 
-demographicInfoForm = React.createClass
-  displayName: 'DemographicInfoForm'
+completionForm = React.createClass
+  displayName: 'CompletionForm'
 
   submit: (enteredValues) ->
     { dispatch } = Screensmart.store
@@ -145,8 +145,8 @@ validate = (values) ->
 
   errors
 
-@DemographicInfoForm = reduxForm(
+@CompletionForm = reduxForm(
   form: 'demographicInfo'
   fields: questionIds
   validate: validate
-)(demographicInfoForm)
+)(completionForm)

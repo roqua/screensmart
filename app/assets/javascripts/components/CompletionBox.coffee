@@ -30,7 +30,7 @@
               'Bedankt voor het invullen. De uitslag van de test is verstuurd naar uw behandelaar.'
           ]
       else
-        React.createElement DemographicInfoForm,
+        React.createElement CompletionForm,
           key: 'demographic-info-form'
           onFinishClick: @onFinishClick
           finishing: finishing
