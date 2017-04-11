@@ -1,4 +1,5 @@
 describe FinishResponse do
+  include ExampleDemographicInfo
   let!(:invitation_uuid) { SecureRandom.uuid }
   let!(:response_uuid) { SecureRandom.uuid }
   let!(:show_secret) { SecureRandom.uuid }
@@ -26,20 +27,26 @@ describe FinishResponse do
     allow(ResponseMailer).to receive_message_chain(:response_email, :deliver_now)
   end
 
-  subject { described_class.run(params) }
-
   context 'with valid parameters' do
-    let(:params) { { response_uuid: response_uuid } }
+    subject { described_class.run!(params) }
+    let(:params) { { response_uuid: response_uuid, demographic_info: demographic_info } }
 
-    it 'creates an ReponseFinished event ' do
+    it 'creates an ReponseFinished event' do
       expect { subject }.to change { Events::ResponseFinished.count }.by(1)
     end
 
     it 'saves the domain results' do
-      results = subject.result.results
+      results = subject.results
       expect(results).to be_an(Array)
       expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
                                                             :warning, :variance)
+    end
+
+    it 'saves the demographic info' do
+      demographic_info = subject.demographic_info
+      expect(demographic_info).to be_a(Hash)
+      expect(demographic_info.with_indifferent_access).to include(:gender, :age, :education_level,
+                                                                  :employment_status, :relationship_status)
     end
 
     it 'sends an email to the requester' do
@@ -53,7 +60,8 @@ describe FinishResponse do
   end
 
   context 'with invalid parameters' do
-    let(:params) { { response_uuid: response_uuid } }
+    subject { described_class.run(params) }
+    let(:params) { { response_uuid: response_uuid, demographic_info: demographic_info } }
 
     context 'response_uuid is invalid' do
       it 'has an error when uuid is missing' do
@@ -66,20 +74,18 @@ describe FinishResponse do
         expect(subject.errors_on(:response_uuid)).to include('is unknown')
       end
     end
-  end
 
-  context 'when response is already finished' do
-    let(:params) { { response_uuid: response_uuid } }
+    context 'when response is already finished' do
+      before do
+        Events::ResponseFinished.create!(
+          invitation_uuid: invitation_uuid,
+          response_uuid: response_uuid
+        )
+      end
 
-    before do
-      Events::ResponseFinished.create!(
-        invitation_uuid: invitation_uuid,
-        response_uuid: response_uuid
-      )
-    end
-
-    it 'does not create another ResponseFinished event' do
-      expect(subject.errors_on(:response_uuid)).to include('has already been finished')
+      it 'does not create another ResponseFinished event' do
+        expect(subject.errors_on(:response_uuid)).to include('has already been finished')
+      end
     end
   end
 end

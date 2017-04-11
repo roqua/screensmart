@@ -1,20 +1,21 @@
 # Builds an array of React components based on a Response object
 class @FeedBuilder
   constructor: (options) ->
-    @response = options.response
-    @onAnswerChange = options.onAnswerChange
+    @options = options
 
   getReactComponents: ->
-    { questions, loading, done } = @response
+    { onAnswerChange, response, demographicInfo } = @options
+    { questions, loading, done, finished } = response
     elements = []
+
 
     for question in questions
       elements.push React.createElement Question,
         question: question
         key: elements.length
         editable: !done
-        onChange: @onAnswerChange
-        onAnswerChange: @onAnswerChange
+        onChange: onAnswerChange
+        onAnswerChange: onAnswerChange
 
     if loading
       elements.push React.createElement LoadingIndicator,
@@ -23,6 +24,7 @@ class @FeedBuilder
     if done
       elements.push React.createElement CompletionBox,
         key: "completion-box-#{elements.length}"
-        response: @response
+        response: response
+        demographicInfo: demographicInfo
 
     elements

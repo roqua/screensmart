@@ -1,4 +1,4 @@
-{ DOM: { div, input, select, option, span, small, ul, li, p, label, button, form, i } } = React
+{ div, input, select, option, span, small, ul, li, p, label, button, form, i } = React.DOM
 { reduxForm } = ReduxForm
 { emailValid } = EmailValidator
 
@@ -32,7 +32,7 @@ invitationForm = React.createClass
       submitFailed } = @props
 
     form
-      className: 'invitation-form'
+      className: 'form invitation-form'
       onSubmit: handleSubmit(@submit)
 
       @renderErrorFor 'respondentEmail'
