@@ -90,12 +90,18 @@ module RPackage
   end
 
   def self.normalize_shadowcat_output(raw_data)
+    Rails.logger.error "raw_data: #{raw_data.inspect}"
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
-      estimate_interpretation: raw_data['estimate_interpretation'],
-      quartile: raw_data['quartile'],
-      warning: raw_data['warning'],
+      # BEFORE MERGE: TODO: make this hardcoding for a specific situation (only testing DEPR-PRO)
+      #                     generic after R package is changed to provide generic structure
+      domain_interpretations: {
+        'DEPR-PRO' => {
+          'DEPR-PRO-GENERAL' => raw_data['general'],
+          'DEPR-PRO-CLINICAL' => raw_data['clinical']
+        }
+      },
       done: !raw_data['continue_test'] }
   end
 

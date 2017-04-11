@@ -18,7 +18,7 @@ class FinishResponse < ActiveInteraction::Base
 
   def execute
     response_finished =
-      Events::ResponseFinished.create! invitation_uuid: invitation.uuid,
+      Events::ResponseFinished.new     invitation_uuid: invitation.uuid,
                                        response_uuid: response_uuid,
                                        answer_values: response.answer_values,
                                        results: response.results,

@@ -59,9 +59,13 @@ class ResponseReport < Prawn::Document
   def domain_results_table
     table_data = @response.domain_results.map do |domain_result|
       domain = domain_result.domain
+      Rails.logger.error "domain: #{domain.to_h}"
+      Rails.logger.error "domain_result: #{domain_result.to_h}"
       [domain.description, domain.norm_population, domain_result.quartile, domain_result.estimate_interpretation]
     end
     table_data.unshift %w(Domein Normpopulatie Kwartiel Interpretatie)
+
+    Rails.logger.error table_data
 
     table(table_data, column_widths: [150, 150, 80, 120], header: true) do
       row(0).style font_style: :bold
