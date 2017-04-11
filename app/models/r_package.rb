@@ -43,7 +43,7 @@ module RPackage
 
   def self.domain_results_hash(domain_ids, domain_results)
     domain_ids.zip(domain_results).map do |domain_id, domain|
-      [domain_id, domain.slice(:estimate, :variance, :estimate_interpretation, :quartile, :warning)]
+      [domain_id, domain.slice(:estimate, :variance, :domain_interpretations)]
     end.to_h
   end
 
@@ -94,14 +94,7 @@ module RPackage
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
-      # BEFORE MERGE: TODO: make this hardcoding for a specific situation (only testing DEPR-PRO)
-      #                     generic after R package is changed to provide generic structure
-      domain_interpretations: {
-        'DEPR-PRO' => {
-          'DEPR-PRO-GENERAL' => raw_data['general'],
-          'DEPR-PRO-CLINICAL' => raw_data['clinical']
-        }
-      },
+      domain_interpretations: raw_data['domain_interpretations'],
       done: !raw_data['continue_test'] }
   end
 

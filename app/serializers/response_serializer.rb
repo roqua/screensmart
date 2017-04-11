@@ -6,8 +6,7 @@ class ResponseSerializer < ActiveModel::Serializer
 end
 
 class DomainResultSerializer < ActiveModel::Serializer
-  attributes :estimate, :variance, :estimate_interpretation, :warning,
-             :quartile
+  attributes :estimate, :variance, :domain_interpretations
 
   has_one :domain
 end

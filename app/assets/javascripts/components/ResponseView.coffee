@@ -144,6 +144,7 @@
             th {}, "Interpretatie"
         tbody {},
           domainResults.map (domainResult) ->
+            console.log domainResult
             React.createElement ResultsRow,
               domainResult: domainResult
               key: domainResult.domain.id
