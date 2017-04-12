@@ -10,10 +10,10 @@ describe DomainResult do
                             variance: 25.0,
                             domain_interpretations: {
                               'POS-PQ' => {
-                                'estimate_interpretation' => 'Matig niveau (+)',
-                                'quartile' => 'Q2',
-                                'warning' => nil,
-                                'norm_population' => 'Cliënten eerste lijn GGZ'
+                                estimate_interpretation: 'Matig niveau (+)',
+                                quartile: 'Q2',
+                                warning: nil,
+                                norm_population: 'Cliënten eerste lijn GGZ'
                               }
                             }
     end

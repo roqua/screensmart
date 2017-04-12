@@ -53,7 +53,7 @@ describe RPackage do
         domain_result = response[:domain_results]['POS-PQ']
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
-        domain_interpretation = domain_result[:domain_interpretations]['POS-PQ']
+        domain_interpretation = domain_result[:domain_interpretations].values.first
         expect(domain_interpretation[:estimate_interpretation]).to be_a(String)
         expect(domain_interpretation[:warning]).to be_nil
         expect(domain_interpretation[:norm_population]).to be_a(String)

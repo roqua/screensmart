@@ -33,12 +33,7 @@ class Response < BaseModel
   end
 
   def domain_interpretations
-    domain_results.each_with_object([]) do |domain_result, interpretations|
-      domain = domain_result.domain
-      domain_result.domain_interpretations.values.each do |domain_interpretation|
-        interpretations << domain_interpretation.merge(description: domain.description)
-      end
-    end
+    domain_results.map(&:domain_interpretations).inject(&:merge)
   end
 
   def results

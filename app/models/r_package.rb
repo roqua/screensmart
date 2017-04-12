@@ -93,7 +93,7 @@ module RPackage
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,
-      domain_interpretations: raw_data['domain_interpretations'].with_indifferent_access,
+      domain_interpretations: raw_data['domain_interpretations'].map { |k, v| [k, v.symbolize_keys] }.to_h,
       done: !raw_data['continue_test'] }
   end
 
