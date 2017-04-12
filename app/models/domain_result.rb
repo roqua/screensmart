@@ -11,9 +11,10 @@ class DomainResult < BaseModel
   end
 
   def domain_interpretations
-    data_from_r[:domain_interpretations].map do |domain_id, domain_interpretation|
-      [domain_id, domain_interpretation.merge(description: domain.description)]
-    end.to_h
+    data_from_r[:domain_interpretations].map do |interpretation_domain_id, domain_interpretation|
+      DomainInterpretation.new domain_interpretation.merge description: domain.description,
+                                                           interpretation_domain_id: interpretation_domain_id
+    end
   end
 
   def domain

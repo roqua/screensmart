@@ -33,7 +33,7 @@ class Response < BaseModel
   end
 
   def domain_interpretations
-    domain_results.map(&:domain_interpretations).inject(&:merge)
+    domain_results.map(&:domain_interpretations).flatten
   end
 
   def results

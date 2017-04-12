@@ -57,7 +57,9 @@ class ResponseReport < Prawn::Document
   end
 
   def domain_results_table
-    table_data = @response.domain_interpretations.map(&:values)
+    table_data = @response.domain_interpretations.map(&:as_json).map do |hash|
+      hash.values_at(:description, :norm_population, :quartile, :estimate_interpretation)
+    end
 
     table_data.unshift %w(Domein Normpopulatie Kwartiel Interpretatie)
 

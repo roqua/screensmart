@@ -39,7 +39,7 @@ describe ResponseSerializer do
     expect(first_domain[:id]).to eq 'POS-PQ'
     expect(first_domain[:description]).to eq 'Positieve symptomen van psychose'
 
-    first_domain_interpretation = serialized[:domain_interpretations]['POS-PQ']
+    first_domain_interpretation = serialized[:domain_interpretations].first
     expect(first_domain_interpretation[:description]).to be_a(String)
     expect(first_domain_interpretation[:norm_population]).to be_a(String)
     expect(first_domain_interpretation[:quartile]).to be_a(String)
