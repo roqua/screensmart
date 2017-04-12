@@ -143,10 +143,10 @@
             th {}, "Kwartielscore"
             th {}, "Interpretatie"
         tbody {},
-          domainInterpretations.map (domainInterpretation, index) ->
+          domainInterpretations.map (domainInterpretation) ->
             React.createElement ResultsRow,
               domainInterpretation: domainInterpretation
-              key: index # TODO: change to descrption + normPopulation when norm population is provided by R
+              key: domainInterpretation.interpretationDomainId
 
 @ResultsRow = React.createClass
   displayName: 'ResultsRow'

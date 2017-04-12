@@ -1,3 +1,3 @@
 class DomainInterpretationSerializer < ActiveModel::Serializer
-  attributes :description, :norm_population, :quartile, :estimate_interpretation
+  attributes :interpretation_domain_id, :description, :norm_population, :quartile, :estimate_interpretation
 end
