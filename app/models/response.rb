@@ -37,7 +37,7 @@ class Response < BaseModel
       domain = domain_result.domain
       domain_result.domain_interpretations.values.each do |domain_interpretation|
         interpretations << { description: domain.description,
-                             norm_population: 'TODO before merge',
+                             norm_population: domain_interpretation['norm_population'],
                              quartile: domain_interpretation['quartile'],
                              estimate_interpretation: domain_interpretation['estimate_interpretation'] }
       end
