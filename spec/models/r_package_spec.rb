@@ -54,9 +54,9 @@ describe RPackage do
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
         domain_interpretation = domain_result[:domain_interpretations]['POS-PQ']
-        expect(domain_interpretation['estimate_interpretation']).to be_a(String)
-        expect(domain_interpretation['warning']).to be_nil
-        expect(domain_interpretation['norm_population']).to be_a(String)
+        expect(domain_interpretation[:estimate_interpretation]).to be_a(String)
+        expect(domain_interpretation[:warning]).to be_nil
+        expect(domain_interpretation[:norm_population]).to be_a(String)
       end
     end
 
@@ -99,20 +99,20 @@ describe RPackage do
                                                                variance: 25.0,
                                                                domain_interpretations: {
                                                                  'NEG-PQ' => {
-                                                                   'estimate_interpretation' => 'Matig niveau (+)',
-                                                                   'quartile' => 'Q2',
-                                                                   'warning' => nil,
-                                                                   'norm_population' => 'Cliënten eerste lijn GGZ'
+                                                                   estimate_interpretation: 'Matig niveau (+)',
+                                                                   quartile: 'Q2',
+                                                                   warning: nil,
+                                                                   norm_population: 'Cliënten eerste lijn GGZ'
                                                                  }
                                                                } },
                                                  'POS-PQ' => { estimate: -0.6777,
                                                                variance: 0.6842,
                                                                domain_interpretations: {
                                                                  'POS-PQ' => {
-                                                                   'estimate_interpretation' => 'Matig niveau (+)',
-                                                                   'quartile' => 'Q3',
-                                                                   'warning' => nil,
-                                                                   'norm_population' => 'Cliënten eerste lijn GGZ'
+                                                                   estimate_interpretation: 'Matig niveau (+)',
+                                                                   quartile: 'Q3',
+                                                                   warning: nil,
+                                                                   norm_population: 'Cliënten eerste lijn GGZ'
                                                                  }
                                                                } }
         end
