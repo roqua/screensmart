@@ -31,16 +31,18 @@ describe ResponseSerializer do
     expect(question[:answer_option_set][:answer_options][0]).to include(:id, :text)
 
     domain_result = serialized[:domain_results][0]
-    expect(domain_result).to include(:estimate, :variance, :estimate_interpretation, :warning, :domain, :quartile)
+    expect(domain_result).to include(:estimate, :variance, :domain)
     expect(domain_result[:estimate]).to be_a(Float)
     expect(domain_result[:variance]).to be_a(Float)
-    expect(domain_result[:estimate_interpretation]).to be_a(String)
-    expect(domain_result[:warning].class).to be_in([String, NilClass])
-    expect(domain_result[:quartile]).to be_a(String)
 
     first_domain = serialized[:domain_results].first[:domain]
     expect(first_domain[:id]).to eq 'POS-PQ'
     expect(first_domain[:description]).to eq 'Positieve symptomen van psychose'
-    expect(first_domain[:norm_population]).to eq 'Algemene bevolking'
+
+    first_domain_interpretation = serialized[:domain_interpretations].first
+    expect(first_domain_interpretation[:description]).to be_a(String)
+    expect(first_domain_interpretation[:norm_population]).to be_a(String)
+    expect(first_domain_interpretation[:quartile]).to be_a(String)
+    expect(first_domain_interpretation[:estimate_interpretation]).to be_a(String)
   end
 end

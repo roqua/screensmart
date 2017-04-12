@@ -90,7 +90,6 @@ module RPackage
   end
 
   def self.normalize_shadowcat_output(raw_data)
-    Rails.logger.error "raw_data: #{raw_data.inspect}"
     { next_question_id: raw_data['key_new_item'],
       estimate: raw_data['estimate'][0].to_f,
       variance: raw_data['variance'][0].to_f,

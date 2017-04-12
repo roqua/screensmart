@@ -42,21 +42,21 @@ describe RPackage do
         domain_result = response[:domain_results]['POS-PQ']
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
-        expect(domain_result[:estimate_interpretation]).to be_a(String)
-        expect(domain_result[:warning]).to be_nil
       end
     end
 
     context 'with answers and domains' do
-      it 'returns a new next_question, estimate, variance, estimate_interpretation and warning' do
+      it 'returns a new next_question, estimate, variance and domain interpretations' do
         response = described_module.data_for({ 'EL02' => 2 }, domains)
         expect(response[:next_question_id]).to start_with('EL')
         expect(response[:done]).to be_falsey
         domain_result = response[:domain_results]['POS-PQ']
         expect(domain_result[:estimate]).to be_a(Float)
         expect(domain_result[:variance]).to be_a(Float)
-        expect(domain_result[:estimate_interpretation]).to be_a(String)
-        expect(domain_result[:warning]).to be_nil
+        domain_interpretation = domain_result[:domain_interpretations]['POS-PQ']
+        expect(domain_interpretation['estimate_interpretation']).to be_a(String)
+        expect(domain_interpretation['warning']).to be_nil
+        expect(domain_interpretation['norm_population']).to be_a(String)
       end
     end
 
@@ -97,14 +97,24 @@ describe RPackage do
         it 'returns the per-domain results in a hash' do
           expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
                                                                variance: 25.0,
-                                                               estimate_interpretation: 'Matig niveau (+)',
-                                                               quartile: 'Q2',
-                                                               warning: nil },
+                                                               domain_interpretations: {
+                                                                 'NEG-PQ' => {
+                                                                   'estimate_interpretation' => 'Matig niveau (+)',
+                                                                   'quartile' => 'Q2',
+                                                                   'warning' => nil,
+                                                                   'norm_population' => 'Cliënten eerste lijn GGZ'
+                                                                 }
+                                                               } },
                                                  'POS-PQ' => { estimate: -0.6777,
                                                                variance: 0.6842,
-                                                               estimate_interpretation: 'Matig niveau (+)',
-                                                               quartile: 'Q3',
-                                                               warning: nil }
+                                                               domain_interpretations: {
+                                                                 'POS-PQ' => {
+                                                                   'estimate_interpretation' => 'Matig niveau (+)',
+                                                                   'quartile' => 'Q3',
+                                                                   'warning' => nil,
+                                                                   'norm_population' => 'Cliënten eerste lijn GGZ'
+                                                                 }
+                                                               } }
         end
       end
     end
