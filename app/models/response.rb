@@ -32,6 +32,18 @@ class Response < BaseModel
     end
   end
 
+  def domain_interpretations
+    domain_results.each_with_object([]) do |domain_result, interpretations|
+      domain = domain_result.domain
+      domain_result.domain_interpretations.values.each do |domain_interpretation|
+        interpretations << { description: domain.description,
+                             norm_population: 'TODO before merge',
+                             quartile: domain_interpretation['quartile'],
+                             estimate_interpretation: domain_interpretation['estimate_interpretation'] }
+      end
+    end
+  end
+
   def results
     domain_results.map(&:to_h)
   end

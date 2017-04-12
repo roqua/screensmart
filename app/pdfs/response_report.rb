@@ -57,12 +57,8 @@ class ResponseReport < Prawn::Document
   end
 
   def domain_results_table
-    table_data = @response.domain_results.each_with_object([]) do |domain_result, table_data|
-      domain = domain_result.domain
-      domain_result.domain_interpretations.values.each do |domain_interpretation|
-        table_data << [domain.description, "TODO norm population", domain_interpretation['quartile'], domain_interpretation['estimate_interpretation']]
-      end
-    end
+    table_data = @response.domain_interpretations.map(&:values)
+
     table_data.unshift %w(Domein Normpopulatie Kwartiel Interpretatie)
 
     table(table_data, column_widths: [150, 150, 80, 120], header: true) do
