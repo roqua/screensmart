@@ -37,5 +37,12 @@ describe ResponseReport do
       expect(page_2).to include("Aangevraagd op: #{I18n.l response.requested_at, format: :long}")
       expect(page_2).to include("Ingevuld op: #{I18n.l response.created_at, format: :long}")
     end
+
+    it 'contains a table listing results per interpretation domain' do
+      expect(page_2).to include('Positieve symptomen')
+      expect(page_2).to include('Cliënten eerste lijn')
+      expect(page_2).to include('Q1')
+      expect(page_2).to include('Laag niveau (++)')
+    end
   end
 end
