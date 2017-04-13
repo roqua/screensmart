@@ -32,7 +32,7 @@ gem 'dotenv-rails'
 
 gem 'puma', '~> 3.4'
 
-gem 'olive_branch', github: 'roqua/olive_branch'
+gem 'olive_branch' #, github: 'roqua/olive_branch'
 gem 'prawn'
 gem 'prawn-table'
 
