@@ -1,12 +1,12 @@
 describe 'answering questions' do
-  def answer_question(index, answer)
-    within ".question:nth-child(#{index})" do
-      find('.option', text: answer).click
+  def answer_question(index, answer_text)
+    within(:xpath, "(//div[contains(@class, 'question')])[#{index}]") do
+      find('.option', text: answer_text).click
     end
   end
 
   def expect_last_question_to_be(text, intro_text = nil)
-    within(:xpath, '(//div[@class="question"])[last()]') do
+    within(:xpath, "(//div[contains(@class, 'question')])[last()]") do
       expect(page).to have_content text
       expect(page).to have_content intro_text if intro_text
     end
@@ -17,11 +17,18 @@ describe 'answering questions' do
   end
 
   def complete_response
+    # Domain questions
     answer_question 1, 'Oneens'
     answer_question 2, 'Oneens'
     answer_question 3, 'Oneens'
     answer_question 4, 'Oneens'
-    expect_last_question_to_be 'Ik heb vaak het gevoel dat andere mensen mij bekijken of het over mij hebben'
+
+    # Demographic info
+    answer_question 5, 'Man'
+    fill_in 'age', with: '18'
+    answer_question 7, 'VMBO of lager'
+    answer_question 8, 'Werkzoekend'
+    answer_question 9, 'Samenwonend'
 
     click_on 'Afronden'
   end

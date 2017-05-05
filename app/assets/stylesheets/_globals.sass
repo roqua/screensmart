@@ -49,6 +49,65 @@ header
           box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
           color: $option-color-checked
 
+.answer-option-set
+  padding: 0
+
+  .option
+    list-style-type: none
+    display: inline
+
+    input[type="radio"]
+      display: none
+
+    label
+      background-color: $option-background-color
+      border: 1px solid $past-option-border-color
+      color: $past-option-color
+      padding: 5px 15px
+
+    input[type="radio"]:checked + label
+      background-color: $option-background-color-checked
+      box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
+      color: $option-color-checked
+
+  .option:first-of-type label
+    border-left: 1px solid $option-border-color
+    border-bottom-left-radius: $option-border-radius
+    border-top-left-radius: $option-border-radius
+
+  .option:last-of-type label
+    border-bottom-right-radius: $option-border-radius
+    border-top-right-radius: $option-border-radius
+
+  .option + .option label
+    border-left: none
+
+// Answer options sets that cannot fit on one line should be displayed vertically
+.answer-option-set-vertical
+  .option
+    display: block !important
+    list-style-type: none !important
+    margin-right: 0.5rem
+    margin-bottom: 0.5rem
+  label
+    display: inline-block
+    background-color: $option-background-color
+    border: 1px solid $past-option-border-color !important
+    border-radius: $option-border-radius
+    color: $past-option-color
+    padding: 5px 15px
+    width: 100%
+
+  .option:first-of-type label
+    border-left: 1px solid $option-border-color
+    border-radius: $option-border-radius
+
+  .option:last-of-type label
+    border-radius: $option-border-radius
+
+  .option + .option label
+    border-left: 1px solid $option-border-color
+
 button[type="submit"]
   border-radius: 5px
   padding: 5px 15px
@@ -62,6 +121,10 @@ button[type="submit"]
     background-color: $form-submit-background-color-hover
     border: 2px solid $form-submit-border-color-hover
     cursor: pointer
+  &:disabled
+    background-color: lighten(desaturate($form-submit-background-color, 25%), 35%)
+    // color: #ccc
+    border-color:  lighten(desaturate($form-submit-border-color, 25%), 35%)
 
 #root
   @include outer-container
@@ -82,65 +145,13 @@ button[type="submit"]
         color: $past-option-text-color
         opacity: 1
         .options
-          padding: 0
-
-          .option
-            list-style-type: none
-            display: inline
-
-            input[type="radio"]
-              display: none
-
-            label
-              background-color: $option-background-color
-              border: 1px solid $past-option-border-color
-              color: $past-option-color
-              padding: 5px 15px
-
-            input[type="radio"]:checked + label
-              background-color: $option-background-color-checked
-              box-shadow: inset 0 1px 6px $option-inset-shadow-color-checked
-              color: $option-color-checked
-
-          .option:first-of-type label
-            border-left: 1px solid $option-border-color
-            border-bottom-left-radius: $option-border-radius
-            border-top-left-radius: $option-border-radius
-
-          .option:last-of-type label
-            border-bottom-right-radius: $option-border-radius
-            border-top-right-radius: $option-border-radius
-
-          .option + .option label
-            border-left: none
+          @extend .answer-option-set
 
         // styling for domains with questions with more than two answers
         .options.answer-option-set-5,
         .options.answer-option-set-4,
         .options.answer-option-set-3
-          .option
-            display: block
-            list-style-type: none
-            margin-right: 0.5rem
-            margin-bottom: 0.5rem
-          label
-            display: inline-block
-            background-color: $option-background-color
-            border: 1px solid $past-option-border-color
-            border-radius: $option-border-radius
-            color: $past-option-color
-            padding: 5px 15px
-            width: 100%
-
-          .option:first-of-type label
-            border-left: 1px solid $option-border-color
-            border-radius: $option-border-radius
-
-          .option:last-of-type label
-            border-radius: $option-border-radius
-
-          .option + .option label
-            border-left: 1px solid $option-border-color
+          @extend .answer-option-set-vertical
 
         &:hover
           &:not(.disabled)
@@ -163,6 +174,9 @@ button[type="submit"]
 
 .small
   font-size: 0.9rem
+
+.completion-box
+  max-height: none !important
 
 @media (max-height: $breakpoint-mobile-v)
   .questions-wrapper

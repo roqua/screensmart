@@ -4,6 +4,7 @@ onAnswerChange = (id, value) ->
 mapStateToProps = (state) ->
   children: new FeedBuilder(
     response: state.response,
+    demographicInfo: ReduxForm.getValues(state.form.demographicInfo),
     onAnswerChange: onAnswerChange
   ).getReactComponents()
   responseUUID: state.response.uuid

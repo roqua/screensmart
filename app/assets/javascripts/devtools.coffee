@@ -5,7 +5,7 @@ if window.environment != 'production'
   window.autofill = ->
     delay 20, ->
       autofill() unless getResponse().done
-      unless getResponse().loading
+      unless getResponse().loading || getResponse().done
         lastQuestion = getResponse().questions[getResponse().questions.length - 1]
 
         # Pick random option

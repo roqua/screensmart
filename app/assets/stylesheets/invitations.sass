@@ -8,9 +8,8 @@
     font-size: $screensmart-font-size
     box-sizing: border-box
     width: 100%
-    height: calc(#{$form-text-input-height} + #{$form-text-input-borders})
     margin: 0.5rem 0 $form-text-input-margin
-    padding: $form-text-input-padding
+    padding-left: $form-text-input-padding
     border: $form-text-input-border solid #ddd
     border-radius: $option-border-radius
     border-style: inset
@@ -44,7 +43,7 @@
         display: block
         pointer-events: none
         line-height: $form-text-input-margin * 1.2
-        margin-top: -3.267rem
+        margin-top: -3.4rem
         margin-bottom: 1.2rem
         &:before
           content: attr(placeholder)
@@ -110,29 +109,6 @@
       @extend .fa
       @extend .fa-exclamation-circle:before
       padding-right: 10px
-
-  .sent-form-info
-    display: inline-block
-    div
-      padding: 5px 15px
-      border-radius: 5px
-      i
-        padding-right: 10px
-    .warning
-      border: 2px solid $screensmart-orange
-      background-color: lighten($screensmart-orange, 45%)
-      i
-        color: lighten($screensmart-orange, 10%)
-    .submitting
-      border: 2px solid $screensmart-yellow
-      background-color: lighten($screensmart-yellow, 49%)
-      i
-        color: lighten($screensmart-yellow, 3%)
-    .sent
-      border: 2px solid $screensmart-green
-      background-color: lighten($screensmart-green, 41%)
-      i
-        color: $screensmart-blue
 
   @media only screen and (max-width: $breakpoint-mobile)
     padding: $form-padding-mobile
