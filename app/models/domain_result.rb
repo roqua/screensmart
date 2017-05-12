@@ -4,9 +4,16 @@ class DomainResult < BaseModel
   alias_attribute :to_h, :data_from_r
 
   # accessors for attributes defined by R package
-  %i(estimate estimate_interpretation variance warning quartile).each do |r_attribute|
+  %i(estimate variance).each do |r_attribute|
     define_method r_attribute do
       data_from_r[r_attribute]
+    end
+  end
+
+  def domain_interpretations
+    data_from_r[:domain_interpretations].map do |interpretation_domain_id, domain_interpretation|
+      DomainInterpretation.new domain_interpretation.merge description: domain.description,
+                                                           interpretation_domain_id: interpretation_domain_id
     end
   end
 

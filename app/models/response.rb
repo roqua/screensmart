@@ -32,6 +32,10 @@ class Response < BaseModel
     end
   end
 
+  def domain_interpretations
+    domain_results.map(&:domain_interpretations).flatten
+  end
+
   def results
     domain_results.map(&:to_h)
   end

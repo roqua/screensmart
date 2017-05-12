@@ -19,7 +19,7 @@
           key: 'report-text'
         React.createElement ResultsTable,
           key: 'results-table'
-          domainResults: response.domainResults
+          domainInterpretations: response.domainInterpretations
         React.createElement AnswersTable,
           questions: response.questions
           key: 'outcome'
@@ -130,7 +130,7 @@
   displayName: 'ResultsTable'
 
   render: ->
-    { domainResults } = @props
+    { domainInterpretations } = @props
 
     div
       className: 'results-table'
@@ -143,20 +143,20 @@
             th {}, "Kwartielscore"
             th {}, "Interpretatie"
         tbody {},
-          domainResults.map (domainResult) ->
+          domainInterpretations.map (domainInterpretation) ->
             React.createElement ResultsRow,
-              domainResult: domainResult
-              key: domainResult.domain.id
+              domainInterpretation: domainInterpretation
+              key: domainInterpretation.interpretationDomainId
 
 @ResultsRow = React.createClass
   displayName: 'ResultsRow'
 
   render: ->
-    { domain, estimate, estimateInterpretation, quartile, normPopulationLabel } = @props.domainResult
+    { description, normPopulation, quartile, estimateInterpretation } = @props.domainInterpretation
 
     tr
       className: ''
-      td {}, domain.description
-      td {}, domain.normPopulation
+      td {}, description
+      td {}, normPopulation
       td {}, quartile
       td {}, estimateInterpretation

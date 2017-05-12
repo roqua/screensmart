@@ -38,8 +38,7 @@ describe FinishResponse do
     it 'saves the domain results' do
       results = subject.results
       expect(results).to be_an(Array)
-      expect(results[0].with_indifferent_access).to include(:estimate, :estimate_interpretation,
-                                                            :warning, :variance)
+      expect(results[0].with_indifferent_access).to include(:estimate, :variance, :domain_interpretations)
     end
 
     it 'saves the demographic info' do
