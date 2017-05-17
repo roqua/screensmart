@@ -1,6 +1,7 @@
 describe 'answering questions' do
   def answer_question(index, answer_text)
-    sleep(0.01) # To fix flakiness when form is still updating from last time a question was answered
+    # sleep(0.01) # To fix flakiness when form is still updating from last time a question was answered
+    sleep 0.1
     within(:xpath, "(//div[contains(@class, 'question')])[#{index}]") do
       find('.option', text: answer_text).click
     end
