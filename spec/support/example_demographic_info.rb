@@ -1,7 +1,7 @@
 module ExampleDemographicInfo
   def self.included(base)
     base.let(:demographic_info) do
-      { age: 18,
+      { age: '18 jaar',
         education_level: 'vmbo',
         employment_status: 'fulltime',
         gender: 'female',

@@ -1,7 +1,7 @@
 class FinishResponse < ActiveInteraction::Base
   string :response_uuid
   hash :demographic_info do
-    integer :age
+    string :age
     string :education_level
     string :employment_status
     string :gender
