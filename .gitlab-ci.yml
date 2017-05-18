@@ -1,0 +1,41 @@
+# This file is a template, and might need editing before it works on your project.
+# Official language image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/ruby/tags/
+image: "daandavidsz/roqua-rails"
+ 
+# Pick zero or more services to be used on all builds.
+# Only needed when using a docker container to run your tests in.
+# Check out: http://docs.gitlab.com/ce/ci/docker/using_docker_images.html#what-is-service
+services:
+  - postgres:latest
+
+variables:
+  POSTGRES_DB: screensmart_test
+  POSTGRES_USER: runner
+  POSTGRES_PASSWORD: ""
+  DATABASE_URL: "postgres://runner@postgres:5432/screensmart_test"
+  MYSQL_ROOT_PASSWORD: "secret"
+  SIMPLECOV: "true"
+
+# Cache gems in between builds
+cache:
+  paths:
+    - vendor/gems
+
+# This is a basic example for a gem or script which doesn't use
+# services such as redis or postgres
+before_script:
+  - ruby -v                                   # Print out ruby version for debugging
+
+  - gem install bundler  --no-ri --no-rdoc    # Bundler is not installed with the image
+  - bundle install -j $(nproc) --path vendor/gems/`ruby -e 'puts "#{RUBY_VERSION}-#{RUBY_PATCHLEVEL}"'`
+
+rubocop:
+  script:
+  - rubocop
+
+rspec:
+  script:
+  - rm config/database.yml
+  - bundle exec rake db:create db:schema:load
+  - bundle exec rspec
