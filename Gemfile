@@ -39,6 +39,7 @@ gem 'prawn-table'
 group :development, :test do
   gem 'awesome_print', '~> 1.6'
   gem 'byebug'
+  gem 'therubyracer'
 end
 
 group :development do
