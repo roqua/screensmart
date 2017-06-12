@@ -2,7 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.1'
 
-gem 'active_model_serializers', '~> 0.9.3' # Keep at 0.9
+# Keep at 0.9, too many breaking changes in 0.10
+gem 'active_model_serializers', '~> 0.9.3'
+
 gem 'pg', '~> 0.18.4'
 gem 'rack-haproxy_status', '~> 0.8.1'
 gem 'responders'
