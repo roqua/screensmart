@@ -41,3 +41,10 @@ Style/FrozenStringLiteralComment:
 Style/LambdaCall:
   Exclude:
     - Guardfile
+
+# Too subjective
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
