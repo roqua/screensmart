@@ -1,7 +1,7 @@
 image: "roqua/roqua-build-images:ruby-2.3.3-phantomjs-2.1.1-bundler-gemnasium"
 
 services:
-  - postgres:latest
+  - postgres:9.4
 
 variables:
   POSTGRES_DB: screensmart_test
