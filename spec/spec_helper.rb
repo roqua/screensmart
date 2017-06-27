@@ -43,6 +43,13 @@ RSpec.configure do |config|
   Capybara.default_driver = :poltergeist
   Capybara.default_max_wait_time = 7
 
+  # Capybara.register_driver :poltergeist do |app|
+  #   options = {
+  #     js_errors: false # do not reraise JS errors as Ruby errors
+  #   }
+  #   Capybara::Poltergeist::Driver.new(app, options)
+  # end
+
   Rails.application.routes.default_url_options[:host] = 'test_host'
 
   config.before(:suite) do
