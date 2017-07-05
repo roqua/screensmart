@@ -19,7 +19,7 @@
 
 .env.local
 .env.development
-.env.test.local
+.env.*.local
 .byebug_history
 npm-debug.log
 /coverage
