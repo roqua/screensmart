@@ -33,7 +33,6 @@ rspec:
       - tmp/capybara
 
 pages:
-  stage: deploy
   dependencies:
     - rspec
   script:
