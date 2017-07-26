@@ -15,11 +15,17 @@ before_script:
   - ruby -v
   - bundle-cache
 
+stages:
+  - test
+  - post-test
+
 rubocop:
+  stage: test
   script:
   - bundle exec rubocop
 
 rspec:
+  stage: test
   script:
   - rm config/database.yml
   - bundle exec rake db:create db:schema:load
@@ -33,6 +39,7 @@ rspec:
       - tmp/capybara
 
 pages:
+  stage: post-test
   dependencies:
     - rspec
   script:
