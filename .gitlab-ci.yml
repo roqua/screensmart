@@ -37,7 +37,7 @@ docker:
   services:
     - docker:dind
   before_script:
-    - apk add docker-compose
+    - apk --update add 'py-pip==8.1.2-r0' && pip install 'docker-compose==1.8.0'
   script:
     - docker-compose build
     - docker-compose up -e RAILS_ENV=production -e SECRET_KEY_BASE=secret-string
