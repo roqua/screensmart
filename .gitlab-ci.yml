@@ -39,5 +39,6 @@ docker:
   before_script:
     - apk --update add py-pip && pip install docker-compose
   script:
-    - docker-compose up --build
+    - docker-compose up -d
+    - sleep 10
     - wget http://localhost:3000
