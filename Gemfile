@@ -9,8 +9,8 @@ gem 'pg', '~> 0.21.0'
 gem 'rack-haproxy_status', '~> 0.8.1'
 gem 'responders', '~> 2.4.0'
 gem 'sass-rails', '~> 5.0'
-gem 'uglifier', '>= 1.3.0'
 gem 'therubyracer'
+gem 'uglifier', '>= 1.3.0'
 
 gem 'sprockets-rails', '~> 3.2.0'
 
@@ -42,7 +42,6 @@ gem 'prawn-table'
 group :development, :test do
   gem 'awesome_print', '~> 1.6'
   gem 'byebug'
-  gem 'therubyracer'
 end
 
 group :development do
