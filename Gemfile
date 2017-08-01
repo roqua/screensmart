@@ -10,6 +10,7 @@ gem 'rack-haproxy_status', '~> 0.8.1'
 gem 'responders', '~> 2.4.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+gem 'therubyracer'
 
 gem 'sprockets-rails', '~> 3.2.0'
 
