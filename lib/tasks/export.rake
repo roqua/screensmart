@@ -3,31 +3,42 @@ require 'csv'
 namespace :export do
   desc 'Generate CSV export for completed fillouts'
   task csv: :environment do
+    domain_ids = RPackage.domain_ids
     question_ids = RPackage.question_ids
     questions = RPackage.questions
     filename = File.join(Rails.root, 'tmp', 'export.csv')
 
-    CSV.open(filename, "wb", col_sep: ";") do |csv|
-      csv << %w[response_uuid requested_at created_at requester_email domain_id estimate variance quartile] + question_ids
+    result_keys = domain_ids.map { |did| ["#{did} estimate", "#{did} variance", "#{did} quartile"] }
+                            .flatten
+
+    CSV.open(filename, 'wb', col_sep: ';') do |csv|
+
+      csv << %w[response_uuid requested_at created_at requester_email] + result_keys + question_ids
 
       Events::ResponseFinished.all.each do |response_finished|
-        response = Response.find(response_finished.response_uuid)
-        response.domain_results.each do |domain_result|
-          question_hash = question_ids.map { |qid| [qid, ""] }.to_h
-          domain_questions = questions.select { |q| q["domain_id"] == domain_result.domain_id }.map { |q| q["id"] }
-          answered_questions = response.answer_values.select { |k, av| domain_questions.include?(k) }
-          question_hash = question_hash.merge(answered_questions)
+        begin
+          response = Response.find(response_finished.response_uuid)
+          question_hash = question_ids.map { |qid| [qid, ''] }.to_h
+                                      .merge(response.answer_values)
+
+          result_hash = result_keys.map { |e| [e, ''] }.to_h
+          puts result_hash.inspect
+
+          response.domain_results.each do |domain_result|
+            puts domain_result.inspect
+            result_hash["#{domain_result.domain_id} estimate"] = domain_result.estimate
+            result_hash["#{domain_result.domain_id} variance"] = domain_result.variance
+            result_hash["#{domain_result.domain_id} quartile"] = domain_result.domain_interpretations[0].quartile
+          end
 
           csv << [
             response.uuid.to_s,
             response.requested_at,
             response.created_at,
-            response.invitation.requester_email,
-            domain_result.domain_id,
-            domain_result.estimate,
-            domain_result.variance,
-            domain_result.domain_interpretations[0].quartile
-          ] + question_hash.values
+            response.invitation.requester_email
+          ] + result_hash.values + question_hash.values
+        rescue
+          next
         end
       end
     end
