@@ -38,4 +38,6 @@ docker:
     - docker:dind
   before_script:
     - echo 'Building docker image'
-  script: docker build .
+  script:
+    - docker-compose build
+    - docker-compose up -e RAILS_ENV=production -e SECRET_KEY_BASE=secret-string
