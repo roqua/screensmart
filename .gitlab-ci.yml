@@ -38,6 +38,9 @@ docker:
     - docker:dind
   before_script:
     - apk --update add py-pip && pip install docker-compose
+    - apk update
+    - apk add ca-certificates
+    - update-ca-certificates
   script:
     - docker-compose up -d --build
     - sleep 10
