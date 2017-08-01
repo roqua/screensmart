@@ -41,4 +41,4 @@ docker:
   script:
     - docker-compose up -d --build
     - sleep 10
-    - wget http://docker-dind:3000
+    - wget http://docker:3000
