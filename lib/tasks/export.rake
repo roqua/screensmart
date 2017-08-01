@@ -5,7 +5,6 @@ namespace :export do
   task csv: :environment do
     domain_ids = RPackage.domain_ids
     question_ids = RPackage.question_ids
-    questions = RPackage.questions
     filename = File.join(Rails.root, 'tmp', 'export.csv')
 
     result_keys = domain_ids.map { |did| ["#{did} estimate", "#{did} variance", "#{did} quartile"] }
@@ -28,7 +27,8 @@ namespace :export do
             puts domain_result.inspect
             result_hash["#{domain_result.domain_id} estimate"] = domain_result.estimate
             result_hash["#{domain_result.domain_id} variance"] = domain_result.variance
-            result_hash["#{domain_result.domain_id} quartile"] = domain_result.domain_interpretations[0].quartile
+            result_hash["#{domain_result.domain_id} quartile"] =
+              domain_result.domain_interpretations[0].quartile
           end
 
           csv << [
