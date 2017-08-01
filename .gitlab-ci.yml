@@ -31,3 +31,7 @@ rspec:
     paths:
       - coverage/
       - tmp/capybara
+
+docker:
+  image: docker
+  script: docker build .
