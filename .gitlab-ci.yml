@@ -39,5 +39,5 @@ docker:
   before_script:
     - apk --update add py-pip && pip install docker-compose
   script:
-    - docker-compose build
-    - docker-compose up -e RAILS_ENV=production -e SECRET_KEY_BASE=secret-string
+    - docker-compose up --build
+    - wget http://localhost:3000
