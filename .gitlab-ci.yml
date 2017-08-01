@@ -34,4 +34,6 @@ rspec:
 
 docker:
   image: docker
+  before_script:
+    - echo 'Building docker image'
   script: docker build .

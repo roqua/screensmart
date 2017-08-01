@@ -7,8 +7,8 @@ RUN gem install bundler
 RUN mkdir -p /app
 WORKDIR /app
 
-COPY Gemfile /usr/src/app/
-COPY Gemfile.lock /usr/src/app/
+COPY Gemfile /app
+COPY Gemfile.lock /app
 RUN bundle config --global frozen 1
 RUN bundle install --without development test
 
