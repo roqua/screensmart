@@ -33,15 +33,11 @@ rspec:
       - tmp/capybara
 
 docker:
-  image: docker
+  image: roqua/roqua-build-images:docker-with-docker-compose
   services:
     - docker:dind
   before_script:
-    - apk --update add py-pip && pip install docker-compose
-    - apk update
-    - apk add ca-certificates
-    - update-ca-certificates
-  script:
     - docker-compose up -d --build
-    - sleep 10
+  script:
+    - sleep 5
     - wget http://docker:3000
