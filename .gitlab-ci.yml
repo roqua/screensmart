@@ -34,6 +34,8 @@ rspec:
 
 docker:
   image: docker
+  services:
+    - docker:dind
   before_script:
     - echo 'Building docker image'
   script: docker build .
