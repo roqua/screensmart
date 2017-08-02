@@ -17,8 +17,11 @@ namespace :export do
 
       Events::ResponseFinished.all.each do |response_finished|
         begin
+          # Only use answer keys present in question_ids
+          answer_values = response_finished.data["answer_values"]
+                                           .select { |k, v| question_ids.include?(k) }
           question_hash = question_ids.map { |qid| [qid, ''] }.to_h
-                                      .merge(response_finished.data["answer_values"])
+                                      .merge(answer_values)
 
           result_hash = result_keys.map { |e| [e, ''] }.to_h
 
