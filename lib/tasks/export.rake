@@ -23,6 +23,8 @@ namespace :export do
           question_hash = question_ids.map { |qid| [qid, ''] }.to_h
                                       .merge(answer_values)
 
+          puts "#{response_finished.response_uuid}, Question count: #{question_ids.length}, Answers count: #{question_hash.length}"
+
           result_hash = result_keys.map { |e| [e, ''] }.to_h
 
           response_finished.data["results"].each do |domain_result|
@@ -47,8 +49,9 @@ namespace :export do
             response_finished.data["demographic_info"]["employment_status"],
             response_finished.data["demographic_info"]["relationship_status"],
           ] + result_hash.values + question_hash.values
-        rescue
+        rescue => e
           puts "** Error while parsing results for response_uuid #{response_finished.response_uuid} **"
+          puts e.message
           next
         end
       end
