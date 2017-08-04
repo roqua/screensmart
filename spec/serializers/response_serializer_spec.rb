@@ -11,7 +11,7 @@ describe ResponseSerializer do
   end
 
   it 'includes estimate, variance, estimate_interpretation, warning and questions' do
-    invitation = Invitation.find_by_response_uuid(invitation_accepted.response_uuid)
+    invitation = Invitation.find_by(response_uuid: invitation_accepted.response_uuid)
     serialized = subject.with_indifferent_access
 
     expect(serialized[:uuid]).to eq(invitation_accepted.response_uuid)

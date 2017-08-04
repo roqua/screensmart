@@ -67,7 +67,7 @@ class Response < BaseModel
   end
 
   def invitation
-    @invitation ||= Invitation.find_by_response_uuid uuid
+    @invitation ||= Invitation.find_by response_uuid: uuid
   end
 
   def invitation_accepted
@@ -79,7 +79,7 @@ class Response < BaseModel
   end
 
   def self.find_by_show_secret(show_secret)
-    invitation_accepted = Events::InvitationAccepted.find_by_show_secret show_secret
+    invitation_accepted = Events::InvitationAccepted.find_by show_secret: show_secret
     find invitation_accepted.response_uuid
   end
 end

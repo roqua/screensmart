@@ -4,19 +4,19 @@ describe AcceptInvitation do
   let(:invitation_sent) { Fabricate :invitation_sent }
 
   context 'with valid parameters' do
-    let(:params) { { invitation_uuid: invitation_sent.invitation_uuid } }
+    let(:params) { {invitation_uuid: invitation_sent.invitation_uuid} }
     it 'creates an InvitationAccepted event' do
       expect { subject }.to change { Events::InvitationAccepted.count }.by(1)
     end
   end
 
   context 'invitation_uuid is missing' do
-    let(:params) { { invitation_uuid: '' } }
+    let(:params) { {invitation_uuid: ''} }
     it { is_expected.to have(1).errors_on :invitation_uuid }
   end
 
   context 'response has already been finished' do
-    let(:params) { { invitation_uuid: invitation_sent.invitation_uuid } }
+    let(:params) { {invitation_uuid: invitation_sent.invitation_uuid} }
 
     before do
       Events::ResponseFinished.create!(

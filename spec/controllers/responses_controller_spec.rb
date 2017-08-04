@@ -3,7 +3,7 @@ describe ResponsesController do
   let(:invitation_sent) { Fabricate :invitation_sent }
 
   describe '#create' do
-    subject { post :create, params: { invitation_uuid: invitation_sent.invitation_uuid } }
+    subject { post :create, params: {invitation_uuid: invitation_sent.invitation_uuid} }
 
     it 'accepts the invitation' do
       expect { subject }.to change { Events::InvitationAccepted.count }.by 1
@@ -15,7 +15,7 @@ describe ResponsesController do
       AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
     end
 
-    subject { get :show, params: { id: invitation_accepted.response_uuid } }
+    subject { get :show, params: {id: invitation_accepted.response_uuid} }
 
     it 'renders the response as JSON' do
       subject
@@ -40,8 +40,8 @@ describe ResponsesController do
     end
 
     subject do
-      put :update, params: { id: invitation_accepted.response_uuid,
-                             demographic_info: demographic_info }
+      put :update, params: {id: invitation_accepted.response_uuid,
+                            demographic_info: demographic_info}
     end
 
     it 'finishes the response' do

@@ -4,7 +4,7 @@ class Invitation < BaseModel
   delegate :domain_ids, :requester_email, :requester_name, to: :invitation_sent
 
   def invitation_sent
-    @invitation_sent ||= Events::InvitationSent.find_by_invitation_uuid uuid
+    @invitation_sent ||= Events::InvitationSent.find_by invitation_uuid: uuid
   end
 
   def requested_at
