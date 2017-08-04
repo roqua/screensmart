@@ -1,3 +1,6 @@
+inherit_from:
+  - styleguide/ruby/rubocop-rails-5.yml
+
 AllCops:
   TargetRubyVersion: 2.3
   Exclude:
@@ -6,14 +9,16 @@ AllCops:
     - vendor/**/*
     - db/schema.rb
 
-Metrics/LineLength:
-  Max: 120
+# The project has models without ActiveRecord where this is a false positive
+Rails/DynamicFindBy:
+  Enabled: false
 
 Metrics/BlockLength:
   Exclude:
-    - spec/**/*.rb
     - config/environments/**/*.rb
     - Guardfile
+    - lib/tasks/export.rake
+    - spec/**/*.rb
 
 Metrics/ModuleLength:
   Exclude:
@@ -41,10 +46,3 @@ Style/FrozenStringLiteralComment:
 Style/LambdaCall:
   Exclude:
     - Guardfile
-
-# Too subjective
-Style/PercentLiteralDelimiters:
-  Enabled: false
-
-Style/SymbolArray:
-  Enabled: false

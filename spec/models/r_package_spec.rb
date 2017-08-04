@@ -17,9 +17,9 @@ describe RPackage do
     subject { described_module.domains }
 
     let(:first_domain) do
-      { 'id' => 'POS-PQ',
-        'description' => 'Positieve symptomen van psychose',
-        'norm_population' => 'Algemene bevolking' }
+      {'id' => 'POS-PQ',
+       'description' => 'Positieve symptomen van psychose',
+       'norm_population' => 'Algemene bevolking'}
     end
 
     it { is_expected.to include first_domain }
@@ -47,7 +47,7 @@ describe RPackage do
 
     context 'with answers and domains' do
       it 'returns a new next_question, estimate, variance and domain interpretations' do
-        response = described_module.data_for({ 'EL02' => 2 }, domains)
+        response = described_module.data_for({'EL02' => 2}, domains)
         expect(response[:next_question_id]).to start_with('EL')
         expect(response[:done]).to be_falsey
         domain_result = response[:domain_results]['POS-PQ']
@@ -63,11 +63,11 @@ describe RPackage do
     context 'when done testing according to the algorithm' do
       it 'includes done: true' do
         allow(described_module).to receive(:questions).and_return [
-          { 'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ' },
-          { 'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ' }
+          {'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ'},
+          {'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ'}
         ]
 
-        expect(described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains)).to include \
+        expect(described_module.data_for({'enough_answers_to_be_done' => 1}, domains)).to include \
           done: true
       end
     end
@@ -76,12 +76,12 @@ describe RPackage do
       let(:domains) { %w(POS-PQ NEG-PQ) }
 
       context 'first domain is done' do
-        subject { described_module.data_for({ 'enough_answers_to_be_done' => 1 }, domains) }
+        subject { described_module.data_for({'enough_answers_to_be_done' => 1}, domains) }
 
         before do
           allow(described_module).to receive(:questions).and_return [
-            { 'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ' },
-            { 'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ' }
+            {'id' => 'enough_answers_to_be_done', 'domain_id' => 'POS-PQ'},
+            {'id' => 'first_question_of_second_domain', 'domain_id' => 'NEG-PQ'}
           ]
         end
 
@@ -95,26 +95,26 @@ describe RPackage do
         end
 
         it 'returns the per-domain results in a hash' do
-          expect(subject[:domain_results]).to eq 'NEG-PQ' => { estimate: 0.0,
-                                                               variance: 25.0,
-                                                               domain_interpretations: {
+          expect(subject[:domain_results]).to eq 'NEG-PQ' => {estimate: 0.0,
+                                                              variance: 25.0,
+                                                              domain_interpretations: {
                                                                  'NEG-PQ' => {
                                                                    estimate_interpretation: 'Matig niveau (+)',
                                                                    quartile: 'Q2',
                                                                    warning: nil,
                                                                    norm_population: 'Cliënten eerste lijn GGZ'
                                                                  }
-                                                               } },
-                                                 'POS-PQ' => { estimate: -0.6777,
-                                                               variance: 0.6842,
-                                                               domain_interpretations: {
+                                                               }},
+                                                 'POS-PQ' => {estimate: -0.6777,
+                                                              variance: 0.6842,
+                                                              domain_interpretations: {
                                                                  'POS-PQ' => {
                                                                    estimate_interpretation: 'Matig niveau (+)',
                                                                    quartile: 'Q3',
                                                                    warning: nil,
                                                                    norm_population: 'Cliënten eerste lijn GGZ'
                                                                  }
-                                                               } }
+                                                               }}
         end
       end
     end
@@ -128,7 +128,7 @@ describe RPackage do
 
       def second_call
         described_module.call 'call_shadowcat',
-                              answers: [{ 'EL02' => 2 }],
+                              answers: [{'EL02' => 2}],
                               estimate: 1.0,
                               variance: 0.5,
                               domain: ['POS-PQ']

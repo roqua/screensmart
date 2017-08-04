@@ -1,7 +1,7 @@
 namespace :test_pdf do
   desc 'Generate and open a PDF for the last finished response'
   task generate: :environment do
-    filename = File.join(Rails.root, 'tmp', 'test.pdf')
+    filename = Rails.root.join('tmp', 'test.pdf')
     uuid = Events::ResponseFinished.last.response_uuid
     response = Response.find(uuid)
     pdf = ResponseReport.new(response)

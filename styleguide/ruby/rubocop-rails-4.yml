@@ -1,0 +1,8 @@
+inherit_from:
+  - rubocop.yml
+
+Rails:
+  Enabled: true
+
+Rails/ApplicationRecord:
+  Enabled: false

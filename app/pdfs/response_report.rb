@@ -30,7 +30,7 @@ class ResponseReport < Prawn::Document
   private
 
   def register_font_family
-    font_path = File.join(Rails.root.to_s, 'vendor', 'fonts')
+    font_path = Rails.root.join('vendor', 'fonts')
     font_families.update(
       'DejaVu Sans' => {
         normal: File.join(font_path, 'DejaVuSans.ttf'),
@@ -74,7 +74,7 @@ class ResponseReport < Prawn::Document
       [question_text, question.selected_answer_text]
     end
 
-    table table_data, column_widths: [350, 150], cell_style: { inline_format: true }
+    table table_data, column_widths: [350, 150], cell_style: {inline_format: true}
   end
 
   def introduction

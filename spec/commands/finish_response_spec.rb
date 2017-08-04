@@ -29,7 +29,7 @@ describe FinishResponse do
 
   context 'with valid parameters' do
     subject { described_class.run!(params) }
-    let(:params) { { response_uuid: response_uuid, demographic_info: demographic_info } }
+    let(:params) { {response_uuid: response_uuid, demographic_info: demographic_info} }
 
     it 'creates an ReponseFinished event' do
       expect { subject }.to change { Events::ResponseFinished.count }.by(1)
@@ -60,7 +60,7 @@ describe FinishResponse do
 
   context 'with invalid parameters' do
     subject { described_class.run(params) }
-    let(:params) { { response_uuid: response_uuid, demographic_info: demographic_info } }
+    let(:params) { {response_uuid: response_uuid, demographic_info: demographic_info} }
 
     context 'response_uuid is invalid' do
       it 'has an error when uuid is missing' do

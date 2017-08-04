@@ -1,5 +1,5 @@
 module Events
-  class Event < ActiveRecord::Base
+  class Event < ApplicationRecord
     validates :type, presence: true
 
     def self.event_attributes(*untyped_attributes, **typed_attributes)

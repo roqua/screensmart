@@ -2,6 +2,8 @@ source 'https://rubygems.org'
 
 gem 'rails', '~> 5.0.1'
 
+gem 'roqua-styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
+
 # Keep at 0.9, too many breaking changes in 0.10
 gem 'active_model_serializers', '~> 0.9.3'
 
@@ -13,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 
 gem 'sprockets-rails', '~> 3.2.0'
 
-gem 'appsignal', '~> 2.2.1'
+gem 'appsignal'
 
 gem 'bourbon', '~> 4.3.4'
 gem 'coffee-rails', '~> 4.2.2'
@@ -72,7 +74,6 @@ group :test do
   gem 'fabrication', '~> 2.15.2'
   gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'rspec-rails'
-  gem 'rubocop', '~> 0.37'
   gem 'vcr', '~> 3.0.1'
   gem 'webmock', '~> 1.24.2'
 

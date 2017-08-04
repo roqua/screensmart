@@ -44,5 +44,5 @@ Rails.application.configure do
   # The :test delivery method accumulates sent emails in the
   # ActionMailer::Base.deliveries array.
   config.action_mailer.delivery_method = :test
-  config.action_mailer.default_url_options = { host: 'test_host' }
+  config.action_mailer.default_url_options = {host: 'test_host'}
 end
