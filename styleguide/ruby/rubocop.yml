@@ -1,0 +1,218 @@
+# We can't start the shared Rubocop file with .rubocop because of a bug in combination with inherit_gem.
+# For more details:
+# https://github.com/bbatsov/rubocop/issues/4154
+
+AllCops:
+  TargetRubyVersion: 2.3
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/schema.rb'
+    - 'db/seeds/**/*'
+    - 'local/*'
+    - 'script/**/*'
+    - 'tmp/**/*'
+    - 'vendor/**/*'
+
+# ==================================== SECURITY ===========================================================================
+
+# Never ever use `Kernel#eval`. This however is handy in Guardfile.
+Security/Eval:
+  Enabled: true
+  Exclude:
+    - '**/Guardfile'
+
+# ==================================== LINT ===========================================================================
+
+# Explicit block alignment
+Lint/BlockAlignment:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+# Useless assignments are just useless. In specs however they lead to a better
+# understanding of what is being stubbed/factoried.
+Lint/UselessAssignment:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
+
+# ==================================== METRICS ========================================================================
+
+# Set this to 10, forcing future methods to be not that complex. Skipping some
+# existing helper methods that are better off to be not refactored.
+# Note: used comments like
+#   # rubocop:disable CyclomaticComplexity
+#   [code]
+#   # rubocop:enable CyclomaticComplexity
+# to skip this check
+Metrics/CyclomaticComplexity:
+  Max: 10
+
+# Limit lines to 120 characters.
+Metrics/LineLength:
+  Max: 120
+
+Metrics/ClassLength:
+  Max: 300 # As long as they're simple.
+
+Metrics/ModuleLength:
+  Exclude:
+    - 'spec/**/*'
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/**/*'
+
+# ==================================== STYLE ==========================================================================
+
+Style/PercentLiteralDelimiters:
+  PreferredDelimiters:
+    '%i': ()
+    '%I': ()
+
+# Use do-end for multiline blocks and {} for single lines
+# Configuration parameters: EnforcedStyle, SupportedStyles, ProceduralMethods, FunctionalMethods, IgnoredMethods.
+Style/BlockDelimiters:
+  Exclude:
+    - 'spec/**/*'
+
+Style/WordArray:
+  MinSize: 5
+  Exclude:
+    - 'spec/**/*'
+
+# ==================================== LAYOUT ==============================================
+
+# defs stick to each other is just unpretty. Turning this on for general code,
+# but still allowing testing/mocking one-line exceptions
+Layout/EmptyLineBetweenDefs:
+  Enabled: true
+  AllowAdjacentOneLineDefs: true
+
+# Intenting hash properly will provide a better code readablity. However there
+# some exceptions. For example defining validations in Rails models or stubbing
+# in a new rspec way with allows and expects.
+Layout/IndentHash:
+  Enabled: true
+  Exclude:
+    # Cause models can have very long validation definitions which we'd rather
+    # format in a readable to us manner.
+    - 'app/models/**/*'
+    # Also skipping spec files as the new allow/expect syntax of rspec can
+    # become bulky.
+    - 'spec/**/*'
+
+Layout/SpaceInsideHashLiteralBraces:
+  EnforcedStyle: no_space
+  Enabled: true
+
+# ================================ DISABLED COPS ======================================================================
+
+# These cops are disabled because we think they are a Bad Idea. If you add one
+# here, make sure to add a comment describing what the cop does, and why this
+# is a bad idea.
+
+Style/PercentLiteralDelimiters:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+# Max 4 of parameters per method seems fair. Don't count keyword arguments though.
+Metrics/ParameterLists:
+  Max: 4
+  CountKeywordArgs: false
+
+# Use UTF-8 as the source file encoding.
+Style/Encoding:
+  Enabled: false
+
+# Avoid methods longer than 16 lines of code
+Metrics/MethodLength:
+  CountComments: false  # count full line comments?
+  Max: 16
+
+# When using \ for string concatenation line indents cause undesired whitespace in the string
+Style/LineEndConcatenation:
+  Enabled: false
+
+# Forces the argument names of the block given to #reduce to be `a, e`. Only
+# applies on single-line blocks, but why would we want to force people to use
+# less descriptive names?
+Style/SingleLineBlockParams:
+  Enabled: false
+
+# Complains than multiline ternary expressions should be if/else statements
+# Ternary are still often more readable.
+Style/MultilineTernaryOperator:
+  Enabled: false
+
+# disallows `class Quby::Items::Text` style definitions.
+# Why waste all that indentation?
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+# This is not universally a better idea, it depends greatly on whether the
+# condition is to handle an edge-case or not. We prefer leaving this up to
+# code review instead of Rubocop.
+Style/IfUnlessModifier:
+  Enabled: false
+
+# Use single quotes for strings that don't do string interpolation. Makes it
+# harder to later add an interpolated value.
+Style/StringLiterals:
+  Enabled: false
+
+# This forces the use of the English library instead of $: etc. We think that some
+# of these Perl-vars are quite succinct.
+Style/SpecialGlobalVars:
+  Enabled: false
+
+# This forces the use of %r{.. } when a regexp contains more than one slash.
+# If a regex is unreadable, code review will catch it, otherwise it's not
+# a function of how many slashes are in it.
+Style/RegexpLiteral:
+  Enabled: false
+
+# Do not agree on this one as Block Chains can be used to query/narrow/scope
+# the results. As we chain them, the query is easier to read and understand.
+Style/MultilineBlockChain:
+  Enabled: false
+
+# We do not want to force adding underscores between every 3 digits
+Style/NumericLiterals:
+  Enabled: false
+
+# Ruby provides a beautiful way to set and get the values. By setting
+# `attr_accessor :foo` provides us with `def foo=(foo)` and `def foo` which can
+# be used to set and get the value of `foo`. Using get_ and set_ `works around`
+# this idiom.
+#
+# Argumentation: We do not want Rubocop to enforce this style. Sometimes methods
+# starting with `get_` or `set_` provide better readability and understanding of code
+Style/AccessorMethodName:
+  Enabled: false
+
+# This forces comments to align with the code.
+# But like to indent stories to the right and indent multiline comments with the itself.
+Layout/CommentIndentation:
+  Enabled: false
+
+# This requires having multiline assignment values start on the same indentation level,
+# which is inconsistent with out standard for params methods, i.e.:
+# params.require(:foo)
+#       .permit(:bar)
+# disabled until https://github.com/bbatsov/rubocop/issues/1633 https://github.com/bbatsov/rubocop/pull/2493 has been fixed
+Layout/MultilineOperationIndentation:
+  Enabled: false
+
+# There is no good alternative for when you want to explicitly cast
+# a value to an actual boolean, which for JSON APIs is desirable.
+DoubleNegation:
+  Enabled: false

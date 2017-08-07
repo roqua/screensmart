@@ -1,9 +1,9 @@
 describe SendInvitation do
   let(:params) do
-    { requester_name: 'Some Doctor',
-      requester_email: 'requester@example.dev',
-      respondent_email: 'patient@example.dev',
-      domain_ids: ['POS-PQ'] }
+    {requester_name: 'Some Doctor',
+     requester_email: 'requester@example.dev',
+     respondent_email: 'patient@example.dev',
+     domain_ids: ['POS-PQ']}
   end
 
   before do

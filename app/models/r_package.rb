@@ -27,7 +27,7 @@ module RPackage
   # Retrieve a hash of attributes defined by the R packag for a given set of answers (e.g. 'EL02' => 1)
   # and domain_ids(e.g. ['POS-PQ'])
   def self.data_for(answers, domain_ids)
-    raise 'No domains given' unless domain_ids.present?
+    raise 'No domains given' if domain_ids.blank?
 
     # TODO: Allow screensmart-r's call_shadowcat function to handle
     #       multiple domains, which will allow us to simply return
@@ -36,9 +36,9 @@ module RPackage
       data_for_domain(answers, domain_id)
     end
 
-    { next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
-      done: domain_results.all? { |domain| domain[:done] },
-      domain_results: domain_results_hash(domain_ids, domain_results) }
+    {next_question_id: domain_results.find { |dr| !dr[:done] }.try(:[], :next_question_id),
+     done: domain_results.all? { |domain| domain[:done] },
+     domain_results: domain_results_hash(domain_ids, domain_results)}
   end
 
   def self.domain_results_hash(domain_ids, domain_results)
@@ -56,10 +56,10 @@ module RPackage
     # then recalculate it for <index + 1> answers with the previous estimate and variance,
     # repeat until done for all answers
     answers_in_domain.each_with_index.inject(accumulator) do |hash, (_, index)|
-      params = { answers: [answers_in_domain.take(index + 1).to_h],
-                 estimate: hash[:estimate],
-                 variance: hash[:variance],
-                 domain: domain_id }
+      params = {answers: [answers_in_domain.take(index + 1).to_h],
+                estimate: hash[:estimate],
+                variance: hash[:variance],
+                domain: domain_id}
 
       normalized_shadowcat params
     end
@@ -90,11 +90,11 @@ module RPackage
   end
 
   def self.normalize_shadowcat_output(raw_data)
-    { next_question_id: raw_data['key_new_item'],
-      estimate: raw_data['estimate'][0].to_f,
-      variance: raw_data['variance'][0].to_f,
-      domain_interpretations: raw_data['domain_interpretations'].map { |k, v| [k, v.symbolize_keys] }.to_h,
-      done: !raw_data['continue_test'] }
+    {next_question_id: raw_data['key_new_item'],
+     estimate: raw_data['estimate'][0].to_f,
+     variance: raw_data['variance'][0].to_f,
+     domain_interpretations: raw_data['domain_interpretations'].map { |k, v| [k, v.symbolize_keys] }.to_h,
+     done: !raw_data['continue_test']}
   end
 
   def self.shadowcat(params)

@@ -30,9 +30,9 @@ Rails.application.configure do
 
   roqua_server_app_path = "https://#{ENV['SCREENSMART_URL']}" if ENV['SCREENSMART_URL']
   heroku_app_path = "https://#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME']
-  config.action_mailer.default_url_options = { host: roqua_server_app_path ||
+  config.action_mailer.default_url_options = {host: roqua_server_app_path ||
                                                      heroku_app_path ||
-                                                     'https://screensmart.herokuapp.com' }
+                                                     'https://screensmart.herokuapp.com'}
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger = ActiveSupport::Logger.new(STDOUT)

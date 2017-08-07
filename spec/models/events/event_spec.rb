@@ -4,7 +4,7 @@ module Events
       class SomeEvent < described_class; end
       Event.create! response_uuid: 'c8d56681-03be-495e-a78d-472c84098e75',
                     type: 'Events::SomeEvent',
-                    data: { requester_email: 'some_doctor@email.dev' }
+                    data: {requester_email: 'some_doctor@email.dev'}
     end
 
     describe 'validation of attributes' do
@@ -22,7 +22,7 @@ module Events
         end
 
         EventWithAttributes.create! first_untyped_attribute: 1,
-                                    second_untyped_attribute: { some: 'value' },
+                                    second_untyped_attribute: {some: 'value'},
                                     some_typed_attribute: 'some string'
       end
 

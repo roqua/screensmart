@@ -1,8 +1,8 @@
 class Answer < BaseModel
   attr_accessor :id, :value
 
-  validates_inclusion_of :id, in: ->(_) { RPackage.question_ids }
-  validates_numericality_of :value, only_integer: true
+  validates :id, inclusion: {in: ->(_) { RPackage.question_ids }}
+  validates :value, numericality: {only_integer: true}
 
   def question
     q = Question.new id: id
