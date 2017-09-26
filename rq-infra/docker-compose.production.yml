@@ -1,0 +1,27 @@
+---
+services:
+  database:
+    image: postgres:9.4
+    environment: []
+  web:
+    build:
+      context: ".."
+      dockerfile: rq-infra/Dockerfile.production
+      args:
+      - SSH_KEY=${SSH_KEY}
+    command: bundle exec unicorn -c config/unicorn.rb
+    depends_on:
+    - database
+    env_file:
+    - "../.env"
+    environment:
+    - RAILS_ENV=production
+    - SSH_KEY
+    - DATABASE_URL=postgres://postgres@database:5432/development
+    image: registry.roqua.nl/roqua/screensmart
+    ports:
+    - 80:80
+    volumes:
+    - "/app/log"
+    - "/root/.ssh"
+version: '3'

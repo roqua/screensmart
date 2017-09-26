@@ -1,0 +1,25 @@
+FROM registry.roqua.nl/roqua/roqua-build-images:ruby-2.3-rails-base-test
+
+VOLUME ["/root/.ssh"]
+
+RUN mkdir -p /cache/bundle
+
+RUN mkdir -p /app
+WORKDIR /app
+
+ADD . /app
+
+COPY rq-infra/install_gems.sh /
+COPY rq-infra/entrypoint.sh /
+
+RUN chmod +x /install_gems.sh /entrypoint.sh
+
+ARG SSH_KEY
+ENV SSH_KEY "$SSH_KEY"
+
+
+ADD rq-infra/nginx.conf /etc/nginx/nginx.conf
+
+RUN apt-get update && apt-get -y upgrade
+
+ENTRYPOINT ["/entrypoint.sh"]

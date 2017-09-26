@@ -31,3 +31,17 @@ rspec:
     paths:
       - coverage/
       - tmp/capybara
+
+docker:
+  image: registry.roqua.nl/roqua/roqua-build-images:docker-with-docker-compose
+  tags:
+    - docker
+  services:
+    - docker:dind
+  before_script:
+    - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
+    - touch .env
+  script:
+    - docker-compose -f rq-infra/docker-compose.production.yml build
+    - docker-compose -f rq-infra/docker-compose.test.yml run web bundle exec rspec spec
+    - docker-compose -f rq-infra/docker-compose.production.yml push

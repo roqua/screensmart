@@ -82,3 +82,6 @@ group :test do
   gem 'pdf-reader'
   gem 'poltergeist'
 end
+
+# Added at 2017-09-26 13:12:21 +0200 by root:
+gem "unicorn", "> 0"
