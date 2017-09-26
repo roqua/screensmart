@@ -17,7 +17,7 @@ services:
     environment:
     - RAILS_ENV=test
     - SSH_KEY
-    - DATABASE_URL=postgres://postgres@database:5432/development
+    - DATABASE_URL=postgres://postgres@database:5432/test_db
     image: registry.roqua.nl/roqua/screensmart
     ports:
     - 80:80
