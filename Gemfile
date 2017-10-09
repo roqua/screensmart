@@ -82,3 +82,6 @@ group :test do
   gem 'pdf-reader'
   gem 'poltergeist'
 end
+
+gem "unicorn"
+gem "lograge"
