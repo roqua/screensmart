@@ -53,7 +53,7 @@ namespace :export do
             response_finished.data["demographic_info"]["employment_status"],
             response_finished.data["demographic_info"]["relationship_status"]
           ] + result_hash.values + question_hash.values
-        rescue => e
+        rescue StandardError => e
           puts "** Error while parsing results for response_uuid #{response_finished.response_uuid} **"
           puts e.message
           next

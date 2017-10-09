@@ -5,7 +5,7 @@ module Events
     def self.event_attributes(*untyped_attributes, **typed_attributes)
       jsonb_accessor :data, *untyped_attributes, typed_attributes
 
-      typed_attributes.keys.each do |attribute|
+      typed_attributes.each_key do |attribute|
         define_singleton_method "find_by_#{attribute}" do |value|
           records = send("with_#{attribute}", value)
           raise "Expected to find one #{self}, got #{records.count}" unless records.count == 1

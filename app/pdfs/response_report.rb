@@ -78,7 +78,7 @@ class ResponseReport < Prawn::Document
   end
 
   def introduction
-    text <<~EOS
+    text <<~DESCRIPTION
       In de onderstaande tabel ziet u de resultaten van de ingevulde vragenlijst. Bij de interpretatie dient u rekening te houden met een aantal factoren die hieronder puntsgewijs besproken worden:
 
       1) Normpopulatie:
@@ -97,6 +97,6 @@ class ResponseReport < Prawn::Document
       b) Positieve psychologische domeinen: Hoe hoger de cliënt scoort op een bepaald positieve psychologische domein, hoe meer de cliënt door dit domein gekenmerkt wordt. Hier is dus hoog scoren (Q3, Q4) kenmerkend voor relatieve aanwezigheid van domeinen die als positief beschouwd worden, wat uiteraard wenselijk is (+/++).
 
       3) Label: Verduidelijking van wat het genoemde kwartiel inhoudt.
-    EOS
+    DESCRIPTION
   end
 end
