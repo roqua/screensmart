@@ -83,6 +83,6 @@ group :test do
   gem 'poltergeist'
 end
 
-# For deployment in Docker
+# Needed for the Docker based infrastructure
 gem "lograge"
 gem "unicorn"
