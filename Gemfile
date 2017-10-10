@@ -34,8 +34,6 @@ gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails', '~> 2.2.1'
 
-gem 'puma', '~> 3.9'
-
 gem 'olive_branch'
 gem 'prawn'
 gem 'prawn-table'
@@ -84,5 +82,5 @@ group :test do
 end
 
 # Needed for the Docker based infrastructure
-gem "lograge"
-gem "unicorn"
+gem 'lograge'
+gem 'puma'

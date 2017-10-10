@@ -13,6 +13,12 @@ Bundler.require(*Rails.groups)
 
 module Screensmart
   class Application < Rails::Application
+    config.lograge.enabled = true
+
+    if ENV["RAILS_LOG_TO_STDOUT"].present?
+      config.logger = ActiveSupport::TaggedLogging.new(Logger.new(STDOUT))
+    end
+
     config.middleware.use OliveBranch::Middleware
 
     config.i18n.available_locales = :nl
