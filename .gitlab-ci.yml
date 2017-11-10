@@ -1,7 +1,7 @@
-image: "roqua/roqua-build-images:ruby-2.3.3-phantomjs-2.1.1-bundler-gemnasium"
+image: registry.roqua.nl/roqua/roqua-build-images:ruby-2.3-rails-base-test
 
 services:
-  - postgres:9.4
+  - postgres:9.4.1
 
 variables:
   POSTGRES_DB: screensmart_test
