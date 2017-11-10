@@ -30,13 +30,13 @@ docker:
 
 rubocop:
   script:
-  - bundle exec rubocop
+    - bundle exec rubocop
 
 rspec:
   script:
-  - rm config/database.yml
-  - bundle exec rake db:create db:schema:load
-  - bundle exec rspec
+    - rm config/database.yml
+    - bundle exec rake db:create db:schema:load
+    - bundle exec rspec
   artifacts:
     when: always
     name: "screenshots-$CI_COMMIT_SHA"
