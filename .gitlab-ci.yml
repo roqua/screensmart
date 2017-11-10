@@ -11,9 +11,22 @@ variables:
   MYSQL_ROOT_PASSWORD: "secret"
   SIMPLECOV: "true"
 
+cache:
+  paths:
+    - .gems
+
 before_script:
   - ruby -v
   - bundle-cache
+
+docker:
+  image: docker
+  before_script:
+    - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
+  script:
+    - docker build . -t registry.roqua.nl/roqua/screensmart
+    - docker run --env "DATABASE_URL=$DATABASE_URL" registry.roqua.nl/roqua/screensmart bundle exec rspec
+    - docker push registry.roqua.nl/roqua/screensmart
 
 rubocop:
   script:
