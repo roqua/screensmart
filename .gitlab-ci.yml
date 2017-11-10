@@ -25,8 +25,11 @@ docker:
     - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
   script:
     - docker build . -t registry.roqua.nl/roqua/screensmart
-    - docker run --env "DATABASE_URL=$DATABASE_URL" registry.roqua.nl/roqua/screensmart bundle exec rspec
     - docker push registry.roqua.nl/roqua/screensmart
+    - id=$(docker create registry.roqua.nl/roqua/screensmart)
+    - rm -Rf .gems
+    - docker cp $id:/app/.gems - > .gems
+    - docker rm -v $id
 
 rubocop:
   script:
