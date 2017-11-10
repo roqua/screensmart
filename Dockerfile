@@ -2,7 +2,11 @@ FROM registry.roqua.nl/roqua/dev_infra:rails
 
 ADD . /app
 
-ENV BUNDLE_PATH /app/gems
+ENV BUNDLE_PATH /gems
 
-RUN bundle install || rm -Rf /app/gems
+RUN [ ! -d /apps/gems ] || rsync -a /apps/gems/ /gems/
+
+RUN bundle install || rm -Rf /gems
 RUN bundle install
+
+RUN rm -Rf /gems/apps/
