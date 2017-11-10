@@ -24,6 +24,7 @@ docker:
   before_script:
     - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
   script:
+    - chmod -R +x gems
     - ls -l $CI_PROJECT_DIR
     - docker build . -t registry.roqua.nl/roqua/screensmart
     - id=$(docker create registry.roqua.nl/roqua/screensmart)
