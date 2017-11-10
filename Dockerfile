@@ -2,6 +2,6 @@ FROM registry.roqua.nl/roqua/dev_infra:rails
 
 ADD . /app
 
-ENV BUNDLE_PATH /app/.gems
+ENV BUNDLE_PATH /app/vendor/gems
 
 RUN bundle install

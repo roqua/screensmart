@@ -13,7 +13,7 @@ variables:
 
 cache:
   paths:
-    - .gems
+    - vendor/gems
 
 before_script:
   - ruby -v
@@ -26,8 +26,8 @@ docker:
   script:
     - docker build . -t registry.roqua.nl/roqua/screensmart
     - id=$(docker create registry.roqua.nl/roqua/screensmart)
-    - rm -Rf .gems
-    - docker cp $id:/app/.gems - > .gems
+    - rm -Rf vendor/gems
+    - docker cp $id:/app/vendor/gems - > vendor/gems
     - docker rm -v $id
     - docker push registry.roqua.nl/roqua/screensmart
 
