@@ -39,7 +39,7 @@ rubocop:
     - docker
   script:
     - docker pull registry.roqua.nl/roqua/screensmart
-    - docker run -it registry.roqua.nl/roqua/screensmart bundle exec rubocop -D
+    - docker run -t registry.roqua.nl/roqua/screensmart bundle exec rubocop -D
 
 # rspec:
 #   script:
