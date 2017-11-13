@@ -34,6 +34,7 @@ rspec:
 
 docker:
   image: roqua/roqua-build-images:docker-with-docker-compose
+  retry: 2
   services:
     - docker:dind
   before_script:
