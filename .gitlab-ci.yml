@@ -21,6 +21,7 @@ before_script:
 
 docker:
   image: docker
+  retry: 2
   before_script:
     - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
   script:
