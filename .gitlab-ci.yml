@@ -33,18 +33,21 @@ docker:
     - docker push registry.roqua.nl/roqua/screensmart
 
 rubocop:
+  dependencies:
+    - docker
   script:
-    - bundle exec rubocop
+    - docker pull registry.roqua.nl/roqua/screensmart
+    - docker run -it registry.roqua.nl/roqua/screensmart bundle exec rubocop -D
 
-rspec:
-  script:
-    - rm config/database.yml
-    - bundle exec rake db:create db:schema:load
-    - bundle exec rspec
-  artifacts:
-    when: always
-    name: "screenshots-$CI_COMMIT_SHA"
-    expire_in: 3d
-    paths:
-      - coverage/
-      - tmp/capybara
+# rspec:
+#   script:
+#     - rm config/database.yml
+#     - bundle exec rake db:create db:schema:load
+#     - bundle exec rspec
+#   artifacts:
+#     when: always
+#     name: "screenshots-$CI_COMMIT_SHA"
+#     expire_in: 3d
+#     paths:
+#       - coverage/
+#       - tmp/capybara
