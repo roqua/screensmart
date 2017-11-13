@@ -1,4 +1,4 @@
-image: registry.roqua.nl/roqua/roqua-build-images:ruby-2.3-rails-base-test
+image: docker
 
 services:
   - postgres:9.4.1
@@ -20,15 +20,11 @@ cache:
     - gems
 
 before_script:
-  - ruby -v
-  - bundle-cache
+  - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
 
 docker:
   stage: docker
-  image: docker
   retry: 2
-  before_script:
-    - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
   script:
     - docker build . --no-cache --pull -t registry.roqua.nl/roqua/screensmart
     - id=$(docker create registry.roqua.nl/roqua/screensmart)
