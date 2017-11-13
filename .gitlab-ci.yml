@@ -26,7 +26,7 @@ docker:
   stage: docker
   retry: 2
   script:
-    - docker build . --no-cache --pull -t registry.roqua.nl/roqua/screensmart
+    - docker build . --pull -t registry.roqua.nl/roqua/screensmart
     - id=$(docker create registry.roqua.nl/roqua/screensmart)
     - rm -Rf $CI_PROJECT_DIR/gems
     - docker cp $id:/gems $CI_PROJECT_DIR/gems
