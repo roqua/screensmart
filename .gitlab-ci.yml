@@ -11,6 +11,10 @@ variables:
   MYSQL_ROOT_PASSWORD: "secret"
   SIMPLECOV: "true"
 
+stages:
+  - docker
+  - test
+
 cache:
   paths:
     - gems
@@ -20,6 +24,7 @@ before_script:
   - bundle-cache
 
 docker:
+  stage: docker
   image: docker
   retry: 2
   before_script:
@@ -33,6 +38,7 @@ docker:
     - docker push registry.roqua.nl/roqua/screensmart
 
 rubocop:
+  stage: test
   dependencies:
     - docker
   script:
