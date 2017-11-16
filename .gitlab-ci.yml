@@ -1,8 +1,5 @@
 image: docker
 
-services:
-  - postgres:9.4.1
-
 variables:
   POSTGRES_DB: screensmart_test
   POSTGRES_USER: runner
