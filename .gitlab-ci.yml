@@ -1,4 +1,4 @@
-image: docker
+image: registry.roqua.nl/roqua/roqua-build-images:docker-with-docker-compose
 
 stages:
   - docker
