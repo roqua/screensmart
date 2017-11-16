@@ -1,0 +1,22 @@
+version: '3.1'
+
+services:
+  web: &web
+    ports:
+      - 3000
+    image: registry.roqua.nl/roqua/${APP}
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgres://postgres@postgres:5432/${APP}_db
+    depends_on:
+      - postgres
+
+  web_dev:
+    <<: *web
+    volumes:
+      - .:/app
+
+  postgres:
+    image: postgres:9.4.1
+    ports:
+      - 5432
