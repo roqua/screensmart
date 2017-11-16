@@ -4,16 +4,15 @@ stages:
   - docker
   - test
 
-cache:
-  paths:
-    - gems
-
 before_script:
   - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
 
 docker:
   stage: docker
   retry: 2
+  cache:
+    paths:
+      - gems
   script:
     - docker build . --no-cache --pull -t registry.roqua.nl/$CI_PROJECT_PATH
     - id=$(docker create registry.roqua.nl/$CI_PROJECT_PATH)
