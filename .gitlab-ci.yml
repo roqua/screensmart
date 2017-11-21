@@ -14,9 +14,9 @@ docker:
     - rm -Rf $CI_PROJECT_DIR/gems
     - docker cp $id:/usr/local/bundle $CI_PROJECT_DIR/gems
     - docker rm -v $id
-    - docker run -t registry.roqua.nl/$CI_PROJECT_PATH bundle exec rubocop -D
     - APP="$CI_PROJECT_NAME" docker-compose run web bundle exec rake db:create
     - APP="$CI_PROJECT_NAME" docker-compose run web bundle exec rspec
+    - docker run -t registry.roqua.nl/$CI_PROJECT_PATH bundle exec rubocop -D
     - docker tag registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA registry.roqua.nl/$CI_PROJECT_PATH:latest
     - docker image rm registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA
     - docker push registry.roqua.nl/$CI_PROJECT_PATH:latest
