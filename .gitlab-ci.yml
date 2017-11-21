@@ -19,4 +19,4 @@ docker:
     - APP="$CI_PROJECT_NAME" docker-compose run web bundle exec rspec
     - docker tag registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA registry.roqua.nl/$CI_PROJECT_PATH:latest
     - docker image rm registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA
-    - docker push registry.roqua.nl/$CI_PROJECT_PATH:$latest
+    - docker push registry.roqua.nl/$CI_PROJECT_PATH:latest
