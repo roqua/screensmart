@@ -1,39 +1,22 @@
 image: registry.roqua.nl/roqua/roqua-build-images:docker-with-docker-compose
 
-stages:
-  - docker
-  - test
-
 before_script:
   - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
 
 docker:
-  stage: docker
   retry: 2
   cache:
     paths:
       - gems
   script:
-    - docker build . --no-cache --pull -t registry.roqua.nl/$CI_PROJECT_PATH
+    - docker build . --no-cache --pull -t registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA
     - id=$(docker create registry.roqua.nl/$CI_PROJECT_PATH)
     - rm -Rf $CI_PROJECT_DIR/gems
     - docker cp $id:/usr/local/bundle $CI_PROJECT_DIR/gems
     - docker rm -v $id
-    - docker push registry.roqua.nl/$CI_PROJECT_PATH
-
-rubocop:
-  stage: test
-  dependencies:
-    - docker
-  script:
-    - docker pull registry.roqua.nl/$CI_PROJECT_PATH
     - docker run -t registry.roqua.nl/$CI_PROJECT_PATH bundle exec rubocop -D
-
-rspec:
-  stage: test
-  dependencies:
-    - docker
-  script:
-    - docker pull registry.roqua.nl/$CI_PROJECT_PATH
     - APP="$CI_PROJECT_NAME" docker-compose run web bundle exec rake db:create
     - APP="$CI_PROJECT_NAME" docker-compose run web bundle exec rspec
+    - docker tag registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA registry.roqua.nl/$CI_PROJECT_PATH:latest
+    - docker image registry.roqua.nl/$CI_PROJECT_PATH:$CI_COMMIT_SHA
+    - docker push registry.roqua.nl/$CI_PROJECT_PATH:$latest
