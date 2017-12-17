@@ -1,8 +1,5 @@
 image: registry.roqua.nl/roqua/rq
 
-services:
-  - docker:dind
-
 before_script:
   - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
 
