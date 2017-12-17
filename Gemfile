@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'lograge'
+gem 'puma'
 gem 'rails', '~> 5.0.1'
 
 gem 'roqua-styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
@@ -33,8 +35,6 @@ gem 'opencpu', '~> 0.10.0'
 gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails', '~> 2.2.1'
-
-gem 'puma', '~> 3.9'
 
 gem 'olive_branch'
 gem 'prawn'
