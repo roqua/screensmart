@@ -1,10 +1,7 @@
 image: registry.roqua.nl/roqua/rq
 
 services:
-  - postgres:9.4
-
-variables:
-  DATABASE_URL: "postgres://runner@postgres:5432/screensmart_test"
+  - docker:dind
 
 before_script:
   - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
