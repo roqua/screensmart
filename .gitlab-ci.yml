@@ -8,7 +8,9 @@ docker:
   script:
     - rq build
     - rq deploy screensmart test --tag $CI_COMMIT_SHA --database postgresql --stages prepare
-    - rq run bundle exec rake db:create db:schema:load
+    - rq run bundle exec rake db:create
+    - rq run bin/rails db:environment:set RAILS_ENV=test
+    - rq run bundle exec rake db:schema:load
     - rq run bundle exec rspec
     - rq run bundle exec rubocop -D
     - rq push
