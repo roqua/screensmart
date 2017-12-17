@@ -13,6 +13,7 @@ docker:
   retry: 2
   script:
     - rq build
+    - rq deploy screensmart test --tag $CI_COMMIT_SHA --database postgresql --stages prepare
     - rq run bundle exec rspec
     - rq run bundle exec rubocop -D
     - rq push
