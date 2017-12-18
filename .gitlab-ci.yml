@@ -17,6 +17,7 @@ before_script:
 
 rubocop:
   script:
+  - exit 1
   - bundle exec rubocop
 
 rspec:
