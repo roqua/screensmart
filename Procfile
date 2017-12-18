@@ -1,1 +1,1 @@
-web: bundle exec puma -v -p $PORT
+web: bundle exec passenger start -p $PORT

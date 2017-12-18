@@ -236,6 +236,9 @@ GEM
     parallel (1.12.0)
     parser (2.4.0.0)
       ast (~> 2.2)
+    passenger (5.1.12)
+      rack
+      rake (>= 0.8.1)
     pdf-core (0.7.0)
     pdf-reader (2.0.0)
       Ascii85 (~> 1.0.0)
@@ -451,6 +454,7 @@ DEPENDENCIES
   neat (~> 1.7.3)
   olive_branch
   opencpu (~> 0.10.0)
+  passenger
   pdf-reader
   pg (~> 0.21.0)
   poltergeist
