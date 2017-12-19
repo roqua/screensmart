@@ -262,7 +262,6 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (2.0.5)
-    puma (3.9.1)
     rack (2.0.3)
     rack-haproxy_status (0.8.1)
     rack-test (0.6.3)
@@ -460,7 +459,6 @@ DEPENDENCIES
   poltergeist
   prawn
   prawn-table
-  puma
   rack-haproxy_status (~> 0.8.1)
   rails (~> 5.0.1)
   rails-controller-testing
