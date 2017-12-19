@@ -15,4 +15,4 @@ staging: &staging
   <<: *default
 
 production:
-  <<: *staging
+  <<: *default
