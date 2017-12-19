@@ -1,4 +1,4 @@
-FROM registry.roqua.nl/roqua/rq:ruby-2.4
+FROM registry.roqua.nl/roqua/rq:ruby-2.3
 
 ADD Gemfile /app
 ADD Gemfile.lock /app
