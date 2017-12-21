@@ -1,33 +1,15 @@
-image: "roqua/roqua-build-images:ruby-2.3.3-phantomjs-2.1.1-bundler-gemnasium"
-
-services:
-  - postgres:9.4
-
-variables:
-  POSTGRES_DB: screensmart_test
-  POSTGRES_USER: runner
-  POSTGRES_PASSWORD: ""
-  DATABASE_URL: "postgres://runner@postgres:5432/screensmart_test"
-  MYSQL_ROOT_PASSWORD: "secret"
-  SIMPLECOV: "true"
+image: registry.roqua.nl/roqua/rq
 
 before_script:
-  - ruby -v
-  - bundle-cache
+  - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
 
-rubocop:
+docker:
+  retry: 2
   script:
-  - bundle exec rubocop
-
-rspec:
-  script:
-  - rm config/database.yml
-  - bundle exec rake db:create db:schema:load
-  - bundle exec rspec
-  artifacts:
-    when: always
-    name: "screenshots-$CI_COMMIT_SHA"
-    expire_in: 3d
-    paths:
-      - coverage/
-      - tmp/capybara
+    - rq build
+    - rq run bundle exec rake db:create
+    - rq run bin/rails db:environment:set RAILS_ENV=test
+    - rq run bundle exec rake db:schema:load
+    - rq run bundle exec rspec
+    - rq run bundle exec rubocop -D
+    - rq push
