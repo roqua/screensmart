@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'lograge'
 gem 'passenger'
-gem 'rails', '~> 5.0.1'
+gem 'rails', '~> 5.1'
 
 gem 'roqua-styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
 
@@ -50,7 +50,7 @@ group :development do
   gem 'letter_opener'
 
   gem 'spring'
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
   gem 'guard', '~> 2.13.0'
   gem 'guard-bundler'
