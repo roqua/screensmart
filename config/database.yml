@@ -5,11 +5,9 @@ default: &default
 
 development:
   <<: *default
-  database: screensmart_development
 
 test:
   <<: *default
-  database: screensmart_test
 
 staging: &staging
   <<: *default
