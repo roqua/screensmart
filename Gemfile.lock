@@ -265,7 +265,7 @@ GEM
       slop (~> 3.4)
     public_suffix (2.0.5)
     rack (2.0.4)
-    rack-haproxy_status (0.8.1)
+    rack-haproxy_status (0.9.0)
     rack-test (0.8.3)
       rack (>= 1.0, < 3)
     rails (5.1.5)
@@ -462,7 +462,7 @@ DEPENDENCIES
   poltergeist
   prawn
   prawn-table
-  rack-haproxy_status (~> 0.8.1)
+  rack-haproxy_status (~> 0.9.0)
   rails (~> 5.1)
   rails-controller-testing
   react-rails (~> 1.7.1)

@@ -10,7 +10,7 @@ gem 'roqua-styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
 gem 'active_model_serializers', '~> 0.9.3'
 
 gem 'pg', '~> 0.21.0'
-gem 'rack-haproxy_status', '~> 0.8.1'
+gem 'rack-haproxy_status', '~> 0.9.0'
 gem 'responders', '~> 2.4.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'

@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  mount Rack::HaproxyStatus::Endpoint.new(path: Rails.root.join('config', 'balancer_state')) => '/load_balancer_status'
+  mount Rack::HaproxyStatus::Endpoint.new(
+    path: Rails.root.join('config', 'balancer_state'),
+    extra_checks: [Proc.new { CheckDbConnection.connected? }]
+  ) => "/load_balancer_status"
+
   root to: 'app#index'
 
   scope defaults: {format: 'json'}, constraints: {format: 'json'} do
