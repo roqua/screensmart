@@ -4,7 +4,7 @@ gem 'lograge'
 gem 'passenger'
 gem 'rails', '~> 5.1'
 
-gem 'roqua-styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
+gem 'roqua_styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
 
 # Keep at 0.9, too many breaking changes in 0.10
 gem 'active_model_serializers', '~> 0.9.3'

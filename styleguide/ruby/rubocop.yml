@@ -10,6 +10,7 @@ AllCops:
     - 'db/schema.rb'
     - 'db/seeds/**/*'
     - 'local/*'
+    - 'node_modules/**/*'
     - 'script/**/*'
     - 'tmp/**/*'
     - 'vendor/**/*'
@@ -23,12 +24,6 @@ Security/Eval:
     - '**/Guardfile'
 
 # ==================================== LINT ===========================================================================
-
-# Explicit block alignment
-Lint/BlockAlignment:
-  Enabled: true
-  Exclude:
-    - 'spec/**/*'
 
 # Useless assignments are just useless. In specs however they lead to a better
 # understanding of what is being stubbed/factoried.
@@ -88,6 +83,12 @@ Style/WordArray:
     - 'spec/**/*'
 
 # ==================================== LAYOUT ==============================================
+
+# Explicit block alignment
+Layout/BlockAlignment:
+  Enabled: true
+  Exclude:
+    - 'spec/**/*'
 
 # defs stick to each other is just unpretty. Turning this on for general code,
 # but still allowing testing/mocking one-line exceptions
@@ -196,7 +197,7 @@ Style/NumericLiterals:
 #
 # Argumentation: We do not want Rubocop to enforce this style. Sometimes methods
 # starting with `get_` or `set_` provide better readability and understanding of code
-Style/AccessorMethodName:
+Naming/AccessorMethodName:
   Enabled: false
 
 # This forces comments to align with the code.
