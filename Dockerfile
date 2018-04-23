@@ -11,6 +11,10 @@ ADD . /app
 
 COPY --from=production /app/public/assets /app/public/assets
 RUN find /app/public/assets -mtime +90 -delete
-RUN rm /app/public/assets/.sprockets-manifest-*.json
+
+# Remove old manifest file
+RUN rm -f /app/public/assets/manifest-*.json
+# Remove new manifest file
+RUN rm -f /app/public/assets/.sprockets-manifest-*.json
 
 RUN bundle exec rake assets:precompile
