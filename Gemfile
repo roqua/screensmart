@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'lograge'
-gem 'passenger'
+gem 'puma'
 gem 'rails', '~> 5.1'
 
 gem 'roqua_styleguide', git: 'git@gitlab.roqua.nl:roqua/styleguide.git'
