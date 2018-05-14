@@ -1,4 +1,4 @@
-image: registry.roqua.nl/roqua/rq
+image: registry.roqua.nl/roqua/rq:infra
 
 before_script:
   - docker login registry.roqua.nl -u "$REGISTRY_USERNAME" -p "$REGISTRY_PASSWORD"
