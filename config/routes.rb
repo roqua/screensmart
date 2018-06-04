@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     resources :invitations, only: [:create]
   end
 
+  namespace :api, constraints: {format: 'json'} do
+    resources :responses, only: [:create]
+  end
+
   get '/fillOut' => 'app#index', as: 'fill_out'
   get '/show' => 'app#index', as: 'show_response'
   get '*path' => 'app#index' # Handle routing using react-redux-router
