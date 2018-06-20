@@ -22,6 +22,7 @@ dependency_scanning:
     - docker:stable-dind
   script:
     - apk add --no-cache ruby
+    - gem install json
     - export SP_VERSION=$(echo "$CI_SERVER_VERSION" | sed 's/^\([0-9]*\)\.\([0-9]*\).*/\1-\2-stable/')
     - docker run
         --env DEP_SCAN_DISABLE_REMOTE_CHECKS="${DEP_SCAN_DISABLE_REMOTE_CHECKS:-false}"
