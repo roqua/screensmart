@@ -15,7 +15,7 @@ docker:
     - rq push
 
 dependency_scanning:
-  image: registry.roqua.nl/roqua/docker-base-images/dependency-scanning
+  image: registry.roqua.nl/roqua/roqua-build-images:dependency-scanning
   variables:
     DOCKER_DRIVER: overlay2
   services:
