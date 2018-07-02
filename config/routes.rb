@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   get '/load_balancer_status' => 'roqua/status_checks/status#balancer_status'
 
   root to: 'app#index'
+  get '/privacy', to: 'app#privacy', as: 'privacy'
 
   scope defaults: {format: 'json'}, constraints: {format: 'json'} do
     resources :responses, only: [:create, :show, :update]

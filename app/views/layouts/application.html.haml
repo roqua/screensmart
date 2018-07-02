@@ -13,6 +13,8 @@
 
     = yield
     = javascript_include_tag 'application'
+    .privacy-link
+      = link_to 'Privacy statement', privacy_path
     .powered-by-roqua
       = link_to 'https://roqua.nl', target: '_blank' do
         = image_tag 'powered_by_roqua.png'
