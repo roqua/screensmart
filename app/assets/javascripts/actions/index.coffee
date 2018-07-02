@@ -1,3 +1,5 @@
+{ push } = ReactRouterRedux
+
 Screensmart.Actions =
   fetchDomains: ->
     (dispatch) =>
@@ -29,6 +31,10 @@ Screensmart.Actions =
     type: 'SET_ANSWER'
     id: id
     value: value
+
+  setReturnUrl: (url) ->
+    type: 'SET_RETURN_URL'
+    url: url
 
   createResponse: (invitationUUID) ->
     (dispatch) =>
@@ -74,11 +80,19 @@ Screensmart.Actions =
     type: 'RECEIVE_RESPONSE_UPDATE'
     response: data.response
 
-  finishResponse: (responseUUID, demographicInfo = null) ->
+  finishResponse: (responseUUID, demographicInfo = null, returnUrl = null) ->
     (dispatch) =>
       dispatch @startFinishResponse()
       $.putJSON("/responses/#{responseUUID}", demographicInfo: demographicInfo).then (data) =>
         dispatch @receiveFinishResponse(data)
+        if returnUrl
+          url = new URL(returnUrl)
+          url.searchParams.append('response_uuid', responseUUID)
+          url.searchParams.append('show_secret', data.showSecret)
+          url.searchParams.append('go', 'next')
+          url.searchParams.append('status', 'updated')
+          url.searchParams.append('return_from', 'catja')
+          window.location.assign url.toString()
 
   startFinishResponse: ->
     type: 'START_FINISH_RESPONSE'
@@ -86,3 +100,6 @@ Screensmart.Actions =
   receiveFinishResponse: (data) ->
     type: 'RECEIVE_FINISH_RESPONSE'
     response: data
+
+  sendResults: (url, data) ->
+    $.putJSON(url, data)

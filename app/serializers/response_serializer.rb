@@ -1,8 +1,13 @@
 class ResponseSerializer < ActiveModel::Serializer
-  attributes :uuid, :requested_at, :created_at, :domain_ids, :done, :domain_interpretations
+  attributes :uuid, :requested_at, :created_at, :domain_ids, :done,
+             :domain_interpretations, :demo
 
   has_many :domain_results
   has_many :questions
+
+  def demo
+    object.invitation.demo?
+  end
 end
 
 class DomainResultSerializer < ActiveModel::Serializer

@@ -19,4 +19,8 @@ class Invitation < BaseModel
   def events
     Events::Event.where invitation_uuid: uuid
   end
+
+  def demo?
+    requester_name != 'roqua_epd'
+  end
 end

@@ -12,10 +12,15 @@ class ResponsesController < ApplicationController
 
   def update
     response_finished = FinishResponse.run response_uuid: params[:id],
-                                           demographic_info: params[:demographic_info].to_unsafe_h
+                                           demographic_info: params[:demographic_info]&.to_unsafe_h
     if response_finished.valid?
-      head :ok
+      if invitation.demo?
+        head :ok
+      else
+        render json: {show_secret: response_by_show_secret_or_id.show_secret}
+      end
     else
+      Rails.logger.info response_finished.errors.messages
       head :unprocessable_entity
     end
   end
@@ -31,6 +36,10 @@ class ResponsesController < ApplicationController
     return Response.find params[:id] if params[:id]
 
     raise 'Neither `id` nor `show_secret` provided in params'
+  end
+
+  def invitation
+    Invitation.find_by_response_uuid params[:id]
   end
 
   def already_finished

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, constraints: {format: 'json'} do
-    resources :responses, only: [:create]
+    resources :responses, only: [:show, :create]
   end
 
   get '/fillOut' => 'app#index', as: 'fill_out'

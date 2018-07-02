@@ -58,6 +58,19 @@ describe FinishResponse do
     end
   end
 
+  context 'when initiated from roqua_epd' do
+    subject { described_class.run!(params) }
+    let(:params) { {response_uuid: response_uuid, demographic_info: demographic_info} }
+
+    it 'does not send an email to the requester' do
+      invitation_sent = Events::InvitationSent.find_by(invitation_uuid: invitation_uuid)
+      invitation_sent.update! requester_name: 'roqua_epd'
+
+      expect(ResponseMailer).to_not receive(:response_email)
+      subject
+    end
+  end
+
   context 'with invalid parameters' do
     subject { described_class.run(params) }
     let(:params) { {response_uuid: response_uuid, demographic_info: demographic_info} }

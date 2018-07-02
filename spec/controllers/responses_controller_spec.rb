@@ -48,9 +48,20 @@ describe ResponsesController do
       expect { subject }.to change { Events::ResponseFinished.count }.by 1
     end
 
-    it 'sends the email' do
-      expect(ResponseMailer).to receive(:response_email).and_call_original
-      expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    context 'in demo mode' do
+      it 'sends the email' do
+        expect(ResponseMailer).to receive(:response_email).and_call_original
+        expect { subject }.to change { ActionMailer::Base.deliveries.count }.by(1)
+      end
+    end
+
+    context 'in non-demo mode' do
+      let(:invitation_sent) { Fabricate :invitation_sent_from_roqua_epd }
+
+      it 'does not send the email' do
+        expect(ResponseMailer).to_not receive(:response_email)
+        subject
+      end
     end
   end
 end

@@ -1,4 +1,9 @@
 class Api::ResponsesController < ApiController
+  def show
+    response = Response.find_by_show_secret(params[:id])
+    render json: ResponseSerializer.new(response).as_json
+  end
+
   def create
     outcome = StartResponse.run(invitation_params)
     if outcome.valid?

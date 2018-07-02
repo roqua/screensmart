@@ -12,8 +12,12 @@
   onFinishClick: ->
     { dispatch } = Screensmart.store
 
+  onSimpleFinishClick: ->
+    { uuid, returnUrl } = @props.response
+    Screensmart.store.dispatch Screensmart.Actions.finishResponse(uuid, null, returnUrl)
+
   render: ->
-    { estimate, variance, finished, finishing, uuid } = @props.response
+    { demo, estimate, variance, finished, finishing, uuid } = @props.response
 
     div
       className: 'completion-box'
@@ -28,8 +32,16 @@
             key: 'thanks'
             'Bedankt voor het invullen. De uitslag van de test is verstuurd naar uw behandelaar.'
       else
-        React.createElement CompletionForm,
-          key: 'completion-form'
-          onFinishClick: @onFinishClick
-          finishing: finishing
-          responseUuid: uuid
+        if demo
+          React.createElement CompletionForm,
+            key: 'completion-form'
+            onFinishClick: @onFinishClick
+            finishing: finishing
+            responseUuid: uuid
+        else
+          p {},
+            "Dit waren de vragen. Klik op 'Doorgaan' om verder te gaan."
+            button
+              type: 'submit'
+              onClick: @onSimpleFinishClick
+              'Doorgaan'

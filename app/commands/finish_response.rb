@@ -1,6 +1,6 @@
 class FinishResponse < ActiveInteraction::Base
   string :response_uuid
-  hash :demographic_info do
+  hash :demographic_info, default: nil, strip: false do
     string :age
     string :education_level
     string :employment_status
@@ -30,6 +30,7 @@ class FinishResponse < ActiveInteraction::Base
   end
 
   def send_response_email
+    return unless invitation.demo?
     ResponseMailer.response_email(invitation_sent_at: invitation.requested_at,
                                   requester_email: invitation.requester_email,
                                   response: response).deliver_now

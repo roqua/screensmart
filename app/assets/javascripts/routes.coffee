@@ -13,6 +13,10 @@ loadResponse = (showSecret) ->
   else
     throw new Error 'No showSecret provided in query'
 
+setReturnUrl = (url) ->
+  if url
+    Screensmart.store.dispatch Screensmart.Actions.setReturnUrl url
+
 Screensmart.routes =
   [
     createFactory(Route)
@@ -20,7 +24,9 @@ Screensmart.routes =
       component: createFactory(FeedContainer)
       onEnter: (nextState) ->
         invitationUUID = nextState.location.query.invitationUUID
+        returnUrl = nextState.location.query.return_url
         createResponse invitationUUID
+        setReturnUrl returnUrl
     createFactory(Route)
       path: '/'
       component: createFactory(InvitationFormContainer)

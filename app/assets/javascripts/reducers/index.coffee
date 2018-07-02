@@ -6,6 +6,9 @@ defaultResponse =
   done: false       # Enough questions answered
   finishing: false  # Submission of finished response in progress
   finished: false   # Submission of finished response done
+  demo: true        # In demo-mode, ask for demographic info
+  returnUrl: false  # When finished, call this url
+  showSecret: false # Returned in non-demo mode when finished
 
 Screensmart.reducers = Redux.combineReducers
   routing: routerReducer
@@ -76,6 +79,10 @@ Screensmart.reducers = Redux.combineReducers
         merge response,
               finishing: false
               finished: true
+
+      when 'SET_RETURN_URL'
+        merge response,
+              returnUrl: action.url
 
       else
         response
