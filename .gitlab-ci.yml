@@ -19,3 +19,14 @@ docker:
     - rq test shell bundle exec rspec    
     - rq test shell bundle exec rubocop -D
     - rq push
+
+dependency_scanning:
+  image: registry.roqua.nl/roqua/roqua-build-images:dependency-scanning
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:stable-dind
+  script:
+    - scan_dependencies.sh
+  artifacts:
+    paths: [gl-dependency-scanning-report.json]
