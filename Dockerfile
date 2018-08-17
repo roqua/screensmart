@@ -1,6 +1,6 @@
 FROM registry.roqua.nl/roqua/screensmart:production as production
 
-FROM registry.roqua.nl/roqua/docker-base-images:ruby-2.3
+FROM registry.roqua.nl/roqua/docker-base-images:ruby-2.4
 
 ADD Gemfile /app
 ADD Gemfile.lock /app
