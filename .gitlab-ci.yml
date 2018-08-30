@@ -19,6 +19,8 @@ docker:
     - rq test shell bundle exec rspec    
     - rq test shell bundle exec rubocop -D
     - rq push
+  after_script:
+    - rq teardown
 
 dependency_scanning:
   image: registry.roqua.nl/roqua/dependency_scanning
