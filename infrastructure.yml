@@ -1,12 +1,20 @@
+# Documentation: https://gitlab.roqua.nl/roqua/playbook/blob/master/content/docker/infrastructure.yml.md
+
 vars:
   project_name: screensmart
   web_port: 3000
+  use_roqua_logger:
 dynamic_vars:
+  environment:
+    staging:
+      use_roqua_logger: true
+    production:
+      use_roqua_logger: true
 .rails_environment: &rails_environment
   RAILS_ENV: ${environment}
   RACK_ENV: ${environment}
   DATABASE_URL: postgres://postgres@${postgres_host}:5432/${project_name}
-  RAILS_SERVE_STATIC_FILES: true
+  RAILS_LOG_TO_STDOUT_USING_ROQUA_LOGGER: ${use_roqua_logger}
 .rails: &rails
   build: .
   image: registry.roqua.nl/roqua/${project_name}:${container_tag}
@@ -21,7 +29,6 @@ services:
     environment:
       <<: *rails_environment
       PORT: ${web_port}
-      RAILS_LOG_TO_STDOUT: true
     restart: unless-stopped
     healthcheck:
       test: netstat -an | grep 0.0.0.0:${web_port} > /dev/null; if [ 0 != $$? ]; then exit 1; fi;
