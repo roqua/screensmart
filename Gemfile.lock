@@ -116,7 +116,7 @@ GEM
     eventmachine (1.2.3)
     execjs (2.7.0)
     fabrication (2.15.2)
-    ffi (1.9.18)
+    ffi (1.9.25)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     formatador (0.2.5)
