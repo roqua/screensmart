@@ -32,7 +32,7 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
-    active_interaction (3.5.0)
+    active_interaction (3.6.2)
       activemodel (>= 4, < 6)
     active_model_serializers (0.9.7)
       activemodel (>= 3.2)
@@ -116,7 +116,7 @@ GEM
     eventmachine (1.2.3)
     execjs (2.7.0)
     fabrication (2.15.2)
-    ffi (1.9.18)
+    ffi (1.9.25)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
     formatador (0.2.5)
@@ -317,7 +317,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
-    roqua-support (0.1.30)
+    roqua-support (0.1.33)
       active_interaction (~> 3.0)
       activesupport (>= 3.2, < 6)
       naught (~> 1.0)
@@ -490,4 +490,4 @@ DEPENDENCIES
   webmock (~> 1.24.2)
 
 BUNDLED WITH
-   1.16.2
+   1.16.4
