@@ -34,6 +34,11 @@ Metrics/MethodLength:
 Metrics/AbcSize:
   Exclude:
     - app/pdfs/response_report.rb
+    - app/controllers/responses_controller.rb
+    - spec/support/mock_all_calls_to_r.rb
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
 
 # Trust developers to document where neccesary, otherwise
 # rely on the code being self-documenting
