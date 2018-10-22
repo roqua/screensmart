@@ -7,9 +7,28 @@ docker:
   retry: 2
   script:
     - rq build
-    - rq run bundle exec rake db:create
-    - rq run bin/rails db:environment:set RAILS_ENV=test
-    - rq run bundle exec rake db:schema:load
-    - rq run bundle exec rspec
-    - rq run bundle exec rubocop -D
+    - rq test shell bundle exec rake db:create
+    - rq test shell bin/rails db:environment:set RAILS_ENV=test
+    - rq test shell bundle exec rake db:schema:load
+    - rq test shell bundle exec rspec
+    - rq teardown
+    - sed -i 's/postgres:9.4/postgres:10/g' infrastructure.yml
+    - rq test shell bundle exec rake db:create
+    - rq test shell bin/rails db:environment:set RAILS_ENV=test
+    - rq test shell bundle exec rake db:schema:load
+    - rq test shell bundle exec rspec    
+    - rq test shell bundle exec rubocop -D
     - rq push
+  after_script:
+    - rq teardown
+
+dependency_scanning:
+  image: registry.roqua.nl/roqua/dependency_scanning
+  variables:
+    DOCKER_DRIVER: overlay2
+  services:
+    - docker:stable-dind
+  script:
+    - scan_dependencies.sh
+  artifacts:
+    paths: [gl-dependency-scanning-report.json]
