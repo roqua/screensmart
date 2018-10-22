@@ -37,6 +37,14 @@ def configure_vcr
       allow_playback_repeats: true,
       match_requests_on: [:body, :uri, :method]
     }
+
+    # Don't match on basic auth info in the url
+    vcr.register_request_matcher :uri do |req1, req2|
+      uri1 = URI(req1.uri)
+      uri2 = URI(req2.uri)
+      uri1.host == uri2.host && uri1.port == uri2.port &&
+        uri1.path == uri2.path && uri1.query == uri2.query
+    end
   end
 end
 

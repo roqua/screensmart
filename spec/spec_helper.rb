@@ -5,6 +5,7 @@ require 'rspec/collection_matchers'
 require 'capybara-screenshot/rspec'
 require 'capybara/poltergeist'
 require 'database_cleaner'
+require 'webmock/rspec'
 require 'vcr'
 require 'opencpu'
 Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
