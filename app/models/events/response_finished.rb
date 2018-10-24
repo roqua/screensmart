@@ -5,7 +5,8 @@ module Events
                      results: :array
 
     def self.find_by_invitation_uuid(invitation_uuid)
-      where(invitation_uuid: invitation_uuid).first || raise("Couldn't find #{self} with invitation_uuid #{invitation_uuid}")
+      find_by(invitation_uuid: invitation_uuid) ||
+        raise("Couldn't find #{self} with invitation_uuid #{invitation_uuid}")
     end
   end
 end
