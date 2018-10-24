@@ -1,6 +1,8 @@
 class Api::ResponsesController < ApiController
   def show
-    response = Response.find_by_show_secret(params[:id])
+    # TODO: find by show_secret?
+    # response = Response.find_by_show_secret(params[:id])
+    response = Response.find_by_invitation_uuid(params[:id])
     render json: ApiResponseSerializer.new(response).as_json
   end
 

@@ -82,4 +82,9 @@ class Response < BaseModel
     invitation_accepted = Events::InvitationAccepted.find_by_show_secret show_secret
     find invitation_accepted.response_uuid
   end
+
+  def self.find_by_invitation_uuid(invitation_uuid)
+    response_finished = Events::ResponseFinished.find_by_invitation_uuid invitation_uuid
+    find response_finished.response_uuid
+  end
 end

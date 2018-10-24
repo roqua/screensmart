@@ -16,11 +16,19 @@ describe Api::ResponsesController do
       AcceptInvitation.run! invitation_uuid: invitation_sent.invitation_uuid
     end
 
-    subject { get :show, params: {id: invitation_accepted.show_secret} }
+    before do
+      SetAnswer.run! response_uuid: invitation_accepted.response_uuid, question_id: 'EL49', answer_value: 1
+      SetAnswer.run! response_uuid: invitation_accepted.response_uuid, question_id: 'EL37', answer_value: 1
+      SetAnswer.run! response_uuid: invitation_accepted.response_uuid, question_id: 'EL03', answer_value: 1
+      SetAnswer.run! response_uuid: invitation_accepted.response_uuid, question_id: 'EL38', answer_value: 1
+      FinishResponse.run! response_uuid: invitation_accepted.response_uuid
+    end
 
-    it 'renders the response as JSON' do
+    subject { get :show, params: {id: invitation_accepted.invitation_uuid} }
+
+    it 'renders the completed response as JSON' do
       subject
-      model = Response.find_by_show_secret invitation_accepted.show_secret
+      model = Response.find_by_invitation_uuid invitation_accepted.invitation_uuid
       expect(response.body).to eq ApiResponseSerializer.new(model).as_json.to_json
     end
   end
