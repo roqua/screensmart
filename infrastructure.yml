@@ -22,6 +22,11 @@ dynamic_vars:
     - postgres
   env_files:
     - .env
+release:
+  - name: migrations
+    command: bundle exec rake db:migrate
+  - name: seeds
+    command: bundle exec rake db:seed
 services:
   web:
     <<: *rails
