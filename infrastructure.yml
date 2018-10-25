@@ -42,7 +42,7 @@ services:
       <<: *rails_environment
     logging: no
   postgres:
-    image: postgres:9.4
+    image: postgres:10
     provided_by: DATABASE_URL
     ports:
       - 5432
