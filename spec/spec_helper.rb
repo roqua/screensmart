@@ -45,6 +45,8 @@ RSpec.configure do |config|
 
   Rails.application.routes.default_url_options[:host] = 'test_host'
 
+  DatabaseCleaner.allow_remote_database_url = true
+
   config.before(:suite) do
     DatabaseCleaner.clean_with(:truncation)
   end

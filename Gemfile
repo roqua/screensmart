@@ -75,7 +75,7 @@ group :test do
   gem 'rspec-collection_matchers', '~> 1.1.2'
   gem 'rspec-rails'
   gem 'vcr', '~> 3.0.1'
-  gem 'webmock', '~> 1.24.2'
+  gem 'webmock', '~> 3.2'
 
   gem 'capybara'
   gem 'capybara-screenshot'
