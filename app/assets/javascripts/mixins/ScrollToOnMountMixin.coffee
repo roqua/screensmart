@@ -1,6 +1,6 @@
 @ScrollToOnMountMixin =
   componentDidMount: ->
-    $('body').animate scrollTop: @positionInPage() - @marginTop(), 700
+    $('html,body').scrollTop @positionInPage() - @marginTop()
 
   positionInPage: ->
     parseFloat @jQueryElement().offset().top
