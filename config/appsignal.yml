@@ -3,6 +3,8 @@ default: &defaults
   name: "Screensmart"
   slow_request_threshold: 200
   enable_frontend_error_catching: true
+  ignore_actions:
+    - "Roqua::StatusChecks::StatusController#balancer_status"
 
 development:
   <<: *defaults
