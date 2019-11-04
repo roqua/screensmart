@@ -10,7 +10,7 @@ docker:
     - rq test shell bundle exec rake db:create
     - rq test shell bin/rails db:environment:set RAILS_ENV=test
     - rq test shell bundle exec rake db:schema:load
-    - rq test shell bundle exec rspec    
+    - rq test shell bundle exec rspec
     - rq test shell bundle exec rubocop -D
     - rq push
   after_script:
@@ -21,6 +21,7 @@ dependency_scanning:
   variables:
     DOCKER_DRIVER: overlay2
     FF_USE_LEGACY_VOLUMES_MOUNTING_ORDER: "true"
+  allow_failure: true
   services:
     - docker:stable-dind
   script:
