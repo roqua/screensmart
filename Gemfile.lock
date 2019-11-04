@@ -226,7 +226,7 @@ GEM
     nenv (0.3.0)
     netrc (0.11.0)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.5)
       mini_portile2 (~> 2.4.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -490,4 +490,4 @@ DEPENDENCIES
   webmock (~> 3.2)
 
 BUNDLED WITH
-   1.17.1
+   1.17.3
