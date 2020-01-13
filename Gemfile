@@ -30,8 +30,8 @@ gem 'react-rails', '~> 1.7.1'
 
 gem 'active_interaction', '~> 3.5'
 gem 'jsonb_accessor', '0.4.0.beta'
-gem 'sparkpost_rails'
 gem 'opencpu', '~> 0.10.0'
+gem 'sparkpost_rails'
 gem 'valid_email', '~> 0.0'
 
 gem 'dotenv-rails', '~> 2.2.1'
