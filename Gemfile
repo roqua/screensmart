@@ -30,7 +30,7 @@ gem 'react-rails', '~> 1.7.1'
 
 gem 'active_interaction', '~> 3.5'
 gem 'jsonb_accessor', '0.4.0.beta'
-gem 'mailgun_rails', '~> 0.9.0'
+gem 'sparkpost_rails'
 gem 'opencpu', '~> 0.10.0'
 gem 'valid_email', '~> 0.0'
 
@@ -53,7 +53,7 @@ group :development do
   gem 'web-console'
 
   gem 'guard', '~> 2.13.0'
-  gem 'guard-bundler'
+  gem 'guard-bundler', require: false
   gem 'guard-coffeelint'
   gem 'guard-livereload', '~> 2.4.0'
   gem 'guard-rspec', '~> 4.6.4'
