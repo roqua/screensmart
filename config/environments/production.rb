@@ -22,11 +22,7 @@ Rails.application.configure do
 
   config.log_formatter = ::Logger::Formatter.new
 
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-    api_key: ENV['MAILGUN_APIKEY'],
-    domain: ENV['MAILGUN_DOMAIN']
-  }
+  config.action_mailer.delivery_method = :sparkpost
 
   roqua_server_app_path = "https://#{ENV['SCREENSMART_URL']}" if ENV['SCREENSMART_URL']
   heroku_app_path = "https://#{ENV['HEROKU_APP_NAME']}.herokuapp.com" if ENV['HEROKU_APP_NAME']
